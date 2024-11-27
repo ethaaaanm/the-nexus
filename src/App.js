@@ -1,22 +1,25 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./home/Home";
 import AdminPage from "./admin/AdminPage";
+import StatsPage from "./stats/Stats";
+import TopNavBar from "./components/TopNavBar";
+import "./App.css";
 
 function App() {
   return (
-    <Router>
-      {/* Navigation Bar */}
-      <nav>
-        <Link to="/">Home</Link> | <Link to="/admin">Admin</Link>
-      </nav>
-
-      {/* Define Routes */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<AdminPage />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <Router>
+        {/* Navigation Bar */}
+        <TopNavBar />
+        {/* Define Routes */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/stats" element={<StatsPage />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

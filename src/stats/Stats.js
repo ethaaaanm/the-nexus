@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
-import './home.css';
+import './stats.css';
 
 import SportSelection from "../components/SportsSelection";
 import SoftballStats from "../components/SoftballStats";
@@ -9,13 +9,9 @@ import BasketballStats from "../components/BasketballStats";
 import VolleyballStats from "../components/VolleyballStats";
 import UltimateStats from "../components/UltimateStats";
 
-import Trailer from "./Trailer";
-
-const Home = () => {
+const Stats = () => {
   const [selectedSport, setSelectedSport] = useState("Basketball");
   const [playerStats, setPlayerStats] = useState([]);
-
-  <Trailer/>
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,14 +54,8 @@ const Home = () => {
   }, [selectedSport]);
 
   return (
-    <div id="home">
-      <h1 id="greeting">Welcome to The Nexus League!</h1>
-      <Trailer className="clip"/>
-
-      <h2 id="home-title">Announcements</h2>
-
-      <h3 id="home-title">Schedule</h3>
-
+    <div id="stats">
+      <h1 id="stat-title">The Nexus League - Player Stats</h1>
       <div className="sport-selection">
         <SportSelection onSelectSport={setSelectedSport} />
       </div>
@@ -79,4 +69,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Stats;
