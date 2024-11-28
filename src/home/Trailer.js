@@ -4,15 +4,15 @@ import Youtube from "react-youtube"
 class Trailer extends React.Component {
     render() {
         const options = {
-            height: '390',
-            width: '640',
+            height: '450',
+            width: '800',
             playerVars: {
                 autoplay: 1,
                 controls: 1,
             },
         };
 
-        return <Youtube videoId="xBwzppW2RoE" opts={options} onReady={this._onReady} id="video" />;
+        return <Youtube videoId="mp7M8g4QFsc" opts={options} onReady={this._onReady} id="video" />;
     }
 
     _onReady(event) {

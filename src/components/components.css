@@ -25,13 +25,13 @@
 
 /* Active state for the selected button */
 .sports-button.active {
-    background-color: #4CAF50; /* Active background */
+    background-color: #ee375f; /* Active background */
     color: white; /* Optional: Change text color for contrast */
 }
 
 .topnavbar {
     width: 100vw;
-    background-color: #061E20; /* Keep the background color */
+    background-color: #012c33; /* Keep the background color */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -74,12 +74,12 @@
 }
 
 .navbar-right .navbar-links a:hover {
-    background-color: #9ECB3B; /* Highlight background on hover */
+    background-color: #9ecc3b; /* Highlight background on hover */
     color: #061E20;
     text-decoration: none; /* No underline on hover */
 }
 
 .navbar-right .navbar-links .active {
-    color: #9ECB3B; /* Highlight active link */
+    color: #9ecc3b; /* Highlight active link */
     font-weight: bold;
 }

@@ -5,6 +5,7 @@ import AdminPage from "./admin/AdminPage";
 import StatsPage from "./stats/Stats";
 import TopNavBar from "./components/TopNavBar";
 import "./App.css";
+import "./res/styles/global.css";
 
 function App() {
   return (

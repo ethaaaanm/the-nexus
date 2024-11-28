@@ -10,12 +10,16 @@ import VolleyballStats from "../components/VolleyballStats";
 import UltimateStats from "../components/UltimateStats";
 
 import Trailer from "./Trailer";
+import photo1 from "../res/images/DSC_1405.jpg"
+import photo2 from "../res/images/DSC_1176.jpg"
+import photo3 from "../res/images/DSC_1542.jpg"
+import Carousel from 'react-bootstrap/Carousel';
+import CarouselItem from 'react-bootstrap/CarouselItem'
+import CarouselCaption from 'react-bootstrap/CarouselCaption'
 
 const Home = () => {
   const [selectedSport, setSelectedSport] = useState("Basketball");
   const [playerStats, setPlayerStats] = useState([]);
-
-  <Trailer/>
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,9 +64,39 @@ const Home = () => {
   return (
     <div id="home">
       <h1 id="greeting">Welcome to The Nexus League!</h1>
-      <Trailer className="clip"/>
+      <div id="clip">     
+        <Trailer/>
+      </div>
 
-      <h2 id="home-title">Announcements</h2>
+      <h2 id="feature">Features</h2>
+
+      <div id="feature-carousel">
+        <Carousel>
+          <CarouselItem>
+            <img src={photo1} alt="First slide" />
+            <CarouselCaption>
+              <h3>First slide label</h3>
+              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </CarouselCaption>
+          </CarouselItem>
+          <CarouselItem>
+            <img src={photo2} alt="Second slide" />
+            <CarouselCaption>
+              <h3>Second slide label</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </CarouselCaption>
+          </CarouselItem>
+          <CarouselItem>
+            <img src={photo3} alt="Third slide" />
+            <CarouselCaption>
+              <h3>Third slide label</h3>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              </p>
+            </CarouselCaption>
+          </CarouselItem>
+        </Carousel>
+      </div>
 
       <h3 id="home-title">Schedule</h3>
 

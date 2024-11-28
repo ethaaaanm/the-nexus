@@ -64,7 +64,7 @@ const AdminPage = () => {
             team: formData.team,
             stats: {
                 basketball: { gamesPlayed: 0, points: 0, rebounds: 0, assists: 0 },
-                softball: { gamesPlayed: 0, atBats: 0, hits: 0, strikeOuts: 0 },
+                softball: { gamesPlayed: 0, atBats: 0, hits: 0, strikeOuts: 0, rbi: 0 },
                 volleyball: { gamesPlayed: 0, wins: 0, losses: 0 },
                 ultimate: { gamesPlayed: 0, points: 0, assists: 0, blocks: 0 },
             },
@@ -76,7 +76,7 @@ const AdminPage = () => {
             playerName: "",
             team: "",
             basketball: { gamesPlayed: 0, points: 0, rebounds: 0, assists: 0 },
-            softball: { gamesPlayed: 0, atBats: 0, hits: 0, strikeOuts: 0 },
+            softball: { gamesPlayed: 0, atBats: 0, hits: 0, strikeOuts: 0, rbi: 0 },
             volleyball: { gamesPlayed: 0, wins: 0, losses: 0 },
             ultimate: { gamesPlayed: 0, points: 0, assists: 0, blocks: 0 },
         });
