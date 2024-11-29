@@ -5,11 +5,14 @@
 /.pnp
 .pnp.js
 
+# Build output (redundant if you’re using gh-pages)
+build/
+
+# Temporary React cache files
+.cache/
+
 # testing
 /coverage
-
-# production
-/build
 
 # misc
 .DS_Store
