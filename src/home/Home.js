@@ -8,13 +8,14 @@ import CarouselItem from 'react-bootstrap/CarouselItem'
 import CarouselCaption from 'react-bootstrap/CarouselCaption'
 
 import './home.css';
-import time from "../res/images/time.png"
+import events from "../data/events";
+import time from "../res/images/time.png";
 
 
 const Home = () => {
   return (
     <div id="home">
-      <h1 id="greeting">Welcome to The Nexus League!</h1>
+      <h1 id="greeting">WELCOME TO <br/> THE NEXUS LEAGUE</h1>
       <div id="clip">
         <Trailer />
       </div>
@@ -49,101 +50,35 @@ const Home = () => {
 
       <h3 id="home-title">Schedule or Upcoming Events</h3>
 
-      <div class="event-container">
-        <h3 class="year">2025</h3>
+      <div className="event-container">
+        <h3 className="year">2025</h3>
 
-        <div class="event">
-          <div class="event-left">
-            <div class="event-date">
-              <div class="date">4</div>
-              <div class="month">June</div>
+        {events.map((event, index) => (
+          <div className="event" key={index}>
+            <div className="event-left">
+              <div className="event-date">
+                <div className="date">{event.date}</div>
+                <div className="month">{event.month}</div>
+              </div>
+            </div>
+            <div className="event-right">
+              <h3 className="event-title">{event.title}</h3>
+              <div
+                className="event-description"
+                dangerouslySetInnerHTML={{ __html: event.description }}
+              ></div>
+              <div className="event-timing">
+                <img src={time} alt="Time icon" />
+                {event.time}
+              </div>
+            </div>
+            <div className="event-image">
+              <img src={event.image} alt={`${event.title} img`} />
             </div>
           </div>
-
-          <div class="event-right">
-            <h3 class="event-title">Ultimate Frisbee</h3>
-
-            <div class="event-description">
-              Week 1: Welcome to the Nexus League!
-              <br/>
-              Kick Off Event
-            </div>
-
-            <div class="event-timing">
-              <img src={time} alt="" /> 7:00 pm
-            </div>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="event-left">
-            <div class="event-date">
-              <div class="date">11</div>
-              <div class="month">June</div>
-            </div>
-          </div>
-
-          <div class="event-right">
-            <h3 class="event-title">Softball</h3>
-
-            <div class="event-description">
-              Week 2: First Softball Game<br/>Rock vs United
-            </div>
-
-            <div class="event-timing">
-              <img src={time} alt="" /> 7:00 pm
-            </div>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="event-left">
-            <div class="event-date">
-              <div class="date">18</div>
-              <div class="month">June</div>
-            </div>
-          </div>
-
-          <div class="event-right">
-            <h3 class="event-title">Basketball</h3>
-
-            <div class="event-description">
-              Week 3: Big Balls Sesh
-              <br/>
-              Bring the BOOM
-            </div>
-
-            <div class="event-timing">
-              <img src={time} alt="" /> 7:00 pm
-            </div>
-          </div>
-        </div>
-
-
-        <div class="event">
-          <div class="event-left">
-            <div class="event-date">
-              <div class="date">25</div>
-              <div class="month">June</div>
-            </div>
-          </div>
-
-          <div class="event-right">
-            <h3 class="event-title">Volleyball</h3>
-
-            <div class="event-description">
-              Week 4: Yungins Time to Shine
-              <br/>
-              Thunda Thunda!!
-            </div>
-
-            <div class="event-timing">
-              <img src={time} alt="" /> 7:00 pm
-            </div>
-          </div>
-        </div>
-
+        ))}
       </div>
+
     </div>
   );
 };

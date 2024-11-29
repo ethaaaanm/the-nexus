@@ -1,9 +1,11 @@
 #home {
-  font-family: 'Proxima Nova', Arial, Helvetica, sans-serif;
-  margin-top: 20px; /* Adjust for the fixed navigation bar height */
+  font-family: 'Proxima Nova', 'Phonk', Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+  /* Adjust for the fixed navigation bar height */
   width: 90%;
   max-width: 1200px;
-  padding: 20px 20px 40px; /* Add bottom padding for breathing space */
+  padding: 20px 20px 40px;
+  /* Add bottom padding for breathing space */
   text-align: center;
   box-sizing: border-box;
   align-items: center;
@@ -13,7 +15,9 @@
 #greeting {
   font-size: 2.5rem;
   color: #4a4e69;
-  margin-bottom: 30px; /* Increased spacing below the title */
+  margin-bottom: 30px;
+  font-family: 'Phonk';
+  /* Increased spacing below the title */
 }
 
 /* Trailer Video Clip */
@@ -28,23 +32,31 @@
 
 /* Feature Styling */
 #feature {
+  font-family: 'Proxima Nova';
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 700;
   color: #4a4e69;
-  margin-bottom: 30px; /* Increased spacing below the title */
+  margin-bottom: 30px;
+  /* Increased spacing below the title */
 }
 
 #feature-carousel {
   width: 100%;
-  max-width: 800px; /* Limit maximum width to prevent oversized images */
-  margin: 0 auto 30px; /* Center align carousel and add bottom spacing */
+  max-width: 800px;
+  /* Limit maximum width to prevent oversized images */
+  margin: 0 auto 30px;
+  /* Center align carousel and add bottom spacing */
 }
 
 #feature-carousel img {
-  width: 100%; /* Make the image responsive */
-  max-height: 500px; /* Limit height to ensure it doesn't take up too much space */
-  object-fit: scale-down; /* Crop the image to fit within the container without distortion */
-  border-radius: 10px; /* Add rounded corners for a cleaner look */
+  width: 100%;
+  /* Make the image responsive */
+  max-height: 500px;
+  /* Limit height to ensure it doesn't take up too much space */
+  object-fit: scale-down;
+  /* Crop the image to fit within the container without distortion */
+  border-radius: 10px;
+  /* Add rounded corners for a cleaner look */
 }
 
 /* Event List Styling */
@@ -55,7 +67,7 @@
 }
 
 .event-container h3.year {
-  font-size: 40px; 
+  font-size: 40px;
   font-weight: 600;
   text-align: center;
   border-bottom: 1px solid #b1b1b1;
@@ -103,6 +115,23 @@
   font-weight: bold;
   margin: 24px 0 10px 0;
   color: #218bbb;
+
+  .event .event-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+    padding: 0 24px;
+    flex-grow: 1;
+    /* Allow the event description to take up remaining space */
+  }
+}
+
+.event .event-right h3.event-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 24px 0 10px 0;
+  color: #218bbb;
   text-transform: uppercase;
 }
 
@@ -128,7 +157,32 @@
   padding-right: 8px;
 }
 
-@media (max-width: 550px) {
+.event .event-image {
+  width: 200px;
+  height: 100%;
+  overflow: hidden;
+  margin-left: auto;
+}
+
+.event .event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  border-radius: 0 8px 8px 0; 
+  filter: opacity(0.5) blur(1px); 
+  transition: filter 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .clip {
+    max-width: 90%;
+  }
+
   .event {
     flex-direction: column;
   }
@@ -146,17 +200,5 @@
 
   .event .event-left .event-date {
     padding: 10px 0;
-  }
-}
-
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  .clip {
-    max-width: 90%;
   }
 }
