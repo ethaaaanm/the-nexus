@@ -1,0 +1,85 @@
+/* Container for sports buttons */
+.sports-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px ;
+    width: 100%; /* Ensure it spans the full width */
+    padding: 0 50px; /* Add padding for spacing */
+    margin: 20px auto; /* Center the sports bar horizontally */
+}
+  
+/* Style for each button */
+.sports-button {
+    flex: 1; /* Make each button take up equal width */
+    padding: 15px 40px; /* Increase padding for larger button size */
+    margin: 0 20px; /* Small margin between buttons */
+    border: none;
+    cursor: pointer;
+    font-size: 18px; /* Larger font size for readability */
+    border-radius: 5px;
+    background-color: #e7e7e7; /* Default background */
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+/* Active state for the selected button */
+.sports-button.active {
+    background-color: #9ECB3B; /* Active background */
+    color: white; /* Optional: Change text color for contrast */
+}
+
+.topnavbar {
+    width: 100vw;
+    background-color: #012c33; /* Keep the background color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 16px; /* Slightly smaller font size */
+    font-weight: 400;
+    padding: 10px 20px; /* Reduce vertical padding */
+    height: 60px; /* Set a fixed, thinner height */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a cleaner look */
+    position: static; /* Keep the navbar at the top during scroll */
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 150px; /* Smaller logo width */
+    height: auto; /* Maintain aspect ratio */
+    padding: 20px 10px;
+}
+
+.navbar-right .navbar-links {
+    list-style-type: none;
+    padding: 0 40px;
+    margin: 0;
+    display: flex;
+    gap: 3rem; 
+}
+
+.navbar-right .navbar-links li {
+    margin: 0; 
+}
+
+.navbar-right .navbar-links a {
+    color: #fff;
+    padding: 8px 12px; /* Adjust link padding for a thinner feel */
+    font-size: 14px; /* Make link font size smaller */
+    text-decoration: none;
+    border-radius: 4px; /* Optional: Rounded effect for hover */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-right .navbar-links a:hover {
+    background-color: #9ECB3B; /* Highlight background on hover */
+    color: #061E20;
+    text-decoration: none; /* No underline on hover */
+}
+
+.navbar-right .navbar-links .active {
+    color: #9ECB3B; /* Highlight active link */
+    font-weight: bold;
+}

@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/the-nexus/static/css/main.a6096424.css",
+    "main.js": "/the-nexus/static/js/main.0e2c6085.js",
+    "static/js/453.0faee02f.chunk.js": "/the-nexus/static/js/453.0faee02f.chunk.js",
+    "static/media/DSC_1405.jpg": "/the-nexus/static/media/DSC_1405.1f2b1159e7e122de6b29.jpg",
+    "static/media/DSC_1542.jpg": "/the-nexus/static/media/DSC_1542.b8c44992ccc0956666f8.jpg",
+    "static/media/DSC_1176.jpg": "/the-nexus/static/media/DSC_1176.18ca8f3e656bb7a43f8e.jpg",
+    "static/media/phonk_contrast.otf": "/the-nexus/static/media/phonk_contrast.00390c698e2a26bed84d.otf",
+    "static/media/phonk_regular.otf": "/the-nexus/static/media/phonk_regular.411157e17c1a43fdd53f.otf",
+    "static/media/proximanova_regular.ttf": "/the-nexus/static/media/proximanova_regular.8181ca4b7c2d1189d78a.ttf",
+    "static/media/proximanova_extrabold.otf": "/the-nexus/static/media/proximanova_extrabold.4b4dcc64004a8654a484.otf",
+    "static/media/proximanova_boldit.otf": "/the-nexus/static/media/proximanova_boldit.d408af56f8cabc640e22.otf",
+    "static/media/proximanova_bold.otf": "/the-nexus/static/media/proximanova_bold.fcaab2524c5baabd71f6.otf",
+    "static/media/proximanova_blackit.otf": "/the-nexus/static/media/proximanova_blackit.e97eccb6c0e64a5a0141.otf",
+    "static/media/proximanova_black.otf": "/the-nexus/static/media/proximanova_black.120f91ca1cfeced5a5ac.otf",
+    "static/media/proximanova_light.otf": "/the-nexus/static/media/proximanova_light.9d69a5449e101ad71e3d.otf",
+    "index.html": "/the-nexus/index.html",
+    "main.a6096424.css.map": "/the-nexus/static/css/main.a6096424.css.map",
+    "main.0e2c6085.js.map": "/the-nexus/static/js/main.0e2c6085.js.map",
+    "453.0faee02f.chunk.js.map": "/the-nexus/static/js/453.0faee02f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a6096424.css",
+    "static/js/main.0e2c6085.js"
+  ]
+}
