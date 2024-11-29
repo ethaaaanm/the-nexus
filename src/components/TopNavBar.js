@@ -36,6 +36,14 @@ const TopNavBar = () => {
                             Admin
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) => isActive ? 'active' : ''}
+                        >
+                            About
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </header>

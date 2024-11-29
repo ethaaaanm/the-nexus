@@ -25,7 +25,7 @@
 
 /* Active state for the selected button */
 .sports-button.active {
-    background-color: #ee375f; /* Active background */
+    background-color: #9ECB3B; /* Active background */
     color: white; /* Optional: Change text color for contrast */
 }
 
@@ -74,12 +74,12 @@
 }
 
 .navbar-right .navbar-links a:hover {
-    background-color: #9ecc3b; /* Highlight background on hover */
+    background-color: #9ECB3B; /* Highlight background on hover */
     color: #061E20;
     text-decoration: none; /* No underline on hover */
 }
 
 .navbar-right .navbar-links .active {
-    color: #9ecc3b; /* Highlight active link */
+    color: #9ECB3B; /* Highlight active link */
     font-weight: bold;
 }
