@@ -243,9 +243,9 @@ button:hover {
   display: inline-flex"
 }
 
-a {
+/* a {
   color: var(--hyper-watermelon);
-  /* color: #0E0E0E; */
+  color: #0E0E0E;
   font-size: 16px;
   font-family: Proxima Nova;
   font-weight: 600;
@@ -265,4 +265,4 @@ a:hover {
   word-wrap: break-word;
   text-decoration: underline;
   background: #9ECB3B; 
-}
+} */
