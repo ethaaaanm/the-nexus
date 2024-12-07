@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/the-nexus/static/css/main.a6096424.css",
-    "main.js": "/the-nexus/static/js/main.0e2c6085.js",
+    "main.js": "/the-nexus/static/js/main.2fb06535.js",
     "static/js/453.0faee02f.chunk.js": "/the-nexus/static/js/453.0faee02f.chunk.js",
     "static/media/DSC_1405.jpg": "/the-nexus/static/media/DSC_1405.1f2b1159e7e122de6b29.jpg",
     "static/media/DSC_1542.jpg": "/the-nexus/static/media/DSC_1542.b8c44992ccc0956666f8.jpg",
@@ -17,11 +17,11 @@
     "static/media/proximanova_light.otf": "/the-nexus/static/media/proximanova_light.9d69a5449e101ad71e3d.otf",
     "index.html": "/the-nexus/index.html",
     "main.a6096424.css.map": "/the-nexus/static/css/main.a6096424.css.map",
-    "main.0e2c6085.js.map": "/the-nexus/static/js/main.0e2c6085.js.map",
+    "main.2fb06535.js.map": "/the-nexus/static/js/main.2fb06535.js.map",
     "453.0faee02f.chunk.js.map": "/the-nexus/static/js/453.0faee02f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a6096424.css",
-    "static/js/main.0e2c6085.js"
+    "static/js/main.2fb06535.js"
   ]
 }
