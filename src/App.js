@@ -12,15 +12,13 @@ function App() {
   return (
     <div className="App">
       <Router basename="/the-nexus">
-        {/* Navigation Bar */}
-        <TopNavBar />
-        {/* Define Routes */}
-        <Routes>
+        {<TopNavBar />}      
+        {<Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/stats" element={<StatsPage />} />
           <Route path="/about" element={<AboutPage />} />
-        </Routes>
+        </Routes>}        
       </Router>
     </div>
   );
