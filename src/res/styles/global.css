@@ -1,68 +1,66 @@
+/* ========================================
+   Fonts Section
+   ======================================== */
+
 /*** Proxima Nova Fonts ***/
-/* Regular */
+/* Proxima Nova Regular */
 @font-face {
   font-family: 'Proxima Nova';
   src: url('../fonts/proxima-nova/proximanova_regular.ttf') format('truetype');
   font-weight: 400;
-  /* Normal */
   font-style: normal;
 }
 
-/* Light */
+/* Proxima Nova Light */
 @font-face {
   font-family: 'Proxima Nova';
   src: url('../fonts/proxima-nova/proximanova_light.otf') format('opentype');
   font-weight: 300;
-  /* Light */
   font-style: normal;
 }
 
-/* Bold */
+/* Proxima Nova Bold */
 @font-face {
   font-family: 'Proxima Nova';
   src: url('../fonts/proxima-nova/proximanova_bold.otf') format('opentype');
   font-weight: 700;
-  /* Bold */
   font-style: normal;
 }
 
-/* Extra Bold */
+/* Proxima Nova Extra Bold */
 @font-face {
   font-family: 'Proxima Nova';
   src: url('../fonts/proxima-nova/proximanova_extrabold.otf') format('opentype');
   font-weight: 800;
-  /* Extra Bold */
   font-style: normal;
 }
 
-/* Black */
+/* Proxima Nova Black */
 @font-face {
   font-family: 'Proxima Nova';
   src: url('../fonts/proxima-nova/proximanova_black.otf') format('opentype');
   font-weight: 900;
-  /* Black */
   font-style: normal;
 }
 
-/* Bold Italic */
+/* Proxima Nova Bold Italic */
 @font-face {
   font-family: 'Proxima Nova';
   src: url('../fonts/proxima-nova/proximanova_boldit.otf') format('opentype');
   font-weight: 700;
-  /* Bold */
   font-style: italic;
 }
 
-/* Black Italic */
+/* Provima Nova Black Italic */
 @font-face {
   font-family: 'Proxima Nova';
   src: url('../fonts/proxima-nova/proximanova_blackit.otf') format('opentype');
   font-weight: 900;
-  /* Black */
   font-style: italic;
 }
 
 /*** Phonk Font ***/
+
 /* Phonk Regular */
 @font-face {
   font-family: 'Phonk';
@@ -77,4 +75,194 @@
   src: url('../fonts/phonk/phonk_contrast.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
+}
+
+/*** Manuka Font ***/
+/* Manuka Thin */
+@font-face {
+  font-family: 'Manuka';
+  src: url('../fonts/manuka/manuka_thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* Manuka Ultra */
+@font-face {
+  font-family: 'Manuka';
+  src: url('../fonts/manuka/manuka_ultra.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* Manuka Light */
+@font-face {
+  font-family: 'Manuka';
+  src: url('../fonts/manuka/manuka_light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Manuka Regular */
+@font-face {
+  font-family: 'Manuka';
+  src: url('../fonts/manuka/manuka_regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Manuka Medium */
+@font-face {
+  font-family: 'Manuka';
+  src: url('../fonts/manuka/manuka_medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Manuka Bold */
+@font-face {
+  font-family: 'Manuka';
+  src: url('../fonts/manuka/manuka_bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Manuka Black */
+@font-face {
+  font-family: 'Manuka';
+  src: url('../fonts/manuka/manuka_black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+/* ========================================
+   Color Palette Section
+   ======================================== */
+/*** Colors ***/
+:root {
+  --hyper-watermelon: #EE375F;
+  --darkness: #012C33;
+  --alpha-green: #9ECC3B;
+}
+
+/* ========================================
+   Typography Section
+   ======================================== */
+/*** Headers & Titles ***/
+/* Manuka 128 */
+h1 {
+  color: #0A2C33;
+  font-size: 128px;
+  font-family: 'Manuka';
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 64px;
+  letter-spacing: 3.2px;
+  word-wrap: break-word;
+}
+
+/* Manuka 64 */
+h2 {
+  color: #0A2C33;
+  font-size: 64px;
+  font-family: 'Manuka';
+  letter-spacing: 3.2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 64px;
+  word-wrap: break-word;
+}
+
+/* Proxima Nova 32 */
+h3 {
+  color: #0A2C33;
+  font-size: 32px;
+  font-family: Proxima Nova;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3.2px;
+  word-wrap: break-word;
+  line-height: 32px;
+}
+
+/* Proxima Nova 20 */
+h4 {
+  color: #0A2C33;
+  font-size: 20px;
+  font-family: Proxima Nova;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3.2px;
+  word-wrap: break-word;
+  line-height: 24px;
+}
+
+/* Proxima Nova 16 */
+h5 {
+  color: #0A2C33;
+  font-size: 16px;
+  font-family: Proxima Nova;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3.2px;
+  word-wrap: break-word;
+  line-height: 16px;
+}
+
+body {
+  color: #0A2C33;
+  font-size: 16px;
+  font-family: Proxima Nova;
+  font-weight: 400;
+  word-wrap: break-word;
+  line-height: 16px;
+}
+
+button {
+  color: #0A2C33;
+  font-size: 16px;
+  font-family: Proxima Nova;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3.2px;
+  word-wrap: break-word;
+  line-height: 16px;
+  border-radius: 16px; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 4px; 
+  display: inline-flex"
+}
+
+button:hover {
+  background: #9ECB3B; 
+  border-radius: 16px; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 4px; 
+  display: inline-flex"
+}
+
+a {
+  color: var(--hyper-watermelon);
+  /* color: #0E0E0E; */
+  font-size: 16px;
+  font-family: Proxima Nova;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 16px;
+  letter-spacing: 3.2px;
+  word-wrap: break-word
+}
+
+a:hover {
+  font-size: 16px;
+  font-family: Proxima Nova;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 16px;
+  letter-spacing: 3.2px;
+  word-wrap: break-word;
+  text-decoration: underline;
+  background: #9ECB3B; 
 }
