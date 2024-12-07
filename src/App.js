@@ -7,6 +7,7 @@ import AboutPage from "./about/About";
 import TopNavBar from "./components/TopNavBar";
 import "./App.css";
 import "./res/styles/global.css";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/stats" element={<StatsPage />} />
           <Route path="/about" element={<AboutPage />} />
         </Routes>}        
+        { <Footer/>}
       </Router>
     </div>
   );

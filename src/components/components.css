@@ -29,6 +29,8 @@
     color: white; /* Optional: Change text color for contrast */
 }
 
+/***  TOP BAR STYLING  ***/
+
 .topnavbar {
     width: 100vw;
     background-color: #0E0E0E; /* Keep the background color */
@@ -47,8 +49,8 @@
 }
 
 .logo img {
-    width: 50px; /* Smaller logo width */
-    height: 50px; /* Maintain aspect ratio */
+    width: 44px; /* Smaller logo width */
+    height: 44px; /* Maintain aspect ratio */
     padding: 0px 80px;
     display: inline-flex;
     justify-content: center;
@@ -82,15 +84,85 @@
     font-size: 14px; /* Make link font size smaller */
     text-decoration: none;
     border-radius: 4px; /* Optional: Rounded effect for hover */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block; 
+    transition: all 0.3s ease;
 }
 
 .navbar-right .navbar-links a:hover {
-    color: #9ECB3B;
-    text-decoration: none; /* No underline on hover */
+    transition: all 0.3s ease;
+    color: #d2d2d2ba
 }
 
 .navbar-right .navbar-links .active {
     color: #9ECB3B; /* Highlight active link */
     font-weight: 800;
+}
+
+/*** FOOTER STYLING ***/
+.footer {
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #0E0E0E; 
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.footer-title {
+    font-size: 96px;
+    font-weight: 850;
+    margin: 80px 65px;
+    color: #F2F2F2;
+    font-family: 'Manuka';
+    font-style: normal;
+    line-height: 64px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.footer .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    margin: 0px 80px;
+}
+
+.footer .footer-right .lil-msg {
+    color: #F2F2F2;
+    text-align: right;
+    font-family: 'Proxima Nova';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: none;
+    margin: 8px 0px;
+    letter-spacing: 0px;
+}
+
+.ig-logo {
+    width: 24px;
+    height: 24px;
+    margin: 0px 6px;
+    cursor: pointer;
+}
+
+.mail-logo {
+    width: 24px;
+    height: 24px;
+    margin: 0px 6px;
+    cursor: pointer;
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer .footer-right a:hover {
+    opacity: 0.7;
 }
