@@ -1,0 +1,8 @@
+{
+  "short_name": "The Nexus",
+  "name": "The Nexus Site",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
