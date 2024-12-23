@@ -49,8 +49,8 @@
 }
 
 .logo img {
-    width: 44px; /* Smaller logo width */
-    height: 44px; /* Maintain aspect ratio */
+    width: 30px; /* Smaller logo width */
+    height: 50px; /* Maintain aspect ratio */
     padding: 0px 80px;
     display: inline-flex;
     justify-content: center;
