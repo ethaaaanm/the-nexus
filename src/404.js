@@ -12,7 +12,7 @@ function ErrorPage() {
         <h4 className="error-description">YOU GOT CROSSED UP INTO THE ABYSS.</h4>
         <div className="divider"></div>
         <button className="back-home-button" onClick={() => navigate("/")}>
-          BACK HOME
+          <h5 className="button-text">BACK HOME</h5>
         </button>
       </div>
     </div>
