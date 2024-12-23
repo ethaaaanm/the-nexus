@@ -4,10 +4,12 @@ import Home from "./home/Home";
 import AdminPage from "./admin/Admin";
 import StatsPage from "./stats/Stats";
 import AboutPage from "./about/About";
+import ErrorPage from "./404"
 import TopNavBar from "./components/TopNavBar";
+import Footer from "./components/Footer";
+
 import "./App.css";
 import "./res/styles/global.css";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/stats" element={<StatsPage />} />
           <Route path="/about" element={<AboutPage />} />
+
+          <Route path="*" element={<ErrorPage/>} />
         </Routes>}        
         { <Footer/>}
       </Router>

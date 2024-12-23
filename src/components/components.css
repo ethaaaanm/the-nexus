@@ -100,7 +100,7 @@
 
 /*** FOOTER STYLING ***/
 .footer {
-    width: 100vw;
+    width: stretch;
     height: 100px;
     display: flex;
     justify-content: space-between;

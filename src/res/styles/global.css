@@ -157,7 +157,6 @@ h1 {
   font-weight: 600;
   text-transform: uppercase;
   line-height: 64px;
-  letter-spacing: 3.2px;
   word-wrap: break-word;
 }
 
@@ -166,7 +165,6 @@ h2 {
   color: #0A2C33;
   font-size: 64px;
   font-family: 'Manuka';
-  letter-spacing: 3.2px;
   font-weight: 600;
   text-transform: uppercase;
   line-height: 64px;
@@ -190,9 +188,9 @@ h4 {
   color: #0A2C33;
   font-size: 20px;
   font-family: Proxima Nova;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 3.2px;
+  letter-spacing: 4px;
   word-wrap: break-word;
   line-height: 24px;
 }
@@ -222,7 +220,7 @@ button {
   color: #0A2C33;
   font-size: 16px;
   font-family: Proxima Nova;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 3.2px;
   word-wrap: break-word;
