@@ -1,10 +1,7 @@
 {
   "files": {
-    "main.css": "/the-nexus/static/css/main.20fc77d1.css",
-    "main.js": "/the-nexus/static/js/main.cb73a401.js",
-    "static/media/DSC_1405.jpg": "/the-nexus/static/media/DSC_1405.1f2b1159e7e122de6b29.jpg",
-    "static/media/DSC_1542.jpg": "/the-nexus/static/media/DSC_1542.b8c44992ccc0956666f8.jpg",
-    "static/media/DSC_1176.jpg": "/the-nexus/static/media/DSC_1176.18ca8f3e656bb7a43f8e.jpg",
+    "main.css": "/the-nexus/static/css/main.cfe414de.css",
+    "main.js": "/the-nexus/static/js/main.e55f1965.js",
     "static/media/phonk_contrast.otf": "/the-nexus/static/media/phonk_contrast.00390c698e2a26bed84d.otf",
     "static/media/phonk_regular.otf": "/the-nexus/static/media/phonk_regular.411157e17c1a43fdd53f.otf",
     "static/media/proximanova_regular.ttf": "/the-nexus/static/media/proximanova_regular.8181ca4b7c2d1189d78a.ttf",
@@ -26,11 +23,11 @@
     "static/media/wordmark.svg": "/the-nexus/static/media/wordmark.937519fd84f7a09b3bd25685f49322be.svg",
     "static/media/ic_mail.svg": "/the-nexus/static/media/ic_mail.fcc16c7ec52f8bbd2ae9fe0fdd5b6c3d.svg",
     "index.html": "/the-nexus/index.html",
-    "main.20fc77d1.css.map": "/the-nexus/static/css/main.20fc77d1.css.map",
-    "main.cb73a401.js.map": "/the-nexus/static/js/main.cb73a401.js.map"
+    "main.cfe414de.css.map": "/the-nexus/static/css/main.cfe414de.css.map",
+    "main.e55f1965.js.map": "/the-nexus/static/js/main.e55f1965.js.map"
   },
   "entrypoints": [
-    "static/css/main.20fc77d1.css",
-    "static/js/main.cb73a401.js"
+    "static/css/main.cfe414de.css",
+    "static/js/main.e55f1965.js"
   ]
 }
