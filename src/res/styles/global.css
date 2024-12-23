@@ -233,6 +233,7 @@ button {
 }
 
 button:hover {
+  font-family: Proxima Nova;
   background: #9ECB3B; 
   border-radius: 16px; 
   justify-content: center; 
