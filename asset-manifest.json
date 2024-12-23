@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/the-nexus/static/css/main.41e7af84.css",
-    "main.js": "/the-nexus/static/js/main.00eab20c.js",
+    "main.css": "/the-nexus/static/css/main.ee4cf344.css",
+    "main.js": "/the-nexus/static/js/main.f87c440b.js",
     "static/media/DSC_1405.jpg": "/the-nexus/static/media/DSC_1405.1f2b1159e7e122de6b29.jpg",
     "static/media/DSC_1542.jpg": "/the-nexus/static/media/DSC_1542.b8c44992ccc0956666f8.jpg",
     "static/media/DSC_1176.jpg": "/the-nexus/static/media/DSC_1176.18ca8f3e656bb7a43f8e.jpg",
@@ -23,13 +23,12 @@
     "static/media/manuka_ultra.otf": "/the-nexus/static/media/manuka_ultra.a5ded446f817a6d01ab1.otf",
     "static/media/ic_instagram.svg": "/the-nexus/static/media/ic_instagram.d56c897451d660e43992c16d6ce08696.svg",
     "static/media/ic_mail.svg": "/the-nexus/static/media/ic_mail.fcc16c7ec52f8bbd2ae9fe0fdd5b6c3d.svg",
-    "static/media/logo.svg": "/the-nexus/static/media/logo.b1c14a99ba5d95aec1f74ce97f3be597.svg",
     "index.html": "/the-nexus/index.html",
-    "main.41e7af84.css.map": "/the-nexus/static/css/main.41e7af84.css.map",
-    "main.00eab20c.js.map": "/the-nexus/static/js/main.00eab20c.js.map"
+    "main.ee4cf344.css.map": "/the-nexus/static/css/main.ee4cf344.css.map",
+    "main.f87c440b.js.map": "/the-nexus/static/js/main.f87c440b.js.map"
   },
   "entrypoints": [
-    "static/css/main.41e7af84.css",
-    "static/js/main.00eab20c.js"
+    "static/css/main.ee4cf344.css",
+    "static/js/main.f87c440b.js"
   ]
 }
