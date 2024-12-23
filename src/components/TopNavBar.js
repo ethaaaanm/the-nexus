@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./components.css";
-import logo from "../res/images/logo_green.png"
+import logo from "../res/images/logo_green.svg"
 
 const TopNavBar = () => {
     return (
