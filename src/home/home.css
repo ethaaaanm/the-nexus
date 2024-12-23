@@ -1,204 +1,109 @@
 #home {
-  font-family: 'Proxima Nova', 'Phonk', Arial, Helvetica, sans-serif;
-  margin-top: 20px;
-  /* Adjust for the fixed navigation bar height */
-  width: 90%;
+  margin: 0;
+  background-color: #050505; /* Match the dark theme */
+  color: #F2F2F2;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* News:Schedule ratio */
+  gap: 20px;
   max-width: 1200px;
-  padding: 20px 20px 40px;
-  /* Add bottom padding for breathing space */
-  text-align: center;
-  box-sizing: border-box;
-  align-items: center;
-}
-
-/* Header Styling */
-#greeting {
-  font-size: 2.5rem;
-  color: #4a4e69;
-  margin-bottom: 30px;
-  font-family: 'Phonk';
-  /* Increased spacing below the title */
-}
-
-/* Trailer Video Clip */
-#clip {
-  display: block;
-  margin: 20px auto;
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-  border-radius: 10px;
-}
-
-/* Feature Styling */
-#feature {
-  font-family: 'Proxima Nova';
-  font-size: 2rem;
-  font-weight: 700;
-  color: #4a4e69;
-  margin-bottom: 30px;
-  /* Increased spacing below the title */
-}
-
-#feature-carousel {
-  width: 100%;
-  max-width: 800px;
-  /* Limit maximum width to prevent oversized images */
-  margin: 0 auto 30px;
-  /* Center align carousel and add bottom spacing */
-}
-
-#feature-carousel img {
-  width: 100%;
-  /* Make the image responsive */
-  max-height: 500px;
-  /* Limit height to ensure it doesn't take up too much space */
-  object-fit: scale-down;
-  /* Crop the image to fit within the container without distortion */
-  border-radius: 10px;
-  /* Add rounded corners for a cleaner look */
-}
-
-/* Event List Styling */
-.event-container {
-  font-family: "Roboto", sans-serif;
-  max-width: 800px;
   margin: 0 auto;
+  padding: 20px;
 }
 
-.event-container h3.year {
-  font-size: 40px;
-  font-weight: 600;
-  text-align: center;
-  border-bottom: 1px solid #b1b1b1;
-}
-
-.event-container .event {
-  box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.4);
-  display: flex;
+/* Section Styling */
+.news-section,
+.schedule-section {
+  background-color: #1C1C1C; /* Card background color */
   border-radius: 8px;
-  margin: 32px 0;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.event .event-left {
-  background: #222;
-  width: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #eee;
-  padding: 8px 48px;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 8px 0 0 8px;
-}
-
-.event .event-left .date {
-  font-size: 56px;
-}
-
-.event .event-left .month {
-  font-size: 16px;
-  font-weight: normal;
-}
-
-.event .event-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: start;
-  padding: 0 24px;
-}
-
-.event .event-right h3.event-title {
+/* News Section Styling */
+.news-section h2 {
+  color: #9EC43F; /* Neon green for heading */
   font-size: 24px;
-  font-weight: bold;
-  margin: 24px 0 10px 0;
-  color: #218bbb;
-
-  .event .event-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: start;
-    padding: 0 24px;
-    flex-grow: 1;
-    /* Allow the event description to take up remaining space */
-  }
+  margin-bottom: 16px;
 }
 
-.event .event-right h3.event-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 24px 0 10px 0;
-  color: #218bbb;
-  text-transform: uppercase;
+.news-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #333333;
+  padding-bottom: 10px;
 }
 
-.event .event-right .event-description {
-  font-weight: 500;
+.news-item:last-child {
+  border-bottom: none;
 }
 
-.event .event-right .event-timing {
-  background: #fff8ba;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  padding: 8px;
-  border-radius: 16px;
-  margin: 24px 0;
+.news-item h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.news-item p {
   font-size: 14px;
-  font-weight: 500;
+  color: #D2D2D2;
 }
 
-.event .event-right .event-timing img {
-  height: 20px;
-  padding-right: 8px;
+/* Schedule Section Styling */
+.schedule-section h2 {
+  color: #FFFFFF;
+  font-size: 24px;
+  margin-bottom: 16px;
 }
 
-.event .event-image {
-  width: 200px;
-  height: 100%;
-  overflow: hidden;
-  margin-left: auto;
+.schedule-item {
+  background-color: #2C2C2C; /* Slightly darker for individual cards */
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.event .event-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: scale-down;
-  border-radius: 0 8px 8px 0; 
-  filter: opacity(0.5) blur(1px); 
-  transition: filter 0.3s ease;
+.schedule-item:last-child {
+  margin-bottom: 0;
 }
 
-/* Responsive Adjustments */
+.schedule-item h3 {
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.schedule-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #D2D2D2;
+}
+
+.schedule-item .play-button {
+  background-color: #9EC43F;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #050505;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.schedule-item .play-button:hover {
+  background-color: #B4E05F;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  .clip {
-    max-width: 90%;
-  }
-
-  .event {
-    flex-direction: column;
-  }
-
-  .event .event-left {
-    padding: 0;
-    border-radius: 8px 8px 0 0;
-  }
-
-  .event .event-left .event-date .date,
-  .event .event-left .event-date .month {
-    display: inline-block;
-    font-size: 24px;
-  }
-
-  .event .event-left .event-date {
-    padding: 10px 0;
+  .container {
+    grid-template-columns: 1fr; /* Stack sections vertically */
   }
 }
