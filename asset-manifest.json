@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/the-nexus/static/css/main.ee4cf344.css",
-    "main.js": "/the-nexus/static/js/main.f87c440b.js",
+    "main.js": "/the-nexus/static/js/main.9570a809.js",
     "static/media/DSC_1405.jpg": "/the-nexus/static/media/DSC_1405.1f2b1159e7e122de6b29.jpg",
     "static/media/DSC_1542.jpg": "/the-nexus/static/media/DSC_1542.b8c44992ccc0956666f8.jpg",
     "static/media/DSC_1176.jpg": "/the-nexus/static/media/DSC_1176.18ca8f3e656bb7a43f8e.jpg",
@@ -21,14 +21,16 @@
     "static/media/manuka_regular.otf": "/the-nexus/static/media/manuka_regular.6be7fc05632b945de311.otf",
     "static/media/manuka_thin.otf": "/the-nexus/static/media/manuka_thin.e83e11a74eef6bd2a3a7.otf",
     "static/media/manuka_ultra.otf": "/the-nexus/static/media/manuka_ultra.a5ded446f817a6d01ab1.otf",
+    "static/media/logo_green.svg": "/the-nexus/static/media/logo_green.c66679762e51a197b1113112ab2b5868.svg",
     "static/media/ic_instagram.svg": "/the-nexus/static/media/ic_instagram.d56c897451d660e43992c16d6ce08696.svg",
+    "static/media/wordmark.svg": "/the-nexus/static/media/wordmark.937519fd84f7a09b3bd25685f49322be.svg",
     "static/media/ic_mail.svg": "/the-nexus/static/media/ic_mail.fcc16c7ec52f8bbd2ae9fe0fdd5b6c3d.svg",
     "index.html": "/the-nexus/index.html",
     "main.ee4cf344.css.map": "/the-nexus/static/css/main.ee4cf344.css.map",
-    "main.f87c440b.js.map": "/the-nexus/static/js/main.f87c440b.js.map"
+    "main.9570a809.js.map": "/the-nexus/static/js/main.9570a809.js.map"
   },
   "entrypoints": [
     "static/css/main.ee4cf344.css",
-    "static/js/main.f87c440b.js"
+    "static/js/main.9570a809.js"
   ]
 }
