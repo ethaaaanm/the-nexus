@@ -1,7 +1,116 @@
-#home {
-  margin: 0;
-  background-color: #050505; /* Match the dark theme */
+.home {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* 2 equal-width columns */
+  grid-template-rows: auto auto; /* Auto height for rows */
+  gap: 20px; /* Spacing between grid items */
+  margin: 80px 80px;
+  padding: 20px;
+  background-color: #050505; 
   color: #F2F2F2;
+}
+
+.title-logo {
+  grid-column: 1 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #0E0E0E;
+  align-self: stretch;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.title-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.schedule-dropdown {
+  grid-column: 2 / 3; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0E0E0E;
+  padding: 0px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.schedule-dropdown h3 {
+  font-family: "Proxima Nova";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; 
+  letter-spacing: 6.4px;
+  color: #F2F2F2;
+}
+
+.schedule-dropdown .button {
+  display: flex;
+  align-items: center;
+  background-color: #1C1C1C;
+  color: #F2F2F2;
+  border-radius: 20px;
+  position: relative;
+  padding: 0px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.schedule-dropdown select {
+  appearance: none; /* Removes default dropdown arrow and styles */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  font-family: "Proxima Nova";
+  font-size: 16px; 
+  font-weight: 600; 
+  line-height: 16px;
+  letter-spacing: 3.2px;
+  background-color: transparent; 
+  color: #F2F2F2; 
+  border: none; 
+  padding: 25px 40px;
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+/* Add hover effect */
+.schedule-dropdown select:hover {
+  background-color: transparent; /* Keep container hover instead */
+  color: #F2F2F2;
+}
+
+.schedule-dropdown img {
+  width: 14px;
+  height: 10px;
+  margin-left: auto; /* Push arrow to the end */
+  pointer-events: none; /* Prevent interference with clicks */
+}
+
+.schedule-dropdown .button:hover {
+  background-color: #161616; 
+  color: #F2F2F2;
+}
+
+.schedule-dropdown .button:hover select { 
+  color: #F2F2F2; 
+}
+
+.schedule-dropdown .button:active { /* Fix Active State */ 
+  background-color: #9ECB3B; 
+  color: #F2F2F2;
+}
+
+/** Test Dropdown Capabilities -> May need to create custom **/
+
+.schedule-dropdown .button:active select{
+  color: #050505; 
+}
+
+.schedule-dropdown img:active { /* fix button color */
+  color: #050505
 }
 
 .container {
@@ -23,26 +132,34 @@
 }
 
 /* News Section Styling */
+.news-item {
+  background-color: #2C2C2C;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
 .news-section h2 {
   color: #9EC43F; /* Neon green for heading */
   font-size: 24px;
-  margin-bottom: 16px;
-}
-
-.news-item {
   margin-bottom: 20px;
-  border-bottom: 1px solid #333333;
-  padding-bottom: 10px;
-}
-
-.news-item:last-child {
-  border-bottom: none;
 }
 
 .news-item h3 {
   font-size: 18px;
-  margin: 0;
-  color: #FFFFFF;
+  color: #F2F2F2;
+  margin-bottom: 5px;
+}
+
+.news-item .news-date {
+  color: #9EC43F;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.news-item:last-child {
+  border-bottom: none;
 }
 
 .news-item p {
@@ -74,7 +191,7 @@
 
 .schedule-item h3 {
   margin: 0;
-  color: #FFFFFF;
+  color: #F2F2F2;
 }
 
 .schedule-item p {

@@ -1,4 +1,6 @@
 import React from "react";
+import Wordmark from "../res/images/wordmark_green.svg"
+import Dropdown from "../res/images/dropdown.svg"
 import "./home.css";
 
 const newsData = [
@@ -33,18 +35,37 @@ const scheduleData = [
 const Home = () => {
   return (
     <div className="home">
-    <div className="container">
+      {/* Top Left: Title Logo */}
+      <div className="title-logo">
+        <img src={Wordmark} alt="The Nexus Title" />
+      </div>
+
+      {/* Top Right: Schedule Dropdown */}
+      <div className="schedule-dropdown">
+        <h3>Schedule</h3>
+        <div className="button">
+            <select id="month">
+              <option value="june">JUNE</option>
+              <option value="july">JULY</option>
+              <option value="august">AUGUST</option>
+            </select>
+            <img src={Dropdown} alt="Dropdown Menu"/>
+        </div>
+      </div>
+
+      {/* Bottom Left: News Section */}
       <div className="news-section">
         <h2>News</h2>
         {newsData.map((item, index) => (
           <div className="news-item" key={index}>
             <h3>{item.title}</h3>
-            {item.date && <p>{item.date}</p>}
+            {item.date && <p className="news-date">{item.date}</p>}
             <p>{item.content}</p>
           </div>
         ))}
       </div>
 
+      {/* Bottom Right: Schedule Section */}
       <div className="schedule-section">
         <h2>Schedule</h2>
         {scheduleData.map((item, index) => (
@@ -58,7 +79,6 @@ const Home = () => {
           </div>
         ))}
       </div>
-    </div>
     </div>
   );
 };
