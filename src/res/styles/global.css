@@ -223,9 +223,8 @@ button {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 3.2px;
-  word-wrap: break-word;
   line-height: 16px;
-  border-radius: 16px; 
+  border-radius: 20px; 
   justify-content: center; 
   align-items: center; 
   gap: 4px; 
@@ -234,8 +233,12 @@ button {
 
 button:hover {
   font-family: Proxima Nova;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3.2px;
+  line-height: 16px;
   background: #9ECB3B; 
-  border-radius: 16px; 
+  border-radius: 20px; 
   justify-content: center; 
   align-items: center; 
   gap: 4px; 

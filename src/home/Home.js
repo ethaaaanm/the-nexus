@@ -1,8 +1,9 @@
-import React from "react";
-import Wordmark from "../res/images/wordmark_green.svg"
-import Dropdown from "../res/images/dropdown.svg"
-import "./home.css";
+import React, { useState } from "react";
+import Wordmark from "../res/images/wordmark_green.svg";
+import "./home.css"; 
+import Dropdown from "./dropdown"; // Import the custom dropdown component
 
+// Data for the news section
 const newsData = [
   {
     title: "Next Game Location",
@@ -19,20 +20,36 @@ const newsData = [
   },
 ];
 
-const scheduleData = [
+// Full schedule data
+const fullScheduleData = [
   {
     sport: "Ultimate Frisbee",
     date: "6/4/2025 | 7:00PM",
     teams: ["Genesis 1-0-0", "Refined 0-1-0"],
+    month: "June",
   },
   {
     sport: "Softball",
     date: "6/11/2025 | 7:00PM",
     teams: ["Genesis 0-0-0", "Refined 0-0-0"],
+    month: "June",
+  },
+  {
+    sport: "Basketball",
+    date: "7/1/2025 | 7:00PM",
+    teams: ["Genesis 0-0-1", "Refined 1-0-0"],
+    month: "July",
   },
 ];
 
 const Home = () => {
+  const [selectedMonth, setSelectedMonth] = useState("June"); // State to track selected month
+
+  // Filter schedule data based on selected month
+  const filteredSchedule = fullScheduleData.filter(
+    (item) => item.month === selectedMonth
+  );
+
   return (
     <div className="home">
       {/* Top Left: Title Logo */}
@@ -43,14 +60,11 @@ const Home = () => {
       {/* Top Right: Schedule Dropdown */}
       <div className="schedule-dropdown">
         <h3>Schedule</h3>
-        <div className="button">
-            <select id="month">
-              <option value="june">JUNE</option>
-              <option value="july">JULY</option>
-              <option value="august">AUGUST</option>
-            </select>
-            <img src={Dropdown} alt="Dropdown Menu"/>
-        </div>
+        <Dropdown
+          months={["JUNE", "JULY", "AUGUST"]} // Available months
+          defaultMonth="JUNE" // Default selected month
+          onMonthChange={setSelectedMonth} // Function to update the selected month
+        />
       </div>
 
       {/* Bottom Left: News Section */}
@@ -68,7 +82,7 @@ const Home = () => {
       {/* Bottom Right: Schedule Section */}
       <div className="schedule-section">
         <h2>Schedule</h2>
-        {scheduleData.map((item, index) => (
+        {filteredSchedule.map((item, index) => (
           <div className="schedule-item" key={index}>
             <div>
               <h3>{item.sport}</h3>
