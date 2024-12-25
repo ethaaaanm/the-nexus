@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/the-nexus/static/css/main.2b68f343.css",
-    "main.js": "/the-nexus/static/js/main.9733c9a5.js",
+    "main.css": "/the-nexus/static/css/main.cd9e391f.css",
+    "main.js": "/the-nexus/static/js/main.9575836d.js",
     "static/media/phonk_contrast.otf": "/the-nexus/static/media/phonk_contrast.00390c698e2a26bed84d.otf",
     "static/media/phonk_regular.otf": "/the-nexus/static/media/phonk_regular.411157e17c1a43fdd53f.otf",
     "static/media/proximanova_regular.ttf": "/the-nexus/static/media/proximanova_regular.8181ca4b7c2d1189d78a.ttf",
@@ -23,13 +23,12 @@
     "static/media/wordmark_green.svg": "/the-nexus/static/media/wordmark_green.84cfdcc66ba2822bb7e6e2419b4b4ae5.svg",
     "static/media/wordmark.svg": "/the-nexus/static/media/wordmark.937519fd84f7a09b3bd25685f49322be.svg",
     "static/media/ic_mail.svg": "/the-nexus/static/media/ic_mail.fcc16c7ec52f8bbd2ae9fe0fdd5b6c3d.svg",
-    "static/media/dropdown.svg": "/the-nexus/static/media/dropdown.f37cda7dda5f371853d0a89991142a3c.svg",
     "index.html": "/the-nexus/index.html",
-    "main.2b68f343.css.map": "/the-nexus/static/css/main.2b68f343.css.map",
-    "main.9733c9a5.js.map": "/the-nexus/static/js/main.9733c9a5.js.map"
+    "main.cd9e391f.css.map": "/the-nexus/static/css/main.cd9e391f.css.map",
+    "main.9575836d.js.map": "/the-nexus/static/js/main.9575836d.js.map"
   },
   "entrypoints": [
-    "static/css/main.2b68f343.css",
-    "static/js/main.9733c9a5.js"
+    "static/css/main.cd9e391f.css",
+    "static/js/main.9575836d.js"
   ]
 }
