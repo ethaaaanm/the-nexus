@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/the-nexus/static/css/main.b3bf1db3.css",
-    "main.js": "/the-nexus/static/js/main.9575836d.js",
+    "main.css": "/the-nexus/static/css/main.684b7cba.css",
+    "main.js": "/the-nexus/static/js/main.3ce4fd1f.js",
     "static/media/phonk_contrast.otf": "/the-nexus/static/media/phonk_contrast.00390c698e2a26bed84d.otf",
     "static/media/phonk_regular.otf": "/the-nexus/static/media/phonk_regular.411157e17c1a43fdd53f.otf",
     "static/media/proximanova_regular.ttf": "/the-nexus/static/media/proximanova_regular.8181ca4b7c2d1189d78a.ttf",
@@ -24,11 +24,11 @@
     "static/media/wordmark.svg": "/the-nexus/static/media/wordmark.937519fd84f7a09b3bd25685f49322be.svg",
     "static/media/ic_mail.svg": "/the-nexus/static/media/ic_mail.fcc16c7ec52f8bbd2ae9fe0fdd5b6c3d.svg",
     "index.html": "/the-nexus/index.html",
-    "main.b3bf1db3.css.map": "/the-nexus/static/css/main.b3bf1db3.css.map",
-    "main.9575836d.js.map": "/the-nexus/static/js/main.9575836d.js.map"
+    "main.684b7cba.css.map": "/the-nexus/static/css/main.684b7cba.css.map",
+    "main.3ce4fd1f.js.map": "/the-nexus/static/js/main.3ce4fd1f.js.map"
   },
   "entrypoints": [
-    "static/css/main.b3bf1db3.css",
-    "static/js/main.9575836d.js"
+    "static/css/main.684b7cba.css",
+    "static/js/main.3ce4fd1f.js"
   ]
 }
