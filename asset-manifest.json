@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/the-nexus/static/css/main.684b7cba.css",
+    "main.css": "/the-nexus/static/css/main.b526fd88.css",
     "main.js": "/the-nexus/static/js/main.3ce4fd1f.js",
     "static/media/phonk_contrast.otf": "/the-nexus/static/media/phonk_contrast.00390c698e2a26bed84d.otf",
     "static/media/phonk_regular.otf": "/the-nexus/static/media/phonk_regular.411157e17c1a43fdd53f.otf",
@@ -24,11 +24,11 @@
     "static/media/wordmark.svg": "/the-nexus/static/media/wordmark.937519fd84f7a09b3bd25685f49322be.svg",
     "static/media/ic_mail.svg": "/the-nexus/static/media/ic_mail.fcc16c7ec52f8bbd2ae9fe0fdd5b6c3d.svg",
     "index.html": "/the-nexus/index.html",
-    "main.684b7cba.css.map": "/the-nexus/static/css/main.684b7cba.css.map",
+    "main.b526fd88.css.map": "/the-nexus/static/css/main.b526fd88.css.map",
     "main.3ce4fd1f.js.map": "/the-nexus/static/js/main.3ce4fd1f.js.map"
   },
   "entrypoints": [
-    "static/css/main.684b7cba.css",
+    "static/css/main.b526fd88.css",
     "static/js/main.3ce4fd1f.js"
   ]
 }
