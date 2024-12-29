@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import Dropdown from "./dropdown"; 
+import Dropdown from "./Dropdown"; 
+import ScheduleItem from "./ScheduleItem";
 
 import Wordmark from "../res/images/wordmark_green.svg";
-import FrisbeeIcon from "../res/images/ic_ultimate.svg"; 
-import SoftballIcon from "../res/images/ic_softball.svg";
-import BasketballIcon from "../res/images/ic_basketball.svg";
-import VolleyballIcon from "../res/images/ic_volleyball.svg"
+import Genesis from "../res/images/team_genesis.svg";
+import Refined from "../res/images/team_refined.svg"
 import "./home.css"; 
 
 // Data for the news section
@@ -31,43 +30,44 @@ const newsData = [
 // Full schedule data
 const fullScheduleData = [
   {
-    sport: "Ultimate Frisbee",
-    date: "6/4/2025 | 7:00PM",
-    teams: ["Genesis 1-0-0", "Refined 0-1-0"],
     month: "JUNE",
-  },
-  {
-    sport: "Softball",
-    date: "6/11/2025 | 7:00PM",
-    teams: ["Genesis 0-0-0", "Refined 0-0-0"],
-    month: "JUNE",
-  },
-  {
     sport: "Basketball",
-    date: "7/1/2025 | 7:00PM",
-    teams: ["Genesis 0-0-1", "Refined 1-0-0"],
-    month: "JULY",
+    date: "6/4 | 7:00PM",
+    teams: [
+      {
+        icon: Genesis,
+        name: "Genesis",
+        abbrev: "GEN",
+        record: "1-0-0",
+      },
+      {
+        icon: Refined,
+        name: "Refined",
+        abbrev: "REF",
+        record: "0-1-0",
+      },
+    ],
+  },
+  {
+    month: "JUNE",
+    sport: "Softball",
+    date: "June 15, 2024",
+    teams: [
+      {
+        icon: Genesis,
+        name: "Genesis",
+        abbrev: "GEN",
+        record: "1-1-0",
+      },
+      {
+        icon: Refined,
+        name: "Refined",
+        abbrev: "REF",
+        record: "1-1-0",
+      },
+    ],
   },
 ];
-
-const sportIcons = {
-  "Ultimate Frisbee": FrisbeeIcon,
-  "Softball": SoftballIcon,
-  "Basketball": BasketballIcon,
-  "Volleyball": VolleyballIcon
-}
-
-// Schedule Items
-const ScheduleItem = ({ sport, date, teams}) => (
-  <div className="schedule-item">
-    <div className="schedule-item-content">
-      <h3 className="sport-title">{sport}</h3>
-      <p className="schedule-date">{date}</p>
-      <p className="team-info">{teams.join(" vs ")}</p>
-    </div>
-    <button className="play-button">▶</button>
-  </div>
-)
 
 const Home = () => {
   const [selectedMonth, setSelectedMonth] = useState("JUNE"); // State to track selected month
@@ -131,17 +131,16 @@ const Home = () => {
 
       {/* Bottom Right: Schedule Section */}
       <div className="schedule-section">
-        <h2>Schedule</h2>
         {filteredSchedule.map((item, index) => (
-            <ScheduleItem
-              key={index}
-              sport={item.sport}
-              date={item.date}
-              teams={item.teams}
-            />
+          <ScheduleItem
+            key={index}
+            sport={item.sport}
+            date={item.date}
+            teams={item.teams}
+          />
         ))}
+        </div>
       </div>
-    </div>
   );
 };
 
