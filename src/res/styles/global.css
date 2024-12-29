@@ -217,9 +217,10 @@ body {
 }
 
 button {
-  color: #0A2C33;
+  width: 100%;
+  padding: 20px 40px;
+  font-family: "Proxima Nova";
   font-size: 16px;
-  font-family: Proxima Nova;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 3.2px;
@@ -228,7 +229,13 @@ button {
   justify-content: center; 
   align-items: center; 
   gap: 4px; 
-  display: inline-flex"
+  color: #F2F2F2;
+  background-color: #333; /*possibly change color*/
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -242,7 +249,7 @@ button:hover {
   justify-content: center; 
   align-items: center; 
   gap: 4px; 
-  display: inline-flex"
+  display: flex;
 }
 
 /* a {
