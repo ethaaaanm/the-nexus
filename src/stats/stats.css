@@ -1,7 +1,7 @@
 /* Header Styling */
 #stats {
     margin-top: 0px; /* Adjust for the fixed navigation bar height */
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     padding: 20px 20px 40px; /* Add bottom padding for breathing space */
     text-align: center;

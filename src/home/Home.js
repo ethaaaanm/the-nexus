@@ -31,7 +31,7 @@ const newsData = [
 const fullScheduleData = [
   {
     month: "JUNE",
-    sport: "Basketball",
+    sport: "Ultimate Frisbee",
     date: "6/4 | 7:00PM",
     teams: [
       {
@@ -51,7 +51,7 @@ const fullScheduleData = [
   {
     month: "JUNE",
     sport: "Softball",
-    date: "June 15, 2024",
+    date: "6/11 | 7:00PM",
     teams: [
       {
         icon: Genesis,
@@ -67,6 +67,44 @@ const fullScheduleData = [
       },
     ],
   },
+  {
+    month: "JUNE",
+    sport: "Basketball",
+    date: "6/18 | 7:00PM",
+    teams: [
+      {
+        icon: Genesis,
+        name: "Genesis",
+        abbrev: "GEN",
+        record: "2-1-0",
+      },
+      {
+        icon: Refined,
+        name: "Refined",
+        abbrev: "REF",
+        record: "1-2-0",
+      },
+    ],
+  },
+  {
+    month: "JUNE",
+    sport: "Volleyball",
+    date: "6/25 | 7:00PM",
+    teams: [
+      {
+        icon: Genesis,
+        name: "Genesis",
+        abbrev: "GEN",
+        record: "2-2-0",
+      },
+      {
+        icon: Refined,
+        name: "Refined",
+        abbrev: "REF",
+        record: "2-2-0",
+      },
+    ],
+  }
 ];
 
 const Home = () => {
@@ -84,7 +122,7 @@ const Home = () => {
       <div className="schedule-dropdown">
         <h3>Schedule</h3>
         <Dropdown
-          months={["JUNE", "JULY", "AUGUST"]} // Available months
+          months={["JUNE", "JULY", "AUGUST", "2025 SEASON"]} // Available months
           defaultMonth="JUNE" // Default selected month
           onMonthChange={setSelectedMonth} // Function to update the selected month
         />

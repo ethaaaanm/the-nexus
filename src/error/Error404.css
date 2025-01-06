@@ -5,17 +5,15 @@
     align-items: center;
     text-align: center;
     min-height: calc(100vh - 100px); /* Adjust for header/footer height */
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-    margin: 0; /* Remove default margin */
+    background-color: #050505;
+    color: #F2F2F2;
+    margin: 0; 
     padding: 0;
-    width: stretch; /* Ensure full viewport width */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%; 
+    gap: 20px
   }
   
   .content-wrapper {
-    max-width: 600px;
-    margin: auto;
     padding: 1rem; /* Add padding to avoid touching edges */
   }
   
@@ -45,6 +43,8 @@
   }
   
   .back-home-button {
+    width: 240px;
+    height: 60px;
     justify-content: center;
     align-items: center;
     font-weight: 500;
@@ -52,10 +52,10 @@
     color: #F2F2F2;
     border: 1px solid #333;
     border-radius: 16px;
-    width: 240px;
-    height: 60px;
     padding: 20px 50px;
     font-family: "Proxima Nova";
+    text-align: center;
+    margin: 40px auto;
   }
   
   .button-text {
@@ -68,9 +68,12 @@
   .back-home-button:hover {
     background-color: #161616; 
     color: #F2F2F2; 
+    border-radius: 16px;
   }
   
   .back-home-button:active {
     background-color: #9ECB3B; 
     color: #050505;
+    border-radius: 16px;
+    border: 0px;
   }

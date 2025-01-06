@@ -87,6 +87,7 @@
 .dropdown-button.active {
   background-color: #9ECB3B;
   color: #161616;
+  border: 0px;
 }
 
 .dropdown-arrow {
@@ -106,10 +107,10 @@
   top: calc(100% + 15px); /* Below the button with space */
   left: 0;
   width: 100%; /* Match the button's width */
-  background-color: #333;
+  background-color: #1C1C1C;
   color: #F2F2F2;
   list-style: none;
-  padding: 5px 0;
+  padding: 0px 0px;
   margin: 0;
   overflow: hidden;
   animation: dropdown-slide-down 0.3s ease forwards;
@@ -124,6 +125,8 @@
   font-size: 16px;
   font-family: "Proxima Nova";
   font-weight: 500;
+  letter-spacing: 3.2px;
+
   background-color: transparent;
   cursor: pointer;
   transition: background-color 0.2s ease, padding-left 0.3s ease;
@@ -148,8 +151,9 @@
 .news-section {
   background-color: #0E0E0E;
   border-radius: 20px;
-  padding: 10px 20px 40px 20px;
+  padding: 10px 20px 20px 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  max-height: fit-content;
 }
 
 .news-section h2 {
@@ -171,6 +175,7 @@
   border-radius: 16px;
   padding: 0px 20px;
   margin-bottom: 8px;
+  border: 1px solid #333;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -204,6 +209,10 @@
   font-weight: 300;
   line-height: 16px;
   color: #F2F2F2;
+}
+
+.news-item:last-child {
+  border: 0px;
 }
 
 .news-item:last-child p {
@@ -252,7 +261,7 @@
 .sport-title-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
 }
 
 .sport-icon {
@@ -326,6 +335,7 @@
 
 /* Team details styling */
 .team-details {
+  margin: 10px 0px -10px 0px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -335,9 +345,9 @@
 
 /* Row for Team Name and Abbreviation */
 .team-info-row {
-  margin-top: 20px;
   display: flex;
   align-items: center;
+  vertical-align: center;
   gap: 8px;  /* Adjust the gap between name and abbreviation */
 }
 
@@ -370,11 +380,13 @@
 
 /* Play Button */
 .play-button {
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  max-width: 140px;
+  height: 140px;
   font-size: 40px;
   background-color: #1C1C1C;
   color: #9ECB3B;
+  padding-left: 45px;
   border: 1px solid #333;
   border-radius: 18px;
   cursor: pointer;
@@ -387,11 +399,13 @@
 
 .play-button:hover {
   background-color: #161616;
+  border-radius: 18px;
 }
 
 .play-button:active {
   background-color: #9ECB3B;
   color: #1C1C1C;
+  border-radius: 18px;
 }
 
 /* Responsive Design */

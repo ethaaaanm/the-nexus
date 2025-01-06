@@ -31,7 +31,8 @@
 
 /***  TOP BAR STYLING  ***/
 .topnavbar {
-    width: 100vw;
+    width: 100%;
+    min-width: 100vw;
     background-color: #0E0E0E; /* Keep the background color */
     display: flex;
     justify-content: space-between;
@@ -39,7 +40,7 @@
     color: #fff;
     font-size: 16px; /* Slightly smaller font size */
     font-weight: 400;
-    padding: 10px 20px; /* Reduce vertical padding */
+    padding: 10px 0px; /* Reduce vertical padding */
     height: 60px; /* Set a fixed, thinner height */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a cleaner look */
     position: sticky; /* Keep the navbar at the top during scroll */
@@ -106,8 +107,9 @@
     align-items: center;
     padding: 50px;
     background-color: #0E0E0E; 
-    color: white;
-    font-family: Arial, sans-serif;
+    color: #F2F2F2;
+    font-family:'Proxima Nova';
+    position: sticky;
 }
 
 .footer-title {
@@ -159,7 +161,7 @@
 
 .footer a {
     text-decoration: none;
-    color: white;
+    color: #F2F2F2;
 }
 
 .footer .footer-right a:hover {
