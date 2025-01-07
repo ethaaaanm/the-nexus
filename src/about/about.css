@@ -4,20 +4,109 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: calc(100vh - 100px);
     color: #F2F2F2;
     margin: 0; 
     padding: 0;
     width: 100%; 
-    gap: 20px
 }
 
 .banner {
+    width: stretch;
+    height: auto;
+}
+
+.mission-section {
     display: flex;
-    width: 1512px;
-    height: 520px;
-    padding: 216px 116px 174px 116px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0E0E0E;
+    color: #F2F2F2;
+    margin: 100px 200px 20px 200px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px 20px;
+}
+
+.mission-title {
+    color: #F2F2F2;
+    font-family: "Proxima Nova";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 6.4px;
+    text-transform: uppercase;
+    align-self: start;
+    margin-bottom: 10px;
+}
+
+.nexus-description {
+    color: #F2F2F2;
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 16px; 
+    text-align: start;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 10px;
+}
+
+.romans-12 {
+    display: flex;
+    padding: 20px;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 20px;
+    border: 1px solid #333;
+    background: #1C1C1C;
+    color: #9ECB3B;
+    text-align: start;
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; 
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.format-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0E0E0E;
+    color: #F2F2F2;
+    margin: 100px 200px 20px 200px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px 20px;
+}
+
+.format-title {
+    color: #F2F2F2;
+    font-family: "Proxima Nova";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 6.4px;
+    text-transform: uppercase;
+    align-self: start;
+    margin-bottom: 20px;
+}
+
+.format-description {
+    color: #F2F2F2;
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 16px; 
+    text-align: start;
+    text-transform: none;
+    letter-spacing: 0;
 }
