@@ -1,115 +1,21 @@
 import React, { useState } from "react";
 import Dropdown from "./Dropdown"; 
 import ScheduleItem from "./ScheduleItem";
+import { newsData, scheduleData } from "../data/data"; 
 
 import Wordmark from "../res/images/wordmark_green.svg";
-import Genesis from "../res/images/team_genesis.svg";
-import Refined from "../res/images/team_refined.svg"
 import "./home.css"; 
 
-// Data for the news section
-const newsData = [
-  {
-    title: "Next Game Location",
-    content: "Our next game will be hosted at People's Christian Academy, Renfrew Dr, Markham.",
-    date: "6/4/2025",
-  },
-  {
-    title: "Game Recording",
-    content: "Watch the recording on our YouTube channel: @TheNexus-League",
-  },
-  {
-    title: "Congrats to Team Genesis!",
-    content: "For winning the first-ever game of The Nexus!",
-  },
-  {
-    content: "You're all caught up on the news of The Nexus"
-  }
-];
-
-// Full schedule data
-const fullScheduleData = [
-  {
-    month: "JUNE",
-    sport: "Ultimate Frisbee",
-    date: "6/4 | 7:00PM",
-    teams: [
-      {
-        icon: Genesis,
-        name: "Genesis",
-        abbrev: "GEN",
-        record: "1-0-0",
-      },
-      {
-        icon: Refined,
-        name: "Refined",
-        abbrev: "REF",
-        record: "0-1-0",
-      },
-    ],
-  },
-  {
-    month: "JUNE",
-    sport: "Softball",
-    date: "6/11 | 7:00PM",
-    teams: [
-      {
-        icon: Genesis,
-        name: "Genesis",
-        abbrev: "GEN",
-        record: "1-1-0",
-      },
-      {
-        icon: Refined,
-        name: "Refined",
-        abbrev: "REF",
-        record: "1-1-0",
-      },
-    ],
-  },
-  {
-    month: "JUNE",
-    sport: "Basketball",
-    date: "6/18 | 7:00PM",
-    teams: [
-      {
-        icon: Genesis,
-        name: "Genesis",
-        abbrev: "GEN",
-        record: "2-1-0",
-      },
-      {
-        icon: Refined,
-        name: "Refined",
-        abbrev: "REF",
-        record: "1-2-0",
-      },
-    ],
-  },
-  {
-    month: "JUNE",
-    sport: "Volleyball",
-    date: "6/25 | 7:00PM",
-    teams: [
-      {
-        icon: Genesis,
-        name: "Genesis",
-        abbrev: "GEN",
-        record: "2-2-0",
-      },
-      {
-        icon: Refined,
-        name: "Refined",
-        abbrev: "REF",
-        record: "2-2-0",
-      },
-    ],
-  }
-];
 
 const Home = () => {
-  const [selectedMonth, setSelectedMonth] = useState("JUNE"); // State to track selected month
-  const filteredSchedule = fullScheduleData.filter((item) => item.month === selectedMonth);
+  const [selectedMonth, setSelectedMonth] = useState("JUNE"); // Track selected month
+  const [selectedYear, setSelectedYear] = useState(2025);
+  const yearSchedule = scheduleData[selectedYear] || [];
+
+  const filteredSchedule =
+    selectedMonth === `${selectedYear} SEASON`
+      ? yearSchedule
+      : yearSchedule.filter((item) => item.month === selectedMonth);
 
   return (
     <div className="home">
@@ -122,9 +28,9 @@ const Home = () => {
       <div className="schedule-dropdown">
         <h3>Schedule</h3>
         <Dropdown
-          months={["JUNE", "JULY", "AUGUST", "2025 SEASON"]} // Available months
-          defaultMonth="JUNE" // Default selected month
-          onMonthChange={setSelectedMonth} // Function to update the selected month
+          months={["JUNE", "JULY", "AUGUST", `${selectedYear} SEASON`]} 
+          defaultMonth="JUNE"
+          onMonthChange={setSelectedMonth}
         />
       </div>
 

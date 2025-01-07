@@ -1,0 +1,23 @@
+.about-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: calc(100vh - 100px);
+    color: #F2F2F2;
+    margin: 0; 
+    padding: 0;
+    width: 100%; 
+    gap: 20px
+}
+
+.banner {
+    display: flex;
+    width: 1512px;
+    height: 520px;
+    padding: 216px 116px 174px 116px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
