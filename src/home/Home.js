@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import Dropdown from "./Dropdown"; 
+import Dropdown from "./Dropdown";
 import ScheduleItem from "./ScheduleItem";
-import { newsData, scheduleData } from "../data/homeData"; 
+import NewsItem from "./NewsItem";
+import LeagueItem from "./LeagueItem";
+import CurrentTeams from "../components/currentTeams";
 
+import { newsDB, scheduleDB, teamDB } from "../data/homeData";
+import { sportsStatsDB } from "../data/sportsData";
 import Wordmark from "../res/images/wordmark_green.svg";
-import "./home.css"; 
+
+import "./home.css";
 
 
 const Home = () => {
   const [selectedMonth, setSelectedMonth] = useState("JUNE"); // Track selected month
   const [selectedYear, setSelectedYear] = useState(2025);
-  const yearSchedule = scheduleData[selectedYear] || [];
+  const yearSchedule = scheduleDB[selectedYear] || [];
 
   const filteredSchedule =
     selectedMonth === `${selectedYear} SEASON`
@@ -29,7 +34,7 @@ const Home = () => {
         <div className="schedule-dropdown">
           <h3>Schedule</h3>
           <Dropdown
-            months={["JUNE", "JULY", "AUGUST", `${selectedYear} SEASON`]} 
+            months={["JUNE", "JULY", "AUGUST", `${selectedYear} SEASON`]}
             defaultMonth="JUNE"
             onMonthChange={setSelectedMonth}
           />
@@ -38,39 +43,14 @@ const Home = () => {
         {/* Bottom Left: News Section */}
         <div className="news-section">
           <h2>News</h2>
-          {newsData.map((item, index) => (
-            <div className="news-item" key={index}>
-              <h3>{item.title}</h3>
-              {item.date && <p className="news-date">{item.date}</p>}
-              <p>
-                {/* For the last child, bold "The Nexus" */}
-                {index === newsData.length - 1 ? (
-                  <>
-                    {item.content.split("The Nexus").map((part, i, arr) => (
-                      <React.Fragment key={i}>
-                        {part}
-                        {i < arr.length - 1 && <strong>The Nexus</strong>}
-                      </React.Fragment>
-                    ))}
-                  </>
-                ) : // For the YouTube channel link
-                item.content.includes("@TheNexus-League") ? (
-                  <>
-                    {item.content.split("@TheNexus-League")[0]}
-                    <a
-                      href="https://www.youtube.com/@TheNexus-League" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="youtube-link"
-                    >
-                      @TheNexus-League
-                    </a>
-                  </>
-                ) : (
-                  item.content
-                )}
-              </p>
-            </div>
+          {newsDB.map((item, index) => (
+            <NewsItem
+              key={index}
+              title={item.title}
+              date={item.date}
+              content={item.content}
+              isLastItem={index === newsDB.length - 1}
+            />
           ))}
         </div>
 
@@ -82,11 +62,29 @@ const Home = () => {
               sport={item.sport}
               date={item.date}
               teams={item.teams}
+              video={item.video}
             />
           ))}
+        </div>
+
+        {/* Bottom Right: League Leaders Section */}
+        <div className="league-section">
+          <div className="league-header">
+            <h3>League Leaders</h3>
+            <button className="view-all"> View All </button>
+          </div>
+          <div className="current-record">
+            <CurrentTeams/>
+          </div>
+          <div className="leaderboard">
+            <LeagueItem sport="Ultimate Frisbee" sportsStatsDB={sportsStatsDB} />
+            <LeagueItem sport="Basketball" sportsStatsDB={sportsStatsDB} />
+            <LeagueItem sport="Softball" sportsStatsDB={sportsStatsDB} />
+            <LeagueItem sport="Volleyball" sportsStatsDB={sportsStatsDB} />
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
