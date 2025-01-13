@@ -12,7 +12,11 @@ const Footer = () => {
             </div>
             <div className="footer-right">
                 <div className="logo-line">
-                <a href="https://www.instagram.com/thenexusleague/">
+                <a 
+                href="https://www.instagram.com/thenexusleague/"   
+                target="_blank"
+                rel="noopener noreferrer"
+                >
                     <input className="ig-logo" type="image" src={Instagram} alt="Instagram Logo" />
                 </a>
                 <a href="mailto:contact.thenexusleague@gmail.com">

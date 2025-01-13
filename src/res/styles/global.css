@@ -19,6 +19,14 @@
   font-style: normal;
 }
 
+/* Proxima Nova Regular */
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/proxima-nova/proximanova_regular.ttf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
 /* Proxima Nova Bold */
 @font-face {
   font-family: 'Proxima Nova';
