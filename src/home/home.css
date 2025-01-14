@@ -52,7 +52,7 @@
   font-family: "Proxima Nova";
   font-size: 32px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 32px;
   letter-spacing: 6.4px;
   color: #F2F2F2;
@@ -168,7 +168,7 @@
   color: #F2F2F2;
   font-size: 32px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 32px;
   letter-spacing: 6.4px;
   text-transform: uppercase;
@@ -266,7 +266,7 @@
 .sport-title-wrapper {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 }
 
 .sport-icon {
@@ -278,11 +278,12 @@
   color: #F2F2F2;
   font-family: "Proxima Nova";
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   text-transform: uppercase;
   line-height: 24px;
   letter-spacing: 4px;
+  
 }
 
 .schedule-date {
@@ -379,9 +380,9 @@
 }
 
 .play-button {
-  width: 165px;
-  max-width: 165px;
-  height: 165px;
+  width: 145px;
+  max-width: 145px;
+  height: 145px;
   font-size: 40px;
   background-color: #1C1C1C;
   color: #9ECB3B;
@@ -427,7 +428,7 @@
   font-family: "Proxima Nova";
   font-size: 32px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 32px;
   letter-spacing: 6.4px;
   color: #F2F2F2;
@@ -438,15 +439,18 @@
   display: flex;
   justify-content: center; 
   align-items: center;
-  max-width: fit-content;
+  padding: 24px 28px;
+  width: fit-content;
   gap: 4px;
   border-radius: 16px;
   border: 1px solid #333;
   background: #1C1C1C;
   font-family: "Proxima Nova";
   font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 3.2px;
   color: #F2F2F2;
   text-transform: uppercase;
   cursor: pointer;
@@ -458,7 +462,7 @@
   border-radius: 16px;
 }
 
-.league-section .view-all:hover {
+.league-section .view-all:active {
   background-color: #9ECB3B;
   color: #161616;
   border: 1px solid #9ECB3B;
@@ -497,7 +501,7 @@
 .league-item .row-top {
   display: flex;
   align-items: center;
-  padding: 10px 0px;
+  padding: 0px 0px;
 }
 
 .player-list {
@@ -510,42 +514,42 @@
   display: flex;
   justify-content: flex-start; 
   align-items: center;
-  padding: 10px 20px;
+  padding: 0px 18px;
   border-radius: 16px;
   background-color: #1C1C1C;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid #333;
-  gap: 12px;
-  margin: 10px 0px;
-  
+  gap: 28px;
+  margin: 4px 0px;  
 }
 
 .rank {
   font-family: "Proxima Nova";
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 16px;
   letter-spacing: 3.2px;
   text-transform: uppercase;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 12px;
 }
 
 .player-info {
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding-top: 8px;
+  padding-bottom: 6px;
 }
 
 .player-info .top-row {
   display: flex;
   flex-wrap: wrap;  /* Ensures long names or teams wrap if needed */
   gap: 4px; 
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
 .player-info .bottom-row {
@@ -555,6 +559,8 @@
   font-weight: 400;
   line-height: 16px;
   color: #F2F2F2; 
+  padding: 0px;
+  margin: -10px 0px;
 }
 
 .player-name {
@@ -590,7 +596,7 @@
   font-family: "Proxima Nova";
   font-size: 20px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 24px; 
   letter-spacing: 4px;
   text-transform: uppercase;
@@ -608,8 +614,7 @@
   letter-spacing: 4px;
   text-transform: uppercase;
   cursor: pointer;
-  color: #9ECB3B;
-  background-color: transparent;
+  color: #C7E584;
   background-color: transparent;
 }
 

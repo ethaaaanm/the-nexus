@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./home.css";
 
 // Sport Icons
@@ -60,6 +62,7 @@ const LeagueItem = ({ sport, sportsStatsDB }) => {
   const sortedPlayers = players.filter(Boolean); // Remove null values
   // Optional sorting logic depending on sport
   // sortedPlayers.sort((a, b) => b.stats.points - a.stats.points); // Add custom logic if needed
+  const navigate = useNavigate();
 
   return (
     <div className="league-item">
@@ -95,7 +98,12 @@ const LeagueItem = ({ sport, sportsStatsDB }) => {
 
       {/* See All Button */}
       <div className="see-all-wrapper">
-        <button className="see-all-button">See All &gt;</button>
+        <button className="see-all-button" 
+          onClick={() => {
+            navigate("/stats");      
+            window.scrollTo(0, 0); 
+        }}>
+          See All &gt;</button>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ function ErrorPage() {
         <h1 className="error-title">ERROR 404</h1>
         <h4 className="error-description">YOU GOT CROSSED UP INTO THE ABYSS.</h4>
         <div className="divider"></div>
-        <button className="back-home-button" onClick={() => navigate("/")}>
+        <button className="back-home-button" onClick={() => {navigate("/"); window.scrollTo(0, 0); }}>
           <h5 className="button-text">BACK HOME</h5>
         </button>
       </div>
