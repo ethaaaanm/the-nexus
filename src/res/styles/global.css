@@ -159,9 +159,8 @@ body, html {
   line-height: 16px;
   margin: 0;
   padding: 0;  
-  overflow-x: hidden; 
+  box-sizing: border-box;
 }
-
 
 /* ========================================
    Color Palette Section
