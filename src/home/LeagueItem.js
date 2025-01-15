@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
 import "./home.css";
 
-// Sport Icons
 import UltimateIcon from "../res/images/ic_ultimate.svg";
 import SoftballIcon from "../res/images/ic_softball.svg";
 import BasketballIcon from "../res/images/ic_basketball.svg";
@@ -102,8 +102,10 @@ const LeagueItem = ({ sport, sportsStatsDB }) => {
           onClick={() => {
             navigate("/stats");      
             window.scrollTo(0, 0); 
-        }}>
-          See All &gt;</button>
+          }}>
+          See All 
+          <IoIosArrowForward className="arrow-icon" />
+        </button>
       </div>
     </div>
   );

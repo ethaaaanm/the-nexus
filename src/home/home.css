@@ -189,8 +189,8 @@
   font-family: "Proxima Nova";
   font-size: 20px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
+  font-weight: 600;
+  line-height: 24px;
   letter-spacing: 0px;
   color: #F2F2F2;
   margin-bottom: 0px;
@@ -397,6 +397,11 @@
   align-self: center;
 }
 
+.play-icon {
+  width: 32px;
+  height: 42px;
+}
+
 .play-button:hover {
   background-color: #161616;
   border-radius: 18px;
@@ -593,6 +598,8 @@
 }
 
 .see-all-button {
+  display: flex;
+  align-items: center;
   font-family: "Proxima Nova";
   font-size: 20px;
   font-style: normal;
@@ -603,6 +610,14 @@
   cursor: pointer;
   color: #9ECB3B;
   background-color: transparent;
+  border: none;
+  transition: color 0.3s ease;
+  gap: 0;
+}
+
+.arrow-icon {
+  width: 28px;
+  height: 22px;
 }
 
 .see-all-button:hover {  
@@ -616,6 +631,7 @@
   cursor: pointer;
   color: #C7E584;
   background-color: transparent;
+  gap: 0;
 }
 
 .see-all-button:active {
@@ -629,6 +645,7 @@
   cursor: pointer;
   color: #9ECB3B;
   background-color: transparent;
+  gap: 0;
 }
 
 /* Responsive Design */
