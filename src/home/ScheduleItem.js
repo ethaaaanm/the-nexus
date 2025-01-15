@@ -7,7 +7,6 @@ import VolleyballIcon from "../res/images/ic_volleyball.svg";
 import { FaPlay } from "react-icons/fa";
 
 import "./home.css";
-import { FaP } from "react-icons/fa6";
 
 const sportIcons = {
   "Ultimate Frisbee": UltimateIcon,

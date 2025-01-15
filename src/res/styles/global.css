@@ -150,6 +150,18 @@
   font-style: normal;
 }
 
+body, html {
+  color: #0A2C33;
+  font-size: 16px;
+  font-family: Proxima Nova;
+  font-weight: 400;
+  word-wrap: break-word;
+  line-height: 16px;
+  margin: 0;
+  padding: 0;  
+  overflow-x: hidden; 
+}
+
 
 /* ========================================
    Color Palette Section
@@ -167,7 +179,7 @@
 /*** Headers & Titles ***/
 /* Manuka 128 */
 h1 {
-  color: #0A2C33;
+  color: #F2F2F2;
   font-size: 128px;
   font-family: 'Manuka';
   font-weight: 600;
@@ -178,7 +190,7 @@ h1 {
 
 /* Manuka 64 */
 h2 {
-  color: #0A2C33;
+  color: #F2F2F2;
   font-size: 64px;
   font-family: 'Manuka';
   font-weight: 600;
@@ -189,7 +201,7 @@ h2 {
 
 /* Proxima Nova 32 */
 h3 {
-  color: #0A2C33;
+  color: #F2F2F2;
   font-size: 32px;
   font-family: Proxima Nova;
   font-weight: 700;
@@ -201,7 +213,7 @@ h3 {
 
 /* Proxima Nova 20 */
 h4 {
-  color: #0A2C33;
+  color: #F2F2F2;
   font-size: 20px;
   font-family: Proxima Nova;
   font-weight: 600;
@@ -213,7 +225,7 @@ h4 {
 
 /* Proxima Nova 16 */
 h5 {
-  color: #0A2C33;
+  color: #F2F2F2;
   font-size: 16px;
   font-family: Proxima Nova;
   font-weight: 700;
@@ -221,17 +233,6 @@ h5 {
   letter-spacing: 3.2px;
   word-wrap: break-word;
   line-height: 16px;
-}
-
-body, html {
-  color: #0A2C33;
-  font-size: 16px;
-  font-family: Proxima Nova;
-  font-weight: 400;
-  word-wrap: break-word;
-  line-height: 16px;
-  margin: 0;
-  padding: 0;  
 }
 
 button {

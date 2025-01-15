@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
+import { BiSolidDownArrow } from "react-icons/bi";
+
 import "./home.css";
 
-const Dropdown = ({ months, onMonthChange, defaultMonth }) => {
+const DateDropdown = ({ months, onMonthChange, defaultMonth }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState(defaultMonth);
   const dropdownRef = useRef(null);
@@ -49,7 +51,9 @@ const Dropdown = ({ months, onMonthChange, defaultMonth }) => {
         onClick={handleToggle}
       >
         <span>{selectedMonth}</span>
-        <span className={`dropdown-arrow ${isOpen ? "open" : ""}`}>&#9660;</span>
+        <span className={`dropdown-arrow ${isOpen ? "open" : ""}`}>
+          <BiSolidDownArrow className="downarrow-icon"/>
+        </span>
       </button>
       {isOpen && (
         <ul className="dropdown-menu">
@@ -68,4 +72,4 @@ const Dropdown = ({ months, onMonthChange, defaultMonth }) => {
   );
 };
 
-export default Dropdown;
+export default DateDropdown;

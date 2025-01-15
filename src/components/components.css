@@ -46,6 +46,7 @@
     position: sticky; /* Keep the navbar at the top during scroll */
     top: 0;
     z-index: 99999;
+    border-bottom: 1px solid #333;
 }
 
 .logo img {

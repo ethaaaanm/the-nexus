@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Dropdown from "./Dropdown";
+import DateDropdown from "./DateDropdown";
 import ScheduleItem from "./ScheduleItem";
 import NewsItem from "./NewsItem";
 import LeagueItem from "./LeagueItem";
@@ -33,7 +33,7 @@ const Home = () => {
         {/* Top Right: Schedule Dropdown */}
         <div className="schedule-dropdown">
           <h3>Schedule</h3>
-          <Dropdown
+          <DateDropdown
             months={["JUNE", "JULY", "AUGUST", `${selectedYear} SEASON`]}
             defaultMonth="JUNE"
             onMonthChange={setSelectedMonth}
