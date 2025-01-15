@@ -91,9 +91,13 @@
 
 .dropdown-button:hover {
   background-color: #161616;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .dropdown-button.active {
+  font-size: 16px;
+  font-weight: 500;
   background-color: #9ECB3B;
   color: #161616;
   border: 1px solid #9ECB3B;
@@ -126,6 +130,7 @@
   z-index: 1000;
   border-radius: 0 0 2px 2px;
   border-top: 8px solid #9ECB3B;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* Menu Items */
@@ -138,11 +143,7 @@
   background-color: transparent;
   cursor: pointer;
   transition: background-color 0.2s ease, padding-left 0.3s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-}
-
-.dropdown-item:last-child {
-  border-bottom: none; 
+  border: 1px solid rgba(255, 255, 255, 0.1); 
 }
 
 .dropdown-item:hover {
@@ -213,7 +214,7 @@
   font-family: "Proxima Nova";
   font-style: normal;
   font-weight: 300;
-  line-height: 16px;
+  line-height: 18px;
   color: #F2F2F2;
 }
 
@@ -398,8 +399,8 @@
 }
 
 .play-icon {
-  width: 32px;
-  height: 42px;
+  width: 35px;
+  height: 45px;
 }
 
 .play-button:hover {
@@ -571,7 +572,7 @@
 .player-name {
   font-family: "Proxima Nova";
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   color: #F2F2F2;
 }
 
@@ -586,7 +587,7 @@
   font-family: "Proxima Nova";
   font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 16px;
   color: #F2F2F2;
 }
@@ -616,8 +617,8 @@
 }
 
 .arrow-icon {
-  width: 28px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .see-all-button:hover {  

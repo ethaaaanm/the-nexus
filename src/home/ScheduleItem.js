@@ -4,9 +4,10 @@ import UltimateIcon from "../res/images/ic_ultimate.svg";
 import SoftballIcon from "../res/images/ic_softball.svg";
 import BasketballIcon from "../res/images/ic_basketball.svg";
 import VolleyballIcon from "../res/images/ic_volleyball.svg";
-import PlayButton from "../res/images/ic_play.svg"
+import { FaPlay } from "react-icons/fa";
 
 import "./home.css";
+import { FaP } from "react-icons/fa6";
 
 const sportIcons = {
   "Ultimate Frisbee": UltimateIcon,
@@ -61,7 +62,7 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
           {/* Play Button */}
           {video && (
             <button className="play-button" onClick={() => window.open(video, "_blank")}>
-              <img src={PlayButton} alt="play button" className="play-icon"/>
+              <FaPlay className="play-icon"/>
             </button>
           )}
         </div>

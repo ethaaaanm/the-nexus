@@ -1,7 +1,8 @@
 export const sportsStatsDB = {
     Players: {
-        Ethan: {
+        "Ethan Mah": {
             "Team": "Genesis",
+            "Abbrev": "GEN",
             "Ultimate Frisbee": {
                 points: [7, 4, 1],
                 assists: [5, 10, 5],
@@ -23,8 +24,9 @@ export const sportsStatsDB = {
                 strikeouts: [2, 1, 1]
             }
         },
-        Evan: {
+        "Evan Chak": {
             "Team": "Refined",
+            "Abbrev": "REF",
             "Ultimate Frisbee": {
                 points: [7, 4, 1],
                 assists: [5, 10, 5],
@@ -46,8 +48,9 @@ export const sportsStatsDB = {
                 strikeouts: [2, 1, 1]
             }
         },
-        Jordan: {
+        "Jordan Lam": {
             "Team": "Refined",
+            "Abbrev": "REF",
             "Ultimate Frisbee": {
                 points: [7, 4, 1],
                 assists: [5, 10, 5],
@@ -69,8 +72,9 @@ export const sportsStatsDB = {
                 strikeouts: [2, 1, 1]
             }
         },
-        Nathan: {
+        "Nathan Chak": {
             "Team": "Genesis",
+            "Abbrev": "GEN",
             "Ultimate Frisbee": {
                 points: [7, 4, 1],
                 assists: [5, 10, 5],

@@ -53,6 +53,7 @@ const LeagueItem = ({ sport, sportsStatsDB }) => {
       ? {
           name,
           team: data.Team,
+          abbrev: data.Abbrev,
           stats: calculateStats(sport, stats),
         }
       : null;
@@ -86,7 +87,7 @@ const LeagueItem = ({ sport, sportsStatsDB }) => {
             <div className="player-info">
                 <div className="top-row">
                     <span className="player-name">{player.name}</span>
-                    <span className="player-team">{player.team}</span>
+                    <span className="player-team">{player.abbrev}</span>
                 </div>
                 <div class="bottom-row">
                     <p className="player-stats">{player.stats}</p>
