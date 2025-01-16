@@ -1,9 +1,9 @@
-.stats-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: #050505;
-    padding-bottom: 60px;
+  .stats-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background-color: #050505;
+      padding-bottom: 60px;
   }
 
   .stats {
@@ -25,6 +25,7 @@
     width: stretch;
     border-radius: 20px;
     flex-direction: column;
+    gap: 40px;
   }
 
   .stats-header {
@@ -38,9 +39,233 @@
     align-self: flex-start;
   }
 
-  .sport-button {
-    width: 50px;
-    height: 50px;
-    padding-left: 10px;
+  .stats-team-dropdown {
+    width: 100%;
+  }
+
+  .stats-dropdown-container {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+  }
+
+  .stats-dropdown-button {
+    height: 65px;
+    border: 1px solid #333;
+    background-color: #1C1C1C;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;  
+    align-items: center; 
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%; 
+  }
+
+  .stats-team-row {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    border-radius: 16px;
+    padding: 0px 10px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px; 
+    flex-grow: 1;
+  }
+
+  .stats-team-details {
+    margin: 0px 0px -16px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    flex-grow: 1;
+  }
+
+  .stats-team-info-row {
+    display: flex;
+    align-items: center;
+    vertical-align: center;
+    gap: 4px; 
+  } 
+
+  .stats-team-name {
+      font-family: "Proxima Nova";
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      color: #F2F2F2;
+      text-transform: uppercase;
+      margin: 0;  
+      letter-spacing: normal;
+      line-height: 20px;
+      align-items: center;
+  }
+    
+  .stats-team-abbrev {
+    color: #D2D2D2;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: normal;
+  }
+    
+  .stats-team-record {
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    color: #F2F2F2;
+    margin-top: 4px; 
+    margin-bottom: 20px;
+    letter-spacing: normal;
+  }
+
+  .stats-dropdown-button.no-details {
+    align-items: center; 
+    height: 65px
+  }
+
+  .stats-dropdown-button.no-details .stats-team-name {
+    align-items: center;
+    padding-bottom: 20px;
+  }
+
+  .stats-dropdown-button.no-details .stats-team-record,
+  .stats-dropdown-button.no-details .stats-team-abbrev {
+    display: none; /* Completely hide abbrev and record */
+  }
+
+
+  .stats-dropdown-button:hover {
+    background-color: #161616;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 16px;
   }
   
+  .stats-dropdown-button.active {
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #9ECB3B;
+    color: #161616;
+    border: 1px solid #9ECB3B;
+    border-radius: 16px;
+  }
+
+  .stats-dropdown-button.active .stats-team-name {
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    color: #050505;
+    text-transform: uppercase;
+    margin: 0;  
+    letter-spacing: normal;
+    line-height: 20px;
+  }
+
+  .stats-dropdown-button.active .stats-team-abbrev {
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    color: #050505;
+  }
+
+  .stats-dropdown-button.active .stats-team-record {
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    color: #050505;
+    margin-top: 4px; 
+    margin-bottom: 20px;
+    letter-spacing: normal;
+  }
+
+  .stats-dropdown-button.active .team-icon.default-icon {
+    filter: brightness(0) saturate(100%) invert(6%) sepia(8%) saturate(0%) hue-rotate(220deg) brightness(30%) contrast(90%);
+}
+
+.team-icon.refined-icon {
+    filter: none; 
+}
+  
+  .stats-dropdown-arrow {
+    font-size: 20px;
+    color: #9ECB3B;
+    margin-right: 10px;  
+    flex-shrink: 0; 
+  }
+
+  .stats-dropdown-arrow.open {
+    color: #161616;
+  }
+
+  .stats-dropdown-menu {
+    position: absolute;
+    left: 0;
+    width: 100%; 
+    background-color: #1C1C1C;
+    color: #F2F2F2;
+    list-style: none;
+    padding: 0px 0px;
+    margin: 10;
+    overflow: hidden;
+    animation: dropdown-slide-down 0.3s ease forwards;
+    z-index: 1000;
+    border-radius: 0 0 2px 2px;
+    border-top: 8px solid #9ECB3B;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+  }
+  
+  .stats-dropdown-item {
+    padding: 15px 20px;
+    font-size: 16px;
+    font-family: "Proxima Nova";
+    font-weight: 600;
+    letter-spacing: 3.2px;
+    background-color: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease, padding-left 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+  }
+  
+  .stats-dropdown-item:hover {
+    background-color: #161616;
+  }
+  
+  .stats-dropdown-item:active {
+    background-color: #9ECB3B;
+    color: #161616;
+  }
+
+  .stats-button-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 20px 0px; 
+    gap: 20px; /* Space between elements in the row */
+  }
+
+  .stats-date-dropdown {
+      flex-shrink: 0; /* Prevent the dropdown from shrinking */
+  }
+
+  .sports-button-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px; 
+  }
+
+  .Stat-Sport-Button {
+    width: 70px; 
+    height: 70px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  } 

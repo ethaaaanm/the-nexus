@@ -2,7 +2,7 @@ import Genesis from "../res/images/team_genesis.svg";
 import Refined from "../res/images/team_refined.svg";
 
 // Team Database
-export const teamDB = [
+export const homeTeamDB = [
   {
     id: "G1",
     icon: Genesis,

@@ -1,10 +1,10 @@
 import React from "react";
-import {teamDB} from "../data/homeData.js";
+import { homeTeamDB } from "../data/homeData.js";
 import "../home/Home.js"
 
 const CurrentTeams = () => (
     <div className="current-teams">
-      {teamDB.map((team) => (
+      {homeTeamDB.map((team) => (
         <div className="team-row" key={team.id}>
           <img src={team.icon} alt={`${team.name} logo`} className="team-icon" />
           <div className="team-details">

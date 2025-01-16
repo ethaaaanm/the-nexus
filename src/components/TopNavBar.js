@@ -21,20 +21,20 @@ const TopNavBar = () => {
                             HOME
                         </NavLink>
                     </li>
-                     <li>
-                        <NavLink
-                            to="/about"
-                            className={({ isActive }) => isActive ? 'active' : ''}
-                        >
-                            ABOUT
-                        </NavLink>
-                    </li>
                     <li>
                         <NavLink 
                             to="/stats" 
                             className={({ isActive }) => isActive ? 'active' : ''} 
                         >
                             STATS
+                        </NavLink>
+                    </li>
+                     <li>
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) => isActive ? 'active' : ''}
+                        >
+                            ABOUT
                         </NavLink>
                     </li>
                     <li>

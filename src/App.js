@@ -15,15 +15,14 @@ function App() {
   return (
     <div className="App">
       <Router basename="/the-nexus">
-        {<TopNavBar />}      
-        {<Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/stats" element={<StatsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-
-          <Route path="*" element={<ErrorPage/>} />
-        </Routes>}        
+        {<TopNavBar />} 
+          {<Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/stats" element={<StatsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="*" element={<ErrorPage/>} />
+          </Routes>}    
         { <Footer/>}
       </Router>
     </div>

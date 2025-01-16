@@ -5,7 +5,7 @@ import NewsItem from "./NewsItem";
 import LeagueItem from "./LeagueItem";
 import CurrentTeams from "../components/currentTeams";
 
-import { newsDB, scheduleDB, teamDB } from "../data/homeData";
+import { newsDB, scheduleDB } from "../data/homeData";
 import { sportsStatsDB } from "../data/sportsData";
 import Wordmark from "../res/images/wordmark_green.svg";
 

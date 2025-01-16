@@ -7,7 +7,6 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
   background-color: #050505;
   color: #333;
   margin: 0;
@@ -17,4 +16,5 @@ body {
   align-items: center;
   min-height: 100vh;
   box-sizing: border-box;
+  overflow-x: hidden;
 }

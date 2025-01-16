@@ -1,5 +1,5 @@
 import React from "react";
-import { teamDB } from "../data/homeData"; 
+import { homeTeamDB } from "../data/homeData"; 
 import UltimateIcon from "../res/images/ic_ultimate.svg";
 import SoftballIcon from "../res/images/ic_softball.svg";
 import BasketballIcon from "../res/images/ic_basketball.svg";
@@ -18,7 +18,7 @@ const sportIcons = {
 const ScheduleItem = ({ sport, date, teams, video }) => {
   const fullTeams = teams.map((team) => {
     const teamId = team.id || team;  
-    const foundTeam = teamDB.find((team) => team.id === teamId);
+    const foundTeam = homeTeamDB.find((team) => team.id === teamId);
     return foundTeam || null;
   });
 

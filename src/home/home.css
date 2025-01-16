@@ -5,6 +5,8 @@
   justify-content: center;
   background-color: #050505;
   padding-bottom: 60px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .home {
@@ -98,7 +100,7 @@
 
 .dropdown-button.active {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   background-color: #9ECB3B;
   color: #161616;
   border: 1px solid #9ECB3B;
