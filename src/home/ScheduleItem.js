@@ -34,7 +34,7 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
           <p className="schedule-date">{date}</p>
         </div>
 
-        {/* Row 2: Team Info */}
+        {/* Row 2: Team Info */} {/* ETHAN NOTE: Add Score */}
         <div className="row-bottom">
           <div className="teams-info">
             {fullTeams.map((team, index) => (

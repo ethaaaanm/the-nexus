@@ -9,10 +9,10 @@ const NewsItem = ({ title, date, content, isLastItem }) => {
         <p>
           {isLastItem && content.includes("The Nexus") ? (
             <>
-              {content.split("The Nexus").map((part, i, arr) => (
+              {content.split("The Nexus!").map((part, i, arr) => (
                 <React.Fragment key={i}>
                   {part}
-                  {i < arr.length - 1 && <strong>The Nexus</strong>}
+                  {i < arr.length - 1 && <strong>The Nexus!</strong>}
                 </React.Fragment>
               ))}
             </>

@@ -41,12 +41,12 @@ const Home = () => {
 
         const hardcodedNews = [
           {
-            title: "Game Recording",
-            content: "Watch the recording on our YouTube channel: @TheNexus-League",
+            title: "Subscribe to our Youtube",
+            content: "Watch all your highlights on @TheNexus-League",
           },
           {
             title: "",
-            content: "You're all caught up on the news of The Nexus",
+            content: "You're all caught up on the news of The Nexus!",
           },
         ];
 
