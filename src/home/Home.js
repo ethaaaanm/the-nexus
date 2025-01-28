@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DateDropdown from "./DateDropdown";
 import ScheduleItem from "./ScheduleItem";
 import NewsItem from "./NewsItem";
 import LeagueItem from "./LeagueItem";
 import CurrentTeams from "../components/currentTeams";
 
-import { newsDB, scheduleDB } from "../data/homeData";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig"; 
+
+import { scheduleDB } from "../data/homeData";
 import { sportsStatsDB } from "../data/sportsData";
 import Wordmark from "../res/images/wordmark_green.svg";
 
@@ -16,12 +19,46 @@ const Home = () => {
   const [selectedMonth, setSelectedMonth] = useState("JUNE"); // Track selected month
   const [selectedYear, setSelectedYear] = useState(2025);
   const yearSchedule = scheduleDB[selectedYear] || [];
+  const [news, setNews] = useState([]); 
 
   const filteredSchedule =
     selectedMonth === `${selectedYear} SEASON`
       ? yearSchedule
       : yearSchedule.filter((item) => item.month === selectedMonth);
 
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const newsCollection = collection(db, "announcements");
+        const snapshot = await getDocs(newsCollection);
+        const fetchedNews = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        fetchedNews.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+
+        const hardcodedNews = [
+          {
+            title: "Game Recording",
+            content: "Watch the recording on our YouTube channel: @TheNexus-League",
+          },
+          {
+            title: "",
+            content: "You're all caught up on the news of The Nexus",
+          },
+        ];
+
+        setNews([...fetchedNews, ...hardcodedNews]);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      }
+    };
+
+    fetchNews();
+  }, []);
+    
   return (
     <div className="home-container">
       <div className="home">
@@ -43,13 +80,13 @@ const Home = () => {
         {/* Bottom Left: News Section */}
         <div className="news-section">
           <h2>News</h2>
-          {newsDB.map((item, index) => (
+          {news.map((item, index) => (
             <NewsItem
               key={index}
               title={item.title}
               date={item.date}
               content={item.content}
-              isLastItem={index === newsDB.length - 1}
+              isLastItem={index >= news.length - 2}
             />
           ))}
         </div>

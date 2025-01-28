@@ -1,114 +1,234 @@
-/* AdminPage.css */
-.admin-page {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f9f9f9;
-    color: #333;
+/* Admin Page Layout */
+.admin-container {
+    display: flex;
+    width: stretch;
+    justify-content: center;
+    background-color: #050505;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-.admin-header {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+.admin {
+    gap: 20px;
+    width: 100%;
+    max-width: 1500px;
+    padding: 40px 80px;
+    background-color: #050505;
+    color: #F2F2F2;
+}
+
+.admin-title {
+    font-family: "Proxima Nova";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 6.4px;
+    color: #F2F2F2;
+}
+
+.announcements-section {
+    display: flex;
+    gap: 20px;
+}
+
+.announcements-list {
+    flex: 2; 
+    background-color: #0E0E0E;
+    border-radius: 20px;
+    padding: 20px; /* Spacing inside the container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-height: fit-content;
+    gap: 20px;
+}
+  
+.current-announcements {
+    color: #F2F2F2;
+    font-family: "Proxima Nova";
+    font-size: 32px;
+    font-weight: 600;
+    font-style: normal;
+    text-transform: uppercase;
+    line-height: 24px;
+    letter-spacing: 4px;
     text-align: center;
-    color: #444;
+    padding-bottom: 20px; 
 }
 
-.admin-select {
-    margin-bottom: 15px;
+  .announcement-item {
+    background-color: #1C1C1C;
+    padding: 0px 20px 20px 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
 }
+  
+  .announcement-item h3 {
+    font-family: "Proxima Nova";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: #F2F2F2;
+    margin-bottom: 0px;
+    text-transform: capitalize;
+  }
+  
+  .announcement-item p {
+    font-size: 16px;
+    font-family: "Proxima Nova";
+    font-style: normal;
+    font-weight: 300;
+    line-height: 18px;
+    color: #F2F2F2;
+  }
+  
+  .admin-news-date {
+    color: #F2F2F2;
+    font-size: 16px;
+    font-family: "Proxima Nova";
+    font-style: normal;
+    font-weight: 300;
+    line-height: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
 
-.admin-select label {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.admin-select select {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.admin-stats {
+  .admin-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
     margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.admin-stats h3 {
-    margin-bottom: 10px;
-    color: #222;
-}
-
-.admin-stats table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.admin-stats th,
-.admin-stats td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-.admin-stats th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-}
-
-.admin-stats input {
-    width: 100%;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.admin-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+  }
+  
+  .admin-edit-button {
+    padding: 15px 30px;
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3.2px;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
-    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .admin-delete-button {
+    padding: 15px 30px;
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3.2px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-edit-button:hover {
+    background-color: #161616;
+  }
+
+  .admin-edit-button:active {
+    background-color: #9ECB3B;
+    color: #050505;
+  }
+
+  .admin-delete-button:hover {
+    background-color: #161616;
+  }
+  
+  .admin-delete-button:active {
+    background-color: #EE375F;
+  }
+  
+.announcements-section {
+  display: flex;
+  gap: 20px; 
 }
 
-.admin-button:hover {
-    background-color: #0056b3;
+.announcements-list {
+  flex: 1.5; /* Take 2 parts of the available space */
+  background-color: #0E0E0E;
+  border-radius: 20px;
+  padding: 10px 20px 20px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  max-height: fit-content;
 }
 
-.admin-create-player {
-    margin-top: 30px;
+/* Update Container Styles */
+.update-container {
+    flex: 1.5;
+    background-color: #0E0E0E; /* Match the background color */
+    border-radius: 20px; /* Rounded corners to match the design */
+    padding: 20px; /* Spacing inside the container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between input fields */
+  }
+  
+  .update-title {
+    color: #F2F2F2;
+    font-family: "Proxima Nova";
+    font-size: 32px;
+    font-weight: 600;
+    font-style: normal;
+    text-transform: uppercase;
+    line-height: 24px;
+    letter-spacing: 4px;
+    text-align: center;
+  }
+  
+  .update-container input,
+  .update-container textarea {
+    background-color: #1C1C1C;
+    color: #F2F2F2;
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    font-weight: 300;
+    border: 1px solid #333;
+    border-radius: 12px;
     padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    resize: both; 
+    outline: none;
+    transition: border-color 0.3s ease;
+    margin-bottom: 20px;
+  }
 
-.admin-create-player h3 {
-    margin-bottom: 15px;
-    color: #222;
-}
-
-.admin-create-player label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.admin-create-player input,
-.admin-create-player select {
-    width: calc(100% - 20px);
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+  .update-container textarea {
+    height: 100px;
+  }
+  
+  .update-container input:focus,
+  .update-container textarea:focus {
+    border-color: #9ECB3B; /* Highlight color on focus */
+  }
+  
+  .update-container button {
+    padding: 20px 30px;
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3.2px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .update-container button:hover {
+    background-color: #161616;
+  }
+  
+  .update-container button:active {
+    background-color: #9ECB3B;
+    color: #050505;
+  }
