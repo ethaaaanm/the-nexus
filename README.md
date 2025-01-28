@@ -36,24 +36,7 @@ Each document represents a team.
 - `teamID`: (string) The unique ID of the team.
 - `teamName`: (string) The name of the team.
 - `players`: (array) List of player IDs associated with the team.
-- `stats`: (map)
-  - `basketball` (map)
-    - `gamesPlayed`: (number)
-    - `wins`: (number)
-    - `losses`: (number)
-  - `softball` (map)
-    - `gamesPlayed`: (number)
-    - `wins`: (number)
-    - `losses`: (number)
-  - `volleyball` (map)
-    - `gamesPlayed`: (number)
-    - `wins`: (number)
-    - `losses`: (number)
-  - `ultimate` (map)
-    - `gamesPlayed`: (number)
-    - `wins`: (number)
-    - `losses`: (number)
-
+- `teamRecord`: (string) Win-Loss-Ties in Record Format
 
 ### `games` Collection
 Each document represents a game.
@@ -61,29 +44,5 @@ Each document represents a game.
 - `date`: (timestamp) The date of the game.
 - `teamIDA`: (map) The ID of one team
     - `score`: (number) 
-    - `playerStats`: (map) 
-        - `player1ID`: (map) 
-            `gamesPlayed`: (number)
-            `points`: (number)
-            `rebounds`: (number)
-            `assists`: (number)
-        - `player2ID`: (map) 
-            `gamesPlayed`: (number)
-            `points`: (number)
-            `rebounds`: (number)
-            `assists`: (number)
-        - `...`
 - `teamIDB`: (map) The ID of the other team
     - `score`: (number) 
-    - `playerStats`: (map) 
-        - `player1ID`: (map) 
-            `gamesPlayed`: (number)
-            `points`: (number)
-            `rebounds`: (number)
-            `assists`: (number)
-        - `player2ID`: (map) 
-            `gamesPlayed`: (number)
-            `points`: (number)
-            `rebounds`: (number)
-            `assists`: (number)
-        - `...`
