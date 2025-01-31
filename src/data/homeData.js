@@ -29,10 +29,12 @@ export const scheduleDB = {
       video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       teams: [{
         id: "G1",
+        score: "12",
         recordAtTime: "1-0-0", 
       },
       {
         id: "R1",
+        score: "7",
         recordAtTime: "0-1-0", 
       }], 
     },
@@ -43,10 +45,12 @@ export const scheduleDB = {
       video: "",
       teams: [{
         id: "G1",
+        score: "",
         recordAtTime: "1-1-0", 
       },
       {
         id: "R1",
+        score: "",
         recordAtTime: "1-1-0", 
       }],
     },
@@ -57,10 +61,12 @@ export const scheduleDB = {
       video: "",
       teams: [{
         id: "G1",
+        score: "",
         recordAtTime: "1-1-1", 
       },
       {
         id: "R1",
+        score: "",
         recordAtTime: "1-1-1", 
       }],
     },
@@ -71,10 +77,12 @@ export const scheduleDB = {
       video: "",
       teams: [{
         id: "G1",
+        score: "",
         recordAtTime: "2-1-1", 
       },
       {
         id: "R1",
+        score: "",
         recordAtTime: "1-2-1", 
       }],
     },
@@ -85,10 +93,12 @@ export const scheduleDB = {
       video: "",
       teams: [{
         id: "G1",
+        score: "",
         recordAtTime: "2-1-2", 
       },
       {
         id: "R1",
+        score: "",
         recordAtTime: "1-2-2", 
       }],
     },

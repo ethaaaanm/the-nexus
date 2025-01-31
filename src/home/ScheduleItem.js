@@ -39,16 +39,23 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
           <div className="teams-info">
             {fullTeams.map((team, index) => (
               team ? (
-                <div className="team-row" key={team.id}>
-                  <img src={team.icon} alt={`${team.name} logo`} className="team-icon" />
-                  <div className="team-details">
-                    <div className="team-info-row">
-                      <p className="team-name">{team.name}</p>
-                      <p className="team-abbrev">{team.abbrev}</p>
+                <div className="team-bar">
+                  {teams[index].score && (
+                    <div className="team-score-background">
+                      <p className="team-score">{teams[index].score}</p>
                     </div>
-                    <p className="team-record">
-                      {teams[index].recordAtTime || team.record}
-                    </p>
+                  )}
+                  <div className="team-row" key={team.id}>
+                    <img src={team.icon} alt={`${team.name} logo`} className="team-icon" />
+                    <div className="team-details">
+                      <div className="team-info-row">
+                        <p className="team-name">{team.name}</p>
+                        <p className="team-abbrev">{team.abbrev}</p>
+                      </div>
+                      <p className="team-record">
+                        {teams[index].recordAtTime || team.record}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ) : (

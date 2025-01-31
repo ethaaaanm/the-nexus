@@ -326,17 +326,50 @@
   flex-grow: 1;
 }
 
+.team-bar {
+  display: flex;
+  align-self: stretch;
+  border-radius: 16px;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px; 
+  flex-grow: 1;
+}
+
+.team-score-background {
+  align-items: flex-end;
+  border-radius: 16px;
+  border: 1px solid #333;
+  background-color: #1C1C1C;
+  flex-direction: row;
+  align-items: center;
+  min-width: 100px;
+  min-height:max-content;
+  margin: 0;
+}
+
+.team-score {
+  font-family: "Manuka";
+  font-size: 48px;
+  margin: 0;
+  padding: 25px 0px;
+  font-style: normal;
+  font-weight: 850;
+  text-transform: uppercase;
+  text-align: center;
+  color: #F2F2F2;
+}
+
 .team-row {
   display: flex;
   align-self: stretch;
-  align-items: center;
+  align-items: flex-end;
   border-radius: 16px;
   border: 1px solid #333;
   background-color: #1C1C1C;
   padding: 0px 20px;
   flex-direction: row;
   align-items: center;
-  gap: 8px; 
   flex-grow: 1;
 }
 
