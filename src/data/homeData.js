@@ -139,23 +139,3 @@ export const scheduleDB = {
     },
   ],
 };
-
-// News Database
-export const newsDB = [
-  {
-    title: "Next Game Location",
-    content: "Our next game will be hosted at People's Christian Academy, Renfrew Dr, Markham.",
-    date: "6/4/2025",
-  },
-  {
-    title: "Game Recording",
-    content: "Watch the recording on our YouTube channel: @TheNexus-League",
-  },
-  {
-    title: "Congrats to Team Genesis!",
-    content: "For winning the first-ever game of The Nexus!",
-  },
-  {
-    content: "You're all caught up on the news of The Nexus",
-  },
-];

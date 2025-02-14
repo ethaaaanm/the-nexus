@@ -71,7 +71,7 @@
 /* Button */
 .dropdown-button {
   min-width: fit-content;
-  padding: 20px 40px;
+  padding: 20px 20px;
   font-family: "Proxima Nova";
   font-size: 16px;
   font-weight: 500;
@@ -79,7 +79,7 @@
   letter-spacing: 3.2px;
   line-height: 16px;
   border-radius: 20px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 4px;
   color: #F2F2F2;
@@ -96,6 +96,8 @@
   background-color: #161616;
   font-size: 16px;
   font-weight: 500;
+  justify-content: space-between;
+
 }
 
 .dropdown-button.active {
@@ -104,6 +106,7 @@
   background-color: #9ECB3B;
   color: #161616;
   border: 1px solid #9ECB3B;
+  justify-content: space-between;
 }
 
 .dropdown-arrow {
@@ -111,10 +114,13 @@
   padding-bottom: 4px;
   font-size: 20px;
   color: #9ECB3B;
+  transition: transform 0.3s ease; 
 }
 
 .dropdown-arrow.open {
   color: #161616;
+  transform: rotate(180deg); 
+  padding-bottom: 0px;
 }
 
 .downarrow-icon {

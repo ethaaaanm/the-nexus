@@ -37,7 +37,7 @@
     flex: 2; 
     background-color: #0E0E0E;
     border-radius: 20px;
-    padding: 20px; /* Spacing inside the container */
+    padding: 20px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     max-height: fit-content;
     gap: 20px;
@@ -154,7 +154,7 @@
 }
 
 .announcements-list {
-  flex: 1.5; /* Take 2 parts of the available space */
+  flex: 1.5; 
   background-color: #0E0E0E;
   border-radius: 20px;
   padding: 10px 20px 20px 20px;
@@ -162,19 +162,18 @@
   max-height: fit-content;
 }
 
-/* Update Container Styles */
-.update-container {
+.announcement-update-container {
     flex: 1.5;
-    background-color: #0E0E0E; /* Match the background color */
-    border-radius: 20px; /* Rounded corners to match the design */
-    padding: 20px; /* Spacing inside the container */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    background-color: #0E0E0E; 
+    border-radius: 20px; 
+    padding: 20px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Space between input fields */
-  }
+    gap: 10px; 
+}
   
-  .update-title {
+  .announcement-update-title {
     color: #F2F2F2;
     font-family: "Proxima Nova";
     font-size: 32px;
@@ -186,8 +185,8 @@
     text-align: center;
   }
   
-  .update-container input,
-  .update-container textarea {
+  .announcement-update-container input,
+  .announcement-update-container textarea {
     background-color: #1C1C1C;
     color: #F2F2F2;
     font-family: "Proxima Nova";
@@ -202,17 +201,17 @@
     margin-bottom: 20px;
   }
 
-  .update-container textarea {
+  .announcement-update-container textarea {
     min-height: 50px;
     height: 100px;
   }
   
-  .update-container input:focus,
-  .update-container textarea:focus {
-    border-color: #9ECB3B; /* Highlight color on focus */
+  .announcement-update-container input:focus,
+  .announcement-update-container textarea:focus {
+    border-color: #9ECB3B;
   }
   
-  .update-container button {
+  .announcement-update-container button {
     padding: 20px 30px;
     font-family: "Proxima Nova";
     font-size: 20px;
@@ -225,11 +224,197 @@
     margin-top: 20px;
   }
   
-  .update-container button:hover {
+  .announcement-update-container button:hover {
     background-color: #161616;
   }
   
-  .update-container button:active {
+  .announcement-update-container button:active {
     background-color: #9ECB3B;
     color: #050505;
   }
+
+.admin-schedule-section {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.admin-schedule-list {
+  flex: 1.5; 
+  background-color: #0E0E0E;
+  border-radius: 20px;
+  padding: 20px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  max-height: fit-content;
+  gap: 20px;
+}
+
+.admin-current-schedule {
+  color: #F2F2F2;
+  font-family: "Proxima Nova";
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 24px;
+  letter-spacing: 4px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.admin-schedule-item {
+  background-color: #1C1C1C;
+  padding: 0px 20px 20px 20px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-schedule-item .row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-schedule-item .sport-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.admin-schedule-item .sport-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.admin-schedule-item .sport-title {
+  color: #F2F2F2;
+  font-family: "Proxima Nova";
+  font-size: 20px;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+  line-height: 32px;
+  letter-spacing: 4px;
+  align-items: center;
+  margin: 0;
+}
+
+.schedule-date {
+  color: #F2F2F2;
+  font-family: "Proxima Nova";
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex; 
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px 16px;
+  border-radius: 16px;
+  background-color: #333;
+  min-width: 120px; 
+  text-align: center;
+}
+
+.admin-schedule-item h3 {
+  font-size: 24px;
+  font-family: "Proxima Nova";
+  font-weight: 600;
+  color: #F2F2F2;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+.admin-schedule-item p {
+  font-size: 16px;
+  font-family: "Proxima Nova";
+  font-weight: 300;
+  color: #F2F2F2;
+}
+
+.admin-schedule-item a {
+  color: #9ECB3B;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.admin-schedule-item a:hover {
+  color: #7AB32E;
+}
+
+/* Team List Styling */
+.admin-schedule-item ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.admin-schedule-item li {
+  font-size: 16px;
+  font-family: "Proxima Nova";
+  font-weight: 300;
+  color: #F2F2F2;
+  margin-bottom: 5px;
+}
+
+/* Add Schedule Section */
+.add-schedule {
+  flex: 1.5;
+  background-color: #0E0E0E;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-schedule label {
+  color: #F2F2F2;
+  font-size: 16px;
+  font-family: "Proxima Nova";
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.add-schedule select,
+.add-schedule input {
+  background-color: #1C1C1C;
+  color: #F2F2F2;
+  font-family: "Proxima Nova";
+  font-size: 16px;
+  font-weight: 300;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 15px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.add-schedule select:focus,
+.add-schedule input:focus {
+  border-color: #9ECB3B;
+}
+
+/* Add Schedule Button */
+.add-schedule button {
+  padding: 15px 30px;
+  font-family: "Proxima Nova";
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #9ECB3B;
+  color: #050505;
+}
+
+.add-schedule button:hover {
+  background-color: #7AB32E;
+}
