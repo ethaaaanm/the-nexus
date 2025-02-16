@@ -345,7 +345,6 @@
   color: #7AB32E;
 }
 
-/* Team List Styling */
 .admin-schedule-item ul {
   list-style: none;
   padding: 0;
@@ -361,6 +360,18 @@
 }
 
 /* Add Schedule Section */
+.schedule-update-title {
+  color: #F2F2F2;
+  font-family: "Proxima Nova";
+  font-size: 32px;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+  line-height: 24px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
 .add-schedule {
   flex: 1.5;
   background-color: #0E0E0E;
@@ -400,21 +411,28 @@
   border-color: #9ECB3B;
 }
 
-/* Add Schedule Button */
 .add-schedule button {
-  padding: 15px 30px;
-  font-family: "Proxima Nova";
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 20px 30px;
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3.2px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.add-schedule button:hover {
+  background-color: #161616;
+}
+
+.add-schedule button:active {
   background-color: #9ECB3B;
   color: #050505;
 }
 
-.add-schedule button:hover {
-  background-color: #7AB32E;
+.meeting-time::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
