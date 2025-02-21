@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/the-nexus/static/css/main.d91ab27f.css",
-    "main.js": "/the-nexus/static/js/main.67e62063.js",
+    "main.css": "/the-nexus/static/css/main.f71dc2fa.css",
+    "main.js": "/the-nexus/static/js/main.5df6204e.js",
+    "static/media/home_banner.svg": "/the-nexus/static/media/home_banner.ea71645b3eb4359d8726f4d1dd82bc50.svg",
     "static/media/about_banner.svg": "/the-nexus/static/media/about_banner.ba71e9a37c40c48cf8f4eb9c294dd19d.svg",
     "static/media/phonk_contrast.otf": "/the-nexus/static/media/phonk_contrast.00390c698e2a26bed84d.otf",
     "static/media/phonk_regular.otf": "/the-nexus/static/media/phonk_regular.411157e17c1a43fdd53f.otf",
@@ -23,7 +24,6 @@
     "static/media/ic_volleyball.svg": "/the-nexus/static/media/ic_volleyball.d35845a422d4cf4f0ca6cf873769a083.svg",
     "static/media/ic_basketball.svg": "/the-nexus/static/media/ic_basketball.695408d7bf5d6a7423e78894aa14bcc5.svg",
     "static/media/ic_instagram.svg": "/the-nexus/static/media/ic_instagram.d56c897451d660e43992c16d6ce08696.svg",
-    "static/media/wordmark_green.svg": "/the-nexus/static/media/wordmark_green.84cfdcc66ba2822bb7e6e2419b4b4ae5.svg",
     "static/media/wordmark.svg": "/the-nexus/static/media/wordmark.937519fd84f7a09b3bd25685f49322be.svg",
     "static/media/ic_ultimate.svg": "/the-nexus/static/media/ic_ultimate.3ebfe8a266941afed2261c628dd9ef03.svg",
     "static/media/logo_green.svg": "/the-nexus/static/media/logo_green.55de6ebf6df4ad4445b1459e8c271491.svg",
@@ -31,11 +31,11 @@
     "static/media/ic_mail.svg": "/the-nexus/static/media/ic_mail.fcc16c7ec52f8bbd2ae9fe0fdd5b6c3d.svg",
     "index.html": "/the-nexus/index.html",
     "static/media/team_refined.svg": "/the-nexus/static/media/team_refined.b78b387caff43a637ac04a146a444cc1.svg",
-    "main.d91ab27f.css.map": "/the-nexus/static/css/main.d91ab27f.css.map",
-    "main.67e62063.js.map": "/the-nexus/static/js/main.67e62063.js.map"
+    "main.f71dc2fa.css.map": "/the-nexus/static/css/main.f71dc2fa.css.map",
+    "main.5df6204e.js.map": "/the-nexus/static/js/main.5df6204e.js.map"
   },
   "entrypoints": [
-    "static/css/main.d91ab27f.css",
-    "static/js/main.67e62063.js"
+    "static/css/main.f71dc2fa.css",
+    "static/js/main.5df6204e.js"
   ]
 }
