@@ -140,7 +140,9 @@ const Home = () => {
         <div className="league-section">
           <div className="league-header">
             <h3>League Leaders</h3>
-            <button className="view-all"> View All </button>
+              <Link to="/stats" className="view-all-link">
+                <button className="view-all"> View All </button>
+              </Link>
           </div>
           <div className="current-record">
             <CurrentTeams/>

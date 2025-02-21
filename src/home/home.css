@@ -12,11 +12,13 @@
 
 .home-banner {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: 40px;
+  padding-top: 20px;
+  padding-right: 80px;
+  padding-left: 80px;
   position: relative;
 }
 
@@ -34,9 +36,9 @@
   gap: 10px;
   position: absolute;
   cursor: pointer;
-  left: 40px;
+  left: 120px;
   bottom: 40px;
-  background-color: #050505;
+  background-color: #1C1C1C;
   color: #F2F2F2;
   border: none;
   transition: background-color 0.3s, color 0.3s;
@@ -53,7 +55,7 @@
 
 .home-banner .home-register:hover {
   border-radius: 16px;
-  background-color: #161616;
+  background-color: #0E0E0E;
 }
 
 .home-banner .home-register:active {
@@ -70,7 +72,7 @@
   gap: 10px;
   position: absolute;
   cursor: pointer;
-  left: 310px;
+  left: 400px;
   bottom: 40px;
   background-color: transparent;
   color: #050505;
@@ -102,9 +104,11 @@
   grid-template-rows: auto auto ; 
   gap: 20px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   padding-top: 20px;
   padding-bottom: 40px;
+  padding-right: 80px;
+  padding-left: 80px;
   background-color: #050505;
   color: #F2F2F2;
   align-items: start;
@@ -614,6 +618,10 @@
   color: #161616;
   border: 1px solid #9ECB3B;
   border-radius: 16px;
+}
+
+.league-section .view-all-link {
+  text-decoration: none; 
 }
 
 .current-record {
