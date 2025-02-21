@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { homeTeamDB } from "../data/homeData"; 
 import { db } from "../firebaseConfig"
+import { doc, getDoc } from "firebase/firestore"
 import UltimateIcon from "../res/images/ic_ultimate.svg";
 import SoftballIcon from "../res/images/ic_softball.svg";
 import BasketballIcon from "../res/images/ic_basketball.svg";
 import VolleyballIcon from "../res/images/ic_volleyball.svg";
+import Refined from "../res/images/team_refined.svg";
+import Genesis from "../res/images/team_genesis.svg";
 import { FaPlay } from "react-icons/fa";
 
 import "./home.css";
@@ -16,12 +19,36 @@ const sportIcons = {
   Volleyball: VolleyballIcon,
 };
 
+const teamIcons = {
+  genesis: Genesis,
+  refined: Refined,
+};
+
 const ScheduleItem = ({ sport, date, teams, video }) => {
-  const fullTeams = teams.map((team) => {
-    const teamId = team.id || team;  
-    const foundTeam = homeTeamDB.find((team) => team.id === teamId);
-    return foundTeam || null;
-  });
+  const [teamData, setTeamData] = useState([null, null])
+
+
+  useEffect(() => {
+    const fetchTeamData = async (teamId) => {
+      const teamRef = doc(db, "teams", teamId);
+      const teamSnap = await getDoc(teamRef);
+      if (teamSnap.exists()) {
+        return teamSnap.data();
+      } else {
+        console.error("No teams Found");
+        return null;
+      }
+    };
+
+    const fetchTeamDetails = async () => {
+      const team1Data = await fetchTeamData(teams[0].id);
+      const team2Data = await fetchTeamData(teams[1].id);
+      
+      setTeamData([team1Data, team2Data]);
+    }
+
+    fetchTeamDetails();
+  }, [teams])
 
   return (
     <div className="schedule-item">
@@ -38,7 +65,7 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
         {/* Row 2: Team Info */} {/* ETHAN NOTE: Add Score */}
         <div className="row-bottom">
           <div className="teams-info">
-            {fullTeams.map((team, index) => (
+            {teamData.map((team, index) => (
               team ? (
                 <div className="team-bar">
                   {teams[index].score && (
@@ -47,7 +74,11 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
                     </div>
                   )}
                   <div className="team-row" key={team.id}>
-                    <img src={team.icon} alt={`${team.name} logo`} className="team-icon" />
+                    <img
+                      src={teamIcons[team.name.toLowerCase()] || "default-icon.png"}
+                      alt={`${team.name} logo`}
+                      className="team-icon"
+                    />
                     <div className="team-details">
                       <div className="team-info-row">
                         <p className="team-name">{team.name}</p>

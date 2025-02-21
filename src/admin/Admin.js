@@ -320,7 +320,7 @@ const AdminPage = () => {
                       <li key={index}>
                         Team Name: {teams.find(t => t.id === team.id)?.name || "Unknown"} <br />
                         Score: {team.score} <br />
-                        Record: {team.recordAtTime || "N/A"}
+                        Record at Time: {team.recordAtTime || "N/A"}
                         <br/><br/>
                       </li>
                     ) : null

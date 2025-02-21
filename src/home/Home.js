@@ -16,22 +16,22 @@ import "./home.css";
 
 
 const Home = () => {
-  const [selectedMonth, setSelectedMonth] = useState("JUNE"); // Track selected month
+  const [selectedMonth, setSelectedMonth] = useState("JUNE"); 
   const [selectedYear, setSelectedYear] = useState(2025);
-  const yearSchedule = scheduleDB[selectedYear] || [];
   const [news, setNews] = useState([]); 
+  const [schedule, setSchedule] = useState([]);
 
   const filteredSchedule =
     selectedMonth === `${selectedYear} SEASON`
-      ? yearSchedule
-      : yearSchedule.filter((item) => item.month === selectedMonth);
+      ? schedule
+      : schedule.filter((item) => item.month === selectedMonth);
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const newsCollection = collection(db, "announcements");
-        const snapshot = await getDocs(newsCollection);
-        const fetchedNews = snapshot.docs.map((doc) => ({
+        const newsSnapshot = await getDocs(newsCollection);
+        const fetchedNews = newsSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
@@ -56,7 +56,23 @@ const Home = () => {
       }
     };
 
+    const fetchSchedule = async () => {
+      try {
+        const scheduleCollection = collection(db, "schedule");
+        const scheduleSnapshot = await getDocs(scheduleCollection);
+        const fetchedSchedule = scheduleSnapshot.docs.map((doc) => ({
+          id: doc.id, ...doc.data(),
+        }))
+        setSchedule(fetchedSchedule);
+
+      } catch (error) {
+          console.error("Error fetching schedule:", error);
+      }
+
+    };
+
     fetchNews();
+    fetchSchedule();
   }, []);
     
   return (
@@ -71,7 +87,7 @@ const Home = () => {
         <div className="schedule-dropdown">
           <h3>Schedule</h3>
           <DateDropdown
-            months={["JUNE", "JULY", "AUGUST", `${selectedYear} SEASON`]}
+            months={["June", "July", "August", `${selectedYear} SEASON`]}
             defaultMonth="JUNE"
             onMonthChange={setSelectedMonth}
           />
@@ -98,7 +114,7 @@ const Home = () => {
               key={index}
               sport={item.sport}
               date={item.date}
-              teams={item.teams}
+              teams={[item.team1, item.team2]}
               video={item.video}
             />
           ))}
