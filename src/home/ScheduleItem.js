@@ -1,5 +1,6 @@
 import React from "react";
 import { homeTeamDB } from "../data/homeData"; 
+import { db } from "../firebaseConfig"
 import UltimateIcon from "../res/images/ic_ultimate.svg";
 import SoftballIcon from "../res/images/ic_softball.svg";
 import BasketballIcon from "../res/images/ic_basketball.svg";

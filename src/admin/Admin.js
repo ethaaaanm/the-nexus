@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
-import dayjs from "dayjs";
 import { db } from "../firebaseConfig";
 import "./admin.css";
 import { MdDeleteForever } from "react-icons/md";
@@ -25,7 +24,7 @@ const AdminPage = () => {
       try {
         const teamsSnapshot = await getDocs(collection(db, "teams"));
         const teamsList = teamsSnapshot.docs.map((doc) => ({
-          id: doc.id, 
+          id: doc.id,
           ...doc.data()
         }));
         setTeams(teamsList);
@@ -33,7 +32,7 @@ const AdminPage = () => {
         console.error("Error fetching teams:", error);
       }
     };
-  
+
     fetchTeams();
   }, []);
 
@@ -133,9 +132,6 @@ const AdminPage = () => {
     team2: { id: "", score: "", recordAtTime: "" }
   });
 
-  const [dateTimeRaw, setDateTimeRaw] = useState("");
-  const [dateTimeFormatted, setDateTimeFormatted] = useState("");
-  
   useEffect(() => {
     fetchSchedule();
   }, []);
@@ -150,7 +146,7 @@ const AdminPage = () => {
   };
 
   const handleAddSchedule = async () => {
-    if (!newSchedule.sport || !dateTimeRaw || !newSchedule.team1.id || !newSchedule.team2.id) {
+    if (!newSchedule.sport || !newSchedule.month || !newSchedule.date || !newSchedule.team1.id || !newSchedule.team2.id) {
       alert("Please fill out all fields before adding a schedule.");
       return;
     }
@@ -159,13 +155,7 @@ const AdminPage = () => {
     if (!isConfirmed) return;
 
     try {
-      const formattedSchedule = {
-        ...newSchedule,
-        date: dateTimeFormatted,
-        month: dayjs(dateTimeRaw).format("MMMM"),
-      };
-
-      await addDoc(collection(db, "schedule"), formattedSchedule);
+      await addDoc(collection(db, "schedule"), newSchedule);
 
       setNewSchedule({
         year: "2025",
@@ -177,7 +167,6 @@ const AdminPage = () => {
         team2: { id: "", score: "", recordAtTime: "" },
       });
 
-      setDateTimeFormatted("");
       alert("Schedule added successfully!");
       fetchSchedule();
     } catch (error) {
@@ -189,27 +178,32 @@ const AdminPage = () => {
     if (!editingSchedule) return;
   
     const updatedSchedule = {
-        ...editingSchedule,
-        date: dateTimeFormatted || editingSchedule.date, 
-        month: dayjs(dateTimeRaw).format("MMMM") || editingSchedule.month,
-    };
-   
-    await handleEditSchedule(editingSchedule.id, updatedSchedule);
+      ...editingSchedule
+    };  
     
+    await handleEditSchedule(editingSchedule.id, updatedSchedule);
     setEditingSchedule(null);
+    setNewSchedule({
+      year: "2025",
+      month: "",
+      sport: "",
+      date: "",
+      video: "",
+      team1: { id: "", score: "", recordAtTime: "" },
+      team2: { id: "", score: "", recordAtTime: "" },
+    });
+  
     alert("Schedule updated successfully!");
-    fetchSchedule(); 
+    fetchSchedule();
   };
 
   const startEditingSchedule = (scheduleItem) => {
     setEditingSchedule(scheduleItem);
-  
-    setDateTimeRaw(dayjs(scheduleItem.date).format("YYYY-MM-DDTHH:mm"));
-  
+
     setNewSchedule({
       year: scheduleItem.year || "2025",
       month: scheduleItem.month || "",
-      sport: scheduleItem.sport || "", 
+      sport: scheduleItem.sport || "",
       date: scheduleItem.date || "",
       video: scheduleItem.video || "",
       team1: scheduleItem.team1 || "",
@@ -219,7 +213,15 @@ const AdminPage = () => {
 
   const cancelEditing = () => {
     setEditingSchedule(null);
-    setDateTimeRaw("");
+    setNewSchedule({
+      year: "2025",
+      month: "",
+      sport: "",
+      date: "",
+      video: "",
+      team1: { id: "", score: "", recordAtTime: "" },
+      team2: { id: "", score: "", recordAtTime: "" },
+    });
   };
 
   const handleEditSchedule = async (id, updatedItem) => {
@@ -307,16 +309,19 @@ const AdminPage = () => {
                     <img src={sportIcons[item.sport]} alt={`${item.sport} icon`} className="sport-icon" />
                     <h3 className="sport-title">{item.sport}</h3>
                   </div>
-                  <p className="schedule-date">{item.date}</p>
+                  <p className="admin-schedule-date">{item.date}</p>
                 </div>
                 {item.video && (
                   <p><a href={item.video} target="_blank" rel="noopener noreferrer">Watch Video</a></p>
                 )}
                 <ul>
-                  {[item.team1, item.team2].map((team, index) => 
+                  {[item.team1, item.team2].map((team, index) =>
                     team ? (
                       <li key={index}>
-                        Team ID: {team.id}, Score: {team.score}, Record: {team.recordAtTime}
+                        Team Name: {teams.find(t => t.id === team.id)?.name || "Unknown"} <br />
+                        Score: {team.score} <br />
+                        Record: {team.recordAtTime || "N/A"}
+                        <br/><br/>
                       </li>
                     ) : null
                   )}
@@ -355,127 +360,130 @@ const AdminPage = () => {
               </label>
             </div>
             <label>Select Month:</label>
-              <select
-                value={editingSchedule ? editingSchedule.month : newSchedule.month}
-                onChange={(e) =>
-                  editingSchedule
-                    ? setEditingSchedule({ ...editingSchedule, month: e.target.value })
-                    : setNewSchedule({ ...newSchedule, month: e.target.value })
-                }
-              >
-                <option value="">Select a Month</option>
-                {[ "June","July", "August" ].map((month) => (
-                  <option key={month} value={month}>
-                    {month}
-                  </option>
-                ))}
-              </select>
-            <label htmlFor="meeting-time">`Enter Date and Time</label>
+            <select
+              value={editingSchedule ? editingSchedule.month : newSchedule.month}
+              onChange={(e) =>
+                editingSchedule
+                  ? setEditingSchedule({ ...editingSchedule, month: e.target.value })
+                  : setNewSchedule({ ...newSchedule, month: e.target.value })
+              }
+            >
+              <option value="">Select a Month</option>
+              {["June", "July", "August"].map((month) => (
+                <option key={month} value={month}>
+                  {month}
+                </option>
+              ))}
+            </select>
+            <label>Enter Date and Time (05/02 | 7:00 PM)</label>
             <input
-              className="meeting-time"
               type="text"
-              id="meeting-time"
-              name="meeting-time"
-              value={editingSchedule ? dateTimeRaw : newSchedule.date}
+              placeholder="05/02 | 7:00 PM"
+              value={editingSchedule ? editingSchedule.date : newSchedule.date}
+              onChange={(e) => 
+                editingSchedule
+                  ? setEditingSchedule({ ...editingSchedule, date: e.target.value })
+                  : setNewSchedule({ ...newSchedule, date: e.target.value })
+              }
             />
             <label>Select Team 1:</label>
-              <select
-                value={editingSchedule ? editingSchedule.team1.id : newSchedule.team1.id}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  if (editingSchedule) {
-                    setEditingSchedule((prev) => ({ ...prev, team1: { ...prev.team1, id: value } }));
-                  } else {
-                    setNewSchedule((prev) => ({ ...prev, team1: { ...prev.team1, id: value } }));
-                  }
-                }}
-              >
-                <option value="">Select a Team</option>
-                {teams.map((team) => (
-                  <option key={team.id} value={team.id}>
-                    {team.name}
-                  </option>
-                ))}
-              </select>
-
-              {/* Score and Record Fields (Only in Edit Mode) */}
-              {editingSchedule && (
-                <>
-                  <label>Team 1 Score:</label>
-                  <input
-                    type="number"
-                    value={editingSchedule.team1.score}
-                    onChange={(e) =>
-                      setEditingSchedule((prev) => ({ ...prev, team1: { ...prev.team1, score: e.target.value } }))
-                    }
-                  />
-                  
-                  <label>Team 1 Record at Time:</label>
-                  <input
-                    type="text"
-                    value={editingSchedule.team1.recordAtTime}
-                    onChange={(e) =>
-                      setEditingSchedule((prev) => ({ ...prev, team1: { ...prev.team1, recordAtTime: e.target.value } }))
-                    }
-                  />
-                </>
-              )}
-
-              {/* Team 2 Selection */}
-              <label>Select Team 2:</label>
-              <select
-                value={editingSchedule ? editingSchedule.team2.id : newSchedule.team2.id}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  if (editingSchedule) {
-                    setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, id: value } }));
-                  } else {
-                    setNewSchedule((prev) => ({ ...prev, team2: { ...prev.team2, id: value } }));
-                  }
-                }}
-              >
-                <option value="">Select a Team</option>
-                {teams.map((team) => (
-                  <option key={team.id} value={team.id}>
-                    {team.name}
-                  </option>
-                ))}
-              </select>
-
-              {/* Score and Record Fields (Only in Edit Mode) */}
-              {editingSchedule && (
-                <>
-                  <label>Team 2 Score:</label>
-                  <input
-                    type="number"
-                    value={editingSchedule.team2.score}
-                    onChange={(e) =>
-                      setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, score: e.target.value } }))
-                    }
-                  />
-                  
-                  <label>Team 2 Record at Time:</label>
-                  <input
-                    type="text"
-                    value={editingSchedule.team2.recordAtTime}
-                    onChange={(e) =>
-                      setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, recordAtTime: e.target.value } }))
-                    }
-                  />
-                </>
-              )}
-            <label htmlFor="YTvideo">Attach YouTube Link:</label>
-              <input
-                type="text"
-                id="YTvideo"
-                placeholder="Video Link"
-                value={editingSchedule ? editingSchedule.video : newSchedule.video}
-                onChange={(e) =>
-                  editingSchedule
-                    ? setEditingSchedule({ ...editingSchedule, video: e.target.value })
-                    : setNewSchedule({ ...newSchedule, video: e.target.value })
+            <select
+              value={editingSchedule ? editingSchedule.team1.id : newSchedule.team1.id}
+              onChange={(e) => {
+                const value = e.target.value;
+                if (editingSchedule) {
+                  setEditingSchedule((prev) => ({ ...prev, team1: { ...prev.team1, id: value } }));
+                } else {
+                  setNewSchedule((prev) => ({ ...prev, team1: { ...prev.team1, id: value } }));
                 }
-              />
+              }}
+            >
+              <option value="">Select a Team</option>
+              {teams.map((team) => (
+                <option key={team.id} value={team.id}>
+                  {team.name}
+                </option>
+              ))}
+            </select>
+
+            {/* Score and Record Fields (Only in Edit Mode) */}
+            {editingSchedule && (
+              <>
+                <label>Team 1 Score:</label>
+                <input
+                  type="number"
+                  value={editingSchedule.team1.score}
+                  onChange={(e) =>
+                    setEditingSchedule((prev) => ({ ...prev, team1: { ...prev.team1, score: e.target.value } }))
+                  }
+                />
+
+                <label>Team 1 Record at Time: (1-0-0)</label>
+                <input
+                  type="text"
+                  value={editingSchedule.team1.recordAtTime}
+                  onChange={(e) =>
+                    setEditingSchedule((prev) => ({ ...prev, team1: { ...prev.team1, recordAtTime: e.target.value } }))
+                  }
+                />
+              </>
+            )}
+
+            {/* Team 2 Selection */}
+            <label>Select Team 2:</label>
+            <select
+              value={editingSchedule ? editingSchedule.team2.id : newSchedule.team2.id}
+              onChange={(e) => {
+                const value = e.target.value;
+                if (editingSchedule) {
+                  setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, id: value } }));
+                } else {
+                  setNewSchedule((prev) => ({ ...prev, team2: { ...prev.team2, id: value } }));
+                }
+              }}
+            >
+              <option value="">Select a Team</option>
+              {teams.map((team) => (
+                <option key={team.id} value={team.id}>
+                  {team.name}
+                </option>
+              ))}
+            </select>
+
+            {/* Score and Record Fields (Only in Edit Mode) */}
+            {editingSchedule && (
+              <>
+                <label>Team 2 Score:</label>
+                <input
+                  type="number"
+                  value={editingSchedule.team2.score}
+                  onChange={(e) =>
+                    setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, score: e.target.value } }))
+                  }
+                />
+
+                <label>Team 2 Record at Time: (0-0-1)</label>
+                <input
+                  type="text"
+                  value={editingSchedule.team2.recordAtTime}
+                  onChange={(e) =>
+                    setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, recordAtTime: e.target.value } }))
+                  }
+                />
+              </>
+            )}
+            <label htmlFor="YTvideo">Attach YouTube Link:</label>
+            <input
+              type="text"
+              id="YTvideo"
+              placeholder="Video Link"
+              value={editingSchedule ? editingSchedule.video : newSchedule.video}
+              onChange={(e) =>
+                editingSchedule
+                  ? setEditingSchedule({ ...editingSchedule, video: e.target.value })
+                  : setNewSchedule({ ...newSchedule, video: e.target.value })
+              }
+            />
             <button onClick={editingSchedule ? handleUpdateSchedule : handleAddSchedule}>
               {editingSchedule ? "Update Schedule" : "Add Schedule"}
             </button>
