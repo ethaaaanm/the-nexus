@@ -65,7 +65,7 @@ const AdminPage = () => {
     try {
       const announcementsCollection = collection(db, "announcements");
       const currentDate = new Date();
-      const formattedDate = `${currentDate.getMonth() + 1} | ${currentDate.getDate()} | ${currentDate.getFullYear()}`;
+      const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`;
 
       const newAnnouncementWithDate = {
         ...newAnnouncement,

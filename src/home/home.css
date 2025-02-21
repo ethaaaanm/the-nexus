@@ -5,6 +5,8 @@
   align-items: center;
   background-color: #050505;
   padding-bottom: 60px;
+  padding-right: 80px;
+  padding-left: 80px;
   box-sizing: border-box;
   overflow: hidden;
   flex-direction: column;
