@@ -50,6 +50,18 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
     fetchTeamDetails();
   }, [teams])
 
+  const getLosingTeam = () => {
+    if (teams[0].score < teams[1].score) {
+      return 0;
+    } else if (teams[0].score > teams[1].score) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+
+  const losingTeam = getLosingTeam();
+
   return (
     <div className="schedule-item">
       <div className="schedule-item-content">
@@ -62,19 +74,19 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
           <p className="schedule-date">{date}</p>
         </div>
 
-        {/* Row 2: Team Info */} {/* ETHAN NOTE: Add Score */}
+        {/* Row 2: Team Info */}
         <div className="row-bottom">
           <div className="teams-info">
             {teamData.map((team, index) => (
               team ? (
                 <div className="team-bar">
                   {teams[index].score && (
-                    <div className="team-score-background">
+                <div className={`team-score-background ${losingTeam === index ? "team-loser" : losingTeam === -1 ? "team-draw" : ""}`}>
                       <p className="team-score">{teams[index].score}</p>
                     </div>
                   )}
-                  <div className="team-row" key={team.id}>
-                    <img
+                  <div className={`team-row ${losingTeam === index ? "team-loser" : losingTeam === -1 ? "team-draw" : ""}`} key={team.id}>
+                  <img
                       src={teamIcons[team.name.toLowerCase()] || "default-icon.png"}
                       alt={`${team.name} logo`}
                       className="team-icon"

@@ -162,6 +162,10 @@ body, html {
   box-sizing: border-box;
 }
 
+::selection {
+  background: #9ECC3B;
+}
+
 /* ========================================
    Color Palette Section
    ======================================== */
@@ -185,6 +189,7 @@ h1 {
   text-transform: uppercase;
   line-height: 64px;
   word-wrap: break-word;
+  letter-spacing: normal;
 }
 
 /* Manuka 64 */

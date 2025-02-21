@@ -2,46 +2,206 @@
 .home-container {
   width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
   background-color: #050505;
   padding-bottom: 60px;
   box-sizing: border-box;
   overflow: hidden;
+  flex-direction: column;
+}
+
+.home-banner {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 40px;
+  position: relative;
+}
+
+.home-banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; 
+}
+
+.home-banner .home-register {
+  width: fit-content;
+  height: 64px;
+  padding: 20px 40px;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  cursor: pointer;
+  left: 40px;
+  bottom: 40px;
+  background-color: #050505;
+  color: #F2F2F2;
+  border: none;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: "Proxima Nova";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px; 
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.home-banner .home-register:hover {
+  border-radius: 16px;
+  background-color: #161616;
+}
+
+.home-banner .home-register:active {
+  border-radius: 16px;
+  color: #050505;
+  background-color: #9ECB3B;
+}
+
+.home-banner .home-learn-more {
+  width: fit-content;
+  height: 64px;
+  padding: 20px 20px;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  cursor: pointer;
+  left: 310px;
+  bottom: 40px;
+  background-color: transparent;
+  color: #050505;
+  border: 2px solid #050505;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: "Proxima Nova";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px; 
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+  border-radius: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.home-banner .home-learn-more:hover {
+  background: rgba(28, 28, 28, 0.20);
+}
+
+.home-banner .home-learn-more:active {
+  background-color: #1C1C1C;
+  color: #F2F2F2;
 }
 
 .home {
   display: grid;
-  grid-template-columns: 350px auto; 
-  grid-template-rows: auto auto auto; 
+  grid-template-columns: 350px 1fr; 
+  grid-template-rows: auto auto ; 
   gap: 20px;
   width: 100%;
-  max-width: 1500px;
-  padding: 40px 80px;
+  max-width: 1200px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   background-color: #050505;
+  color: #F2F2F2;
+  align-items: start;
+}
+
+/*** News Section ***/
+.news-section {
+  grid-column: 1/2;
+  grid-row: 1/3;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  justify-content: flex-start;
+  background-color: #0E0E0E;
+  border-radius: 20px;
+  padding: 10px 20px 20px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  max-height: fit-content;
+}
+
+.news-section h2 {
+  font-family: "Proxima Nova";
+  color: #F2F2F2;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 6.4px;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+
+.news-item {
+  flex-direction: column;
+  background-color: #1C1C1C;
+  display: flex;
+  border-radius: 16px;
+  padding: 0px 20px;
+  margin-bottom: 8px;
+  border: 1px solid #333;
+}
+
+.news-item h3 {
+  font-family: "Proxima Nova";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #F2F2F2;
+  margin-bottom: 0px;
+  text-transform: capitalize;
+}
+
+.news-item .news-date {
+  color: #F2F2F2;
+  font-size: 16px;
+  font-family: "Proxima Nova";
+  font-style: normal;
+  font-weight: 300;
+  line-height: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.news-item p {
+  font-size: 16px;
+  font-family: "Proxima Nova";
+  font-style: normal;
+  font-weight: 300;
+  line-height: 18px;
   color: #F2F2F2;
 }
 
-/* Title Logo */
-.title-logo {
-  grid-column: 1 / 2;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #0E0E0E;
-  align-self: stretch;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+.news-item:last-child {
+  border: 0px;
 }
 
-.title-logo img {
-  max-width: 100%;
-  height: auto;
+.news-item:last-child p {
+  margin-top: 0px;
+  margin-bottom: 20px ;
+}
+
+.youtube-link {
+  color: #F2F2F2;
+  text-decoration: underline;
+}
+
+.youtube-link:hover {
+  color: #B4E05F;
+  text-decoration: underline;
 }
 
 /* Schedule Dropdown Section */
 .schedule-dropdown {
   grid-column: 2 / 3;
+  grid-row: 1/2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -171,89 +331,14 @@
   color: #161616;
 }
 
-/*** News Section ***/
-.news-section {
-  background-color: #0E0E0E;
-  border-radius: 20px;
-  padding: 10px 20px 20px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  max-height: fit-content;
-}
-
-.news-section h2 {
-  font-family: "Proxima Nova";
-  color: #F2F2F2;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 32px;
-  letter-spacing: 6.4px;
-  text-transform: uppercase;
-  padding-bottom: 10px;
-}
-
-.news-item {
-  flex-direction: column;
-  background-color: #1C1C1C;
-  display: flex;
-  border-radius: 16px;
-  padding: 0px 20px;
-  margin-bottom: 8px;
-  border: 1px solid #333;
-}
-
-.news-item h3 {
-  font-family: "Proxima Nova";
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  letter-spacing: 0px;
-  color: #F2F2F2;
-  margin-bottom: 0px;
-  text-transform: capitalize;
-}
-
-.news-item .news-date {
-  color: #F2F2F2;
-  font-size: 16px;
-  font-family: "Proxima Nova";
-  font-style: normal;
-  font-weight: 300;
-  line-height: 16px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
-.news-item p {
-  font-size: 16px;
-  font-family: "Proxima Nova";
-  font-style: normal;
-  font-weight: 300;
-  line-height: 18px;
-  color: #F2F2F2;
-}
-
-.news-item:last-child {
-  border: 0px;
-}
-
-.news-item:last-child p {
-  margin-top: 0px;
-  margin-bottom: 20px ;
-}
-
-.youtube-link {
-  color: #F2F2F2;
-  text-decoration: underline;
-}
-
-.youtube-link:hover {
-  color: #B4E05F;
-  text-decoration: underline;
-}
-
 /*** Schedule Section ***/
+.schedule-section {
+  grid-column: 2 / 3; 
+  grid-row: 2 / 3; 
+  display: flex;
+  flex-direction: column;
+}
+
 .schedule-item {
   display: flex;
   flex-direction: column;
@@ -305,9 +390,9 @@
 .schedule-date {
   color: #F2F2F2;
   font-family: "Proxima Nova";
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 16px;
   letter-spacing: 4px;
   text-transform: uppercase;
   display: inline-flex;
@@ -343,11 +428,17 @@
   flex-grow: 1;
 }
 
+.team-bar .team-loser {
+  background-color: #161616;
+  color: #F2F2F2;
+}
+
 .team-score-background {
   align-items: flex-end;
   border-radius: 16px;
   border: 1px solid #333;
   background-color: #1C1C1C;
+  color: #F2F2F2;
   flex-direction: row;
   align-items: center;
   min-width: 100px;
@@ -365,6 +456,7 @@
   text-transform: uppercase;
   text-align: center;
   color: #F2F2F2;
+  letter-spacing: 0.8px;
 }
 
 .team-row {
@@ -374,6 +466,7 @@
   border-radius: 16px;
   border: 1px solid #333;
   background-color: #1C1C1C;
+  color: #F2F2F2;
   padding: 0px 20px;
   flex-direction: row;
   align-items: center;
@@ -408,7 +501,7 @@
   font-style: normal;
   font-weight: 600;
   color: #F2F2F2;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin: 0;  
   line-height: 20px;
 }
