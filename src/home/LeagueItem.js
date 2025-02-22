@@ -89,7 +89,7 @@ const LeagueItem = ({ sport, sportsStatsDB }) => {
                     <span className="player-name">{player.name}</span>
                     <span className="player-team">{player.abbrev}</span>
                 </div>
-                <div class="bottom-row">
+                <div className="bottom-row">
                     <p className="player-stats">{player.stats}</p>
                 </div>
             </div>

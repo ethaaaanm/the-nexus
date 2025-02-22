@@ -20,11 +20,15 @@ const Home = () => {
   const [selectedYear, setSelectedYear] = useState(2025);
   const [news, setNews] = useState([]); 
   const [schedule, setSchedule] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const filteredSchedule =
-    selectedMonth === `${selectedYear} SEASON`
-      ? schedule
-      : schedule.filter((item) => item.month === selectedMonth);
+  selectedMonth === `${selectedYear} SEASON`
+    ? schedule
+    : schedule.filter((item) => item.month.toLowerCase() === selectedMonth.toLowerCase());
+
+  console.log("Filtered Schedule:", filteredSchedule);
+
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -76,6 +80,7 @@ const Home = () => {
         });
 
         setSchedule(fetchedSchedule);
+        setLoading(false);
 
       } catch (error) {
           console.error("Error fetching schedule:", error);
@@ -124,16 +129,20 @@ const Home = () => {
         </div>
 
         {/* Bottom Right: Schedule Section */}
-        <div className="schedule-section">
-          {filteredSchedule.map((item, index) => (
-            <ScheduleItem
-              key={index}
-              sport={item.sport}
-              date={item.date}
-              teams={[item.team1, item.team2]}
-              video={item.video}
-            />
-          ))}
+          <div className="schedule-section">
+            {filteredSchedule.length > 0 ? (
+              filteredSchedule.map((item) => (
+                <ScheduleItem
+                  key={item.id || item.sport + item.date}
+                  sport={item.sport}
+                  date={item.date}
+                  teams={[item.team1, item.team2]}
+                  video={item.video}
+                />
+              ))
+            ) : (
+              <p>No games scheduled for this month.</p>
+            )}
         </div>
 
         {/* Bottom Right: League Leaders Section */}
