@@ -37,7 +37,7 @@ const ContactForm = () => {
   return (
     <div className="contact-container">
       <h2>Connect with Our Team</h2>
-      <form onSubmit={handleSubmit} className="contact-form">
+      <form action="https://formsubmit.co/contact.thenexusleague@gmail.com" method="POST" onSubmit={handleSubmit} className="contact-form" >
         <input
           type="text"
           name="name"
@@ -70,6 +70,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
         />
+        
         <button type="submit">Send Message</button>
       </form>
       {status && <p className="status-message">{status}</p>}
