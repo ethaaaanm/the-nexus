@@ -16,28 +16,11 @@ const ContactForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("Sending...");
-
-    try {
-      await addDoc(collection(db, "messages"), {
-        ...formData,
-        timestamp: new Date(),
-      });
-
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setStatus("Message sent successfully!");
-    } catch (error) {
-      console.error("Error submitting message:", error);
-      setStatus("Error sending message. Please try again.");
-    }
-  };
-
   return (
     <div className="contact-container">
       <h2>Connect with Our Team</h2>
-      <form action="https://formsubmit.co/contact.thenexusleague@gmail.com" method="POST" onSubmit={handleSubmit} className="contact-form" >
+      {/* <form className="contact-form" onSubmit={handleSubmit} > */}
+      <form target="_blank" action="https://formsubmit.co/contact.thenexusleague@gmail.com" method="POST">
         <input
           type="text"
           name="name"
@@ -70,7 +53,6 @@ const ContactForm = () => {
           onChange={handleChange}
           required
         />
-        
         <button type="submit">Send Message</button>
       </form>
       {status && <p className="status-message">{status}</p>}
