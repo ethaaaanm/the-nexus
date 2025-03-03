@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: calc(100vh - 100px); /* Adjust for header/footer height */
+    min-height: calc(100vh - 100px); 
     background-color: #050505;
     color: #F2F2F2;
     margin: 0; 
@@ -13,8 +13,8 @@
     gap: 20px
   }
   
-  .content-wrapper {
-    padding: 1rem; /* Add padding to avoid touching edges */
+  .error-content-wrapper {
+    padding: 1rem; 
   }
   
   .error-title {
@@ -76,4 +76,41 @@
     color: #050505;
     border-radius: 16px;
     border: 0px;
+  }
+
+  .submit-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: calc(100vh - 100px); 
+    background-color: #050505;
+    color: #F2F2F2;
+    margin: 0; 
+    padding: 0;
+    width: 100%; 
+    gap: 20px
+  }
+  
+  .submit-content-wrapper {
+    padding: 1rem; 
+  }
+  
+  .submit-title {
+    text-transform: uppercase;
+    color: #F2F2F2;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+  }
+  
+  .submit-description {
+    text-align: center;
+    color: #F2F2F2;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; 
+    letter-spacing: 4px;
+    text-transform: uppercase;
   }

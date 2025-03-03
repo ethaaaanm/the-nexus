@@ -4,7 +4,7 @@ import Home from "./home/Home";
 import AdminPage from "./admin/Admin";
 import StatsPage from "./stats/Stats";
 import AboutPage from "./about/About";
-import ErrorPage from "./error/404"
+import ErrorPage from "./misc/404"
 import TopNavBar from "./components/TopNavBar";
 import Footer from "./components/Footer";
 

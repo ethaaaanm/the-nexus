@@ -3,6 +3,10 @@ import Banner from "../res/images/about_banner.svg"
 import NexusShield from "../res/images/ic_nexus_shield.svg"
 import AboutDropdown from "./AboutDropdown";
 import ContactForm from "./ContactForm";
+import { FaYoutube } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
+import { IoMail } from "react-icons/io5";
+
 
 import "./about.css"
 
@@ -32,9 +36,27 @@ const About = () => {
                 </div>
 
                 <div className="about-team-connect">
-                    <h2 className="about-connect-title">Connect with our team. </h2>
-                    <h5 className="about-connect-inquiries">Questions? Comments? Concerns? Reach out to our team and we'd love to help you out!</h5>
                     <ContactForm/>
+                </div>
+
+                <div className="about-socials-row">
+                     <a href="mailto:contact.thenexusleague@gmail.com" className="about-social-button">
+                        <IoMail className="about-mail-logo"/>
+                        <h5 className="about-button-text">contact.thenexusleague@gmail.com</h5>
+                    </a>
+                    <a 
+                    href="https://www.instagram.com/thenexusleague/"   
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="about-social-button"
+                    >
+                        <AiFillInstagram className="about-ig-logo" />
+                        <h5 className="about-button-text">@thenexusleague</h5>
+                    </a>
+                    <a href="https://www.youtube.com/@TheNexus-League" target="_blank" rel="noopener noreferrer" className="about-social-button">
+                            <FaYoutube className="about-yt-logo"/>  
+                        <h5 className="about-button-text">@TheNexus-League</h5>
+                    </a>
                 </div>
             </div>
         </div>

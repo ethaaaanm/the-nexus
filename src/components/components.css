@@ -160,6 +160,14 @@
     cursor: pointer;
 }
 
+.yt-logo {
+    width: 24px;
+    height: auto;
+    margin: 0px 6px;
+    cursor: pointer;
+    color: #F2F2F2;
+}
+
 .footer a {
     text-decoration: none;
     color: #F2F2F2;

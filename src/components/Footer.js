@@ -2,6 +2,7 @@ import React from "react";
 import Instagram from "../res/images/ic_instagram.svg"
 import Mail from "../res/images/ic_mail.svg"
 import Workmark from "../res/images/wordmark.svg"
+import { FaYoutube } from "react-icons/fa";
 import './components.css'
 
 const Footer = () => {
@@ -21,6 +22,9 @@ const Footer = () => {
                 </a>
                 <a href="mailto:contact.thenexusleague@gmail.com">
                     <input className="mail-logo" type="image" src={Mail} alt="Mail Logo" />
+                </a>
+                <a href="https://www.youtube.com/@TheNexus-League" target="_blank" rel="noopener noreferrer">
+                    <FaYoutube className="yt-logo"/>
                 </a>
                 </div>
                 <h5 className="lil-msg">
