@@ -22,7 +22,7 @@ const ContactForm = () => {
       <form className="about-connect-form" target="_blank" action="https://formsubmit.co/contact.thenexusleague@gmail.com" method="POST">
       <input type="hidden" name="_blacklist" value="spammy pattern, banned term, phrase"/>
       <input type="hidden" name="_captcha" value="false"/>
-      <input type="hidden" name="_next" value="https://ethaaaanm.github.io/the-nexus/submitted"/>
+      <input type="hidden" name="_next" value="https://ethaaaanm.github.io/the-nexus/submitted" />
       <div className="about-personal-info-row">
         <input
             type="text"
