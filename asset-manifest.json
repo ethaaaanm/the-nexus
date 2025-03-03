@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/the-nexus/static/css/main.8ec3dea9.css",
+    "main.css": "/the-nexus/static/css/main.49ccf70e.css",
     "main.js": "/the-nexus/static/js/main.42643f49.js",
     "static/media/home_banner.svg": "/the-nexus/static/media/home_banner.ea71645b3eb4359d8726f4d1dd82bc50.svg",
     "static/media/about_banner.svg": "/the-nexus/static/media/about_banner.a21e31102fc65700b3ca81b70b9117d7.svg",
@@ -40,11 +40,11 @@
     "static/media/ic_mail.svg": "/the-nexus/static/media/ic_mail.fcc16c7ec52f8bbd2ae9fe0fdd5b6c3d.svg",
     "index.html": "/the-nexus/index.html",
     "static/media/team_refined.svg": "/the-nexus/static/media/team_refined.b78b387caff43a637ac04a146a444cc1.svg",
-    "main.8ec3dea9.css.map": "/the-nexus/static/css/main.8ec3dea9.css.map",
+    "main.49ccf70e.css.map": "/the-nexus/static/css/main.49ccf70e.css.map",
     "main.42643f49.js.map": "/the-nexus/static/js/main.42643f49.js.map"
   },
   "entrypoints": [
-    "static/css/main.8ec3dea9.css",
+    "static/css/main.49ccf70e.css",
     "static/js/main.42643f49.js"
   ]
 }
