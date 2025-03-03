@@ -12,10 +12,12 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 1500px;
+    max-width: 1200px;
     padding: 40px 80px;
     background-color: #050505;
     color: #F2F2F2;
+    flex-direction: column;
+    gap: 20px;
   }
 
   .stats-menu {
@@ -105,6 +107,7 @@
       letter-spacing: normal;
       line-height: 20px;
       align-items: center;
+      text-transform: none;
   }
     
   .stats-team-abbrev {
@@ -166,6 +169,7 @@
     margin: 0;  
     letter-spacing: normal;
     line-height: 20px;
+    text-transform: none;
   }
 
   .stats-dropdown-button.active .stats-team-abbrev {
@@ -259,16 +263,194 @@
       flex-shrink: 0; /* Prevent the dropdown from shrinking */
   }
 
-  .sports-button-row {
+  .stats-sports-button-row {
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 20px; 
   }
 
-  .Stat-Sport-Button {
+  .stat-sport-button {
     width: 70px; 
     height: 70px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   } 
+
+
+  .stat-sport-button.active {
+    transform: scale(1.1);
+}
+
+  .stats-leaderboard-wrap {
+    background-color: #0E0E0E;
+    display: flex;
+    padding: 0px 20px;
+    padding-bottom: 60px;
+    align-items: center;
+    align-self: stretch;
+    width: stretch;
+    border-radius: 20px;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .stats-leaderboard-title {
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    align-self: start;
+    padding-top: 10px;
+  }
+
+.stats-leaderboard-row {
+    width: stretch;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.leaderboard-card {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    border-radius: 16px;
+    border: 1px solid #333;
+    background: #1C1C1C;
+    padding: 20px;
+    min-width: 100px;
+    width: fit-content;
+    text-align: left;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.leaderboard-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background-color: #9ECB3B;
+  clip-path: polygon(70% 0%, 100% 0%, 100% 100%, 90% 100%);
+}
+
+.stat-title {
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    color: #F2F2F2;
+    text-transform: none;
+    letter-spacing: normal;
+    padding: 0;
+    margin: 0px;
+}
+
+.leader-name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 8px;
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0px;
+    padding-bottom: 20px;
+}
+
+.leader-value {
+    font-family: "Manuka";
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 850;
+    line-height: 64px; 
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0px;
+}
+
+.stats-player-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+    gap: 8px;
+}
+
+.player-card {
+    display: flex;
+    align-items: center;
+    background: #1C1C1C;
+    border-radius: 16px;
+    border: 1px solid #333;
+    padding: 0px 20px;
+    color: #F2F2F2;
+    position: relative;
+}
+
+.rank {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.rank-up {
+    color: #8fcf4d;
+    margin-right: 5px;
+}
+
+.rank-down {
+    color: red;
+    margin-right: 5px;
+}
+
+.player-info {
+    flex-grow: 1;
+}
+
+.player-name {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.player-team {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-left: 5px;
+}
+
+.player-stats {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.player-badges {
+    display: flex;
+    gap: 5px;
+}
+
+.badge {
+    background: none;
+    border: 1px solid #8fcf4d;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: #8fcf4d;
+}
+
+.input-stats-button {
+  display: flex;
+  height: 62px;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 16px;
+  border: 1px solid #333;
+  background-color: #1C1C1C;
+}

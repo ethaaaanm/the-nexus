@@ -86,7 +86,7 @@ const TeamDropdown = ({ teams, onTeamChange, defaultTeamId }) => {
                                 className="stats-dropdown-item"
                                 onClick={() => handleSelect(team)}
                             >
-                                {'Team ' + team.name}
+                                {team.name}
                             </li>
                         )
                     )) }
