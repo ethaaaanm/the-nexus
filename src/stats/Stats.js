@@ -1,4 +1,6 @@
 import { React, useState } from "react";
+import { Link } from 'react-router-dom';
+
 import TeamDropdown from "./TeamDropdown";
 import DateDropdown from "../home/DateDropdown";
 import UltimateIcon from "../res/images/ic_ultimate.svg";
@@ -53,7 +55,6 @@ const Stats = () => {
         { rank: 5, name: "Nathan Chak", team: "GEN", pts: 2, ast: 2, blk: 2, age: "-", height: "-", change: null },
     ];
     /** END TEMP DATA **/
-
 
     return (
         <div className="stats-container">
@@ -133,8 +134,9 @@ const Stats = () => {
                             </div>
                         ))}
                     </div>
-
-                    <button className="input-stats-button">Input Stats</button>
+                    <Link to="/input-stats" className="input-stats-link">
+                        <button className="input-stats-button">Input Stats</button>
+                    </Link>
                 </div>
             </div>
         </div>
