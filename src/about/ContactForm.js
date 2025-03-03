@@ -54,7 +54,7 @@ const ContactForm = () => {
         <textarea
         className="contact-message-form"
           name="message"
-          placeholder="Message"
+          placeholder="Message..."
           rows="4"
           value={formData.message}
           onChange={handleChange}

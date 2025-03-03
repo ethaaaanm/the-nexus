@@ -14,21 +14,19 @@ import "./res/styles/global.css";
 
 function App() {
   return (
-    <div className="App">
-      <Router basename="/the-nexus">
-        {<TopNavBar />} 
-          {<Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/stats" element={<StatsPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="*" element={<ErrorPage/>} />
-            <Route path="/submitted" element={<SubmittedPage/>} />
-          </Routes>}    
-        { <Footer/>}
-      </Router>
-    </div>
-  );
+    <Router basename="/the-nexus">
+    <TopNavBar />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/admin" element={<AdminPage />} />
+      <Route path="/stats" element={<StatsPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/submitted" element={<SubmittedPage />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
+    <Footer />
+  </Router>
+);
 }
 
 export default App;

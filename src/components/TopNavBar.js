@@ -1,9 +1,29 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./components.css";
 import logo from "../res/images/logo_green.svg"
 
 const TopNavBar = () => {
+    const adminPassword = "1Corinthians12:12";  // ADMIN: NAV PASSWORD
+    const navigate = useNavigate();
+
+
+    const handleAdminClick = (event) => {
+        const storedPassword = localStorage.getItem("adminPassword");
+        
+        if (storedPassword !== adminPassword) {
+            event.preventDefault(); 
+            const enteredPassword = window.prompt("Enter Admin Password:");
+            
+            if (enteredPassword === adminPassword) {
+                localStorage.setItem("adminPassword", enteredPassword);
+                navigate("/admin"); 
+            } else {
+                alert("Incorrect password. Nice Try Pal.");
+            }
+        }
+    };
+
     return (
         <header className="topnavbar">
             <div className="logo">
@@ -41,6 +61,7 @@ const TopNavBar = () => {
                         <NavLink 
                             to="/admin" 
                             className={({ isActive }) => isActive ? 'active' : ''} 
+                            onClick={handleAdminClick}
                         >
                             ADMIN
                         </NavLink>

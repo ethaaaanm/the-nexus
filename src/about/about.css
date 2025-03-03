@@ -218,6 +218,7 @@
     white-space: normal; 
     overflow-wrap: break-word; 
     word-break: break-word;
+    padding-bottom: 20px;
   }
 
   .about-team-connect {
