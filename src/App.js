@@ -5,6 +5,7 @@ import AdminPage from "./admin/Admin";
 import StatsPage from "./stats/Stats";
 import AboutPage from "./about/About";
 import ErrorPage from "./misc/404"
+import SubmittedPage from "./misc/Submitted";
 import TopNavBar from "./components/TopNavBar";
 import Footer from "./components/Footer";
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/stats" element={<StatsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<ErrorPage/>} />
+            <Route path="/submitted" element={<SubmittedPage/>} />
           </Routes>}    
         { <Footer/>}
       </Router>
