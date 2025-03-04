@@ -71,7 +71,7 @@ const Stats = () => {
                     <div className="stats-button-row">
                         <div className="stats-date-dropdown">
                             <DateDropdown
-                                months={["JUNE", "JULY", "AUGUST", `${selectedYear} SEASON`]}
+                                months={["June", "July", "August", `${selectedYear} SEASON`]}
                                 defaultMonth={`${selectedYear} SEASON`}
                                 onMonthChange={setSelectedMonth}
                             />

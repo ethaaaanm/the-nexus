@@ -123,7 +123,7 @@ const Home = () => {
           <h3>Schedule</h3>
           <DateDropdown
             months={["June", "July", "August", `${selectedYear} SEASON`]}
-            defaultMonth="JUNE"
+            defaultMonth="June"
             onMonthChange={setSelectedMonth}
           />
         </div>
