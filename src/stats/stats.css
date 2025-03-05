@@ -605,6 +605,57 @@
   color: #050505;
 }
 
+.input-add-player-button {
+  border-radius: 16px;
+  border: 1px solid #333;
+  background: #1C1C1C;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  align-self: stretch;
+  padding: 20px;
+  cursor: pointer;
+  gap: 8px;
+  font-family: "Proxima Nova";
+  font-size: 20px 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.input-add-player-button:hover {
+  border-radius: 16px;
+  border: 1px solid #333;
+  background: #161616;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  align-self: stretch;
+  padding: 20px;
+  cursor: pointer;
+  gap: 8px;
+  font-family: "Proxima Nova";
+  font-size: 20px 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.input-add-player-button:active {
+  border-radius: 16px;
+  border: 1px solid #9ECB3B;
+  background-color: #9ECB3B;
+  color: #050505;
+}
+
+.input-add-icon {
+  font-size: 12px;
+}
+
 .input-player-sidebar-name {
   font-family: "Proxima Nova";
   font-size: 20px;

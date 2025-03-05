@@ -7,6 +7,7 @@ import VolleyballIcon from "../res/images/ic_volleyball.svg"
 import TeamDropdown from "./TeamDropdown";
 import DateDropdown from "../home/DateDropdown";
 import { BiSolidPencil } from "react-icons/bi";
+import { FaPlus } from "react-icons/fa";
 import { teamDB } from "../data/teamData";
 
 import "./stats.css";
@@ -27,7 +28,7 @@ const players = [
 
 const initialStats = {
     "Ultimate Frisbee": { points: 0, assists: 0, blocks: 0 },
-    Softball: { hits: 0, atBats: 0, runsBattedIn: 0 },
+    Softball: { hits: 0, "at Bats": 0, "runs Batted In": 0 },
     Basketball: { points: 0, assists: 0, blocks: 0, steals: 0, rebounds: 0 },
     Volleyball: { serves: 0 }
 };
@@ -89,6 +90,9 @@ const InputStats = () => {
                                 </li>
                             ))}
                         </ul>
+                            <button className="input-add-player-button">
+                                <FaPlus className="input-add-icon"/>Add Player
+                            </button>
                     </div>
                 </div>
 
