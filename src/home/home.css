@@ -192,6 +192,10 @@
   margin-bottom: 20px ;
 }
 
+.news-item.content {
+  white-space: pre-line;
+}
+
 .youtube-link {
   color: #F2F2F2;
   text-decoration: underline;

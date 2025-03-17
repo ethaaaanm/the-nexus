@@ -6,7 +6,7 @@ const NewsItem = ({ title, date, content, isLastItem }) => {
       <div className="news-item">
         <h3>{title}</h3>
         {date && <p className="news-date">{date}</p>}
-        <p>
+        <p className="news-item-content">
           {isLastItem && content.includes("The Nexus") ? (
             <>
               {content.split("The Nexus!").map((part, i, arr) => (
@@ -29,7 +29,12 @@ const NewsItem = ({ title, date, content, isLastItem }) => {
               </a>
             </>
           ) : (
-            content
+            content.replace(/\\n/g, "\n").split("\n").map((line, i) => (
+              <React.Fragment key={i}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))
           )}
         </p>
       </div>
