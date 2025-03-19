@@ -23,7 +23,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   const filteredSchedule =
-  selectedMonth === `${selectedYear} SEASON`
+  selectedMonth === `${selectedYear} Season`
     ? schedule
     : schedule.filter((item) => item.month.toLowerCase() === selectedMonth.toLowerCase());
 
@@ -122,7 +122,7 @@ const Home = () => {
         <div className="schedule-dropdown">
           <h3>Schedule</h3>
           <DateDropdown
-            months={["June", "July", "August", `${selectedYear} SEASON`]}
+            months={["June", "July", "August", `${selectedYear} Season`]}
             defaultMonth="June"
             onMonthChange={setSelectedMonth}
           />
