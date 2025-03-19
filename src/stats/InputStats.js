@@ -22,10 +22,10 @@ const InputStats = () => {
     };
 
     const statFields = {
-        Basketball: ["Points", "Rebounds", "Assists", "Blocks", "Steals"],
-        Volleyball: ["Wins", "Losses"],
-        Softball: ["Hits", "At Bats", "RBI"],
-        "Ultimate Frisbee": ["Points", "Assists", "Blocks"],
+        Basketball: ["Points (PTS)", "Rebounds (REB)", "Assists (AST)", "Blocks (BLK)", "Steals (STL)"],
+        Volleyball: ["Wins (W)", "Losses (L)", "Serves (SRV)"],
+        Softball: ["Hits (H)", "At Bats (AB)", "Runs Batted In (RBI)"],
+        "Ultimate Frisbee": ["Points (PTS)", "Assists (AST)", "Blocks (BLK)"],
     };
 
     const [players, setPlayers] = useState([]);
@@ -38,6 +38,9 @@ const InputStats = () => {
     const [stats, setStats] = useState({});
     const [newPlayer, setNewPlayer] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isEditingName, setIsEditingName] = useState(false);
+    const [editedName, setEditedName] = useState("");
+    const [editingStat, setEditingStat] = useState(null);
 
     useEffect(() => {
         fetchPlayers();
@@ -83,6 +86,10 @@ const InputStats = () => {
 
     const handleTeamChange = (teamID) => {
         setSelectedTeam(teamID);
+
+        if (newPlayer) {
+            setNewPlayer(prev => ({ ...prev, teamID: teamID }));
+        }
     };
 
     const handleStatChange = (scheduleID, stat, value) => {
@@ -116,6 +123,14 @@ const InputStats = () => {
 
     const handlePlayerSelect = (player) => {
         setSelectedPlayer(player);
+        
+        const updatedStats = {};
+
+        schedules.forEach(schedule => {
+            updatedStats[schedule.id] = player.Stats?.[schedule.id] || {};
+        });
+
+        setStats(updatedStats);
         setNewPlayer(null);
     };
 
@@ -143,6 +158,28 @@ const InputStats = () => {
         setPlayers([...players, newPlayer]);
         setSelectedPlayer(newPlayer);
         setNewPlayer(null);
+    };
+
+    const handleNameEdit = () => {
+        setIsEditingName(true);
+        setEditedName(selectedPlayer.playerName);
+    };
+
+    const saveNameEdit = async () => {
+        if (!editedName.trim()) return; // Prevent saving empty names
+        const playerRef = doc(db, "players", selectedPlayer.id);
+        await updateDoc(playerRef, { playerName: editedName });
+        setSelectedPlayer({ ...selectedPlayer, playerName: editedName });
+        setIsEditingName(false);
+    };
+
+    const handleStatClick = (scheduleID, stat) => {
+        setEditingStat({ scheduleID, stat });
+    };
+
+    const saveStatEdit = (scheduleID, stat, value) => {
+        handleStatChange(scheduleID, stat, value);
+        setEditingStat(null);
     };
 
     const filteredSchedules = selectedMonth === `${selectedYear} Season`
@@ -204,13 +241,14 @@ const InputStats = () => {
                                         key={player.id}
                                         onClick={() => handlePlayerSelect(player)}
                                     >
-                                        <h4 className="input-player-sidebar-name">{player.playerName}</h4>
-                                        <h5 className="input-player-sidebar-team">
+                                        <h4 className={`input-player-sidebar-name ${selectedPlayer?.id === player.id ? "active" : ""}`}>{player.playerName}</h4>
+                                        <h5 className={`input-player-sidebar-team ${selectedPlayer?.id === player.id ? "active" : ""}`}>
                                             {teams.find(t => t.id === player.teamID)?.abbrev || "Unknown"}
                                         </h5>
                                     </li>
                                 ))}
                         </ul>
+
                         <button className="input-add-player-button" onClick={startNewPlayer}>
                             <FaPlus className="input-add-icon" /> Add Player
                         </button>
@@ -221,9 +259,31 @@ const InputStats = () => {
                     {selectedPlayer ? (
                         <>
                             <div className="input-player-header">
-                                <div className="input-player-info-column">
+                                <div className="input-player-info-column ">
                                     <h5 className="input-player-team">{teams.find(t => t.id === selectedPlayer.teamID)?.name || "Unknown"}</h5>
-                                    <h1 className="input-player-name">{selectedPlayer.playerName}</h1>
+                                    <h1 className="input-player-name">
+                                        {isEditingName ? (
+                                            <div className="edit-player-name-row">
+                                                <input
+                                                    type="text"
+                                                    className="input-edit-player-name"
+                                                    value={editedName}
+                                                    onChange={(e) => setEditedName(e.target.value)}
+                                                    autoFocus
+                                                    onKeyDown={(e) => e.key === "Enter" && saveNameEdit()}
+                                                />
+                                                <button className="save-icon-button" onClick={saveNameEdit}>
+                                                    <BiCheck className="save-icon" />
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <div className="edit-player-name-button" onClick={handleNameEdit}>
+                                                {selectedPlayer.playerName}
+                                                <BiSolidPencil className="edit-player-name-icon" />
+                                            </div>
+                                        )}
+                                    </h1>
+
                                     <div className="input-player-stat-button-row">
                                         <PillButton
                                             label="Age"
@@ -269,13 +329,24 @@ const InputStats = () => {
                                                 </div>
                                                 <div className="input-sport-stat-row">
                                                     {statFields[schedule.sport]?.map(stat => (
-                                                        <div key={stat} className="input-sport-stat-box">
-                                                            <p>{stat.toUpperCase()}</p>
-                                                            <input
-                                                                type="number"
-                                                                value={stats[schedule.id]?.[stat] || ""}
-                                                                onChange={(e) => handleStatChange(schedule.id, stat, e.target.value)}
-                                                            />
+                                                        <div key={stat} className="input-sport-stat-box" onClick={() => handleStatClick(schedule.id, stat)}>
+                                                            <div className="input-sport-text-column">
+                                                                <p className="input-sport-current-stat">{stat}</p>
+                                                                <p className="input-sport-edit-indicator">Edit</p>
+                                                            </div>
+                                                            {editingStat?.scheduleID === schedule.id && editingStat?.stat === stat ? (
+                                                                <input
+                                                                    type="number"
+                                                                    value={stats[schedule.id]?.[stat] || ""}
+                                                                    onChange={(e) => handleStatChange(schedule.id, stat, e.target.value)}
+                                                                    onBlur={() => saveStatEdit(schedule.id, stat, stats[schedule.id]?.[stat])}
+                                                                    autoFocus
+                                                                />
+                                                            ) : (
+                                                                <p className="input-sport-stat-display">
+                                                                    {stats[schedule.id] && stats[schedule.id][stat] !== undefined ? stats[schedule.id][stat] : "-"}
+                                                                </p>
+                                                            )}
                                                         </div>
                                                     ))}
                                                 </div>
@@ -290,24 +361,30 @@ const InputStats = () => {
                         </>
                     ) : newPlayer ? (
                         <div className="new-player-form">
-                            <h2>Create New Player</h2>
-                            <input
-                                type="text"
-                                placeholder="Player Name"
-                                value={newPlayer.playerName}
-                                onChange={(e) => setNewPlayer({ ...newPlayer, playerName: e.target.value })}
-                            />
-                            <PillButton
-                                label="Age"
-                                value={newPlayer.Age}
-                                onSave={(newValue) => setNewPlayer({ ...newPlayer, Age: newValue })}
-                            />
-                            <PillButton
-                                label="Height"
-                                value={newPlayer.Height}
-                                onSave={(newValue) => setNewPlayer({ ...newPlayer, Height: newValue })}
-                            />
-                            <button className="save-stats-button" onClick={saveNewPlayer}>Save Player</button>
+                            <h2 className="new-player-title">Create New Player</h2>
+                            <div className="new-player-header">
+                                <input
+                                    className="new-player-input-name"
+                                    type="text"
+                                    placeholder="Player Name"
+                                    value={newPlayer.playerName}
+                                    onChange={(e) => setNewPlayer({ ...newPlayer, playerName: e.target.value })}
+                                />
+                                <TeamSelector teams={teams} defaultTeamId="SELECT TEAM" onTeamChange={handleTeamChange} />
+                                <div className="new-player-row">
+                                    <PillButton
+                                        label="Age"
+                                        value={newPlayer.Age}
+                                        onSave={(newValue) => setNewPlayer({ ...newPlayer, Age: newValue })}
+                                    />
+                                    <PillButton
+                                        label="Height"
+                                        value={newPlayer.Height}
+                                        onSave={(newValue) => setNewPlayer({ ...newPlayer, Height: newValue })}
+                                    />
+                                </div>
+                                <button className="save-stats-button" onClick={saveNewPlayer}>Save Player</button>
+                            </div>
                         </div>
                     ) : (
                         <p>Select or create a player to start editing.</p>

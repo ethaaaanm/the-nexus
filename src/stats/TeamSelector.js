@@ -18,7 +18,7 @@ const TeamSelector = ({ teams, onTeamChange, defaultTeamId }) => {
 
     useEffect(() => {
         const defaultTeam = teams.find(team => team.id === defaultTeamId);
-        
+
         const handleOutsideClick = (e) => {
             if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
                 setIsOpen(false);
@@ -32,7 +32,7 @@ const TeamSelector = ({ teams, onTeamChange, defaultTeamId }) => {
     return (
         <div ref={dropdownRef} className="stats-selector-container">
             <button className={`stats-selector-button ${isOpen ? "active" : ""}`} onClick={handleToggle}>
-                {selectedTeam?.name || "Filter by Team"}
+                {selectedTeam ? selectedTeam.name : (defaultTeamId === "SELECT TEAM" ? "Select Team" : "Filter by Team")}
                 <BiSolidDownArrow className={`stats-dropdown-arrow ${isOpen ? "open" : ""}`} />
             </button>
             {isOpen && (
