@@ -116,7 +116,9 @@ const InputStats = () => {
             }
         });
 
-        await updateDoc(playerRef, { Stats: updatedStats });
+        const seasonAverages = calculateSeasonAverages(updatedStats);
+
+        await updateDoc(playerRef, { Stats: updatedStats, seasonAverages });
         alert("Stats updated successfully!");
         fetchPlayers();
     };
@@ -182,6 +184,44 @@ const InputStats = () => {
         setEditingStat(null);
     };
 
+    const calculateSeasonAverages = (playerStats) => {
+        const yearlySportStats = {};
+    
+        Object.entries(playerStats).forEach(([gameID, gameData]) => {
+            const { sport, ...stats } = gameData;
+            const schedule = schedules.find(s => s.id === gameID);
+            if (!schedule) return; // Skip if schedule is missing
+    
+            const year = schedule.year;
+            if (!yearlySportStats[year]) {
+                yearlySportStats[year] = {};
+            }
+            if (!yearlySportStats[year][sport]) {
+                yearlySportStats[year][sport] = { totalStats: {}, gameCounts: {} };
+            }
+    
+            Object.entries(stats).forEach(([stat, value]) => {
+                yearlySportStats[year][sport].totalStats[stat] = 
+                    (yearlySportStats[year][sport].totalStats[stat] || 0) + value;
+                yearlySportStats[year][sport].gameCounts[stat] = 
+                    (yearlySportStats[year][sport].gameCounts[stat] || 0) + 1;
+            });
+        });
+    
+        const seasonAverages = {};
+        Object.entries(yearlySportStats).forEach(([year, sports]) => {
+            seasonAverages[year] = {};
+            Object.entries(sports).forEach(([sport, data]) => {
+                seasonAverages[year][sport] = {};
+                Object.keys(data.totalStats).forEach(stat => {
+                    seasonAverages[year][sport][stat] = (data.totalStats[stat] / data.gameCounts[stat]).toFixed(2);
+                });
+            });
+        });
+    
+        return seasonAverages;
+    };
+    
     const filteredSchedules = selectedMonth === `${selectedYear} Season`
         ? schedules
         : schedules.filter(schedule => schedule.month.toLowerCase() === selectedMonth.toLowerCase());

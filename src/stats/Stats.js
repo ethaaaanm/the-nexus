@@ -1,8 +1,10 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
-import TeamDropdown from "./TeamDropdown";
-import DateDropdown from "../home/DateDropdown";
+import TeamSelector from "./TeamSelector";
+import GameDropdown from "./GameDropdown";
 import UltimateIcon from "../res/images/ic_ultimate.svg";
 import UltimateActive from "../res/images/ic_ultimate_active.svg"
 import UltimateHover from "../res/images/ic_ultimate_hover.svg"
@@ -16,29 +18,34 @@ import VolleyballIcon from "../res/images/ic_volleyball.svg";
 import VolleyballActive from "../res/images/ic_volleyball_active.svg"
 import VolleyballHover from "../res/images/ic_volleyball_hover.svg"
 
-import { teamDB } from "../data/teamData";
-
 import "./stats.css";
 
 
 const Stats = () => {
-    const handleTeamChange = (team) => {
-        console.log("Selected team:", team);
-    };
-
-    const [selectedMonth, setSelectedMonth] = useState("June"); // Track selected month
+    const [selectedSchedule, setSelectedSchedule] = useState({ id: "season", name: "2025 Season" });
     const [selectedYear, setSelectedYear] = useState(2025);
-    const [selectedSport, setSelectedSport] = useState(null);
+    const [selectedSport, setSelectedSport] = useState("Ultimate Frisbee");
     const [hoveredSport, setHoveredSport] = useState(null);
+    const [players, setPlayers] = useState([]);
+    const [teams, setTeams] = useState([]);
+    const [schedules, setSchedules] = useState([]);
+    const [selectedTeam, setSelectedTeam] = useState("SELECT TEAM");
+    const [loading, setLoading] = useState(true);
+    const [displayedStats, setDisplayedStats] = useState([]);
 
-
-    const sports = [
-        { id: "ultimate", defaultIcon: UltimateIcon, hoverIcon: UltimateHover, activeIcon: UltimateActive, alt: "Ultimate Frisbee Button" },
-        { id: "basketball", defaultIcon: BasketballIcon, hoverIcon: BasketballHover, activeIcon: BasketballActive, alt: "Basketball Button" },
-        { id: "volleyball", defaultIcon: VolleyballIcon, hoverIcon: VolleyballHover, activeIcon: VolleyballActive, alt: "Volleyball Button" },
-        { id: "softball", defaultIcon: SoftballIcon, hoverIcon: SoftballHover, activeIcon: SoftballActive, alt: "Softball Button" },
+    const sportsIcon = [
+        { id: "Ultimate Frisbee", defaultIcon: UltimateIcon, hoverIcon: UltimateHover, activeIcon: UltimateActive, alt: "Ultimate Frisbee Button" },
+        { id: "Basketball", defaultIcon: BasketballIcon, hoverIcon: BasketballHover, activeIcon: BasketballActive, alt: "Basketball Button" },
+        { id: "Volleyball", defaultIcon: VolleyballIcon, hoverIcon: VolleyballHover, activeIcon: VolleyballActive, alt: "Volleyball Button" },
+        { id: "Softball", defaultIcon: SoftballIcon, hoverIcon: SoftballHover, activeIcon: SoftballActive, alt: "Softball Button" },
     ];
 
+    const statFields = {
+        Basketball: ["Points (PTS)", "Rebounds (REB)", "Assists (AST)", "Blocks (BLK)", "Steals (STL)"],
+        Volleyball: ["Wins (W)", "Losses (L)", "Serves (SRV)"],
+        Softball: ["Hits (H)", "At Bats (AB)", "Runs Batted In (RBI)"],
+        "Ultimate Frisbee": ["Points (PTS)", "Assists (AST)", "Blocks (BLK)"],
+    };
 
     /** START TEMP DATA **/
     const teamLeaders = {
@@ -47,14 +54,153 @@ const Stats = () => {
         blocks: { name: "James Wong", value: 5 },
     };
 
-    const players = [
-        { rank: 1, name: "Ethan Mah", team: "GEN", pts: 7, ast: 2, blk: 3, age: 23, height: "5'10", change: "up" },
-        { rank: 2, name: "Evan Chak", team: "GEN", pts: 1, ast: 13, blk: 1, age: 20, height: "5'10", change: "down" },
-        { rank: 3, name: "Alexander Wong", team: "GEN", pts: 6, ast: 1, blk: 2, age: "-", height: "-", change: null },
-        { rank: 4, name: "Jordan Lam", team: "GEN", pts: 3, ast: 5, blk: 3, age: "-", height: "-", change: null },
-        { rank: 5, name: "Nathan Chak", team: "GEN", pts: 2, ast: 2, blk: 2, age: "-", height: "-", change: null },
-    ];
-    /** END TEMP DATA **/
+    useEffect(() => {
+        fetchPlayers();
+        fetchSchedules();
+        fetchTeams();
+
+        setTimeout(() => {
+            setSelectedSchedule((prevSchedule) =>
+                prevSchedule.id === "season" ? { id: "season", name: `${selectedYear} Season` } : prevSchedule
+            );
+        }, 0);
+    }, [selectedSport]);
+
+    const fetchPlayers = async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "players"));
+            const playerList = querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            setPlayers(playerList);
+            setLoading(false);
+            console.log("Fetched Players:", playerList);
+
+        } catch (error) {
+            console.error("Error fetching players:", error);
+        }
+    };
+
+    const fetchSchedules = async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "schedule"));
+            const fetchedSchedule = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+            fetchedSchedule.sort((a, b) => {
+                const parseDate = (dateString) => {
+                    const [datePart, timePart] = dateString.split(" | ");
+                    const [month, day] = datePart.split("/").map(Number);
+                    const year = a.year;
+                    return new Date(`${year}-${month}-${day} ${timePart}`);
+                };
+
+                return parseDate(a.date) - parseDate(b.date);  // Sort by ascending date
+            });
+
+            setSchedules(fetchedSchedule);
+            setLoading(false);
+
+        } catch (error) {
+            console.error("Error fetching schedule:", error);
+        }
+    };
+
+    const fetchTeams = async () => {
+        const querySnapshot = await getDocs(collection(db, "teams"));
+        const teamList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setTeams(teamList);
+    };
+
+    const handleTeamChange = (teamID) => {
+        setSelectedTeam(teamID);
+    };
+
+    const handleGameChange = (game) => {
+        console.log("Game changed to:", game);
+        setSelectedSchedule(game);
+
+        if (game.sport) {
+            setSelectedSport(game.sport);
+        }
+    };
+
+
+    useEffect(() => {
+        console.log("Updating displayedStats for team:", selectedTeam, "schedule:", selectedSchedule?.id, "sport:", selectedSport);
+    
+        const filtered = players.filter(player => {
+            const matchesTeam = !selectedTeam || selectedTeam === "SELECT TEAM" || player.teamID === selectedTeam;
+            const hasStats = selectedSchedule?.id === "season"
+                ? player.seasonAverages?.[selectedYear]?.[selectedSport]
+                : player.Stats?.[selectedSchedule.id];
+    
+            return matchesTeam && hasStats;
+        });
+    
+        console.log("Filtered Players:", filtered);
+    
+        const updatedStats = filtered.map(player => {
+            const playerStats = selectedSchedule?.id === "season"
+                ? player.seasonAverages?.[selectedYear]?.[selectedSport] || {}
+                : player.Stats?.[selectedSchedule.id] || {};
+            return { ...player, stats: playerStats };
+        });
+    
+        console.log("Updated Stats:", updatedStats);
+        setDisplayedStats(updatedStats);
+    }, [selectedSchedule, players, selectedTeam, selectedYear, selectedSport]);
+    
+
+
+    const getLeagueLeaders = (players, sport) => {
+        const leaders = {};
+    
+        statFields[sport].forEach(stat => {
+            const topPlayer = players
+                .filter(player => {
+                    const stats = selectedSchedule?.id === "season"
+                        ? player.seasonAverages?.[selectedYear]?.[sport]
+                        : player.Stats?.[selectedSchedule?.id]; 
+                    
+                    return stats && stats[stat] !== undefined;
+                })
+                .reduce((best, player) => {
+                    const playerStatValue = selectedSchedule?.id === "season"
+                        ? player.seasonAverages[selectedYear][sport][stat]
+                        : player.Stats[selectedSchedule?.id][stat];
+    
+                    const bestStatValue = best
+                        ? (selectedSchedule?.id === "season"
+                            ? best.seasonAverages[selectedYear][sport][stat]
+                            : best.Stats[selectedSchedule?.id][stat])
+                        : -Infinity;
+                    
+                    return playerStatValue > bestStatValue ? player : best;
+                }, null);
+    
+            if (topPlayer) {
+                leaders[stat] = {
+                    name: topPlayer.playerName,
+                    value: selectedSchedule?.id === "season"
+                        ? topPlayer.seasonAverages[selectedYear][sport][stat]
+                        : topPlayer.Stats[selectedSchedule?.id][stat]
+                };
+            }
+        });
+    
+        return leaders;
+    };
+    
+
+    const getPlayerStats = (player) => {
+        if (!selectedSchedule) return {};
+        if (selectedSchedule.id === "season") {
+            return player.seasonAverages?.[selectedYear]?.[selectedSport] || {};
+        }
+
+        return player.Stats && player.Stats[selectedSchedule.id] ? player.Stats[selectedSchedule.id] : {};
+    };
 
     return (
         <div className="stats-container">
@@ -62,22 +208,21 @@ const Stats = () => {
                 <div className="stats-menu">
                     <h3 className="stats-header">League Stats</h3>
                     <div className="stats-team-dropdown">
-                        <TeamDropdown
-                            teams={teamDB}
-                            defaultTeamId="G1"
-                            onTeamChange={handleTeamChange}
-                        />
+                        {console.log({ teams })}
+                        <TeamSelector teams={teams} defaultTeamId="SELECT TEAM" onTeamChange={handleTeamChange} />
+
                     </div>
                     <div className="stats-button-row">
                         <div className="stats-date-dropdown">
-                            <DateDropdown
-                                months={["June", "July", "August", `${selectedYear} SEASON`]}
-                                defaultMonth={`${selectedYear} SEASON`}
-                                onMonthChange={setSelectedMonth}
+                            <GameDropdown
+                                games={[{ id: "season", name: `${selectedYear} Season` }, ...schedules]}
+                                onGameChange={handleGameChange}
+                                defaultGame={{ id: "season", name: `${selectedYear} Season` }}
+                                value={selectedSchedule}
                             />
                         </div>
                         <div className="stats-sports-button-row">
-                            {sports.map((sport) => (
+                            {sportsIcon.map((sport) => (
                                 <img
                                     key={sport.id}
                                     src={
@@ -99,40 +244,50 @@ const Stats = () => {
                 </div>
 
                 <div className="stats-leaderboard-wrap">
-                    <h4 className="stats-leaderboard-title">Team Leaders</h4>
+                    <h4 className="stats-leaderboard-title">{selectedSport} - League Leaders</h4>
                     <div className="stats-leaderboard-row">
-                        {Object.entries(teamLeaders).map(([stat, leader]) => (
+                        {Object.entries(getLeagueLeaders(players, selectedSport)).map(([stat, leader]) => (
                             <div key={stat} className="leaderboard-card">
-                                <h5 className="stat-title">{stat.charAt(0).toUpperCase() + stat.slice(1)} ({stat.toUpperCase()})</h5>
+                                <h5 className="stat-title">{stat}</h5>
                                 <h4 className="leader-name">{leader.name}</h4>
                                 <h2 className="leader-value">{leader.value}</h2>
                             </div>
                         ))}
                     </div>
+                    {console.log("Displayed Stats:", displayedStats)}
 
                     <div className="stats-player-list">
-                        {players.map((player) => (
-                            <div key={player.rank} className="player-card">
-                                <span className="rank">
-                                    {player.change === "up" && <span className="rank-up">▲</span>}
-                                    {player.change === "down" && <span className="rank-down">▼</span>}
-                                    {player.rank}
-                                </span>
-                                <div className="player-info">
-                                    <div className="top-row">
-                                        <span className="player-name">{player.name}</span>
-                                        <span className="player-team">{player.team}</span>
+                        {displayedStats.map((player) => {
+                            const stats = getPlayerStats(player);
+                            return (
+                                <div key={player.id} className="player-card">
+                                    <div className="player-info">
+                                        <div className="top-row">
+                                            <span className="player-name">{player.playerName}</span>
+                                            <span className="player-team"> {teams.find(t => t.id === player.teamID)?.abbrev || "Unknown"}</span>
+                                        </div>
+                                        <span className="player-stats">
+                                            {Object.keys(stats).length > 0 ? (
+                                                <div className="game-stats">
+                                                    <p>
+                                                        {Object.entries(stats)
+                                                            .filter(([stat]) => stat !== "sport")
+                                                            .map(([stat, value]) => `${value} ${stat}`)
+                                                            .join(" ")}
+                                                    </p>
+                                                </div>
+                                            ) : (
+                                                <p className="no-stats">No stats available for this game.</p>
+                                            )}
+                                        </span>
                                     </div>
-                                    <span className="player-stats">
-                                        {player.pts} PTS, {player.ast} AST, {player.blk} BLK
-                                    </span>
+                                    <div className="player-badges">
+                                        <span className="badge">{player.Age} yrs</span>
+                                        <span className="badge">{player.Height}</span>
+                                    </div>
                                 </div>
-                                <div className="player-badges">
-                                    <span className="badge">{player.age} yrs</span>
-                                    <span className="badge">{player.height}</span>
-                                </div>
-                            </div>
-                        ))}
+                            )
+                        })}
                     </div>
                     <Link to="/input-stats" className="input-stats-link">
                         <button className="input-stats-button">Input Stats</button>

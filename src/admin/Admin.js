@@ -155,8 +155,9 @@ const AdminPage = () => {
     if (!isConfirmed) return;
 
     try {
-      await addDoc(collection(db, "schedule"), newSchedule);
-
+      const docRef = await addDoc(collection(db, "schedule"), newSchedule);
+      await updateDoc(doc(db, "schedule", docRef.id), { id: docRef.id });
+      
       setNewSchedule({
         year: "2025",
         month: "",
