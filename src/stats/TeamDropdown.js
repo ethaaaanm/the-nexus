@@ -5,7 +5,7 @@ import "./stats.css";
 const TeamDropdown = ({ teams, onTeamChange, defaultTeamId }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedTeam, setSelectedTeam] = useState(
-        teams.find((team) => team.id === defaultTeamId) || { id: "select", name: "SELECT TEAM" }
+        teams.find((team) => team.id === defaultTeamId) || { id: "select", name: "FILTER BY TEAM" }
     );
     const dropdownRef = useRef(null);
 
@@ -33,7 +33,7 @@ const TeamDropdown = ({ teams, onTeamChange, defaultTeamId }) => {
             <button className={`stats-dropdown-button ${isOpen ? "active" : ""}`} onClick={handleToggle}>
                 <div className="stats-team-row">
                 {selectedTeam?.id === "select" && (
-           <p className="stats-team-name">{"SELECT TEAM"}</p>                            )}
+           <p className="stats-team-name">{selectedTeam?.name}</p>                            )}
                     <div className="stats-team-details">
                         <div className="stats-team-info-row">
                         {selectedTeam?.id !== "select" && (
@@ -60,7 +60,7 @@ const TeamDropdown = ({ teams, onTeamChange, defaultTeamId }) => {
                     {/* <li
                         key="all-teams"
                         className="stats-dropdown-item"
-                        onClick={() => handleSelect({ id: "select", name: "SELECT TEAM" })}
+                        onClick={() => handleSelect({ id: "select", name: "FILTER BY TEAM" })}
                     >
                         All Teams
                     </li> */}
@@ -68,10 +68,7 @@ const TeamDropdown = ({ teams, onTeamChange, defaultTeamId }) => {
                     {/* Individual teams */}
                     {teams.map((team) => (
                         <li key={team.id} className="stats-dropdown-item" onClick={() => handleSelect(team)}>
-                            <div className="team-dropdown-row">
-                                <p className="team-name">{team.name}</p>
-
-                            </div>
+                                <p className="stats-dropdown-item-team-name">{team.name}</p>
                         </li>
                     ))}
                 </ul>

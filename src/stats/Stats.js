@@ -267,10 +267,10 @@ const Stats = () => {
                                                 {teams.find(t => t.id === player.teamID)?.abbrev || "Unknown"}
                                             </span>
                                         </div>
-                                        <span className="player-stats">
+                                        <div className="player-stats">
                                             {Object.keys(stats).length > 0 ? (
                                                 <div className="game-stats">
-                                                    <p>
+                                                    <p className="game-stats-text">
                                                         {statFields[selectedSport]
                                                             .map(stat => {
                                                                 const key = stat; 
@@ -292,7 +292,7 @@ const Stats = () => {
                                             ) : (
                                                 <p className="no-stats">No stats available for this game.</p>
                                             )}
-                                        </span>
+                                        </div>
                                     </div>
                                     <div className="player-badges">
                                         <span className="badge">{player.Age} yrs</span>
