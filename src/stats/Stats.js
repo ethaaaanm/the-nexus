@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
-import TeamSelector from "./TeamSelector";
 import TeamDropdown from "./TeamDropdown";
 import GameDropdown from "./GameDropdown";
 import UltimateIcon from "../res/images/ic_ultimate.svg";
@@ -21,11 +20,12 @@ import VolleyballHover from "../res/images/ic_volleyball_hover.svg"
 
 import "./stats.css";
 
-/***  Remaining Bugs:
- * 2. When Sport Icon is pressed, should go back to 2025 Season
- * 5. TeamSelector should be changed back to TeamDropdown as it shows stats, abbrev, etc. (May need to compare DB with ../TeamDB for structure)
+/***  Remaining Changes:
+ * 1. Sorting Players by Stats:
+ * - Basketball/Ultimate highest total
+ * - Softball: Highest total hits + RBI
+ * - Volleyball: Most Serves
  *   ***/
-
 
 const Stats = () => {
     const [selectedSchedule, setSelectedSchedule] = useState({ id: "season", name: "2025 Season" });
@@ -57,16 +57,7 @@ const Stats = () => {
         fetchPlayers();
         fetchSchedules();
         fetchTeams();
-
-        setTimeout(() => {
-            setSelectedSchedule((prev) => {
-                if (prev.id === "season") {
-                    return { id: "season", name: `${selectedYear} Season` };
-                }
-                return prev;
-            });
-        }, 0);
-    }, [selectedYear, selectedSport]);
+    }, [selectedSport]);
 
     const fetchPlayers = async () => {
         try {
@@ -125,6 +116,14 @@ const Stats = () => {
         }
     };
 
+    useEffect(() => {
+        setSelectedSchedule((prev) => {
+            if (prev.id === "season" || !prev.id) {
+                return { id: "season", name: `${selectedYear} Season` };
+            }
+            return prev; 
+        });
+    }, [selectedYear, selectedSport]);
 
     useEffect(() => {
         const filtered = players.filter(player => {
@@ -145,8 +144,6 @@ const Stats = () => {
 
         setDisplayedStats(updatedStats);
     }, [selectedSchedule, players, selectedTeam, selectedYear, selectedSport]);
-
-
 
     const getLeagueLeaders = (players, sport) => {
         const leaders = {};
@@ -188,8 +185,6 @@ const Stats = () => {
         return leaders;
     };
 
-
-
     const getPlayerStats = (player) => {
         if (!selectedSchedule) return {};
 
@@ -197,8 +192,9 @@ const Stats = () => {
             ? player.seasonAverages?.[selectedYear]?.[selectedSport]
             : player.Stats?.[selectedSchedule.id];
 
-        return stats || {};  // Ensure it always returns an object
+        return stats || {};  
     };
+
 
     return (
         <div className="stats-container">
@@ -212,9 +208,10 @@ const Stats = () => {
                     <div className="stats-button-row">
                         <div className="stats-date-dropdown">
                             <GameDropdown
+                                key={selectedSchedule.id}
                                 games={[{ id: "season", name: `${selectedYear} Season` }, ...schedules]}
                                 onGameChange={handleGameChange}
-                                defaultGame={{ id: "season", name: `${selectedYear} Season` }}
+                                defaultGame={selectedSchedule}
                                 value={selectedSchedule}
                             />
                         </div>
@@ -233,7 +230,11 @@ const Stats = () => {
                                     alt={sport.alt}
                                     onClick={() => {
                                         setSelectedSport(sport.id);
-                                        setSelectedSchedule({ id: "season", name: `${selectedYear} Season` });
+                                        setSelectedSchedule(() => {
+                                            const newSchedule = { id: "season", name: `${selectedYear} Season` };
+                                            handleGameChange(newSchedule);  
+                                            return newSchedule;
+                                        });
                                     }}
                                     onMouseEnter={() => setHoveredSport(sport.id)}
                                     onMouseLeave={() => setHoveredSport(null)}
@@ -244,8 +245,13 @@ const Stats = () => {
                 </div>
 
                 <div className="stats-leaderboard-wrap">
-                    <h4 className="stats-leaderboard-title">{selectedSport} - League Leaders</h4>
-                    <div className="stats-leaderboard-row">
+                    <h4 className="stats-leaderboard-title">
+                        {selectedTeam !== "SELECT TEAM"
+                            ? `Team Leaders`
+                            : selectedSchedule.id !== "season"
+                                ? `Game Leaders`
+                                : `League Leaders`}
+                    </h4>                    <div className="stats-leaderboard-row">
                         {Object.entries(getLeagueLeaders(players, selectedSport)).map(([stat, leader]) => (
                             <div key={stat} className="leaderboard-card">
                                 <h5 className="stat-title">{stat}</h5>
@@ -273,14 +279,11 @@ const Stats = () => {
                                                     <p className="game-stats-text">
                                                         {statFields[selectedSport]
                                                             .map(stat => {
-                                                                const key = stat; 
+                                                                const key = stat;
                                                                 const value = stats[key] ?? 0;
-                                                                {
-                                                                    console.log("ABC:", "Stats List:", stats, "Key:", key, "Stat: ", value)
-                                                                }
                                                                 const numericValue = Number(value) || 0;
                                                                 const displayValue = selectedSchedule.id === "season"
-                                                                    ? numericValue.toFixed(2)  
+                                                                    ? numericValue.toFixed(2)
                                                                     : Math.round(numericValue);
 
                                                                 return `${displayValue} ${key.match(/\((.*?)\)/)?.[1] || stat}`;
@@ -294,6 +297,7 @@ const Stats = () => {
                                             )}
                                         </div>
                                     </div>
+                                    <div className="dash-border"/>
                                     <div className="player-badges">
                                         <span className="badge">{player.Age} yrs</span>
                                         <span className="badge">{player.Height}</span>

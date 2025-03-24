@@ -9,6 +9,10 @@ import SoftballIcon from "../res/images/ic_softball.svg";
 import BasketballIcon from "../res/images/ic_basketball.svg";
 import VolleyballIcon from "../res/images/ic_volleyball.svg";
 
+/*** 
+ * TODO: Team Details Update/Edit Team Records
+ * ***/
+
 const sportIcons = {
   "Ultimate Frisbee": UltimateIcon,
   Softball: SoftballIcon,
@@ -247,6 +251,19 @@ const AdminPage = () => {
     <div className="admin-container">
       <div className="admin">
         <h1 className="admin-title">Admin Panel</h1>
+        <div className="team-section">
+          <div className="team-display">
+            <h2 className="edit-team-title">Team Details</h2>
+            {[...teams].map((team, index) => (
+              <div className="team-item" key={index}>
+                <h3>{team.name}</h3>
+                <h4>{team.abbrev}</h4>
+                <h4>{team.record}</h4>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Left: Display Announcements */}
         <div className="announcements-section">
           <div className="announcements-list">

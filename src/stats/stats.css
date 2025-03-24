@@ -104,7 +104,7 @@
       color: #F2F2F2;
       text-transform: uppercase;
       margin: 0;  
-      letter-spacing: normal;
+      letter-spacing: 0;
       line-height: 20px;
       align-items: center;
       text-transform: none;
@@ -126,22 +126,6 @@
     margin-bottom: 20px;
     letter-spacing: normal;
   }
-
-  .stats-dropdown-button.no-details {
-    align-items: center; 
-    height: 65px
-  }
-
-  .stats-dropdown-button.no-details .stats-team-name {
-    align-items: center;
-    padding-bottom: 20px;
-  }
-
-  .stats-dropdown-button.no-details .stats-team-record,
-  .stats-dropdown-button.no-details .stats-team-abbrev {
-    display: none; /* Completely hide abbrev and record */
-  }
-
 
   .stats-dropdown-button:hover {
     background-color: #161616;
@@ -418,6 +402,18 @@
   z-index: -1;
 }
 
+.player-card .dash-border {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background-color: #333;
+  clip-path: polygon(10.4% 0%, 10% 0%, 13% 100%, 13.4% 100%);
+  z-index: 0;
+}
+
 .rank {
     font-family: "Proxima Nova";
     font-size: 16px;
@@ -441,12 +437,19 @@
     flex-grow: 1;
 }
 
+.player-info .top-row {
+display: flex;
+flex-wrap: wrap; 
+gap: 4px; 
+align-items: center;
+margin: 0px;
+}
+
 .player-name {
   font-family: "Proxima Nova";
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
-  line-height: 20px;
 }
 
 .player-team {
@@ -468,7 +471,8 @@
 }
 
 .game-stats-text {
-  margin: 10px 0px;
+  margin-top: 10px;
+  margin-bottom: 2px;
 }
 
 .player-badges {
@@ -582,6 +586,7 @@
   background-color: #1C1C1C;
   border-radius: 16px;
   display: flex;
+  justify-content: space-between;  
   align-items: center; 
   cursor: pointer;
   position: relative;
@@ -595,6 +600,8 @@
   font-size: 16px;
   font-weight: 500;
   border-radius: 16px;
+  justify-content: space-between;  
+
 }
 
 .stats-selector-button.active {
@@ -603,6 +610,7 @@
   background-color: #9ECB3B;
   color: #161616;
   border: 1px solid #9ECB3B;
+  justify-content: space-between;  
   border-radius: 16px;
 }
 
@@ -621,6 +629,32 @@
   border-radius: 0 0 2px 2px;
   border-top: 8px solid #9ECB3B;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+.stats-selector-team-text {
+  font-family: "Proxima Nova";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  color: #F2F2F2;
+  text-transform: uppercase;
+  margin: 0px 10px;
+  letter-spacing: 3.2px;
+  line-height: 20px;
+  align-items: center;
+}
+
+.stats-selector-team-text.active {
+  color: #161616;
+  font-family: "Proxima Nova";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0px 10px;
+  letter-spacing: 3.2px;
+  line-height: 20px;
+  align-items: center;
 }
 
 .stats-selector-item {
@@ -923,6 +957,8 @@
 }
 
 .edit-player-name-button {
+  display: flex; /* Enables flexbox */
+  align-items: center; /* Vertically centers the text & icon */
   cursor: pointer;
 }
 

@@ -1,12 +1,12 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "./components.css";
 import logo from "../res/images/logo_green.svg"
 
 const TopNavBar = () => {
     const adminPassword = "1Corinthians12:12";  // ADMIN: NAV PASSWORD
     const navigate = useNavigate();
-
+    const location = useLocation();
 
     const handleAdminClick = (event) => {
         const storedPassword = localStorage.getItem("adminPassword");
@@ -44,7 +44,7 @@ const TopNavBar = () => {
                     <li>
                         <NavLink 
                             to="/stats" 
-                            className={({ isActive }) => isActive ? 'active' : ''} 
+                            className={location.pathname.startsWith("/stats") || location.pathname === "/input-stats" ? 'active' : ''} 
                         >
                             STATS
                         </NavLink>

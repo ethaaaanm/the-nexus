@@ -15,7 +15,7 @@ const About = () => {
         <div className="about-page">
             <div className="about-banner-wrap">
                 <img src={Banner} alt="Family Banner" className="about-banner"/>
-                <h1 className="about-banner-title">CREATING A CHRIST-CENTERED<br/> COMMUNITY THROUGH SPORTS.</h1>
+                <h1 className="about-banner-title">CREATING A CHRIST-CENTERED<br/> COMMUNITY THROUGH SPORT.</h1>
                 <h5 className="about-banner-subtitle">“Nexus” refers to a central point or link that connects different elements or groups. 
                     It's often used to describe a hub or focal point where ideas, people, or things come together. 
                     In the context of the league name, "Nexus" symbolizes a place where players unite and intersect, 

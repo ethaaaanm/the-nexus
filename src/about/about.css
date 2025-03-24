@@ -91,6 +91,7 @@
     letter-spacing: 4px;
     text-transform: uppercase;
     color: #9ECB3B;
+    margin: 20px 0px;
 }
 
 .about-format-title {
@@ -101,10 +102,11 @@
     line-height: 64px;
     text-transform: uppercase;
     color: #F2F2F2;
+    margin: 20px 0px;
 }
 
 .about-nexus-shield {
-    padding-bottom: 40px;
+    padding: 20px 0px;
 }
 
 .about-divider {

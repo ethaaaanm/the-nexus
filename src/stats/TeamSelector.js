@@ -32,7 +32,8 @@ const TeamSelector = ({ teams, onTeamChange, defaultTeamId }) => {
     return (
         <div ref={dropdownRef} className="stats-selector-container">
             <button className={`stats-selector-button ${isOpen ? "active" : ""}`} onClick={handleToggle}>
-                {selectedTeam ? selectedTeam.name : (defaultTeamId === "SELECT TEAM" ? "Select Team" : "Filter by Team")}
+                <p className={`stats-selector-team-text  ${isOpen ? "active" : ""}`}>                {selectedTeam ? selectedTeam.name : (defaultTeamId === "SELECT TEAM" ? "Select Team" : "Filter by Team")}
+                </p>
                 <BiSolidDownArrow className={`stats-dropdown-arrow ${isOpen ? "open" : ""}`} />
             </button>
             {isOpen && (
