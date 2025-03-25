@@ -10,6 +10,8 @@
 }
 
 .admin {
+  display: flex;
+  flex-direction: column;
     gap: 20px;
     width: 100%;
     max-width: 1500px;
@@ -28,18 +30,116 @@
     color: #F2F2F2;
 }
 
-.announcements-section {
-    display: flex;
-    gap: 20px;
+.team-section {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  box-sizing: border-box;
 }
 
-.announcements-list {
-    flex: 2; 
-    background-color: #0E0E0E;
-    border-radius: 20px;
-    padding: 20px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    max-height: fit-content;
+.team-display, 
+.edit-team-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
+  background-color: #0E0E0E;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  max-height: fit-content;
+}
+
+.edit-team-title {
+  color: #F2F2F2;
+  font-family: "Proxima Nova";
+  font-size: 32px;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+  line-height: 24px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.team-item {
+  background-color: #1C1C1C;
+  padding: 0px 20px 20px 20px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-item h4 {
+  font-family: "Proxima Nova";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #F2F2F2;
+  margin: 0px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.edit-team-row {
+  display: flex;
+  gap: 20px;
+}
+
+.edit-team-form h2 {
+  color: #F2F2F2;
+  font-family: "Proxima Nova";
+  font-size: 32px;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+  line-height: 24px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.edit-team-form-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-team-form-column label {
+ margin-bottom: 10px; 
+}
+
+.edit-team-form-column input,
+.edit-team-form-column textarea {
+  background-color: #1C1C1C;
+  color: #F2F2F2;
+  font-family: "Proxima Nova";
+  font-size: 16px;
+  font-weight: 300;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 15px;
+  resize: vertical; 
+  outline: none;
+  transition: border-color 0.3s ease;
+  margin-bottom: 20px;
+  width: stretch;
+}
+
+.edit-team-form-column textarea {
+  min-height: 50px;
+  height: 100px;
+}
+
+.edit-team-form-column input:focus,
+.edit-team-form-column textarea:focus {
+  border-color: #9ECB3B;
+} 
+
+.announcements-section {
+    display: flex;
     gap: 20px;
 }
   

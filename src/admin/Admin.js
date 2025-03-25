@@ -161,7 +161,7 @@ const AdminPage = () => {
     try {
       const docRef = await addDoc(collection(db, "schedule"), newSchedule);
       await updateDoc(doc(db, "schedule", docRef.id), { id: docRef.id });
-      
+
       setNewSchedule({
         year: "2025",
         month: "",
@@ -181,11 +181,11 @@ const AdminPage = () => {
 
   const handleUpdateSchedule = async () => {
     if (!editingSchedule) return;
-  
+
     const updatedSchedule = {
       ...editingSchedule
-    };  
-    
+    };
+
     await handleEditSchedule(editingSchedule.id, updatedSchedule);
     setEditingSchedule(null);
     setNewSchedule({
@@ -197,7 +197,7 @@ const AdminPage = () => {
       team1: { id: "", score: "", recordAtTime: "" },
       team2: { id: "", score: "", recordAtTime: "" },
     });
-  
+
     alert("Schedule updated successfully!");
     fetchSchedule();
   };
@@ -244,25 +244,93 @@ const AdminPage = () => {
     await deleteDoc(doc(db, "schedule", id));
     setSchedule(schedule.filter((item) => item.id !== id));
   };
-
   /**** End of Schedule Functions ****/
+
+  /**** Start of Team Functions ****/
+  const [editingTeam, setEditingTeam] = useState(null);
+
+  const startEditingTeam = (team) => {
+    setEditingTeam({ ...team });
+  };
+
+  const handleUpdateTeam = async () => {
+    if (!editingTeam) return;
+
+    try {
+      const teamRef = doc(db, "teams", editingTeam.id);
+      await updateDoc(teamRef, {
+        name: editingTeam.name,
+        abbrev: editingTeam.abbrev,
+        record: editingTeam.record,
+      });
+
+      setTeams(teams.map((team) => (team.id === editingTeam.id ? editingTeam : team)));
+      alert("Team updated successfully!");
+      setEditingTeam(null);
+    } catch (error) {
+      console.error("Error updating team:", error);
+      alert("Failed to update team.");
+    }
+  };
+  /**** End of Team Functions ****/
 
   return (
     <div className="admin-container">
       <div className="admin">
         <h1 className="admin-title">Admin Panel</h1>
         <div className="team-section">
-          <div className="team-display">
-            <h2 className="edit-team-title">Team Details</h2>
-            {[...teams].map((team, index) => (
-              <div className="team-item" key={index}>
-                <h3>{team.name}</h3>
-                <h4>{team.abbrev}</h4>
-                <h4>{team.record}</h4>
+        {/* Team Display Section */}
+        <div className="team-display">
+          <h2 className="edit-team-title">Team Details</h2>
+          {teams.map((team) => (
+            <div className="team-item" key={team.id}>
+              <h3>{team.name}</h3>
+              <div className="edit-team-row">
+                <h4>Abbrev: {team.abbrev}</h4>
+                <h4>Record: {team.record}</h4>
               </div>
-            ))}
-          </div>
+              <button
+                className="admin-edit-button"
+                onClick={() => startEditingTeam(team)}
+              >
+                <FaEdit />
+              </button>
+            </div>
+          ))}
         </div>
+
+        {/* Edit Team Form - Now outside of team-display but inside team-section */}
+        {editingTeam && (
+          <div className="edit-team-form">
+            <h2>Edit Team</h2>
+            <div className="edit-team-form-column">
+            <label>Team Name:</label>
+            <input
+              type="text"
+              value={editingTeam.name}
+              onChange={(e) => setEditingTeam({ ...editingTeam, name: e.target.value })}
+            />
+
+            <label>Abbreviation:</label>
+            <input
+              type="text"
+              value={editingTeam.abbrev}
+              onChange={(e) => setEditingTeam({ ...editingTeam, abbrev: e.target.value })}
+            />
+
+            <label>Record (W-L-T):</label>
+            <input
+              type="text"
+              value={editingTeam.record}
+              onChange={(e) => setEditingTeam({ ...editingTeam, record: e.target.value })}
+            />
+            </div>
+
+            <button onClick={handleUpdateTeam}>Update Team</button>
+            <button onClick={() => setEditingTeam(null)}>Cancel</button>
+          </div>
+        )}
+      </div>
 
         {/* Left: Display Announcements */}
         <div className="announcements-section">
@@ -339,7 +407,7 @@ const AdminPage = () => {
                         Team Name: {teams.find(t => t.id === team.id)?.name || "Unknown"} <br />
                         Score: {team.score} <br />
                         Record at Time: {team.recordAtTime || "N/A"}
-                        <br/><br/>
+                        <br /><br />
                       </li>
                     ) : null
                   )}
@@ -398,7 +466,7 @@ const AdminPage = () => {
               type="text"
               placeholder="05/02 | 7:00 PM"
               value={editingSchedule ? editingSchedule.date : newSchedule.date}
-              onChange={(e) => 
+              onChange={(e) =>
                 editingSchedule
                   ? setEditingSchedule({ ...editingSchedule, date: e.target.value })
                   : setNewSchedule({ ...newSchedule, date: e.target.value })
