@@ -7,28 +7,28 @@ import LeagueItem from "./LeagueItem";
 import CurrentTeams from "../components/currentTeams";
 
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebaseConfig"; 
+import { db } from "../firebaseConfig";
 
-import { sportsStatsDB } from "../data/sportsData";
 import HomeBanner from "../res/images/home_banner.svg";
 
 import "./home.css";
 
 
 const Home = () => {
-  const [selectedMonth, setSelectedMonth] = useState("June"); 
+  const [selectedMonth, setSelectedMonth] = useState("June");
   const [selectedYear, setSelectedYear] = useState(2025);
-  const [news, setNews] = useState([]); 
+  const [news, setNews] = useState([]);
   const [schedule, setSchedule] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const filteredSchedule =
-  selectedMonth === `${selectedYear} Season`
-    ? schedule
-    : schedule.filter((item) => item.month.toLowerCase() === selectedMonth.toLowerCase());
-
-  console.log("Filtered Schedule:", filteredSchedule);
-
+  const [topPlayers, setTopPlayers] = useState({
+    Basketball: [],
+    "Ultimate Frisbee": [],
+    Softball: [],
+    Volleyball: [],
+  });
+      useEffect(() => {
+          window.scrollTo(0, 0); 
+        }, []); 
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -72,10 +72,10 @@ const Home = () => {
           const parseDate = (dateString) => {
             const [datePart, timePart] = dateString.split(" | ");
             const [month, day] = datePart.split("/").map(Number);
-            const year = a.year; 
-            return new Date(`${year}-${month}-${day} ${timePart}`); 
+            const year = a.year;
+            return new Date(`${year}-${month}-${day} ${timePart}`);
           };
-    
+
           return parseDate(a.date) - parseDate(b.date); // Sort by ascending date
         });
 
@@ -83,19 +83,80 @@ const Home = () => {
         setLoading(false);
 
       } catch (error) {
-          console.error("Error fetching schedule:", error);
+        console.error("Error fetching schedule:", error);
       }
-
     };
 
+    const processTopPlayers = (players, sport) => {
+      return players
+        .map(player => {
+          let formattedStats = {};
+          let totalScore = 0;
+
+          Object.keys(player.stats).forEach(key => {
+            const match = key.match(/\((.*?)\)/);
+            const cleanKey = match ? match[1] : key;
+            const statValue = parseFloat(player.stats[key]) || 0;
+
+            formattedStats[cleanKey] = statValue;
+            totalScore += statValue;
+          });
+
+          return {
+            playerName: player.playerName,
+            teamID: player.teamID,
+            stats: formattedStats,
+            totalScore,
+          };
+        })
+        .sort((a, b) => b.totalScore - a.totalScore);
+    };
+
+    const fetchTopPlayers = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "players"));
+        const allPlayers = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+        let topPlayersPerSport = {
+          Basketball: [],
+          "Ultimate Frisbee": [],
+          Softball: [],
+          Volleyball: [],
+        };
+
+        ["Basketball", "Ultimate Frisbee", "Softball", "Volleyball"].forEach(sport => {
+          const sportPlayers = allPlayers
+            .map(player => {
+              const stats = player.seasonAverages?.[selectedYear]?.[sport] || {};
+              return { ...player, stats };
+            })
+            .filter(player => Object.keys(player.stats).length > 0);
+
+          topPlayersPerSport[sport] = processTopPlayers(sportPlayers, sport);
+        });
+
+        setTopPlayers(topPlayersPerSport);
+        console.log("Fetched top players:", topPlayersPerSport);
+
+      } catch (error) {
+        console.error("Error fetching top players:", error);
+      }
+    };
+
+    fetchTopPlayers();
     fetchNews();
     fetchSchedule();
-  }, []);
-    
+  }, [selectedYear]);
+
+  const filteredSchedule =
+    selectedMonth === `${selectedYear} Season`
+      ? schedule
+      : schedule.filter((item) => item.month.toLowerCase() === selectedMonth.toLowerCase());
+
   return (
     <div className="home-container">
       <div className="home-banner">
-        <img src={HomeBanner} alt="Home Banner"/>
+        <img src={HomeBanner} alt="Home Banner" />
         <a href="https://forms.gle/jJVTFZi2jMyHuFNB9" target="_blank" rel="noopener noreferrer">
           <button className="home-register">REGISTER TODAY</button>
         </a>
@@ -106,17 +167,17 @@ const Home = () => {
       <div className="home">
         {/* Top Left: News Section */}
         <div className="news-section">
-            <h2>News</h2>
-            {news.map((item, index) => (
-              <NewsItem
-                key={index}
-                title={item.title}
-                date={item.date}
-                content={item.content}
-                isLastItem={index >= news.length - 2}
-              />
-            ))}
-          </div>
+          <h2>News</h2>
+          {news.map((item, index) => (
+            <NewsItem
+              key={index}
+              title={item.title}
+              date={item.date}
+              content={item.content}
+              isLastItem={index >= news.length - 2}
+            />
+          ))}
+        </div>
 
         {/* Top Right: Schedule Dropdown */}
         <div className="schedule-dropdown">
@@ -129,38 +190,38 @@ const Home = () => {
         </div>
 
         {/* Bottom Right: Schedule Section */}
-          <div className="schedule-section">
-            {filteredSchedule.length > 0 ? (
-              filteredSchedule.map((item) => (
-                <ScheduleItem
-                  key={item.id || item.sport + item.date}
-                  sport={item.sport}
-                  date={item.date}
-                  teams={[item.team1, item.team2]}
-                  video={item.video}
-                />
-              ))
-            ) : (
-              <p>No games scheduled for this month.</p>
-            )}
+        <div className="schedule-section">
+          {filteredSchedule.length > 0 ? (
+            filteredSchedule.map((item) => (
+              <ScheduleItem
+                key={item.id || item.sport + item.date}
+                sport={item.sport}
+                date={item.date}
+                teams={[item.team1, item.team2]}
+                video={item.video}
+              />
+            ))
+          ) : (
+            <p>No games scheduled for this month.</p>
+          )}
         </div>
 
         {/* Bottom Right: League Leaders Section */}
         <div className="league-section">
           <div className="league-header">
             <h3>League Leaders</h3>
-              <Link to="/stats" className="view-all-link">
-                <button className="view-all"> View All </button>
-              </Link>
+            <Link to="/stats" className="view-all-link"  >
+              <button className="view-all"> View All </button>
+            </Link>
           </div>
           <div className="current-record">
-            <CurrentTeams/>
+            <CurrentTeams />
           </div>
           <div className="leaderboard">
-            <LeagueItem sport="Ultimate Frisbee" sportsStatsDB={sportsStatsDB} />
-            <LeagueItem sport="Basketball" sportsStatsDB={sportsStatsDB} />
-            <LeagueItem sport="Softball" sportsStatsDB={sportsStatsDB} />
-            <LeagueItem sport="Volleyball" sportsStatsDB={sportsStatsDB} />
+            <LeagueItem sport="Ultimate Frisbee" topPlayers={topPlayers["Ultimate Frisbee"]} />
+            <LeagueItem sport="Basketball" topPlayers={topPlayers["Basketball"]} />
+            <LeagueItem sport="Softball" topPlayers={topPlayers["Softball"]} />
+            <LeagueItem sport="Volleyball" topPlayers={topPlayers["Volleyball"]} />
           </div>
         </div>
       </div>

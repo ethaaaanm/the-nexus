@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 import Banner from "../res/images/about_banner.svg"
 import NexusShield from "../res/images/ic_nexus_shield.svg"
 import AboutDropdown from "./AboutDropdown";
@@ -11,6 +11,10 @@ import { IoMail } from "react-icons/io5";
 import "./about.css"
 
 const About = () => {
+        useEffect(() => {
+            window.scrollTo(0, 0); 
+          }, []); 
+
     return(
         <div className="about-page">
             <div className="about-banner-wrap">

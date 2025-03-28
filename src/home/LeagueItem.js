@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -16,95 +18,74 @@ const sportIcons = {
   Volleyball: VolleyballIcon,
 };
 
-// Function to calculate stats for a sport
-const calculateStats = (sport, stats) => {
-  switch (sport) {
-    case "Ultimate Frisbee":
-      return `${stats.points.reduce((a, b) => a + b, 0)} PTS, ${stats.assists.reduce(
-        (a, b) => a + b,
-        0
-      )} AST, ${stats.blocks.reduce((a, b) => a + b, 0)} BLK`;
-
-    case "Basketball":
-      return `${stats.points.reduce((a, b) => a + b, 0)} PTS, ${stats.assists.reduce(
-        (a, b) => a + b,
-        0
-      )} AST, ${stats.rebounds.reduce((a, b) => a + b, 0)} REB`;
-
-    case "Softball":
-      return `${stats.hits.reduce((a, b) => a + b, 0)} HIT, ${stats.strikeouts.reduce(
-        (a, b) => a + b,
-        0
-      )} STK, ${stats.rbi.reduce((a, b) => a + b, 0)} RBI`;
-
-    case "Volleyball":
-      return `${stats.wins} WIN, ${stats.losses} LOSS`;
-
-    default:
-      return "No stats available";
-  }
-};
-
-const LeagueItem = ({ sport, sportsStatsDB }) => {
-  // Extract player data for the given sport
-  const players = Object.entries(sportsStatsDB.Players).map(([name, data]) => {
-    const stats = data[sport];
-    return stats
-      ? {
-          name,
-          team: data.Team,
-          abbrev: data.Abbrev,
-          stats: calculateStats(sport, stats),
-        }
-      : null;
-  });
-
-  // Sort players if needed, e.g., by points for Ultimate Frisbee
-  const sortedPlayers = players.filter(Boolean); // Remove null values
-  // Optional sorting logic depending on sport
-  // sortedPlayers.sort((a, b) => b.stats.points - a.stats.points); // Add custom logic if needed
+const LeagueItem = ({ sport, topPlayers = [] }) => {
+  const [teams, setTeams] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      const querySnapshot = await getDocs(collection(db, "teams"));
+      setTeams(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    };
+    fetchTeams();
+  }, []);
+
+  // Define stat categories for display
+  const sportStatCategories = {
+    Basketball: ["PTS", "AST", "REB", "STL", "BLK"],
+    "Ultimate Frisbee": ["PTS", "AST", "BLK"],
+    Softball: ["H", "AB", "RBI"],
+    Volleyball: ["W", "L", "SRV"],
+  };
+
+  useEffect(() => {
+    console.log("Received topPlayers for", sport, ":", topPlayers);
+  }, [topPlayers]);
 
   return (
     <div className="league-item">
-      {/* Row Top: Sport Title */}
       <div className="row-top">
         <div className="sport-title-wrapper">
-          <img
-            src={sportIcons[sport]}
-            alt={`${sport} icon`}
-            className="sport-icon"
-          />
-          <h3 className="sport-title">{sport}</h3>
+          <img src={sportIcons[sport]} alt={`${sport} icon`} className="sport-icon" />
+          <h3 className="sport-title">{sport} Leaders</h3>
         </div>
       </div>
 
-      {/* Players List */}
-      <div className="player-list">
-        {sortedPlayers.map((player, index) => (
-          <div key={index} className="player-row">
-            <p className="rank">{index + 1}</p>
-            <div className="player-info">
-                <div className="top-row">
-                    <span className="player-name">{player.name}</span>
-                    <span className="player-team">{player.abbrev}</span>
+      <div className="player-list1">
+        {topPlayers.length > 0 ? (
+          topPlayers.map((player, index) => {
+            const teamAbrev = teams.find(t => t.id === player.teamID)?.abbrev || "Unknown";
+
+            return (
+              <div key={index} className="player-row">
+                <div className="rank">{index+1}</div>
+                <div className="player-info">
+                  <div className="top-row">
+                    <span className="player-name">{player.playerName}</span>
+                    <span className="player-team">{teamAbrev}</span>
+                  </div>
+                  <span className="player-stat">
+                    {sportStatCategories[sport]
+                      .map((stat) => `${player.stats[stat] || 0} ${stat}`)
+                      .join(", ")}
+                  </span>
                 </div>
-                <div className="bottom-row">
-                    <p className="player-stats">{player.stats}</p>
-                </div>
-            </div>
-          </div>
-        ))}
+              </div>
+            );
+          })
+        ) : (
+          <p>No stats available</p>
+        )}
       </div>
 
       {/* See All Button */}
       <div className="see-all-wrapper">
-        <button className="see-all-button" 
+        <button className="see-all-button"
           onClick={() => {
-            navigate("/stats");      
-            window.scrollTo(0, 0); 
+            navigate("/stats");
+            window.scrollTo(0, 0);
           }}>
-          See All 
+          See All
           <IoIosArrowForward className="arrow-icon" />
         </button>
       </div>

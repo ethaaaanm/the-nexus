@@ -9,9 +9,6 @@ import SoftballIcon from "../res/images/ic_softball.svg";
 import BasketballIcon from "../res/images/ic_basketball.svg";
 import VolleyballIcon from "../res/images/ic_volleyball.svg";
 
-/*** 
- * TODO: Team Details Update/Edit Team Records
- * ***/
 
 const sportIcons = {
   "Ultimate Frisbee": UltimateIcon,
@@ -22,6 +19,10 @@ const sportIcons = {
 
 const AdminPage = () => {
   const [teams, setTeams] = useState([]);
+
+      useEffect(() => {
+          window.scrollTo(0, 0); 
+        }, []); 
 
   useEffect(() => {
     const fetchTeams = async () => {

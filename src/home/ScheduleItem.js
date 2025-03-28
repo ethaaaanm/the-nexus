@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { homeTeamDB } from "../data/homeData"; 
 import { db } from "../firebaseConfig"
 import { doc, getDoc } from "firebase/firestore"
 import UltimateIcon from "../res/images/ic_ultimate.svg";
@@ -43,22 +42,31 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
     const fetchTeamDetails = async () => {
       const team1Data = await fetchTeamData(teams[0].id);
       const team2Data = await fetchTeamData(teams[1].id);
-      
       setTeamData([team1Data, team2Data]);
-    }
+    };
 
     fetchTeamDetails();
-  }, [teams])
+  }, [teams]);
+
+  const parseRecord = (recordString) => {
+    if (!recordString) return { wins: 0, losses: 0, ties: 0 }; // Default if null or empty
+    const [wins, losses, ties] = recordString.split("-").map(Number);
+    return { wins: wins || 0, losses: losses || 0, ties: ties || 0 };
+  };
 
   const getLosingTeam = () => {
-    if (teams[0].score < teams[1].score) {
-      return 0;
-    } else if (teams[0].score > teams[1].score) {
-      return 1;
-    } else {
-      return -1;
-    }
-  }
+    if (!teamData[0] || !teamData[1]) return null; // Ensure both teams exist
+
+    const record1 = parseRecord(teams[0].recordAtTime || teamData[0].record);
+    const record2 = parseRecord(teams[1].recordAtTime || teamData[1].record);
+
+    if (record1.wins < record2.wins) return 0;
+    if (record2.wins < record1.wins) return 1;
+    if (record1.losses > record2.losses) return 0;
+    if (record2.losses > record1.losses) return 1;
+
+    return -1; // Tie
+  };
 
   const losingTeam = getLosingTeam();
 

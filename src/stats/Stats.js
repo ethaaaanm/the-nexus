@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 import TeamDropdown from "./TeamDropdown";
@@ -51,7 +51,11 @@ const Stats = () => {
         Volleyball: ["Wins (W)", "Losses (L)", "Serves (SRV)"],
         Softball: ["Hits (H)", "At Bats (AB)", "Runs Batted In (RBI)"],
         "Ultimate Frisbee": ["Points (PTS)", "Assists (AST)", "Blocks (BLK)"],
-    };
+    }; 
+
+    useEffect(() => {
+        window.scrollTo(0, 0); 
+      }, []); 
 
     useEffect(() => {
         fetchPlayers();
@@ -140,6 +144,23 @@ const Stats = () => {
                 ? player.seasonAverages?.[selectedYear]?.[selectedSport] || {}
                 : player.Stats?.[selectedSchedule.id] || {};
             return { ...player, stats: playerStats };
+        });
+
+        updatedStats.sort((a, b) => {
+            const getTotal = (player) => {
+                const stats = player.stats || {};
+    
+                if (selectedSport === "Basketball" || selectedSport === "Ultimate Frisbee") {
+                    return Object.values(stats).reduce((sum, val) => sum + (Number(val) || 0), 0);
+                } else if (selectedSport === "Softball") {
+                    return (Number(stats["Hits (H)"]) || 0) + (Number(stats["Runs Batted In (RBI)"]) || 0);
+                } else if (selectedSport === "Volleyball") {
+                    return Number(stats["Serves (SRV)"]) || 0;
+                }
+                return 0;
+            };
+    
+            return getTotal(b) - getTotal(a); 
         });
 
         setDisplayedStats(updatedStats);

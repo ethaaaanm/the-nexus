@@ -43,6 +43,10 @@ const InputStats = () => {
     const [editingStat, setEditingStat] = useState(null);
 
     useEffect(() => {
+        window.scrollTo(0, 0); 
+        }, []); 
+
+    useEffect(() => {
         fetchPlayers();
         fetchSchedules();
         fetchTeams();

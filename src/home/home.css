@@ -641,6 +641,10 @@
   margin-top: 8px;
 }
 
+.current-teams .losing-team {
+  background-color: #161616; 
+}
+
 .leaderboard {
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
@@ -681,7 +685,7 @@
   width: 100%;
   box-sizing: border-box;
   border: 1px solid #333;
-  gap: 28px;
+  gap: 16px;
   margin: 4px 0px;  
 }
 
@@ -691,7 +695,6 @@
   font-style: normal;
   font-weight: 600;
   line-height: 16px;
-  letter-spacing: 3.2px;
   text-transform: uppercase;
   display: flex;
   justify-content: center;
@@ -704,6 +707,7 @@
   flex: 1;
   padding-top: 8px;
   padding-bottom: 6px;
+  gap: 4px;
 }
 
 .player-info .top-row {
@@ -721,7 +725,7 @@
   line-height: 16px;
   color: #F2F2F2; 
   padding: 0px;
-  margin: -10px 0px;
+  margin-bottom: 10px 0px;
 }
 
 .player-name {
