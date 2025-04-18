@@ -16,19 +16,19 @@ import "./res/styles/global.css";
 function App() {
   return (
     <Router basename="/">
-    <TopNavBar />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/admin" element={<AdminPage />} />
-      <Route path="/stats" element={<StatsPage />} />
-      <Route path="/input-stats" element={<InputStatsPage/>}/>
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/submitted" element={<SubmittedPage />} />
-      <Route path="*" element={<ErrorPage />} />
-    </Routes>
-    <Footer />
-  </Router>
-);
+      <TopNavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/stats" element={<StatsPage />} />
+        <Route path="/input-stats" element={<InputStatsPage/>}/>
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/submitted" element={<SubmittedPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+      <Footer />
+    </Router>
+  );
 }
 
 export default App;
