@@ -9,7 +9,7 @@ import CurrentTeams from "../components/currentTeams";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
-import HomeBanner from "../res/images/home_banner.svg";
+import HomeBanner from "../res/images/home_banner.png";
 
 import "./home.css";
 

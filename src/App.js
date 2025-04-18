@@ -15,7 +15,7 @@ import "./res/styles/global.css";
 
 function App() {
   return (
-    <Router basename="/the-nexus">
+    <Router basename="/">
     <TopNavBar />
     <Routes>
       <Route path="/" element={<Home />} />

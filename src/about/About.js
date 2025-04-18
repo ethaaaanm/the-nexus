@@ -1,5 +1,5 @@
 import {React, useEffect} from "react";
-import Banner from "../res/images/about_banner.svg"
+import Banner from "../res/images/about_banner.png"
 import NexusShield from "../res/images/ic_nexus_shield.svg"
 import AboutDropdown from "./AboutDropdown";
 import ContactForm from "./ContactForm";
