@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 94.9 163.9">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        fill: #9ecc3b;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="81.76" y1="107.26" x2="81.76" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#009444"/>
+      <stop offset="0" stop-color="#039543"/>
+      <stop offset=".06" stop-color="#27a241"/>
+      <stop offset=".11" stop-color="#47ad3f"/>
+      <stop offset=".18" stop-color="#62b63e"/>
+      <stop offset=".25" stop-color="#78be3d"/>
+      <stop offset=".34" stop-color="#89c43c"/>
+      <stop offset=".44" stop-color="#95c83b"/>
+      <stop offset=".59" stop-color="#9ccb3b"/>
+      <stop offset="1" stop-color="#9ecc3b"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="13.14" y1="163.9" x2="13.14" y2="56.65" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9ecc3b"/>
+      <stop offset=".41" stop-color="#9ccb3b"/>
+      <stop offset=".56" stop-color="#95c83b"/>
+      <stop offset=".66" stop-color="#89c43c"/>
+      <stop offset=".75" stop-color="#78be3d"/>
+      <stop offset=".82" stop-color="#62b63e"/>
+      <stop offset=".89" stop-color="#47ad3f"/>
+      <stop offset=".94" stop-color="#27a241"/>
+      <stop offset="1" stop-color="#039543"/>
+      <stop offset="1" stop-color="#009444"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <polygon class="cls-1" points="94.9 26.27 94.9 80.99 68.7 107.19 68.62 107.26 68.62 0 68.66 .02 68.7 .07 94.9 26.27"/>
+      <polygon class="cls-2" points="26.28 163.9 26.28 56.65 26.24 56.67 0 82.91 0 137.64 26.28 163.9"/>
+      <polygon class="cls-3" points="34.32 141.57 34.32 56.64 26.28 56.64 60.58 22.34 60.58 107.26 68.62 107.26 34.32 141.57"/>
+    </g>
+  </g>
+</svg>
