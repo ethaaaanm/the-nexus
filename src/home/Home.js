@@ -109,7 +109,8 @@ const Home = () => {
             totalScore,
           };
         })
-        .sort((a, b) => b.totalScore - a.totalScore);
+        .sort((a, b) => b.totalScore - a.totalScore)
+        .slice(0,5);
     };
 
     const fetchTopPlayers = async () => {
@@ -161,7 +162,7 @@ const Home = () => {
           <button className="home-register">REGISTER TODAY</button>
         </a>
         <Link to="/about">
-          <button className="home-learn-more">LEARN MORE</button>
+          <button className="home-learn-more"><p>LEARN MORE</p></button>
         </Link>
       </div>
       <div className="home">

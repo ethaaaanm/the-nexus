@@ -35,7 +35,7 @@ const Stats = () => {
     const [players, setPlayers] = useState([]);
     const [teams, setTeams] = useState([]);
     const [schedules, setSchedules] = useState([]);
-    const [selectedTeam, setSelectedTeam] = useState("SELECT TEAM");
+    const [selectedTeam, setSelectedTeam] = useState("ALL");
     const [loading, setLoading] = useState(true);
     const [displayedStats, setDisplayedStats] = useState([]);
 
@@ -46,16 +46,25 @@ const Stats = () => {
         { id: "Softball", defaultIcon: SoftballIcon, hoverIcon: SoftballHover, activeIcon: SoftballActive, alt: "Softball Button" },
     ];
 
-    const statFields = {
-        Basketball: ["Points (PTS)", "Rebounds (REB)", "Assists (AST)", "Blocks (BLK)", "Steals (STL)"],
-        Volleyball: ["Wins (W)", "Losses (L)", "Serves (SRV)"],
-        Softball: ["Hits (H)", "At Bats (AB)", "Runs Batted In (RBI)"],
-        "Ultimate Frisbee": ["Points (PTS)", "Assists (AST)", "Blocks (BLK)"],
-    }; 
+    const getStatFields = (sport, isSeason) => {
+        const baseStats = {
+            Basketball: ["Points (PTS)", "Rebounds (REB)", "Assists (AST)", "Blocks (BLK)", "Steals (STL)"],
+            Volleyball: ["Wins (W)", "Losses (L)", "Serves (SRV)"],
+            Softball: ["Hits (H)", "At Bats (AB)", "Runs Batted In (RBI)"],
+            "Ultimate Frisbee": ["Points (PTS)", "Assists (AST)", "Blocks (BLK)"]
+        };
+
+        const stats = [...baseStats[sport]];
+        if (isSeason) {
+            stats.unshift("Games Played (GP)");
+        }
+
+        return stats;
+    };
 
     useEffect(() => {
-        window.scrollTo(0, 0); 
-      }, []); 
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         fetchPlayers();
@@ -109,7 +118,7 @@ const Stats = () => {
     };
 
     const handleTeamChange = (teamID) => {
-        setSelectedTeam(teamID);
+        setSelectedTeam(teamID === "select" ? "ALL" : teamID);
     };
 
     const handleGameChange = (game) => {
@@ -125,13 +134,13 @@ const Stats = () => {
             if (prev.id === "season" || !prev.id) {
                 return { id: "season", name: `${selectedYear} Season` };
             }
-            return prev; 
+            return prev;
         });
     }, [selectedYear, selectedSport]);
 
     useEffect(() => {
         const filtered = players.filter(player => {
-            const matchesTeam = !selectedTeam || selectedTeam === "SELECT TEAM" || player.teamID === selectedTeam;
+            const matchesTeam = !selectedTeam || selectedTeam === "ALL" || player.teamID === selectedTeam;
             const hasStats = selectedSchedule?.id === "season"
                 ? player.seasonAverages?.[selectedYear]?.[selectedSport]
                 : player.Stats?.[selectedSchedule.id];
@@ -149,7 +158,7 @@ const Stats = () => {
         updatedStats.sort((a, b) => {
             const getTotal = (player) => {
                 const stats = player.stats || {};
-    
+
                 if (selectedSport === "Basketball" || selectedSport === "Ultimate Frisbee") {
                     return Object.values(stats).reduce((sum, val) => sum + (Number(val) || 0), 0);
                 } else if (selectedSport === "Softball") {
@@ -159,8 +168,8 @@ const Stats = () => {
                 }
                 return 0;
             };
-    
-            return getTotal(b) - getTotal(a); 
+
+            return getTotal(b) - getTotal(a);
         });
 
         setDisplayedStats(updatedStats);
@@ -169,39 +178,40 @@ const Stats = () => {
     const getLeagueLeaders = (players, sport) => {
         const leaders = {};
 
-        statFields[sport].forEach(stat => {
-            const topPlayer = players
-                .filter(player => {
-                    const matchesTeam = !selectedTeam || selectedTeam === "SELECT TEAM" || player.teamID === selectedTeam;
-                    const stats = selectedSchedule?.id === "season"
-                        ? player.seasonAverages?.[selectedYear]?.[sport]
-                        : player.Stats?.[selectedSchedule?.id];
+        getStatFields(selectedSport, selectedSchedule.id === "season")
+            .forEach(stat => {
+                const topPlayer = players
+                    .filter(player => {
+                        const matchesTeam = !selectedTeam || selectedTeam === "ALL" || player.teamID === selectedTeam;
+                        const stats = selectedSchedule?.id === "season"
+                            ? player.seasonAverages?.[selectedYear]?.[sport]
+                            : player.Stats?.[selectedSchedule?.id];
 
-                    return matchesTeam && stats && stats[stat] !== undefined;
-                })
-                .reduce((best, player) => {
-                    const playerStatValue = selectedSchedule?.id === "season"
-                        ? player.seasonAverages[selectedYear][sport][stat]
-                        : player.Stats[selectedSchedule?.id][stat];
+                        return matchesTeam && stats && stats[stat] !== undefined;
+                    })
+                    .reduce((best, player) => {
+                        const playerStatValue = selectedSchedule?.id === "season"
+                            ? player.seasonAverages[selectedYear][sport][stat]
+                            : player.Stats[selectedSchedule?.id][stat];
 
-                    const bestStatValue = best
-                        ? (selectedSchedule?.id === "season"
-                            ? best.seasonAverages[selectedYear][sport][stat]
-                            : best.Stats[selectedSchedule?.id][stat])
-                        : -Infinity;
+                        const bestStatValue = best
+                            ? (selectedSchedule?.id === "season"
+                                ? best.seasonAverages[selectedYear][sport][stat]
+                                : best.Stats[selectedSchedule?.id][stat])
+                            : -Infinity;
 
-                    return playerStatValue > bestStatValue ? player : best;
-                }, null);
+                        return playerStatValue > bestStatValue ? player : best;
+                    }, null);
 
-            if (topPlayer) {
-                leaders[stat] = {
-                    name: topPlayer.playerName,
-                    value: selectedSchedule?.id === "season"
-                        ? topPlayer.seasonAverages[selectedYear][sport][stat]
-                        : topPlayer.Stats[selectedSchedule?.id][stat]
-                };
-            }
-        });
+                if (topPlayer) {
+                    leaders[stat] = {
+                        name: topPlayer.playerName,
+                        value: selectedSchedule?.id === "season"
+                            ? topPlayer.seasonAverages[selectedYear][sport][stat]
+                            : topPlayer.Stats[selectedSchedule?.id][stat]
+                    };
+                }
+            });
 
         return leaders;
     };
@@ -213,7 +223,7 @@ const Stats = () => {
             ? player.seasonAverages?.[selectedYear]?.[selectedSport]
             : player.Stats?.[selectedSchedule.id];
 
-        return stats || {};  
+        return stats || {};
     };
 
 
@@ -223,8 +233,7 @@ const Stats = () => {
                 <div className="stats-menu">
                     <h3 className="stats-header">League Stats</h3>
                     <div className="stats-team-dropdown">
-                        <TeamDropdown teams={teams} defaultTeamId="SELECT TEAM" onTeamChange={handleTeamChange} />
-
+                        <TeamDropdown teams={teams} defaultTeamId="ALL" onTeamChange={handleTeamChange} />
                     </div>
                     <div className="stats-button-row">
                         <div className="stats-date-dropdown">
@@ -253,7 +262,7 @@ const Stats = () => {
                                         setSelectedSport(sport.id);
                                         setSelectedSchedule(() => {
                                             const newSchedule = { id: "season", name: `${selectedYear} Season` };
-                                            handleGameChange(newSchedule);  
+                                            handleGameChange(newSchedule);
                                             return newSchedule;
                                         });
                                     }}
@@ -267,7 +276,7 @@ const Stats = () => {
 
                 <div className="stats-leaderboard-wrap">
                     <h4 className="stats-leaderboard-title">
-                        {selectedTeam !== "SELECT TEAM"
+                        {selectedTeam !== "ALL"
                             ? `Team Leaders`
                             : selectedSchedule.id !== "season"
                                 ? `Game Leaders`
@@ -283,10 +292,11 @@ const Stats = () => {
                     </div>
 
                     <div className="stats-player-list">
-                        {displayedStats.map((player) => {
+                        {displayedStats.map((player, index) => {
                             const stats = getPlayerStats(player);
                             return (
                                 <div key={player.id} className="player-card">
+                                    <div className="rank">{index + 1}</div>
                                     <div className="player-info">
                                         <div className="top-row">
                                             <span className="player-name">{player.playerName}</span>
@@ -298,13 +308,15 @@ const Stats = () => {
                                             {Object.keys(stats).length > 0 ? (
                                                 <div className="game-stats">
                                                     <p className="game-stats-text">
-                                                        {statFields[selectedSport]
+                                                        {getStatFields(selectedSport, selectedSchedule.id === "season")
                                                             .map(stat => {
                                                                 const key = stat;
                                                                 const value = stats[key] ?? 0;
                                                                 const numericValue = Number(value) || 0;
                                                                 const displayValue = selectedSchedule.id === "season"
-                                                                    ? numericValue.toFixed(2)
+                                                                    ? stat === "Games Played (GP)"
+                                                                        ? Math.round(numericValue)
+                                                                        : numericValue.toFixed(2)
                                                                     : Math.round(numericValue);
 
                                                                 return `${displayValue} ${key.match(/\((.*?)\)/)?.[1] || stat}`;
@@ -318,7 +330,7 @@ const Stats = () => {
                                             )}
                                         </div>
                                     </div>
-                                    <div className="dash-border"/>
+                                    <div className="dash-border" />
                                     <div className="player-badges">
                                         <span className="badge">{player.Age} yrs</span>
                                         <span className="badge">{player.Height}</span>

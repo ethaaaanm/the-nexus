@@ -194,21 +194,29 @@ const InputStats = () => {
         Object.entries(playerStats).forEach(([gameID, gameData]) => {
             const { sport, ...stats } = gameData;
             const schedule = schedules.find(s => s.id === gameID);
-            if (!schedule) return; // Skip if schedule is missing
+            if (!schedule) return;
     
             const year = schedule.year;
             if (!yearlySportStats[year]) {
                 yearlySportStats[year] = {};
             }
             if (!yearlySportStats[year][sport]) {
-                yearlySportStats[year][sport] = { totalStats: {}, gameCounts: {} };
+                yearlySportStats[year][sport] = { totalStats: {}, gameCounts: {}, gamesPlayed: 0 };
+            }
+    
+            // Check if the game has at least one non-dash stat entry (i.e., valid stats input)
+            const hasStats = Object.values(stats).some(val => val !== "-" && val !== 0 && val !== null && val !== undefined);
+            if (hasStats) {
+                yearlySportStats[year][sport].gamesPlayed += 1;
             }
     
             Object.entries(stats).forEach(([stat, value]) => {
-                yearlySportStats[year][sport].totalStats[stat] = 
-                    (yearlySportStats[year][sport].totalStats[stat] || 0) + value;
-                yearlySportStats[year][sport].gameCounts[stat] = 
-                    (yearlySportStats[year][sport].gameCounts[stat] || 0) + 1;
+                if (typeof value === "number") {
+                    yearlySportStats[year][sport].totalStats[stat] =
+                        (yearlySportStats[year][sport].totalStats[stat] || 0) + value;
+                    yearlySportStats[year][sport].gameCounts[stat] =
+                        (yearlySportStats[year][sport].gameCounts[stat] || 0) + 1;
+                }
             });
         });
     
@@ -216,7 +224,9 @@ const InputStats = () => {
         Object.entries(yearlySportStats).forEach(([year, sports]) => {
             seasonAverages[year] = {};
             Object.entries(sports).forEach(([sport, data]) => {
-                seasonAverages[year][sport] = {};
+                seasonAverages[year][sport] = {
+                    "Games Played (GP)": data.gamesPlayed,
+                };
                 Object.keys(data.totalStats).forEach(stat => {
                     seasonAverages[year][sport][stat] = (data.totalStats[stat] / data.gameCounts[stat]).toFixed(2);
                 });
@@ -225,6 +235,7 @@ const InputStats = () => {
     
         return seasonAverages;
     };
+    
     
     const filteredSchedules = selectedMonth === `${selectedYear} Season`
         ? schedules
@@ -381,6 +392,8 @@ const InputStats = () => {
                                                             {editingStat?.scheduleID === schedule.id && editingStat?.stat === stat ? (
                                                                 <input
                                                                     type="number"
+                                                                    min={0}
+                                                                    max={100}
                                                                     value={stats[schedule.id]?.[stat] || ""}
                                                                     onChange={(e) => handleStatChange(schedule.id, stat, e.target.value)}
                                                                     onBlur={() => saveStatEdit(schedule.id, stat, stats[schedule.id]?.[stat])}
