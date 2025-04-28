@@ -28,18 +28,21 @@ const TeamDropdown = ({ teams, onTeamChange, defaultTeamId }) => {
         return () => document.removeEventListener("click", handleOutsideClick);
     }, []);
 
+
+    const teamNameClass = `stats-team-name ${selectedTeam?.id === "ALL" ? "all-teams-name" : ""}`;
+
     return (
         <div ref={dropdownRef} className="stats-dropdown-container">
             <button className={`stats-dropdown-button ${isOpen ? "active" : ""}`} onClick={handleToggle}>
                 <div className="stats-team-row">
-                {selectedTeam?.id === "ALL" && (
-           <p className="stats-team-name">{selectedTeam?.name}</p>                            )}
+                    {selectedTeam?.id === "ALL" && (
+                        <p className={teamNameClass}>{selectedTeam?.name}</p>
+                    )}
                     <div className="stats-team-details">
                         <div className="stats-team-info-row">
-                        {selectedTeam?.id !== "ALL" && (
-                            <p className="stats-team-name">{selectedTeam?.name}</p>
-                        )}
-                            
+                            {selectedTeam?.id !== "ALL" && (
+                                <p className={teamNameClass}>{selectedTeam?.name}</p>
+                            )}
                             {selectedTeam?.id !== "ALL" && (
                                 <p className="stats-team-abbrev">{selectedTeam?.abbrev}</p>
                             )}
@@ -55,18 +58,18 @@ const TeamDropdown = ({ teams, onTeamChange, defaultTeamId }) => {
             </button>
 
             {isOpen && (
-                <ul className="stats-dropdown-menu">   
-                <li
-                    key="all-teams"
-                    className="stats-dropdown-item"
-                    onClick={() => handleSelect({ id: "ALL", name: "ALL TEAMS" })}
-                >
-                    All Teams
-                </li>
+                <ul className="stats-dropdown-menu">
+                    <li
+                        key="all-teams"
+                        className="stats-dropdown-item"
+                        onClick={() => handleSelect({ id: "ALL", name: "ALL TEAMS" })}
+                    >
+                        All Teams
+                    </li>
                     {/* Individual teams */}
                     {teams.map((team) => (
                         <li key={team.id} className="stats-dropdown-item" onClick={() => handleSelect(team)}>
-                                <p className="stats-dropdown-item-team-name">{team.name}</p>
+                            <p className="stats-dropdown-item-team-name">{team.name}</p>
                         </li>
                     ))}
                 </ul>

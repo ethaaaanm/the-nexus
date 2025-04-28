@@ -100,8 +100,9 @@
 }
 
 .home-banner .home-learn-more:active {
-  background-color: #1C1C1C;
-  color: #F2F2F2;
+  background-color: #9ECB3B;
+  color: #050505;
+  border: 1.8px solid #9ECB3B;
 }
 
 .home {

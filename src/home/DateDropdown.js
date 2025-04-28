@@ -52,7 +52,7 @@ const DateDropdown = ({ months, onMonthChange, defaultMonth }) => {
       >
         <span>{selectedMonth}</span>
         <span className={`dropdown-arrow ${isOpen ? "open" : ""}`}>
-          <BiSolidDownArrow className="downarrow-icon"/>
+          <BiSolidDownArrow className="downarrow-icon" />
         </span>
       </button>
       {isOpen && (

@@ -1,22 +1,21 @@
-import React from "react";
+import { React, useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "./components.css";
 import logo from "../res/images/logo_green.svg"
 
 const TopNavBar = () => {
+    const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
     const adminPassword = "1Corinthians12:12";  // ADMIN: NAV PASSWORD
     const navigate = useNavigate();
     const location = useLocation();
 
     const handleAdminClick = (event) => {
-        const storedPassword = localStorage.getItem("adminPassword");
-        
-        if (storedPassword !== adminPassword) {
+        if (!isAdminLoggedIn) {
             event.preventDefault(); 
             const enteredPassword = window.prompt("Enter Admin Password:");
-            
+
             if (enteredPassword === adminPassword) {
-                localStorage.setItem("adminPassword", enteredPassword);
+                setIsAdminLoggedIn(true);
                 navigate("/admin"); 
             } else {
                 alert("Incorrect password. Nice Try Pal.");

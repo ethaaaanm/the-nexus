@@ -32,10 +32,10 @@ const LeagueItem = ({ sport, topPlayers = [] }) => {
 
   // Define stat categories for display
   const sportStatCategories = {
-    Basketball: ["PTS", "AST", "REB", "STL", "BLK"],
-    "Ultimate Frisbee": ["PTS", "AST", "BLK"],
-    Softball: ["H", "AB", "RBI"],
-    Volleyball: ["W", "L", "SRV"],
+    Basketball: ["GP", "PTS", "AST", "REB", "STL", "BLK"],
+    "Ultimate Frisbee": ["GP", "PTS", "AST", "BLK"],
+    Softball: ["GP", "H", "AB", "RBI"],
+    Volleyball: ["GP", "W", "L", "SRV"],
   };
 
   useEffect(() => {

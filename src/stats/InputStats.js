@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import UltimateIcon from "../res/images/ic_ultimate.svg";
 import SoftballIcon from "../res/images/ic_softball.svg";
@@ -32,8 +32,8 @@ const InputStats = () => {
     const [teams, setTeams] = useState([]);
     const [schedules, setSchedules] = useState([]);
     const [selectedPlayer, setSelectedPlayer] = useState(null);
-    const [selectedMonth, setSelectedMonth] = useState("June");
     const [selectedYear, setSelectedYear] = useState("2025");
+    const [selectedMonth, setSelectedMonth] = useState(`${selectedYear} Season`);
     const [selectedTeam, setSelectedTeam] = useState(null);
     const [stats, setStats] = useState({});
     const [newPlayer, setNewPlayer] = useState(null);
@@ -41,10 +41,13 @@ const InputStats = () => {
     const [isEditingName, setIsEditingName] = useState(false);
     const [editedName, setEditedName] = useState("");
     const [editingStat, setEditingStat] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [playerPassword, setPlayerPassword] = useState("");
+    const adminPassword = "1Corinthians12:12";  // ADMIN: NAV PASSWORD
 
     useEffect(() => {
-        window.scrollTo(0, 0); 
-        }, []); 
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         fetchPlayers();
@@ -97,13 +100,17 @@ const InputStats = () => {
     };
 
     const handleStatChange = (scheduleID, stat, value) => {
-        setStats((prevStats) => ({
-            ...prevStats,
-            [scheduleID]: {
-                ...prevStats[scheduleID],
-                [stat]: parseInt(value) || 0,
-            },
-        }));
+        if (isLoggedIn) {
+            setStats((prevStats) => ({
+                ...prevStats,
+                [scheduleID]: {
+                    ...prevStats[scheduleID],
+                    [stat]: parseInt(value) || 0,
+                },
+            }));
+        } else {
+            alert("You must log in to edit stats.");
+        }
     };
 
     const submitStats = async () => {
@@ -127,9 +134,9 @@ const InputStats = () => {
         fetchPlayers();
     };
 
-    const handlePlayerSelect = (player) => {
+    const handlePlayerSelect = async (player) => {
         setSelectedPlayer(player);
-        
+
         const updatedStats = {};
 
         schedules.forEach(schedule => {
@@ -190,12 +197,12 @@ const InputStats = () => {
 
     const calculateSeasonAverages = (playerStats) => {
         const yearlySportStats = {};
-    
+
         Object.entries(playerStats).forEach(([gameID, gameData]) => {
             const { sport, ...stats } = gameData;
             const schedule = schedules.find(s => s.id === gameID);
             if (!schedule) return;
-    
+
             const year = schedule.year;
             if (!yearlySportStats[year]) {
                 yearlySportStats[year] = {};
@@ -203,13 +210,13 @@ const InputStats = () => {
             if (!yearlySportStats[year][sport]) {
                 yearlySportStats[year][sport] = { totalStats: {}, gameCounts: {}, gamesPlayed: 0 };
             }
-    
+
             // Check if the game has at least one non-dash stat entry (i.e., valid stats input)
             const hasStats = Object.values(stats).some(val => val !== "-" && val !== 0 && val !== null && val !== undefined);
             if (hasStats) {
                 yearlySportStats[year][sport].gamesPlayed += 1;
             }
-    
+
             Object.entries(stats).forEach(([stat, value]) => {
                 if (typeof value === "number") {
                     yearlySportStats[year][sport].totalStats[stat] =
@@ -219,7 +226,7 @@ const InputStats = () => {
                 }
             });
         });
-    
+
         const seasonAverages = {};
         Object.entries(yearlySportStats).forEach(([year, sports]) => {
             seasonAverages[year] = {};
@@ -232,14 +239,57 @@ const InputStats = () => {
                 });
             });
         });
-    
+
         return seasonAverages;
     };
-    
-    
+
+    const showPassword = () => {
+        var pass = document.getElementById("new-player-password-prompt")
+        if (pass.type === "password") {
+            pass.type = "text";
+        } else {
+            pass.type = "password";
+        }
+    }
+
+    const handlePasswordCheck = async (player) => {
+        const storedPassword = sessionStorage.getItem(`password_${player.id}`);
+        const playerRef = doc(db, "players", player.id);
+        const playerSnap = await getDoc(playerRef);
+
+        if (!playerSnap.exists()) {
+            alert("Player not found.");
+            return false;
+        }
+
+        setPlayerPassword(playerSnap.data().password);
+
+        if (storedPassword === playerPassword || storedPassword === adminPassword) {
+            setIsLoggedIn(true);
+            return true;
+        }
+
+        const enteredPassword = window.prompt(`Enter password for ${player.playerName}:`);
+
+        if (enteredPassword === playerPassword || enteredPassword === adminPassword) {
+            sessionStorage.setItem(`password_${player.id}`, enteredPassword);
+            setIsLoggedIn(true);
+            return true;
+        } else {
+            alert("Swing and a Miss! Give it another go.");
+            return false;
+        }
+    };
+
+    const handleLogout = () => {
+        sessionStorage.removeItem(`password_${selectedPlayer.id}`);
+        setIsLoggedIn(false);
+    };
+
     const filteredSchedules = selectedMonth === `${selectedYear} Season`
         ? schedules
         : schedules.filter(schedule => schedule.month.toLowerCase() === selectedMonth.toLowerCase());
+
 
     /*** COMPANION COMPONENT ***/
     const PillButton = ({ label, value, onSave }) => {
@@ -251,7 +301,7 @@ const InputStats = () => {
             onSave(inputValue);
         };
 
-        return isEditing ? (
+        return isEditing && isLoggedIn ? (
             <div className="pill-button-edit">
                 <input
                     type="text"
@@ -264,13 +314,19 @@ const InputStats = () => {
                     <BiCheck className="save-icon" />
                 </button>
             </div>
-        ) : (
+        ) : isLoggedIn ? (
             <button className="input-player-stat-button" onClick={() => setIsEditing(true)}>
+            <h4 className="input-player-stat-value">
+                {label}: {inputValue === "-" ? "-" : `${inputValue} ${label === "age" ? "yrs" : ""}`}
+            </h4>
+            <BiSolidPencil className="input-player-edit-icon" />
+        </button>
+        ) : (
+            <div className="input-player-stat-button" >
                 <h4 className="input-player-stat-value">
                     {label}: {inputValue === "-" ? "-" : `${inputValue} ${label === "age" ? "yrs" : ""}`}
                 </h4>
-                <BiSolidPencil className="input-player-edit-icon" />
-            </button>
+            </div>
         );
     };
 
@@ -284,7 +340,6 @@ const InputStats = () => {
                         <button className="exit-button"> Exit </button>
                     </Link>
 
-                    {/* Fix Team Dropdown (No ALL team) */}
                     <div className="input-stats-column">
                         <TeamSelector teams={teams} defaultTeamId="GEN1" onTeamChange={handleTeamChange} />
                         <ul className="input-player-list">
@@ -317,7 +372,7 @@ const InputStats = () => {
                                 <div className="input-player-info-column ">
                                     <h5 className="input-player-team">{teams.find(t => t.id === selectedPlayer.teamID)?.name || "Unknown"}</h5>
                                     <h1 className="input-player-name">
-                                        {isEditingName ? (
+                                        {isEditingName && isLoggedIn ? (
                                             <div className="edit-player-name-row">
                                                 <input
                                                     type="text"
@@ -331,10 +386,14 @@ const InputStats = () => {
                                                     <BiCheck className="save-icon" />
                                                 </button>
                                             </div>
-                                        ) : (
+                                        ) : isLoggedIn ? (
                                             <div className="edit-player-name-button" onClick={handleNameEdit}>
                                                 {selectedPlayer.playerName}
                                                 <BiSolidPencil className="edit-player-name-icon" />
+                                            </div>
+                                        ) : (
+                                            <div className="edit-player-name-button">
+                                                {selectedPlayer.playerName}
                                             </div>
                                         )}
                                     </h1>
@@ -360,12 +419,24 @@ const InputStats = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="input-stat-date-dropdown">
-                                    <DateDropdown
-                                        months={["June", "July", "August", `${selectedYear} Season`]}
-                                        defaultMonth={"June"}
-                                        onMonthChange={setSelectedMonth}
-                                    />
+
+                                < div className="input-stat-left-column">
+                                    <div className="input-stat-date-dropdown">
+                                        <DateDropdown
+                                            months={["June", "July", "August", `${selectedYear} Season`]}
+                                            defaultMonth={`${selectedYear} Season`}
+                                            onMonthChange={setSelectedMonth}
+                                        />
+                                    </div>
+                                    {isLoggedIn ? (
+                                        <div className="user-authorization">
+                                            <button onClick={handleLogout} className="user-auth-login-button"><h4>Log Out</h4></button>
+                                        </div>
+                                    ) : (
+                                        <div className="user-authorization">
+                                            <button onClick={() => handlePasswordCheck(selectedPlayer)} className="user-auth-login-button"><h4>Log In</h4></button>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
@@ -387,9 +458,9 @@ const InputStats = () => {
                                                         <div key={stat} className="input-sport-stat-box" onClick={() => handleStatClick(schedule.id, stat)}>
                                                             <div className="input-sport-text-column">
                                                                 <p className="input-sport-current-stat">{stat}</p>
-                                                                <p className="input-sport-edit-indicator">Edit</p>
+                                                                <p className={`input-sport-edit-indicator ${isLoggedIn ? 'logged-in' : 'logged-out'}`}>Edit</p>
                                                             </div>
-                                                            {editingStat?.scheduleID === schedule.id && editingStat?.stat === stat ? (
+                                                            {editingStat?.scheduleID === schedule.id && editingStat?.stat === stat && isLoggedIn ? (
                                                                 <input
                                                                     type="number"
                                                                     min={0}
@@ -439,6 +510,24 @@ const InputStats = () => {
                                         value={newPlayer.Height}
                                         onSave={(newValue) => setNewPlayer({ ...newPlayer, Height: newValue })}
                                     />
+                                </div>
+
+                                <input
+                                    id="new-player-password-prompt"
+                                    className="new-player-password-prompt"
+                                    type="password"
+                                    value={newPlayer.password}
+                                    onChange={(e) => setNewPlayer({ ...newPlayer, password: e.target.value })}
+                                />
+
+                                <div className="new-player-show-password-row">
+                                    <input
+                                        className="show-password-toggle1"
+                                        type="checkbox"
+                                        id="show-password-toggle"
+                                        onClick={showPassword}
+                                    />
+                                    <label htmlFor="show-password-toggle" className="show-password-label">Show Password</label>
                                 </div>
                                 <button className="save-stats-button" onClick={saveNewPlayer}>Save Player</button>
                             </div>

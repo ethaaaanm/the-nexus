@@ -40,10 +40,10 @@ const Stats = () => {
     const [displayedStats, setDisplayedStats] = useState([]);
 
     const sportsIcon = [
-        { id: "Ultimate Frisbee", defaultIcon: UltimateIcon, hoverIcon: UltimateHover, activeIcon: UltimateActive, alt: "Ultimate Frisbee Button" },
-        { id: "Basketball", defaultIcon: BasketballIcon, hoverIcon: BasketballHover, activeIcon: BasketballActive, alt: "Basketball Button" },
-        { id: "Volleyball", defaultIcon: VolleyballIcon, hoverIcon: VolleyballHover, activeIcon: VolleyballActive, alt: "Volleyball Button" },
         { id: "Softball", defaultIcon: SoftballIcon, hoverIcon: SoftballHover, activeIcon: SoftballActive, alt: "Softball Button" },
+        { id: "Basketball", defaultIcon: BasketballIcon, hoverIcon: BasketballHover, activeIcon: BasketballActive, alt: "Basketball Button" },
+        { id: "Ultimate Frisbee", defaultIcon: UltimateIcon, hoverIcon: UltimateHover, activeIcon: UltimateActive, alt: "Ultimate Frisbee Button" },
+        { id: "Volleyball", defaultIcon: VolleyballIcon, hoverIcon: VolleyballHover, activeIcon: VolleyballActive, alt: "Volleyball Button" },
     ];
 
     const getStatFields = (sport, isSeason) => {
@@ -159,8 +159,10 @@ const Stats = () => {
             const getTotal = (player) => {
                 const stats = player.stats || {};
 
-                if (selectedSport === "Basketball" || selectedSport === "Ultimate Frisbee") {
-                    return Object.values(stats).reduce((sum, val) => sum + (Number(val) || 0), 0);
+                if (selectedSport === "Basketball") {
+                    return Number(stats["Points (PTS)" || 0]) + Number(stats["Rebounds (REB)" || 0]) + Number(stats["Assists (AST)" || 0]) + Number(stats["Blocks (BLK)" || 0]) + Number(stats["Steals (STL)" || 0])
+                } else if (selectedSport === "Ultimate Frisbee") {
+                    return Number(stats["Points (PTS)" || 0]) + Number(stats["Assists (AST)" || 0]) + Number(stats["Blocks (BLK)" || 0])
                 } else if (selectedSport === "Softball") {
                     return (Number(stats["Hits (H)"]) || 0) + (Number(stats["Runs Batted In (RBI)"]) || 0);
                 } else if (selectedSport === "Volleyball") {
@@ -190,14 +192,18 @@ const Stats = () => {
                         return matchesTeam && stats && stats[stat] !== undefined;
                     })
                     .reduce((best, player) => {
-                        const playerStatValue = selectedSchedule?.id === "season"
-                            ? player.seasonAverages[selectedYear][sport][stat]
-                            : player.Stats[selectedSchedule?.id][stat];
+                        const playerStatValue = Number(
+                            selectedSchedule?.id === "season"
+                                ? player.seasonAverages?.[selectedYear]?.[sport]?.[stat]
+                                : player.Stats?.[selectedSchedule?.id]?.[stat]
+                        ) || 0;
 
                         const bestStatValue = best
-                            ? (selectedSchedule?.id === "season"
-                                ? best.seasonAverages[selectedYear][sport][stat]
-                                : best.Stats[selectedSchedule?.id][stat])
+                            ? Number(
+                                selectedSchedule?.id === "season"
+                                    ? best.seasonAverages?.[selectedYear]?.[sport]?.[stat]
+                                    : best.Stats?.[selectedSchedule?.id]?.[stat]
+                            ) || 0
                             : -Infinity;
 
                         return playerStatValue > bestStatValue ? player : best;
