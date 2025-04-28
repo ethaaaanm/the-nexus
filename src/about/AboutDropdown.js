@@ -8,17 +8,17 @@ import VolleyballIcon from "../res/images/ic_volleyball.svg";
 import "./about.css";
 
 const sportIcons = {
-    "Ultimate Frisbee": UltimateIcon,
     Softball: SoftballIcon,
     Basketball: BasketballIcon,
+    "Ultimate Frisbee": UltimateIcon,
     Volleyball: VolleyballIcon,
   };
 
   const sportsDescription = {
-    "Ultimate Frisbee": "Standard field length, we will play with the half-field line where you cannot score unless you are past halfway. We will be playing 7 on 7 with a girl-match rule, making 14/28 people on the field. Subs can only come in after a point is scored.",
-    Softball: "Standard CCSA Rulings. Whoever the first base coach is will work as the ump for that inning, it is recommended that this would be someone with previous experience as an ump or someone that knows the proper rulings. We will be playing with a girl-match rule, 5 outfields, 5 infields, 3-pitch style.",
-    Basketball: "Teams split into two lines. We will aim to play 5 games of 5 on 5 with 2 substitutions (7 total from each team). Games up to 15, 2'1 & 1's. No refs, so everything is self-called.",
-    Volleyball: "Standard OVA rulings. Teams will split into two lines. We will aim to play sets of 7, with each round up to 15. 6 on 6 with substitutions. 14U Rules w/ Freeball.",
+    Softball: "Softball is a team sport that emphasizes hitting, fielding, and strategy on a smaller field than baseball. We will follow the Official Slo-Pitch Rules of Softball published by Softball Canada. The first base coach will act as the umpire for the inning; it is recommended this be someone with prior umpiring experience or strong knowledge of the rules. We will be playing with a girl-match rule, using 5 outfielders, 4 infielders, and a 3-pitch format.",
+    Basketball: "Basketball is a fast-paced team sport focused on scoring by shooting into a hoop while emphasizing teamwork and quick transitions. Teams will split into two lines. We will aim to play five pickup-style games of 5-on-5. Games will be played to 15 points, using 2's and 1's scoring. There will be no referees, so all calls will be self-officiated.",
+    "Ultimate Frisbee": "Ultimate Frisbee is a fast-paced, non-contact team sport that combines elements of soccer, football, and basketball, emphasizing sportsmanship and fair play. Games will be played on a standard-length field, with a half-field line rule in effect: players must cross the half-field line before being eligible to score. Matches will be 7-on-7, with a girl-match rule applied, resulting in 14 players on the field at a time. Substitutions may only occur after a point is scored.",
+    Volleyball: "Volleyball is a dynamic team sport where players aim to score by sending the ball over the net, using a combination of passing, setting, and spiking. We will follow the official Volleyball Canada rules, with some modifications. Teams will split into two lines, with the goal of playing sets of 7 rounds, each up to 15 points. We will play 6-on-6 with substitutions allowed. 14U rules will be used, with the inclusion of a freeball.",
   }
 
 const AboutDropdown = ({sport}) => {

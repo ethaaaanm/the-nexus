@@ -157,8 +157,9 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="home-banner">
+        <h5 className="home-banner-text">We strive to build a fun, welcoming, Christ-like community and create an excuse to hang out and play all summer long.</h5>
         <img src={HomeBanner} alt="Home Banner" />
-        <a href="https://forms.gle/jJVTFZi2jMyHuFNB9" target="_blank" rel="noopener noreferrer">
+        <a href="https://forms.gle/z83x9zu8HueUa4Bs6" target="_blank" rel="noopener noreferrer">
           <button className="home-register">REGISTER TODAY</button>
         </a>
         <Link to="/about">

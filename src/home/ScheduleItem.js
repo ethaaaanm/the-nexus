@@ -88,13 +88,8 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
             {teamData.map((team, index) => (
               team ? (
                 <div className="team-bar">
-                  {teams[index].score && (
-                <div className={`team-score-background ${losingTeam === index ? "team-loser" : losingTeam === -1 ? "team-draw" : ""}`}>
-                      <p className="team-score">{teams[index].score}</p>
-                    </div>
-                  )}
                   <div className={`team-row ${losingTeam === index ? "team-loser" : losingTeam === -1 ? "team-draw" : ""}`} key={team.id}>
-                  <img
+                    <img
                       src={teamIcons[team.name.toLowerCase()] || "default-icon.png"}
                       alt={`${team.name} logo`}
                       className="team-icon"
@@ -109,6 +104,13 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
                       </p>
                     </div>
                   </div>
+                  {teams[index].scores && teams[index].scores.length > 0 && (
+                    <div className="team-score-row">
+                        {teams[index].scores.map((score, scoreIndex) => (
+                          <p key={scoreIndex} className={`team-score ${losingTeam === index ? "team-loser" : losingTeam === -1 ? "team-draw" : ""}`}>{score}</p>
+                        ))}
+                      </div>
+                  )}
                 </div>
               ) : (
                 <div className="team-row" key={index}>
@@ -120,7 +122,7 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
           {/* Play Button */}
           {video && (
             <button className="play-button" onClick={() => window.open(video, "_blank")}>
-              <FaPlay className="play-icon"/>
+              <FaPlay className="play-icon" />
             </button>
           )}
         </div>

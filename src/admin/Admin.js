@@ -20,9 +20,9 @@ const sportIcons = {
 const AdminPage = () => {
   const [teams, setTeams] = useState([]);
 
-      useEffect(() => {
-          window.scrollTo(0, 0); 
-        }, []); 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const fetchTeams = async () => {
@@ -133,8 +133,8 @@ const AdminPage = () => {
     sport: "",
     date: "",
     video: "",
-    team1: { id: "", score: "", recordAtTime: "" },
-    team2: { id: "", score: "", recordAtTime: "" }
+    team1: { id: "", scores: [], recordAtTime: "" },
+    team2: { id: "", scores: [], recordAtTime: "" }
   });
 
   useEffect(() => {
@@ -169,8 +169,8 @@ const AdminPage = () => {
         sport: "",
         date: "",
         video: "",
-        team1: { id: "", score: "", recordAtTime: "" },
-        team2: { id: "", score: "", recordAtTime: "" },
+        team1: { id: "", scores: [], recordAtTime: "" },
+        team2: { id: "", scores: [], recordAtTime: "" },
       });
 
       alert("Schedule added successfully!");
@@ -195,8 +195,8 @@ const AdminPage = () => {
       sport: "",
       date: "",
       video: "",
-      team1: { id: "", score: "", recordAtTime: "" },
-      team2: { id: "", score: "", recordAtTime: "" },
+      team1: { id: "", scores: [], recordAtTime: "" },
+      team2: { id: "", scores: [], recordAtTime: "" },
     });
 
     alert("Schedule updated successfully!");
@@ -225,8 +225,8 @@ const AdminPage = () => {
       sport: "",
       date: "",
       video: "",
-      team1: { id: "", score: "", recordAtTime: "" },
-      team2: { id: "", score: "", recordAtTime: "" },
+      team1: { id: "", scores: [], recordAtTime: "" },
+      team2: { id: "", scores: [], recordAtTime: "" },
     });
   };
 
@@ -280,58 +280,58 @@ const AdminPage = () => {
       <div className="admin">
         <h1 className="admin-title">Admin Panel</h1>
         <div className="team-section">
-        {/* Team Display Section */}
-        <div className="team-display">
-          <h2 className="edit-team-title">Team Details</h2>
-          {teams.map((team) => (
-            <div className="team-item" key={team.id}>
-              <h3>{team.name}</h3>
-              <div className="edit-team-row">
-                <h4>Abbrev: {team.abbrev}</h4>
-                <h4>Record: {team.record}</h4>
+          {/* Team Display Section */}
+          <div className="team-display">
+            <h2 className="edit-team-title">Team Details</h2>
+            {teams.map((team) => (
+              <div className="team-item" key={team.id}>
+                <h3>{team.name}</h3>
+                <div className="edit-team-row">
+                  <h4>Abbrev: {team.abbrev}</h4>
+                  <h4>Record: {team.record}</h4>
+                </div>
+                <button
+                  className="admin-edit-button"
+                  onClick={() => startEditingTeam(team)}
+                >
+                  <FaEdit />
+                </button>
               </div>
-              <button
-                className="admin-edit-button"
-                onClick={() => startEditingTeam(team)}
-              >
-                <FaEdit />
-              </button>
-            </div>
-          ))}
-        </div>
-
-        {/* Edit Team Form - Now outside of team-display but inside team-section */}
-        {editingTeam && (
-          <div className="edit-team-form">
-            <h2>Edit Team</h2>
-            <div className="edit-team-form-column">
-            <label>Team Name:</label>
-            <input
-              type="text"
-              value={editingTeam.name}
-              onChange={(e) => setEditingTeam({ ...editingTeam, name: e.target.value })}
-            />
-
-            <label>Abbreviation:</label>
-            <input
-              type="text"
-              value={editingTeam.abbrev}
-              onChange={(e) => setEditingTeam({ ...editingTeam, abbrev: e.target.value })}
-            />
-
-            <label>Record (W-L-T):</label>
-            <input
-              type="text"
-              value={editingTeam.record}
-              onChange={(e) => setEditingTeam({ ...editingTeam, record: e.target.value })}
-            />
-            </div>
-
-            <button onClick={handleUpdateTeam}>Update Team</button>
-            <button onClick={() => setEditingTeam(null)}>Cancel</button>
+            ))}
           </div>
-        )}
-      </div>
+
+          {/* Edit Team Form - Now outside of team-display but inside team-section */}
+          {editingTeam && (
+            <div className="edit-team-form">
+              <h2>Edit Team</h2>
+              <div className="edit-team-form-column">
+                <label>Team Name:</label>
+                <input
+                  type="text"
+                  value={editingTeam.name}
+                  onChange={(e) => setEditingTeam({ ...editingTeam, name: e.target.value })}
+                />
+
+                <label>Abbreviation:</label>
+                <input
+                  type="text"
+                  value={editingTeam.abbrev}
+                  onChange={(e) => setEditingTeam({ ...editingTeam, abbrev: e.target.value })}
+                />
+
+                <label>Record (W-L-T):</label>
+                <input
+                  type="text"
+                  value={editingTeam.record}
+                  onChange={(e) => setEditingTeam({ ...editingTeam, record: e.target.value })}
+                />
+              </div>
+
+              <button onClick={handleUpdateTeam}>Update Team</button>
+              <button onClick={() => setEditingTeam(null)}>Cancel</button>
+            </div>
+          )}
+        </div>
 
         {/* Left: Display Announcements */}
         <div className="announcements-section">
@@ -406,7 +406,7 @@ const AdminPage = () => {
                     team ? (
                       <li key={index}>
                         Team Name: {teams.find(t => t.id === team.id)?.name || "Unknown"} <br />
-                        Score: {team.score} <br />
+                        Scores: {(Array.isArray(team.scores) && team.scores.length > 0) ? team.scores.join(" | ") : "No scores yet"}
                         Record at Time: {team.recordAtTime || "N/A"}
                         <br /><br />
                       </li>
@@ -496,13 +496,22 @@ const AdminPage = () => {
             {/* Score and Record Fields (Only in Edit Mode) */}
             {editingSchedule && (
               <>
-                <label>Team 1 Score:</label>
+                <label>Team 1 Scores (comma separated):</label>
                 <input
-                  type="number"
-                  value={editingSchedule.team1.score}
-                  onChange={(e) =>
-                    setEditingSchedule((prev) => ({ ...prev, team1: { ...prev.team1, score: e.target.value } }))
-                  }
+                  type="text"
+                  value={editingSchedule ? (editingSchedule.team1.scores || []).join(", ") : (newSchedule.team1.scores || []).join(", ")}
+                  onChange={(e) => {
+                    const scores = e.target.value.split(",").map((score) => score.trim());
+                    editingSchedule
+                      ? setEditingSchedule({
+                        ...editingSchedule,
+                        team1: { ...editingSchedule.team1, scores },
+                      })
+                      : setNewSchedule({
+                        ...newSchedule,
+                        team1: { ...newSchedule.team1, scores },
+                      });
+                  }}
                 />
 
                 <label>Team 1 Record at Time: (1-0-0)</label>
@@ -525,7 +534,7 @@ const AdminPage = () => {
                 if (editingSchedule) {
                   setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, id: value } }));
                 } else {
-                  setNewSchedule((prev) => ({ ...prev, team2: { ...prev.team2, id: value } }));
+                  setNewSchedule((prev) => ({ ...prev, team2: { ...newSchedule.team2, id: value } }));
                 }
               }}
             >
@@ -540,25 +549,26 @@ const AdminPage = () => {
             {/* Score and Record Fields (Only in Edit Mode) */}
             {editingSchedule && (
               <>
-                <label>Team 2 Score:</label>
-                <input
-                  type="number"
-                  value={editingSchedule.team2.score}
-                  onChange={(e) =>
-                    setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, score: e.target.value } }))
-                  }
-                />
-
-                <label>Team 2 Record at Time: (0-0-1)</label>
+                <label>Team 2 Scores (comma separated):</label>
                 <input
                   type="text"
-                  value={editingSchedule.team2.recordAtTime}
-                  onChange={(e) =>
-                    setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, recordAtTime: e.target.value } }))
-                  }
+                  value={editingSchedule ? (editingSchedule.team2.scores || []).join(", ") : (newSchedule.team2.scores || []).join(", ")}
+                  onChange={(e) => {
+                    const scores = e.target.value.split(",").map((score) => score.trim());
+                    editingSchedule
+                      ? setEditingSchedule({
+                        ...editingSchedule,
+                        team2: { ...editingSchedule.team2, scores },
+                      })
+                      : setNewSchedule({
+                        ...newSchedule,
+                        team2: { ...newSchedule.team2, scores },
+                      });
+                  }}
                 />
               </>
             )}
+
             <label htmlFor="YTvideo">Attach YouTube Link:</label>
             <input
               type="text"

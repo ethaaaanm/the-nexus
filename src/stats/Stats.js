@@ -30,7 +30,7 @@ import "./stats.css";
 const Stats = () => {
     const [selectedSchedule, setSelectedSchedule] = useState({ id: "season", name: "2025 Season" });
     const [selectedYear, setSelectedYear] = useState(2025);
-    const [selectedSport, setSelectedSport] = useState("Ultimate Frisbee");
+    const [selectedSport, setSelectedSport] = useState("Softball");
     const [hoveredSport, setHoveredSport] = useState(null);
     const [players, setPlayers] = useState([]);
     const [teams, setTeams] = useState([]);
