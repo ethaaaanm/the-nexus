@@ -39,85 +39,80 @@
   letter-spacing: normal;
   line-height: 16px;
   color: #1C1C1C;
-  left: 120px;
-  bottom: 110px;
+  left: 8.5%;
+  bottom: 24%;
   width: 40%;
   text-transform: none;
 }
 
-.home-banner .home-register {
-  width: fit-content;
+.home-banner-button-row {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 100px; 
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  padding: 0 10px;
+}
+
+.home-banner .home-register,
+.home-banner .home-learn-more {
   height: 64px;
   padding: 20px 40px;
-  align-items: center;
-  gap: 10px;
-  position: absolute;
+  font-family: "Proxima Nova";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+  border-radius: 16px;
   cursor: pointer;
-  left: 120px;
-  bottom: 40px;
+  transition: background-color 0.3s ease;
+  
+}
+
+/* Register button */
+.home-banner .home-register {
   background-color: #1C1C1C;
   color: #F2F2F2;
   border: none;
-  font-family: "Proxima Nova";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 16px; 
-  letter-spacing: 3.2px;
-  text-transform: uppercase;
-  border-radius: 16px;
-  transition: background-color 0.3s ease;
 }
-
 .home-banner .home-register:hover {
-  border-radius: 16px;
   background-color: #0E0E0E;
 }
-
 .home-banner .home-register:active {
-  border-radius: 16px;
-  color: #050505;
   background-color: #9ECB3B;
+  color: #050505;
 }
 
+/* Learn more button */
 .home-banner .home-learn-more {
-  width: fit-content;
-  height: 64px;
-  padding: 20px 20px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  position: absolute;
-  cursor: pointer;
-  left: 390px;
-  bottom: 40px;
   background-color: transparent;
   color: #050505;
   border: 1.8px solid #050505;
-  text-align: center;
-  font-family: "Proxima Nova";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 16px; 
-  letter-spacing: 3.2px;
-  text-transform: uppercase;
-  border-radius: 16px;
-  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .home-banner .home-learn-more p {
   margin-left: 5px;
 }
-
 .home-banner .home-learn-more:hover {
   background: rgba(28, 28, 28, 0.20);
 }
-
 .home-banner .home-learn-more:active {
   background-color: #9ECB3B;
   color: #050505;
-  border: 1.8px solid #9ECB3B;
+  border-color: #9ECB3B;
+}
+
+.home-banner .home-banner-button-link {
+  text-decoration: none;
 }
 
 .home {
@@ -488,7 +483,7 @@
   text-align: center;
   color: #F2F2F2;
   letter-spacing: 0.8px;
-  min-width: 100px;
+  min-width: 70px;
   min-height:max-content;
   margin: 0;
 
@@ -820,4 +815,106 @@
   color: #333333;
   background-color: transparent;
   gap: 0;
+}
+
+
+/* Tablet View (up to 1024px) */
+@media screen and (max-width: 1024px) {
+  .home-container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .home-banner {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .home-banner .home-banner-text {
+    display: none;
+  }
+
+  .home-banner-button-row {
+    left: 40%;
+    gap: 24px;
+  }
+  .home-banner .home-register,
+  .home-banner .home-learn-more {
+    width: 100%;
+    max-width: 280px;
+    padding: 16px 24px;
+    font-size: 14px;
+  }
+
+  .home-banner .home-register {
+    left: 60px;
+    bottom: 30px;
+    padding: 16px 32px;
+  }
+
+  .home-banner .home-learn-more {
+    left: 260px;
+    bottom: 30px;
+    padding: 16px 24px;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+  }
+
+  .schedule-dropdown {
+    width: stretch;
+  }
+
+  .news-section {
+    display: none;
+  }
+}
+
+/* Phone View (up to 768px) */
+@media screen and (max-width: 768px) {
+  .home-container,
+  .home {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .home-banner {
+    display: none;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .schedule-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-container {
+    width: 100%;
+  }
+
+  .dropdown-button {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .row-top,
+  .row-bottom,
+  .teams-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .schedule-date {
+    width: 100%;
+    justify-content: center;
+  }
 }

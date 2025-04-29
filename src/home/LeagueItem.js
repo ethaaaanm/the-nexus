@@ -58,7 +58,7 @@ const LeagueItem = ({ sport, topPlayers = [] }) => {
 
             return (
               <div key={index} className="player-row">
-                <div className="rank">{index+1}</div>
+                <div className="rank">{index + 1}</div>
                 <div className="player-info">
                   <div className="top-row">
                     <span className="player-name">{player.playerName}</span>
@@ -80,11 +80,13 @@ const LeagueItem = ({ sport, topPlayers = [] }) => {
 
       {/* See All Button */}
       <div className="see-all-wrapper">
-        <button className="see-all-button"
+        <button
+          className="see-all-button"
           onClick={() => {
-            navigate("/stats");
+            navigate("/stats", { state: { selectedSport: sport } });
             window.scrollTo(0, 0);
-          }}>
+          }}
+        >
           See All
           <IoIosArrowForward className="arrow-icon" />
         </button>

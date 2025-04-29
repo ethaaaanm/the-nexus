@@ -158,13 +158,15 @@ const Home = () => {
     <div className="home-container">
       <div className="home-banner">
         <h5 className="home-banner-text">We strive to build a fun, welcoming, Christ-like community and create an excuse to hang out and play all summer long.</h5>
-        <img src={HomeBanner} alt="Home Banner" />
-        <a href="https://forms.gle/z83x9zu8HueUa4Bs6" target="_blank" rel="noopener noreferrer">
-          <button className="home-register">REGISTER TODAY</button>
-        </a>
-        <Link to="/about">
-          <button className="home-learn-more"><p>LEARN MORE</p></button>
-        </Link>
+        <img src={HomeBanner} alt="Home Banner"/>
+        <div class="home-banner-button-row">
+          <a href="https://forms.gle/z83x9zu8HueUa4Bs6" target="_blank" rel="noopener noreferrer" className="home-banner-button-link">
+            <button className="home-register">REGISTER TODAY</button>
+          </a>
+          <Link to="/about" className="home-banner-button-link">
+            <button className="home-learn-more"><p>LEARN MORE</p></button>
+          </Link>
+        </div>
       </div>
       <div className="home">
         {/* Top Left: News Section */}
@@ -212,7 +214,7 @@ const Home = () => {
         <div className="league-section">
           <div className="league-header">
             <h3>League Leaders</h3>
-            <Link to="/stats" className="view-all-link"  >
+            <Link to="/stats" className="view-all-link">
               <button className="view-all"> View All </button>
             </Link>
           </div>

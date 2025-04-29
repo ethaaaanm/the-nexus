@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
@@ -30,7 +30,6 @@ import "./stats.css";
 const Stats = () => {
     const [selectedSchedule, setSelectedSchedule] = useState({ id: "season", name: "2025 Season" });
     const [selectedYear, setSelectedYear] = useState(2025);
-    const [selectedSport, setSelectedSport] = useState("Softball");
     const [hoveredSport, setHoveredSport] = useState(null);
     const [players, setPlayers] = useState([]);
     const [teams, setTeams] = useState([]);
@@ -38,6 +37,10 @@ const Stats = () => {
     const [selectedTeam, setSelectedTeam] = useState("ALL");
     const [loading, setLoading] = useState(true);
     const [displayedStats, setDisplayedStats] = useState([]);
+    const location = useLocation();
+    const [selectedSport, setSelectedSport] = useState(() => {
+        return location.state?.selectedSport || "Softball";
+      }); 
 
     const sportsIcon = [
         { id: "Softball", defaultIcon: SoftballIcon, hoverIcon: SoftballHover, activeIcon: SoftballActive, alt: "Softball Button" },
@@ -232,6 +235,11 @@ const Stats = () => {
         return stats || {};
     };
 
+    useEffect(() => {
+        if (location.state?.selectedSport) {
+          setSelectedSport(location.state.selectedSport);
+        }
+      }, [location.state]);
 
     return (
         <div className="stats-container">

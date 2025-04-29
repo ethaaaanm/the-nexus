@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { collection, doc, getDocs, setDoc, updateDoc, getDoc } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc, updateDoc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import UltimateIcon from "../res/images/ic_ultimate.svg";
 import SoftballIcon from "../res/images/ic_softball.svg";
@@ -159,7 +159,7 @@ const InputStats = () => {
     };
 
     const saveNewPlayer = async () => {
-        if (!newPlayer.playerName || !newPlayer.Age || !newPlayer.Height) {
+        if (!newPlayer.playerName || !newPlayer.Age || !newPlayer.Height || !newPlayer.teamID) {
             return alert("Please fill out all fields before saving.");
         }
 
@@ -286,6 +286,26 @@ const InputStats = () => {
         setIsLoggedIn(false);
     };
 
+    const deletePlayer = async () => {
+        if (!selectedPlayer) return alert("No player selected.");
+    
+        const confirmDelete = window.confirm(`Are you sure you want to delete ${selectedPlayer.playerName}? There's no going back!`);
+        if (!confirmDelete) return;
+    
+        try {
+            // Delete from Firestore
+            await deleteDoc(doc(db, "players", selectedPlayer.id));
+    
+            // Update local state
+            setPlayers(players.filter(p => p.id !== selectedPlayer.id));
+            setSelectedPlayer(null);
+            alert("Player deleted successfully. Laytah!");
+        } catch (error) {
+            console.error("Error deleting player:", error);
+            alert("There was an error deleting the player.");
+        }
+    };
+
     const filteredSchedules = selectedMonth === `${selectedYear} Season`
         ? schedules
         : schedules.filter(schedule => schedule.month.toLowerCase() === selectedMonth.toLowerCase());
@@ -316,11 +336,11 @@ const InputStats = () => {
             </div>
         ) : isLoggedIn ? (
             <button className="input-player-stat-button" onClick={() => setIsEditing(true)}>
-            <h4 className="input-player-stat-value">
-                {label}: {inputValue === "-" ? "-" : `${inputValue} ${label === "age" ? "yrs" : ""}`}
-            </h4>
-            <BiSolidPencil className="input-player-edit-icon" />
-        </button>
+                <h4 className="input-player-stat-value">
+                    {label}: {inputValue === "-" ? "-" : `${inputValue} ${label === "age" ? "yrs" : ""}`}
+                </h4>
+                <BiSolidPencil className="input-player-edit-icon" />
+            </button>
         ) : (
             <div className="input-player-stat-button" >
                 <h4 className="input-player-stat-value">
@@ -420,7 +440,7 @@ const InputStats = () => {
                                     </div>
                                 </div>
 
-                                < div className="input-stat-left-column">
+                                <div className="input-stat-left-column">
                                     <div className="input-stat-date-dropdown">
                                         <DateDropdown
                                             months={["June", "July", "August", `${selectedYear} Season`]}
@@ -428,9 +448,15 @@ const InputStats = () => {
                                             onMonthChange={setSelectedMonth}
                                         />
                                     </div>
+
                                     {isLoggedIn ? (
-                                        <div className="user-authorization">
-                                            <button onClick={handleLogout} className="user-auth-login-button"><h4>Log Out</h4></button>
+                                        <div className="input-stat-left-button-row">
+                                            <div className="user-deletion">
+                                                <button onClick={deletePlayer} className="user-delete-button"><h4>Delete Player</h4></button>
+                                            </div>
+                                            <div className="user-authorization">
+                                                <button onClick={handleLogout} className="user-auth-login-button"><h4>Log Out</h4></button>
+                                            </div>
                                         </div>
                                     ) : (
                                         <div className="user-authorization">
