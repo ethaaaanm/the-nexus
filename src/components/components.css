@@ -1,34 +1,3 @@
-/* Container for sports buttons */
-.sports-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px ;
-    width: 100%; /* Ensure it spans the full width */
-    padding: 0 50px; /* Add padding for spacing */
-    margin: 20px auto; /* Center the sports bar horizontally */
-}
-  
-/* Style for each button */
-.sports-button {
-    flex: 1; /* Make each button take up equal width */
-    padding: 15px 40px; /* Increase padding for larger button size */
-    margin: 0 20px; /* Small margin between buttons */
-    border: none;
-    cursor: pointer;
-    font-size: 18px; /* Larger font size for readability */
-    border-radius: 5px;
-    background-color: #e7e7e7; /* Default background */
-    transition: background-color 0.3s ease;
-    text-align: center;
-}
-
-/* Active state for the selected button */
-.sports-button.active {
-    background-color: #9ECB3B; /* Active background */
-    color: white; /* Optional: Change text color for contrast */
-}
-
 /***  TOP BAR STYLING  ***/
 .topnavbar {
     width: 100%;
@@ -97,6 +66,25 @@
 .navbar-right .navbar-links .active {
     color: #9ECB3B; /* Highlight active link */
     font-weight: 800;
+}
+
+.mobile-menu-icon {
+    display: none;
+    color: #f2f2f2;
+    padding-right: 24px;
+    cursor: pointer;
+}
+
+/* Default nav layout (desktop) */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
 }
 
 /*** FOOTER STYLING ***/
@@ -173,4 +161,48 @@
 
 .footer .footer-right a:hover {
     opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-icon {
+        display: block;
+        position: absolute;
+        top: 28px;
+        right: 24px;
+        z-index: 1001;
+    }
+
+    .navbar-right {
+        position: relative;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: #0E0E0E;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .navbar-right.open {
+        transform: translateY(0);
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .navbar-links a {
+        font-size: 18px;
+        padding: 12px 24px;
+    }
+
+    .logo img {
+        display: none;
+    }
 }

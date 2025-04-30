@@ -330,7 +330,7 @@ const Stats = () => {
                                                                 const displayValue = selectedSchedule.id === "season"
                                                                     ? stat === "Games Played (GP)"
                                                                         ? Math.round(numericValue)
-                                                                        : numericValue.toFixed(2)
+                                                                        : numericValue.toFixed(1)
                                                                     : Math.round(numericValue);
 
                                                                 return `${displayValue} ${key.match(/\((.*?)\)/)?.[1] || stat}`;

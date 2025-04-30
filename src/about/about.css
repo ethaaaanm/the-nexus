@@ -45,7 +45,7 @@
     text-align: start;
     position: absolute;
     padding: 40px 80px;
-    bottom: 40px;
+    top: -5%;
     color: #F2F2F2;
 }
 
@@ -60,8 +60,8 @@
     letter-spacing: normal;
     position: absolute;
     padding: 40px 80px;
-    width: 45%;
-    bottom: 20px;
+    width: 60%;
+    bottom: 15%;
     color: #F2F2F2;
 }
 
@@ -125,7 +125,7 @@
     line-height: 24px; 
     letter-spacing: 4px;
     text-transform: uppercase;
-    padding: 0px 40px;
+    padding: 0px 40px 20px 40px;
 }
 
 .about-dropdown-container {
@@ -226,7 +226,7 @@
   .about-team-connect {
     position: relative; 
     background-color: #F2F2F2; 
-    padding-top: 80px; 
+    padding-top: 60px; 
     padding-bottom: 20px;
     width: 100%;
 }
@@ -431,4 +431,24 @@
     line-height: normal;
     letter-spacing: normal;
     text-transform: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .about-banner-title {
+        font-size: 100px;
+        line-height: normal;
+        width: 100%;
+        top: -5%;
+    }
+
+    .about-banner-subtitle {
+        width: 80%;
+        bottom: 8%;
+    }
+
+    .about-dropdown-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 40px;
+    }
 }

@@ -13,7 +13,7 @@
     justify-content: center;
     width: 100%;
     max-width: 1200px;
-    padding: 40px 80px;
+    padding: 80px;
     background-color: #050505;
     color: #F2F2F2;
     flex-direction: column;
@@ -556,12 +556,11 @@
   justify-content: center;
   width: 100%;
   max-width: 1200px;
-  padding: 60px 80px;
+  padding: 80px;
   background-color: #050505;
   color: #F2F2F2;
   gap: 20px;
 }
-
 
 .input-stats input {
   height: auto;
@@ -592,11 +591,11 @@
 }
 
 .stats-team-selector {
-  width: 100%;
+  width: stretch;
 }
 
 .stats-selector-container {
-  width: 100%;
+  width: stretch;
   position: relative;
   display: inline-block;
 }
@@ -613,7 +612,7 @@
   position: relative;
   box-sizing: border-box;
   padding: 10px;
-  width: 100%; 
+  width: stretch; 
 }
 
 .stats-selector-button:hover {
@@ -638,7 +637,7 @@
 .stats-selector-menu {
   position: absolute;
   left: 0;
-  width: 100%; 
+  width: stretch; 
   background-color: #1C1C1C;
   color: #F2F2F2;
   list-style: none;
@@ -701,7 +700,7 @@
 }
 
 .exit-button {
-  width: 100%;
+  width: stretch;
   display: flex;
   height: 62px;
   justify-content: center;
@@ -725,7 +724,7 @@
 }
 
 .exit-button-link {
-  width: 100%;
+  width: stretch;
   text-decoration: none; 
 }
 
@@ -734,7 +733,7 @@
   flex-direction: column;
   gap: 8px;
   list-style: none;
-  width: 100%;
+  width: stretch;
   padding: 0px;
 }
 
@@ -862,7 +861,7 @@
 }
 
 .input-stats-content {
-  width: 100%;
+  width: stretch;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -876,7 +875,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
-  width: 100%;
+  width: stretch;
   box-sizing: border-box;
   padding: 20px;
   border-radius: 20px;
@@ -1011,7 +1010,7 @@
 
 .input-sport-stat-section { 
   box-sizing: border-box;
-  width: 100%;
+  width: stretch;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1019,11 +1018,11 @@
 }
 
 .schedule-stats-list {
-  width: 100%;
+  width: stretch;
 }
 
 .input-sport-stat-card {
-  width: 100%;
+  width: stretch;
   display: flex;
   padding: 20px;
   margin-bottom: 20px;
@@ -1035,7 +1034,7 @@
 }
 
 .input-sport-stat-header {
-  width: 100%;
+  width: stretch;
   display: flex;
   justify-content: space-between;
   align-items: center; 
@@ -1085,7 +1084,7 @@
 }
 
 .input-sport-stat-row {
-  width: 100%;
+  width: stretch;
   display: flex;
   gap: 8px;
   justify-content: space-between;
@@ -1121,7 +1120,7 @@
   text-transform: capitalize;
   white-space: nowrap; 
   overflow: hidden; 
-  max-width: 100%; 
+  max-width: stretch; 
   color: #F2F2F2;
   margin: 0px;
 }
@@ -1159,7 +1158,7 @@
 }
 
 .input-sport-stat-box input {
-  width: 100%;
+  width: stretch;
   height: 46px; 
   text-align: center;
   background: black;
@@ -1171,7 +1170,7 @@
 }
 
 .save-stats-button {
-  width: 100%;
+  width: stretch;
   display: flex;
   height: 62px;
   justify-content: center;
@@ -1196,7 +1195,7 @@
 }
 
 .new-player-form {
-  width: 100%;
+  width: stretch;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1222,7 +1221,7 @@
 }
 
 .new-player-header {
-  width: 100%;
+  width: stretch;
   display: flex;
   justify-content: space-between;
   align-items: center; 
@@ -1234,7 +1233,7 @@
 .new-player-form input {
   height: 50px;
   background-color: #1C1C1C;
-  width: 100%;
+  width: stretch;
   text-align: center;
   color: #F2F2F2;
   border: none;
@@ -1374,7 +1373,7 @@
 .new-player-password-prompt {
   height: 50px;
   background-color: #1C1C1C;
-  width: 100%;
+  width: stretch;
   text-align: center;
   color: #F2F2F2;
   border: none;

@@ -9,7 +9,8 @@ import CurrentTeams from "../components/currentTeams";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
-import HomeBanner from "../res/images/home_banner.png";
+import HomeBannerDesktop from "../res/images/home_banner_desktop.png";
+import HomeBannerMobile from "../res/images/home_banner_mobile.svg"
 
 import "./home.css";
 
@@ -158,7 +159,8 @@ const Home = () => {
     <div className="home-container">
       <div className="home-banner">
         <h5 className="home-banner-text">We strive to build a fun, welcoming, Christ-like community and create an excuse to hang out and play all summer long.</h5>
-        <img src={HomeBanner} alt="Home Banner"/>
+        <img className="home-banner-img desktop" src={HomeBannerDesktop} alt="Home Banner"/>
+        <img className="home-banner-img mobile" src={HomeBannerMobile} alt="Home Banner Mobile" />
         <div class="home-banner-button-row">
           <a href="https://forms.gle/z83x9zu8HueUa4Bs6" target="_blank" rel="noopener noreferrer" className="home-banner-button-link">
             <button className="home-register">REGISTER TODAY</button>

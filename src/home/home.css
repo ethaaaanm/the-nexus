@@ -30,6 +30,10 @@
   object-fit: cover; 
 }
 
+.home-banner-img.mobile {
+  display: none;
+}
+
 .home-banner .home-banner-text {
   position: absolute;
   font-family: "Proxima Nova";
@@ -39,10 +43,11 @@
   letter-spacing: normal;
   line-height: 16px;
   color: #1C1C1C;
-  left: 8.5%;
+  left: 30%;
   bottom: 24%;
   width: 40%;
   text-transform: none;
+  text-align: center;
 }
 
 .home-banner-button-row {
@@ -76,7 +81,6 @@
   
 }
 
-/* Register button */
 .home-banner .home-register {
   background-color: #1C1C1C;
   color: #F2F2F2;
@@ -90,7 +94,6 @@
   color: #050505;
 }
 
-/* Learn more button */
 .home-banner .home-learn-more {
   background-color: transparent;
   color: #050505;
@@ -835,7 +838,7 @@
   }
 
   .home-banner-button-row {
-    left: 40%;
+    left: 50%;
     gap: 24px;
   }
   .home-banner .home-register,
@@ -875,26 +878,47 @@
 
 /* Phone View (up to 768px) */
 @media screen and (max-width: 768px) {
-  .home-container,
   .home {
     padding-left: 40px;
     padding-right: 40px;
   }
 
-  .home-banner {
-    display: none;
+  .home-container {
+    padding: 0px;
   }
 
-  .home {
+  .home-banner {
+    padding: 0px;
+  }
+
+    .home-banner-img.desktop {
+      display: none;
+    }
+    .home-banner-img.mobile {
+      display: flex;
+    }
+
+    .home-banner-button-row {
+      left: 35%;
+      gap: 24px;
+    } 
+
+    .home-banner-button-row {
+      display: none;
+    }
+
+  .schedule-dropdown {
     display: flex;
     flex-direction: column;
-    gap: 16px;
   }
 
+  .schedule-dropdown h3 {
+    align-self: flex-start;
+  }
+  
   .schedule-section {
     width: 100%;
     display: flex;
-    flex-direction: column;
   }
 
   .dropdown-container {

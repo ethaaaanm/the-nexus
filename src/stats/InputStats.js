@@ -235,7 +235,7 @@ const InputStats = () => {
                     "Games Played (GP)": data.gamesPlayed,
                 };
                 Object.keys(data.totalStats).forEach(stat => {
-                    seasonAverages[year][sport][stat] = (data.totalStats[stat] / data.gameCounts[stat]).toFixed(2);
+                    seasonAverages[year][sport][stat] = (data.totalStats[stat] / data.gameCounts[stat]).toFixed(1);
                 });
             });
         });

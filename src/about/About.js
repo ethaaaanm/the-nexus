@@ -31,11 +31,13 @@ const About = () => {
                     <h4 className="about-format-breakdown">Format Breakdown</h4>
                     <h2 className="about-format-title">FOUR SPORTS. TWO TEAMS. ONE CHAMPION.</h2>
                     <img src={NexusShield} alt="The Nexus Shield" className="about-nexus-shield"/>
-                    <AboutDropdown sport = {'Softball'} />
-                    <AboutDropdown sport = {'Basketball'} />
-                    <AboutDropdown sport = {'Ultimate Frisbee'} />
-                    <AboutDropdown sport = {'Volleyball'} />
-                    <div className="about-divider"></div>
+                    <div className="about-dropdown-wrapper">
+                        <AboutDropdown sport = {'Softball'} />
+                        <AboutDropdown sport = {'Basketball'} />
+                        <AboutDropdown sport = {'Ultimate Frisbee'} />
+                        <AboutDropdown sport = {'Volleyball'} />
+                        <div className="about-divider"></div>
+                    </div>
                     <h4 className="about-format-verse">So in Christ we, though many, form one body, and each member belongs to all the others.<br/><br/><br/>Romans 12:5</h4>
                 </div>
 
