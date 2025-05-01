@@ -5,9 +5,9 @@
     align-items: center;
     text-align: center;
     color: #F2F2F2;
-    margin: 0; 
+    margin: 0;
     padding: 0;
-    width: stretch; 
+    width: stretch;
 }
 
 .about-banner-wrap {
@@ -16,6 +16,10 @@
     flex-direction: column;
     overflow: hidden;
     position: relative;
+}
+
+.about-banner_mobile {
+    display: none;
 }
 
 .about-banner {
@@ -30,7 +34,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 80px; 
+    height: 80px;
     background-color: #050505;
     clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
 }
@@ -40,7 +44,7 @@
     font-size: 128px;
     font-style: normal;
     font-weight: 850;
-    line-height: 128px; 
+    line-height: 128px;
     text-transform: uppercase;
     text-align: start;
     position: absolute;
@@ -110,11 +114,11 @@
 }
 
 .about-divider {
-    width: stretch; 
-    height: 2px; 
+    width: stretch;
+    height: 2px;
     background-color: #F2F2F2;
     margin: 40px auto;
-  }
+}
 
 .about-format-verse {
     color: #F2F2F2;
@@ -122,7 +126,7 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
-    line-height: 24px; 
+    line-height: 24px;
     letter-spacing: 4px;
     text-transform: uppercase;
     padding: 0px 40px 20px 40px;
@@ -144,9 +148,9 @@
     border-radius: 16px;
     background-color: #1C1C1C;
     cursor: pointer;
-    transition: background-color 0.3s ease,  min-height 0.3s ease;
-    white-space: nowrap; 
-    overflow: hidden;   
+    transition: background-color 0.3s ease, min-height 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
     margin-top: 8px;
 }
 
@@ -157,8 +161,8 @@
 
 .about-dropdown-button.active {
     background-color: #0E0E0E;
-    min-height: 64px; 
-    height: auto; 
+    min-height: 64px;
+    height: auto;
     padding: 0px 20px;
 }
 
@@ -193,22 +197,22 @@
     padding-bottom: 4px;
     font-size: 20px;
     color: #9ECB3B;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
-  
-  .about-dropdown-arrow.open {
+
+.about-dropdown-arrow.open {
     color: #9ECB3B;
-    transform: rotate(180deg); 
+    transform: rotate(180deg);
     padding-bottom: 0px;
-  }
-  
-  .about-downarrow-icon {
+}
+
+.about-downarrow-icon {
     width: 18px;
     height: 18px;
     margin-top: 2px;
-  }
+}
 
-  .about-sports-description {
+.about-sports-description {
     font-family: "Proxima Nova";
     font-size: 16px;
     font-style: normal;
@@ -217,16 +221,16 @@
     text-transform: none;
     color: #F2F2F2;
     text-align: start;
-    white-space: normal; 
-    overflow-wrap: break-word; 
+    white-space: normal;
+    overflow-wrap: break-word;
     word-break: break-word;
     padding-bottom: 20px;
-  }
+}
 
-  .about-team-connect {
-    position: relative; 
-    background-color: #F2F2F2; 
-    padding-top: 60px; 
+.about-team-connect {
+    position: relative;
+    background-color: #F2F2F2;
+    padding-top: 60px;
     padding-bottom: 20px;
     width: 100%;
 }
@@ -234,7 +238,7 @@
 .about-team-connect::before {
     content: "";
     position: absolute;
-    bottom: calc(100% - 1px); 
+    bottom: calc(100% - 1px);
     left: 0;
     width: 100%;
     height: 82px;
@@ -268,7 +272,7 @@
     display: flex;
     flex-direction: column;
     width: 750px;
-    margin: 0 auto; 
+    margin: 0 auto;
     align-items: center;
     gap: 20px;
 }
@@ -283,7 +287,7 @@
 }
 
 .about-personal-info-row input {
-    flex: 1; 
+    flex: 1;
     background-color: #F2F2F2;
     border: 1px solid #333;
     border-radius: 16px;
@@ -291,13 +295,13 @@
     font-family: "Proxima Nova";
     font-size: 16px;
     font-weight: 300;
-    color: #050505; 
+    color: #050505;
     outline: none;
     transition: border-color 0.3s ease;
 }
 
 .about-personal-info-row input:focus {
-    border-color: #050505; 
+    border-color: #050505;
 }
 
 .contact-subject-form {
@@ -351,7 +355,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; 
+    line-height: 16px;
     letter-spacing: 3.2px;
     text-transform: uppercase;
 }
@@ -365,7 +369,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; 
+    line-height: 16px;
     letter-spacing: 3.2px;
     text-transform: uppercase;
 }
@@ -380,7 +384,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; 
+    line-height: 16px;
     letter-spacing: 3.2px;
     text-transform: uppercase;
 }
@@ -398,15 +402,15 @@
 .about-social-button {
     display: flex;
     align-items: center;
-    gap: 8px; 
+    gap: 8px;
     padding: 0px 8px;
-    border: 1px solid #9ECB3B; 
-    background-color: transparent; 
-    color: #9ECB3B; 
+    border: 1px solid #9ECB3B;
+    background-color: transparent;
+    color: #9ECB3B;
     font-family: "Proxima Nova";
     font-size: 20px;
     font-weight: 400;
-    border-radius: 100px; 
+    border-radius: 100px;
     text-decoration: none;
     transition: all 0.3s ease;
     width: max-content;
@@ -418,7 +422,7 @@
 }
 
 .about-social-button:active {
-    background-color: #9ECB3B; 
+    background-color: #9ECB3B;
     color: #050505;
 }
 
@@ -433,6 +437,8 @@
     text-transform: none;
 }
 
+
+/* Tablet View (up to 1024px) */
 @media screen and (max-width: 1024px) {
     .about-banner-title {
         font-size: 100px;
@@ -450,5 +456,131 @@
         display: flex;
         flex-direction: column;
         padding: 0px 40px;
+    }
+}
+
+
+/* Phone View (up to 768px) */
+@media screen and (max-width: 768px) {
+    .about-page {
+        padding: 0px;
+    }
+
+    .about-banner {
+        display: none;
+    }
+
+    .about-banner-wrap {
+        width: 100%;
+    }
+
+    .about-banner_mobile {
+        display: flex;
+        width: 100%;
+    }
+
+    .about-banner-title {
+        font-weight: 700;
+        color: #F2F2F2;
+        font-size: 132px;
+        line-height: 120px;
+        padding: 20px;
+        padding-top: 40px;
+        top: 0;
+        width: 70%;
+    }
+
+    .about-banner-subtitle {
+        width: 90%;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 18px;
+        padding: 20px;
+        bottom: 20%;
+    }
+
+
+    .about-format-title {
+        font-size: 64px;
+        font-weight: 800;
+        line-height: 64px;
+        text-transform: uppercase;
+        flex-wrap: wrap;
+    }
+
+    .about-nexus-shield {
+        display: none;
+    }
+
+    .about-format-breakdown {
+        font-family: "Proxima Nova";
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px; 
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+    .about-format-verse {
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 4px;
+        padding: 0 10px;
+    }
+
+    .about-dropdown-button {
+        min-height: 56px;
+        padding: 0 16px;
+        white-space: wrap;
+    }
+
+    .about-sport-title {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    .about-sports-description {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .about-connect-title {
+        font-size: 64px;
+        line-height: 64px;
+        text-align: center;
+    }
+
+    .about-connect-inquiries {
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .about-connect-form {
+        width: 90%;
+        padding: 0 10px;
+    }
+
+    .about-personal-info-row {
+        gap: 10px;
+    }
+
+    .contact-message-form {
+        width: 100%;
+    }
+
+    .contact-submit-button {
+        width: 100%;
+    }
+
+    .about-socials-row {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .about-social-button {
+        font-size: 16px;
+        height: 36px;
+        padding: 0 12px;
     }
 }

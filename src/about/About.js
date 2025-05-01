@@ -1,5 +1,6 @@
 import {React, useEffect} from "react";
-import Banner from "../res/images/about_banner.png"
+import DesktopBanner from "../res/images/about_banner_desktop.png"
+import MobileBanner from "../res/images/about_banner_mobile.png"
 import NexusShield from "../res/images/ic_nexus_shield.svg"
 import AboutDropdown from "./AboutDropdown";
 import ContactForm from "./ContactForm";
@@ -18,7 +19,8 @@ const About = () => {
     return(
         <div className="about-page">
             <div className="about-banner-wrap">
-                <img src={Banner} alt="Family Banner" className="about-banner"/>
+                <img src={DesktopBanner} alt="Family Banner" className="about-banner"/>
+                <img src={MobileBanner} alt="Family Banner" className="about-banner_mobile"/>
                 <h1 className="about-banner-title">CREATING A CHRIST-CENTERED<br/> COMMUNITY THROUGH SPORT.</h1>
                 <h5 className="about-banner-subtitle">“Nexus” refers to a central point or link that connects different elements or groups. 
                     It's often used to describe a hub or focal point where ideas, people, or things come together. 
