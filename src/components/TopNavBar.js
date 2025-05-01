@@ -40,7 +40,7 @@ const TopNavBar = () => {
                 </NavLink>
             </div>
 
-            <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
+            <div className={`mobile-menu-icon ${mobileMenuOpen ? "open" : ""}`} onClick={toggleMobileMenu}>
                 {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </div>
             <nav className={`navbar-right ${mobileMenuOpen ? "open" : ""}`}>

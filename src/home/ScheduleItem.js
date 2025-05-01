@@ -77,7 +77,10 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
         <div className="row-top">
           <div className="sport-title-wrapper">
             <img src={sportIcons[sport]} alt={`${sport} icon`} className="sport-icon" />
-            <h3 className="sport-title">{sport}</h3>
+            <div className="sport-title-mobile">
+              <h3 className="sport-title">{sport}</h3>
+              <h4 className="schedule-date-mobile">{date}</h4>
+            </div>
           </div>
           <p className="schedule-date">{date}</p>
         </div>
@@ -126,6 +129,12 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
             </button>
           )}
         </div>
+                  {/* Play Button */}
+                  {video && (
+            <button className="play-button-mobile" onClick={() => window.open(video, "_blank")}>
+              <FaPlay className="play-icon" />
+            </button>
+          )}
       </div>
     </div>
   );
