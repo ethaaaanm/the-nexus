@@ -5,7 +5,7 @@ import "./stats.css";
 const TeamSelector = ({ teams, onTeamChange, defaultTeamId }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedTeam, setSelectedTeam] = useState(
-        teams.find((team) => team.id === defaultTeamId) || { id: "ALL", name: "FILTER BY TEAM" }
+        teams.find((team) => team.id === defaultTeamId) 
     );
     const dropdownRef = useRef(null);
 
@@ -33,12 +33,14 @@ const TeamSelector = ({ teams, onTeamChange, defaultTeamId }) => {
     return (
         <div ref={dropdownRef} className="stats-selector-container">
             <button className={`stats-selector-button ${isOpen ? "active" : ""}`} onClick={handleToggle}>
-                <p className={`stats-selector-team-text  ${isOpen ? "active" : ""}`}>                {selectedTeam ? selectedTeam.name : (defaultTeamId === "SELECT TEAM" ? "Select Team" : "Filter by Team")}
+                <p className={`stats-selector-team-text  ${isOpen ? "active" : ""}`}>                
+                    {selectedTeam ? selectedTeam.name : (defaultTeamId === "SELECT TEAM" ? "Select Team" : "Filter by Team")}
                 </p>
                 <BiSolidDownArrow className={`stats-dropdown-arrow ${isOpen ? "open" : ""}`} />
             </button>
             {isOpen && (
                 <ul className="stats-selector-menu">
+                    {defaultTeamId != "SELECT TEAM" ? (
                     <li
                         key="all-teams"
                         className="stats-dropdown-item"
@@ -46,6 +48,7 @@ const TeamSelector = ({ teams, onTeamChange, defaultTeamId }) => {
                     >
                         All Teams
                     </li>
+                    ):(<div></div>)}
                     {teams.map((team) => (
                         <li key={team.id} className="stats-selector-item" onClick={() => handleSelect(team)}>
                             {team.name}

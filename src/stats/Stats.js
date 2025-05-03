@@ -40,7 +40,7 @@ const Stats = () => {
     const location = useLocation();
     const [selectedSport, setSelectedSport] = useState(() => {
         return location.state?.selectedSport || "Softball";
-      }); 
+    });
 
     const sportsIcon = [
         { id: "Softball", defaultIcon: SoftballIcon, hoverIcon: SoftballHover, activeIcon: SoftballActive, alt: "Softball Button" },
@@ -237,29 +237,17 @@ const Stats = () => {
 
     useEffect(() => {
         if (location.state?.selectedSport) {
-          setSelectedSport(location.state.selectedSport);
+            setSelectedSport(location.state.selectedSport);
         }
-      }, [location.state]);
+    }, [location.state]);
 
     return (
         <div className="stats-container">
             <div className="stats">
                 <div className="stats-menu">
                     <h3 className="stats-header">League Stats</h3>
-                    <div className="stats-team-dropdown">
-                        <TeamDropdown teams={teams} defaultTeamId="ALL" onTeamChange={handleTeamChange} />
-                    </div>
-                    <div className="stats-button-row">
-                        <div className="stats-date-dropdown">
-                            <GameDropdown
-                                key={selectedSchedule.id}
-                                games={[{ id: "season", name: `${selectedYear} Season` }, ...schedules]}
-                                onGameChange={handleGameChange}
-                                defaultGame={selectedSchedule}
-                                value={selectedSchedule}
-                            />
-                        </div>
-                        <div className="stats-sports-button-row">
+                    <div className="stats-menu-arrangement-mobile">
+                        <div className="stats-sports-button-row-mobile">
                             {sportsIcon.map((sport) => (
                                 <img
                                     key={sport.id}
@@ -284,6 +272,61 @@ const Stats = () => {
                                     onMouseLeave={() => setHoveredSport(null)}
                                 />
                             ))}
+                        </div>
+                        <div className="stats-date-dropdown-mobile">
+                            <GameDropdown
+                                key={selectedSchedule.id}
+                                games={[{ id: "season", name: `${selectedYear} Season` }, ...schedules]}
+                                onGameChange={handleGameChange}
+                                defaultGame={selectedSchedule}
+                                value={selectedSchedule}
+                            />
+                        </div>
+                        <div className="stats-team-dropdown-mobile">
+                            <TeamDropdown teams={teams} defaultTeamId="ALL" onTeamChange={handleTeamChange} />
+                        </div>
+                    </div>
+
+                    <div className="stats-menu-arrangement-desktop">
+                        <div className="stats-team-dropdown">
+                            <TeamDropdown teams={teams} defaultTeamId="ALL" onTeamChange={handleTeamChange} />
+                        </div>
+                        <div className="stats-button-row">
+                            <div className="stats-date-dropdown">
+                                <GameDropdown
+                                    key={selectedSchedule.id}
+                                    games={[{ id: "season", name: `${selectedYear} Season` }, ...schedules]}
+                                    onGameChange={handleGameChange}
+                                    defaultGame={selectedSchedule}
+                                    value={selectedSchedule}
+                                />
+                            </div>
+                            <div className="stats-sports-button-row">
+                                {sportsIcon.map((sport) => (
+                                    <img
+                                        key={sport.id}
+                                        src={
+                                            selectedSport === sport.id
+                                                ? sport.activeIcon  // Show active icon if selected
+                                                : hoveredSport === sport.id
+                                                    ? sport.hoverIcon   // Show hover icon if hovered
+                                                    : sport.defaultIcon // Otherwise, show default
+                                        }
+                                        className={`stat-sport-button ${selectedSport === sport.id ? "active" : ""}`}
+                                        alt={sport.alt}
+                                        onClick={() => {
+                                            setSelectedSport(sport.id);
+                                            setSelectedSchedule(() => {
+                                                const newSchedule = { id: "season", name: `${selectedYear} Season` };
+                                                handleGameChange(newSchedule);
+                                                return newSchedule;
+                                            });
+                                        }}
+                                        onMouseEnter={() => setHoveredSport(sport.id)}
+                                        onMouseLeave={() => setHoveredSport(null)}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

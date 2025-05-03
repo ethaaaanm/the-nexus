@@ -10,7 +10,7 @@ import { BiSolidPencil, BiCheck } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 import DateDropdown from "../home/DateDropdown";
 import TeamSelector from "./TeamSelector";
-import "./stats.css";
+import "./inputstats.css";
 
 
 const InputStats = () => {
@@ -355,6 +355,9 @@ const InputStats = () => {
     return (
         <div className="input-stats-container">
             <div className="input-stats">
+                <div className="input-stats-title-mobile">
+                    Input Stats
+                </div>
                 <div className="input-stats-sidebar">
                     <Link to="/stats" className="exit-button-link">
                         <button className="exit-button"> Exit </button>

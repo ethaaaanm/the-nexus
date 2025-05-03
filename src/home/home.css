@@ -267,7 +267,7 @@
   text-transform: uppercase;
   letter-spacing: 3.2px;
   line-height: 16px;
-  border-radius: 20px;
+  border-radius: 16px;
   justify-content: space-between;
   align-items: center;
   color: #F2F2F2;
@@ -299,6 +299,7 @@
   letter-spacing: 3.2px;
   line-height: 16px;
   justify-content: space-between;
+  border-radius: 16px;
 }
 
 .dropdown-button.active {
@@ -312,6 +313,7 @@
   color: #161616;
   border: 1px solid #9ECB3B;
   justify-content: space-between;
+  border-radius: 16px;
 }
 
 .dropdown-button .dropdown-arrow {
@@ -851,6 +853,12 @@
   gap: 0;
 }
 
+@media screen and (max-width: 1280px) {
+  .home-banner .home-banner-text {
+    display: none;
+  }
+}
+
 
 /* Tablet View (up to 1024px) */
 @media screen and (max-width: 1024px) {
@@ -932,7 +940,7 @@
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     display: flex;
-    padding-top: 20px;
+    padding-top: 10px;
     overflow: hidden;
     flex-direction: column;
     flex-wrap: wrap;
@@ -973,6 +981,7 @@
     display: flex;
     flex-direction: column;
     background-color: transparent;
+    width: 100%;
   }
 
   .schedule-dropdown h3 {
@@ -1071,19 +1080,23 @@
     height: 20px;
   }
 
-  .league-section {
-    box-sizing: border-box;
-    padding: 0px 16px;
+  .league-header h3 {
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 120% */
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .league-header .view-all {
+    display: none;
   }
 }
 
 /* Extra Small Screens (e.g., phones smaller than 480px) */
 @media screen and (max-width: 480px) {
-  .home-container {
-    padding-left: 8px; /* Further reduce padding */
-    padding-right: 8px;
-  }
-
   .schedule-section {
     padding-left: 8px; /* Further reduce padding */
     padding-right: 8px;
@@ -1110,50 +1123,12 @@
     font-size: 32px; /* Slightly reduce font size */
   }
 
+  .league-section {
+    padding: 10px;
+  }
+
   .leaderboard {
-    grid-template-columns: 1fr; /* Ensure single column */
-    gap: 10px; /* Reduce gap if needed */
-  }
-
-  .league-item {
-    padding: 10px; /* Reduce padding */
-  }
-
-  .player-row {
-    flex-direction: column; /* Stack player info on very small screens */
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .player-info .top-row {
-    flex-direction: column; /* Stack name and team if needed */
-    align-items: flex-start;
-  }
-
-  .dropdown-button {
-    font-size: 14px; /* Adjust font size */
-    letter-spacing: 1.6px; /* Adjust letter spacing */
-    padding: 16px; /* Adjust padding */
-  }
-
-  .dropdown-item {
-    font-size: 14px; /* Adjust font size */
-    letter-spacing: 1.6px; /* Adjust letter spacing */
-    padding: 10px 15px; /* Adjust padding */
-  }
-
-  .schedule-dropdown h3 {
-    font-size: 24px; /* Adjust heading size */
-    letter-spacing: 3.2px; /* Adjust letter spacing */
-  }
-
-  .sport-title {
-    font-size: 18px; /* Adjust title size */
-    letter-spacing: 2px; /* Adjust letter spacing */
-  }
-
-  .schedule-date-mobile {
-    font-size: 14px; /* Adjust date size */
-    letter-spacing: 1.6px; /* Adjust letter spacing */
+    display: flex;
+    flex-direction: column;
   }
 }
