@@ -39,8 +39,8 @@ const About = () => {
                         <AboutDropdown sport = {'Ultimate Frisbee'} />
                         <AboutDropdown sport = {'Volleyball'} />
                         <div className="about-divider"></div>
+                        <h4 className="about-format-verse">So in Christ we, though many, form one body, and each member belongs to all the others.<br/><br/><br/>Romans 12:5</h4>
                     </div>
-                    <h4 className="about-format-verse">So in Christ we, though many, form one body, and each member belongs to all the others.<br/><br/><br/>Romans 12:5</h4>
                 </div>
 
                 <div className="about-team-connect">

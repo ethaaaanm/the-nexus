@@ -34,7 +34,7 @@ const InputStats = () => {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [selectedYear, setSelectedYear] = useState("2025");
     const [selectedMonth, setSelectedMonth] = useState(`${selectedYear} Season`);
-    const [selectedTeam, setSelectedTeam] = useState(null);
+    const [selectedTeam, setSelectedTeam] = useState("ALL");
     const [stats, setStats] = useState({});
     const [newPlayer, setNewPlayer] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -92,7 +92,7 @@ const InputStats = () => {
     };
 
     const handleTeamChange = (teamID) => {
-        setSelectedTeam(teamID);
+        setSelectedTeam(teamID === "select" ? "ALL" : teamID);
 
         if (newPlayer) {
             setNewPlayer(prev => ({ ...prev, teamID: teamID }));
@@ -364,7 +364,7 @@ const InputStats = () => {
                         <TeamSelector teams={teams} defaultTeamId="GEN1" onTeamChange={handleTeamChange} />
                         <ul className="input-player-list">
                             {players
-                                .filter(player => !selectedTeam || player.teamID === selectedTeam)
+                                .filter(player => !selectedTeam || selectedTeam === "ALL" || player.teamID === selectedTeam)
                                 .map((player) => (
                                     <li
                                         className={`input-player-item ${selectedPlayer?.id === player.id ? "active" : ""}`}
@@ -488,6 +488,7 @@ const InputStats = () => {
                                                             </div>
                                                             {editingStat?.scheduleID === schedule.id && editingStat?.stat === stat && isLoggedIn ? (
                                                                 <input
+                                                                    className="input-sport-stat-editor"
                                                                     type="number"
                                                                     min={0}
                                                                     max={100}
@@ -511,7 +512,7 @@ const InputStats = () => {
                                     <p>No schedules found for the selected month.</p>
                                 )}
                             </div>
-                            <button className="save-stats-button" onClick={submitStats}>Save Stats</button>
+                    {isLoggedIn ? (<button className="save-stats-button" onClick={submitStats}>Save Stats</button>):(<div></div>)}
                         </>
                     ) : newPlayer ? (
                         <div className="new-player-form">

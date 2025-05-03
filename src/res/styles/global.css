@@ -150,25 +150,6 @@
   font-style: normal;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body, html, :root {
-  color: #050505;
-  font-size: 16px;
-  font-family: Proxima Nova;
-  font-weight: 400;
-  word-wrap: break-word;
-  line-height: 16px;
-  margin: 0;
-  padding: 0;  
-  box-sizing: border-box;
-  overflow-x: hidden;
-  min-width: 0;
-  width: 100%;
-}
-
 ::selection {
   background: #9ECC3B;
 }

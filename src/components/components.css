@@ -1,7 +1,6 @@
 /***  TOP BAR STYLING  ***/
 .topnavbar {
-    width: 100%;
-    min-width: 100vw;
+    min-width: 100%;
     background-color: #0E0E0E; 
     display: flex;
     justify-content: space-between;
@@ -9,8 +8,8 @@
     color: #F2F2F2;
     font-size: 16px; 
     font-weight: 800;
-    padding: 10px 0px; 
-    height: 80px; 
+    padding: 16px 80px; 
+    height: auto; 
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
     top: 0;
     z-index: 9999;
@@ -18,43 +17,47 @@
     position: sticky; /* Keep the navbar at the top during scroll */
 }
 
+.logo {
+    padding-left: 80px;
+}
+
 .logo img {
-    width: 30px; 
-    height: 50px; 
-    padding: 0px 80px;
+    max-width: 30px; 
+    max-height: 50px; 
     display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 
 .navbar-right .navbar-links {
     list-style-type: none;
-    padding: 0 70px;
+    padding: 0 80px;
     margin: 0;
     display: flex;
-    gap: 3rem; 
     text-align: center;
     font-family: "Proxima Nova";
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 100% */
+    line-height: 16px;
     letter-spacing: 3.2px;
     text-transform: uppercase;
-    color: #f2f2f2;
+    color: #F2F2F2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6rem;
 }
 
 .navbar-right .navbar-links li {
-    margin: 0; 
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: min-content;
+    max-width: max-content;
 }
 
 .navbar-right .navbar-links a {
-    color: #f2f2f2;
-    padding: 8px 12px; /* Adjust link padding for a thinner feel */
-    font-size: 14px; /* Make link font size smaller */
+    color: #F2F2F2;
+    font-size: 16px; 
     text-decoration: none;
-    border-radius: 4px; /* Optional: Rounded effect for hover */
-    display: inline-block; 
     transition: all 0.3s ease;
 }
 
@@ -64,7 +67,7 @@
 }
 
 .navbar-right .navbar-links .active {
-    color: #9ECB3B; /* Highlight active link */
+    color: #9ECB3B;
     font-weight: 800;
 }
 
@@ -75,21 +78,9 @@
     cursor: pointer;
 }
 
-/* Default nav layout (desktop) */
-.navbar-right {
-    display: flex;
-    align-items: center;
-}
-
-.navbar-links {
-    display: flex;
-    flex-direction: row;
-    gap: 3rem;
-}
-
 /*** FOOTER STYLING ***/
 .footer {
-    width: stretch;
+    min-width: 100%;
     height: min-content;
     display: flex;
     justify-content: space-between;
@@ -98,18 +89,16 @@
     color: #F2F2F2;
     font-family:'Proxima Nova';
     position: relative;
+    padding: 64px 80px;
 }
 
 .footer-title {
-    font-size: 96px;
-    font-weight: 850;
-    margin: 80px 80px;
-    color: #F2F2F2;
-    font-family: 'Manuka';
-    font-style: normal;
-    line-height: 64px;
-    letter-spacing: 0;
-    text-transform: uppercase;
+    margin: 0px 80px;
+}
+
+.footer-title img {
+    max-width: 270px;
+    height: auto;
 }
 
 .footer .footer-right {
@@ -165,8 +154,9 @@
 @media (max-width: 768px) {
     .topnavbar {
         padding: 0px;
-        width: 100%;
-        display: flex;
+        min-width: 100%;
+        width: stretch;
+        display: block;
         height: min-content;
         position: absolute;
         background-color: transparent;
@@ -219,14 +209,20 @@
         padding-bottom: 20px;
         padding-top: 20px;
         gap: 0px;
+        align-items: center;
+        justify-content: center;
         z-index: 1000;
     }
 
     .navbar-right.open .navbar-links {
+        width: 100%;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         gap: 20px;
+        align-self: center;
+        justify-self: center;
+        padding: 0px;
     }
 
     .navbar-links {

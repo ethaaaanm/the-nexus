@@ -1,6 +1,6 @@
 /* General Home Layout */
 .home-container {
-  width: 100%;
+  min-width: 100%;
   display: flex;
   align-items: center;
   background-color: #050505;
@@ -8,20 +8,18 @@
   padding-right: 80px;
   padding-left: 80px;
   box-sizing: border-box;
-  overflow: hidden;
   flex-direction: column;
 }
 
 .home-banner {
-  width: 100%;
-  max-width: 1500px;
+  min-width: 100%;
   display: flex;
   align-items: center;
-  overflow: hidden;
   padding-top: 20px;
   padding-right: 80px;
   padding-left: 80px;
   position: relative;
+  background-color: #050505;
 }
 
 .home-banner img {
@@ -55,18 +53,18 @@
   left: 50%;
   bottom: 10%;
   transform: translateX(-50%);
-  display: flex;
-  gap: 100px; 
-  flex-wrap: wrap; 
+  display:inline-flex;
   justify-content: center;
   align-items: center;
   width: 90%;
   max-width: 600px;
   padding: 0 10px;
+  gap: 20px;
 }
 
 .home-banner .home-register,
 .home-banner .home-learn-more {
+  width: auto;
   height: 64px;
   padding: 20px 40px;
   font-family: "Proxima Nova";
@@ -78,7 +76,6 @@
   border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  
 }
 
 .home-banner .home-register {
@@ -102,9 +99,7 @@
   align-items: center;
   justify-content: center;
 }
-.home-banner .home-learn-more p {
-  margin-left: 5px;
-}
+
 .home-banner .home-learn-more:hover {
   background: rgba(28, 28, 28, 0.20);
 }
@@ -120,11 +115,10 @@
 
 .home {
   width: 100%;
-  max-width: 1500px;
   padding-top: 20px;
   padding-bottom: 40px;
-  padding-right: 80px;
   padding-left: 80px;
+  padding-right: 80px;
   background-color: #050505;
   color: #F2F2F2;
   align-items: start;
@@ -137,6 +131,7 @@
   gap: 20px;
   width: 100%;
   color: #F2F2F2;
+  background-color: #050505;
 }
 
 /*** News Section ***/
@@ -258,7 +253,8 @@
 .dropdown-container {
   position: relative;
   display: inline-block;
-  width: 240px;
+  min-width: 240px;
+  height: fit-content;
 }
 
 /* Button */
@@ -267,14 +263,13 @@
   padding: 20px 20px;
   font-family: "Proxima Nova";
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 3.2px;
   line-height: 16px;
   border-radius: 20px;
   justify-content: space-between;
   align-items: center;
-  gap: 4px;
   color: #F2F2F2;
   border: 1px solid #333;
   background-color: #1C1C1C;
@@ -282,43 +277,62 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   white-space: nowrap; 
-  overflow: hidden;   
+}
+
+.dropdown-button .month-title {
+  display: flex;
+  justify-self: flex-start;
+  font-family: "Proxima Nova";
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3.2px;
+  line-height: 16px;
 }
 
 .dropdown-button:hover {
   background-color: #161616;
+  font-family: "Proxima Nova";
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3.2px;
+  line-height: 16px;
   justify-content: space-between;
-
 }
 
 .dropdown-button.active {
+  font-family: "Proxima Nova";
   font-size: 16px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3.2px;
+  line-height: 16px;
   background-color: #9ECB3B;
   color: #161616;
   border: 1px solid #9ECB3B;
   justify-content: space-between;
 }
 
-.dropdown-arrow {
+.dropdown-button .dropdown-arrow {
   margin-left: 2px;
   padding-bottom: 4px;
   font-size: 20px;
   color: #9ECB3B;
   transition: transform 0.3s ease; 
+  display: flex;
+  justify-content: flex-end;
+  max-width: fit-content;
 }
 
-.dropdown-arrow.open {
+.dropdown-button .dropdown-arrow.open {
   color: #161616;
   transform: rotate(180deg); 
-  padding-bottom: 0px;
 }
 
 .downarrow-icon {
-  width: 18px;
-  height: 18px;
+  max-width: 18px;
+  max-height: 18px;
   margin-top: 2px;
 }
 
@@ -407,8 +421,8 @@
 
 
 .sport-icon {
-  width: 32px;
-  height: 32px;
+  max-width: 32px;
+  max-height: 32px;
 }
 
 .sport-title {
@@ -454,7 +468,7 @@
   justify-content: space-between;
   flex-direction: column;
   gap: 8px; 
-  flex-grow: 1;
+  flex-grow: 2;
 }
 
 .team-bar {
@@ -480,6 +494,7 @@
   align-items: center;
   margin: 0;
   gap: 8px;
+  min-height: 100%;
 }
 
 .team-score {
@@ -488,8 +503,8 @@
   background-color: #1C1C1C;
   font-family: "Manuka";
   font-size: 48px;
-  margin: 0;
-  padding: 25px 0px;
+  margin: 0px;
+  padding: 10px;
   font-style: normal;
   font-weight: 700;
   text-transform: uppercase;
@@ -497,9 +512,8 @@
   color: #F2F2F2;
   letter-spacing: 0.8px;
   min-width: 70px;
-  min-height:max-content;
-  margin: 0;
-
+  min-height: 100%;
+  max-height: 100%;
 }
 
 .team-row {
@@ -517,8 +531,8 @@
 }
 
 .team-icon {
-  width: 35px; 
-  height: 35px;
+  max-width: 35px; 
+  max-height: 35px;
   padding-right: 12px;
 }
 
@@ -550,9 +564,10 @@
 }
 
 .team-abbrev {
+  font-family: "Proxima Nova";
   color: #D2D2D2;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
   margin: 0;
 }
 
@@ -562,6 +577,7 @@
   color: #F2F2F2;
   margin-top: 4px; 
   margin-bottom: 20px;
+  font-weight: 400;
 }
 
 .play-button-mobile {
@@ -571,7 +587,7 @@
 .play-button {
   width: 145px;
   max-width: 145px;
-  height: 145px;
+  height: 100%;
   font-size: 40px;
   background-color: #1C1C1C;
   color: #9ECB3B;
@@ -587,8 +603,8 @@
 }
 
 .play-icon {
-  width: 35px;
-  height: 45px;
+  max-width: 35px;
+  max-height: 45px;
 }
 
 .play-button:hover {
@@ -731,7 +747,7 @@
   font-family: "Proxima Nova";
   font-size: 16px;
   font-weight: 600;
-  width: 24px;
+  max-width: 24px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -749,7 +765,7 @@
 
 .player-info .top-row {
   display: flex;
-  flex-wrap: wrap;  /* Ensures long names or teams wrap if needed */
+  flex-wrap: wrap; 
   gap: 4px; 
   margin-top: 4px;
 }
@@ -768,7 +784,7 @@
   color: #D2D2D2;
 }
 
-.player-stats {
+.player-stat {
   font-family: "Proxima Nova";
   font-size: 16px;
   font-style: normal;
@@ -780,6 +796,7 @@
 .see-all-wrapper {
   display: flex;
   justify-content: center;
+  margin-top: auto;
 }
 
 .see-all-button {
@@ -802,8 +819,8 @@
 }
 
 .arrow-icon {
-  width: 20px;
-  height: 20px;
+  max-width: 20px;
+  max-height: 20px;
 }
 
 .see-all-button:hover {  
@@ -1019,11 +1036,11 @@
   }
 
   .dropdown-container {
-    width: 100%;
+    min-width: 100%;
   }
 
   .dropdown-button {
-    width: 100%;
+    flex: 1;
     justify-content: space-between;
   }
 
@@ -1052,5 +1069,91 @@
   .play-icon {
     width: 20px;
     height: 20px;
+  }
+
+  .league-section {
+    box-sizing: border-box;
+    padding: 0px 16px;
+  }
+}
+
+/* Extra Small Screens (e.g., phones smaller than 480px) */
+@media screen and (max-width: 480px) {
+  .home-container {
+    padding-left: 8px; /* Further reduce padding */
+    padding-right: 8px;
+  }
+
+  .schedule-section {
+    padding-left: 8px; /* Further reduce padding */
+    padding-right: 8px;
+  }
+
+  .schedule-item {
+    padding-left: 10px; /* Adjust inner padding if needed */
+    padding-right: 10px;
+  }
+
+  .row-bottom {
+    flex-direction: column; /* Stack team info and play button */
+    align-items: stretch; /* Make them take full width */
+    gap: 16px;
+  }
+
+  .teams-info {
+    width: 100%; /* Ensure full width */
+  }
+
+  .play-button-mobile {
+    width: 100%; /* Ensure full width */
+    padding: 16px; /* Adjust padding for smaller screens */
+    font-size: 32px; /* Slightly reduce font size */
+  }
+
+  .leaderboard {
+    grid-template-columns: 1fr; /* Ensure single column */
+    gap: 10px; /* Reduce gap if needed */
+  }
+
+  .league-item {
+    padding: 10px; /* Reduce padding */
+  }
+
+  .player-row {
+    flex-direction: column; /* Stack player info on very small screens */
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .player-info .top-row {
+    flex-direction: column; /* Stack name and team if needed */
+    align-items: flex-start;
+  }
+
+  .dropdown-button {
+    font-size: 14px; /* Adjust font size */
+    letter-spacing: 1.6px; /* Adjust letter spacing */
+    padding: 16px; /* Adjust padding */
+  }
+
+  .dropdown-item {
+    font-size: 14px; /* Adjust font size */
+    letter-spacing: 1.6px; /* Adjust letter spacing */
+    padding: 10px 15px; /* Adjust padding */
+  }
+
+  .schedule-dropdown h3 {
+    font-size: 24px; /* Adjust heading size */
+    letter-spacing: 3.2px; /* Adjust letter spacing */
+  }
+
+  .sport-title {
+    font-size: 18px; /* Adjust title size */
+    letter-spacing: 2px; /* Adjust letter spacing */
+  }
+
+  .schedule-date-mobile {
+    font-size: 14px; /* Adjust date size */
+    letter-spacing: 1.6px; /* Adjust letter spacing */
   }
 }

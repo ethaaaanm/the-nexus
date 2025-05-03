@@ -4,8 +4,9 @@ import "./stats.css";
 
 const TeamSelector = ({ teams, onTeamChange, defaultTeamId }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedTeam, setSelectedTeam] = useState(null);
-
+    const [selectedTeam, setSelectedTeam] = useState(
+        teams.find((team) => team.id === defaultTeamId) || { id: "ALL", name: "FILTER BY TEAM" }
+    );
     const dropdownRef = useRef(null);
 
     const handleToggle = () => setIsOpen(!isOpen);
@@ -38,6 +39,13 @@ const TeamSelector = ({ teams, onTeamChange, defaultTeamId }) => {
             </button>
             {isOpen && (
                 <ul className="stats-selector-menu">
+                    <li
+                        key="all-teams"
+                        className="stats-dropdown-item"
+                        onClick={() => handleSelect({ id: "ALL", name: "FILTER BY TEAM" })}
+                    >
+                        All Teams
+                    </li>
                     {teams.map((team) => (
                         <li key={team.id} className="stats-selector-item" onClick={() => handleSelect(team)}>
                             {team.name}

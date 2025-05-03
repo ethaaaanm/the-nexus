@@ -1,3 +1,13 @@
+.about-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
 .about-page {
     display: flex;
     flex-direction: column;
@@ -7,7 +17,7 @@
     color: #F2F2F2;
     margin: 0;
     padding: 0;
-    width: stretch;
+    width: 100%;
 }
 
 .about-banner-wrap {
@@ -69,21 +79,12 @@
     color: #F2F2F2;
 }
 
-.about-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding-right: 80px;
-    padding-left: 80px;
-    position: relative;
+.about-league-format {
+    margin-bottom: 60px;
 }
 
-.about-league-format {
-    max-width: 1000px;
-    margin-bottom: 60px;
+.about-dropdown-wrapper {
+    padding: 0px 80px;
 }
 
 .about-format-breakdown {
@@ -129,13 +130,14 @@
     line-height: 24px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    padding: 0px 40px 20px 40px;
+    padding: 0px 20px 20px 20px;
 }
 
 .about-dropdown-container {
     position: relative;
     display: inline-block;
     width: 100%;
+    padding: 0px;
 }
 
 .about-dropdown-button {
