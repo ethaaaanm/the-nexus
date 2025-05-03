@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.f1b6c5cb.css",
-    "main.js": "/static/js/main.3fc1586b.js",
+    "main.css": "/static/css/main.3e3268c9.css",
+    "main.js": "/static/js/main.60fb187a.js",
     "static/media/home_banner_mobile.svg": "/static/media/home_banner_mobile.40afe6f00e71343d256852e9b05aa350.svg",
-    "static/media/about_banner.png": "/static/media/about_banner.aca60c2f45d8666f7170.png",
+    "static/media/about_banner_desktop.png": "/static/media/about_banner_desktop.aca60c2f45d8666f7170.png",
     "static/media/home_banner_desktop.png": "/static/media/home_banner_desktop.99d773778e837991ea40.png",
+    "static/media/about_banner_mobile.png": "/static/media/about_banner_mobile.d3608fea64c88b3f4721.png",
     "static/media/phonk_contrast.otf": "/static/media/phonk_contrast.00390c698e2a26bed84d.otf",
     "static/media/phonk_regular.otf": "/static/media/phonk_regular.411157e17c1a43fdd53f.otf",
     "static/media/proximanova_regular.ttf": "/static/media/proximanova_regular.8181ca4b7c2d1189d78a.ttf",
@@ -41,11 +42,11 @@
     "static/media/ic_mail.svg": "/static/media/ic_mail.fcc16c7ec52f8bbd2ae9fe0fdd5b6c3d.svg",
     "index.html": "/index.html",
     "static/media/team_refined.svg": "/static/media/team_refined.b78b387caff43a637ac04a146a444cc1.svg",
-    "main.f1b6c5cb.css.map": "/static/css/main.f1b6c5cb.css.map",
-    "main.3fc1586b.js.map": "/static/js/main.3fc1586b.js.map"
+    "main.3e3268c9.css.map": "/static/css/main.3e3268c9.css.map",
+    "main.60fb187a.js.map": "/static/js/main.60fb187a.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1b6c5cb.css",
-    "static/js/main.3fc1586b.js"
+    "static/css/main.3e3268c9.css",
+    "static/js/main.60fb187a.js"
   ]
 }
