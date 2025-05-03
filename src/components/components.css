@@ -90,11 +90,10 @@
 /*** FOOTER STYLING ***/
 .footer {
     width: stretch;
-    height: 100px;
+    height: min-content;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 0px;
     background-color: #0E0E0E; 
     color: #F2F2F2;
     font-family:'Proxima Nova';
@@ -166,19 +165,21 @@
 @media (max-width: 768px) {
     .topnavbar {
         padding: 0px;
+        width: 100%;
         display: flex;
         height: min-content;
         position: absolute;
         background-color: transparent;
         border: transparent;
         box-shadow: none;
+        flex-grow: 1;
     }
 
     .mobile-menu-icon {
         display: block;
         position: absolute;
         top: 28px;
-        right: 5%;
+        right: 1%;
         z-index: 1001;
         border-radius: 18px;
         border: 1px solid #333;
@@ -242,5 +243,13 @@
 
     .logo img {
         display: none;
+    }
+
+    .footer .footer-right {
+        margin: 20px;
+    }
+
+    .footer .footer-title {
+        margin: 20px;
     }
 }

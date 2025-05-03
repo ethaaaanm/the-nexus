@@ -904,6 +904,10 @@
     background-color: #050505;
     overflow: hidden;
     padding: 0px;
+    min-width: 0;
+    width: 100%;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
   }
 
   .home-inner {
@@ -913,10 +917,17 @@
     display: flex;
     padding-top: 20px;
     overflow: hidden;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: stretch;
+    box-sizing: border-box;
   }
 
   .home-container {
     padding: 0px;
+    min-width: 0;
+    width: 100%;
   }
 
   .home-banner {
