@@ -1,6 +1,4 @@
 /*** Input Stats Screen ***/
-/*ETHAN: TODO: INPUT STATS TABLET AND MOBILE RESPONSIVENESS MODE*/
-
 .input-stats-container {
     width: 100%;
     display: flex;
@@ -597,13 +595,13 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; 
+    line-height: 16px;
     letter-spacing: 3.2px;
     text-transform: uppercase;
     border-radius: 16px;
 }
 
-.input-stat-date-dropdown-mobile  {
+.input-stat-date-dropdown-mobile {
     display: none;
 }
 
@@ -654,7 +652,7 @@
     margin: 0px;
 }
 
-.sport-title-mobile {
+.input-sport-stat-header-mobile {
     display: none;
 }
 
@@ -1020,7 +1018,7 @@
         display: flex;
         flex-direction: column;
     }
-    
+
     .input-stats-content {
         min-height: 100vw;
     }
@@ -1082,7 +1080,7 @@
         height: 40px;
     }
 
-    .sport-title-mobile {
+    .input-sport-stat-header-mobile {
         display: inline-block;
     }
 
@@ -1117,5 +1115,30 @@
     .input-sport-stat-box input {
         font-size: 29px;
         padding: 8px 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .input-stats-title-mobile {
+        font-family: "Proxima Nova";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px;
+        letter-spacing: 3.2px;
+        text-transform: uppercase;
+    }
+
+    .input-sport-current-stat {
+        font-size: 16px;
+    }
+
+    .input-sport-stat-display {
+        font-size: 32px;
+        padding: 0;
+    }
+
+    .input-sport-stat-box input {
+        font-size: 20px;
     }
 }

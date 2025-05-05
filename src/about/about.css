@@ -457,7 +457,17 @@
     .about-dropdown-wrapper {
         display: flex;
         flex-direction: column;
-        padding: 0px 40px;
+        width: 100%;
+        padding: 0px 20px;
+    }
+
+    .about-divider {
+        margin: 40px 0px;
+    }
+
+    .about-format-verse {
+        margin: 0px;
+        margin-bottom: 20px;
     }
 }
 
@@ -501,6 +511,9 @@
         bottom: 20%;
     }
 
+    .about-league-format {
+        padding: 0px 20px;
+    }
 
     .about-format-title {
         font-size: 64px;
@@ -508,6 +521,7 @@
         line-height: 64px;
         text-transform: uppercase;
         flex-wrap: wrap;
+        letter-spacing: 2.2px;
     }
 
     .about-nexus-shield {
@@ -522,11 +536,16 @@
         letter-spacing: 4px;
         text-transform: uppercase;
     }
+
+    .about-divider {
+        margin: 30px 0px;
+    }
+
     .about-format-verse {
         font-size: 20px;
         line-height: 24px;
         letter-spacing: 4px;
-        padding: 0 10px;
+        padding: 0px;
     }
 
     .about-dropdown-button {
@@ -607,27 +626,84 @@
         padding: 20px;
         bottom: 10%;
     }
+
+    .about-format-title {
+        font-family: "Manuka";
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        padding: 0px 20px;
+    }
+
+    .about-format-verse {
+        font-family: "Proxima Nova";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px; /* 100% */
+        letter-spacing: 3.2px;
+        text-transform: uppercase;
+    }
+
+    .contact-container {
+        padding: 0px 20px;
+    }
+
+    .about-connect-title {
+        font-family: "Manuka";
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+
+    .about-connect-form {
+        padding: 0px;
+        gap: 10px;
+    }
+
+    .about-personal-info-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-personal-info-row input {
+        width: 100%;
+    }
+
+    .about-socials-row {
+        display: none;
+    }
+
+    .about-dropdown-wrapper {
+        padding: 0px;
+    }
+
+    .contact-submit-button {
+        margin: 20px 0px;
+    }
 }
 
 @media screen and (max-width: 380px) {
     .about-banner-title {
         font-weight: 700;
         color: #F2F2F2;
-        font-size: 60px;
+        font-size: 48px;
         line-height: 50px;
         padding: 20px;
-        padding-top: 40px;
-        top: 0;
-        width: 70%;
+        top: 2%;
+        width: 80%;
     }
 
     .about-banner-subtitle {
         width: 90%;
         font-size: 14px;
         font-weight: 400;
-        line-height: 18px;
-        padding: 20px;
-        bottom: 10%;
+        line-height: 16px;
+        bottom: 3%;
     }
 }
 

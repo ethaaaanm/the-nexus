@@ -496,7 +496,7 @@ const InputStats = () => {
                                                 <div className="input-sport-stat-header">
                                                     <div className="input-sport-stat-header-left">
                                                         <img src={sportIcons[schedule.sport]} alt={`${schedule.sport} icon`} className="input-sport-stat-icon" />
-                                                        <div className="sport-title-mobile">
+                                                        <div className="input-sport-stat-header-mobile">
                                                             <h3 className="sport-title">{schedule.sport}</h3>
                                                             <h4 className="schedule-date-mobile">{schedule.date}</h4>
                                                         </div>

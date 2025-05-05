@@ -32,6 +32,10 @@
     flex-direction: column;
   }
 
+  .stats-menu-arrangement-desktop {
+    width: 100%;
+  }
+
   .stats-menu-arrangement-mobile {
     display: none;
   }
@@ -524,16 +528,19 @@
   align-items: center;
   align-self: 100%;
   border-radius: 16px;
+  font-weight: 600;
   border: 1px solid #333;
   background-color: #1C1C1C;
 }
 
 .input-stats-button:hover {
+  font-weight: 600;
   border-radius: 16px;
   background-color: #161616;
 }
 
 .input-stats-button:active {
+  font-weight: 600;
   border-radius: 16px;
   border: 1px solid #9ECB3B;
   background-color: #9ECB3B;
@@ -621,5 +628,69 @@
     gap: 0px;
     padding: 8px;
   }
+}
 
+@media screen and (max-width: 480px) {
+  .stats-header {
+    font-family: "Proxima Nova";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; 
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 10px 0px;
+  }
+
+  .stats-date-dropdown-mobile .dropdown-button {
+    border-radius: 8px;
+    padding-left: 18px;
+  }
+
+  .stats-team-dropdown-mobile .stats-dropdown-button {
+    height: max-content;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .stats-dropdown-arrow {
+    margin: 2px;
+  }
+
+  .player-card .player-info {
+    gap: 0px;
+    padding: 0px 8px;
+  }
+
+  .player-card .player-name {
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;  
+  }
+
+  .player-card .player-team {
+    font-family: "Proxima Nova";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 16px; 
+  }
+
+  .game-stats-text {
+    font-size: 14px;
+  }
+
+  .input-stats-button {
+    font-family: "Proxima Nova";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    padding: 20px;
+    max-height: fit-content;
+  }
 }
