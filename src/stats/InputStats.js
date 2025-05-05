@@ -10,6 +10,7 @@ import { BiSolidPencil, BiCheck } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 import DateDropdown from "../home/DateDropdown";
 import TeamSelector from "./TeamSelector";
+import PlayerDropdown from "./PlayerDropdown";
 import "./inputstats.css";
 
 
@@ -288,14 +289,14 @@ const InputStats = () => {
 
     const deletePlayer = async () => {
         if (!selectedPlayer) return alert("No player selected.");
-    
+
         const confirmDelete = window.confirm(`Are you sure you want to delete ${selectedPlayer.playerName}? There's no going back!`);
         if (!confirmDelete) return;
-    
+
         try {
             // Delete from Firestore
             await deleteDoc(doc(db, "players", selectedPlayer.id));
-    
+
             // Update local state
             setPlayers(players.filter(p => p.id !== selectedPlayer.id));
             setSelectedPlayer(null);
@@ -362,6 +363,15 @@ const InputStats = () => {
                     <Link to="/stats" className="exit-button-link">
                         <button className="exit-button"> Exit </button>
                     </Link>
+
+                    <div className="player-dropdown-mobile">
+                        <PlayerDropdown
+                            players={players.filter(player => !selectedTeam || selectedTeam === "ALL" || player.teamID === selectedTeam)}
+                            onPlayerSelect={handlePlayerSelect}
+                            defaultPlayer={selectedPlayer}
+                            teams={teams}
+                        />
+                    </div>
 
                     <div className="input-stats-column">
                         <TeamSelector teams={teams} defaultTeamId="GEN1" onTeamChange={handleTeamChange} />
@@ -469,6 +479,14 @@ const InputStats = () => {
                                 </div>
                             </div>
 
+                            <div className="input-stat-date-dropdown-mobile">
+                                <DateDropdown
+                                    months={["June", "July", "August", `${selectedYear} Season`]}
+                                    defaultMonth={`${selectedYear} Season`}
+                                    onMonthChange={setSelectedMonth}
+                                />
+                            </div>
+
                             {/* Stats Input Sections */}
                             <div className="input-sport-stat-section">
                                 {filteredSchedules.length > 0 ? (
@@ -478,6 +496,10 @@ const InputStats = () => {
                                                 <div className="input-sport-stat-header">
                                                     <div className="input-sport-stat-header-left">
                                                         <img src={sportIcons[schedule.sport]} alt={`${schedule.sport} icon`} className="input-sport-stat-icon" />
+                                                        <div className="sport-title-mobile">
+                                                            <h3 className="sport-title">{schedule.sport}</h3>
+                                                            <h4 className="schedule-date-mobile">{schedule.date}</h4>
+                                                        </div>
                                                         <h2 className="input-sport-stat-title">{schedule.sport}</h2>
                                                     </div>
                                                     <p className="input-sport-stat-date">{schedule.date}</p>
@@ -515,7 +537,7 @@ const InputStats = () => {
                                     <p>No schedules found for the selected month.</p>
                                 )}
                             </div>
-                    {isLoggedIn ? (<button className="save-stats-button" onClick={submitStats}>Save Stats</button>):(<div></div>)}
+                            {isLoggedIn ? (<button className="save-stats-button" onClick={submitStats}>Save Stats</button>) : (<div></div>)}
                         </>
                     ) : newPlayer ? (
                         <div className="new-player-form">

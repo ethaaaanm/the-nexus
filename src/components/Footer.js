@@ -8,14 +8,17 @@ const Footer = () => {
     return (
         <header className="footer">
             <div className="footer-title">
-                <img src={Workmark} alt="The Nexus Footer"/>
+                <img src={Workmark} alt="The Nexus Footer" />
             </div>
+            <h5 className="lil-msg-mobile">
+                Building a Christ-centered community through sport.
+            </h5>
             <div className="footer-right">
                 <div className="logo-line">
-                    <a 
-                    href="https://www.instagram.com/thenexusleague/"   
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    <a
+                        href="https://www.instagram.com/thenexusleague/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <input className="ig-logo" type="image" src={Instagram} alt="Instagram Logo" />
                     </a>
@@ -27,6 +30,10 @@ const Footer = () => {
                     Building a Christ-centered community through sport.
                     <br /> © 2025 The Nexus League
                 </h5>
+            </div>
+            <div className="copyright-section">
+                <div className="divider" />
+                <h5 className="copyright-msg">© 2025 The Nexus League</h5>
             </div>
         </header>
     );
