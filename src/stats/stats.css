@@ -553,7 +553,7 @@
 }
 
 /* Phone View (up to 768px) */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .stats {
     padding: 10px 20px;
   }
@@ -655,6 +655,28 @@
 
   .stats-dropdown-arrow {
     margin: 2px;
+  }
+
+  .all-teams-name {
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px; 
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    border-radius: 16px;
+  }
+
+  .stats-dropdown-button.active .all-teams-name {
+    font-family: "Proxima Nova";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px; 
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    border-radius: 16px;
   }
 
   .player-card .player-info {

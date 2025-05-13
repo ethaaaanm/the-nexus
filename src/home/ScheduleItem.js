@@ -109,10 +109,10 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
                   </div>
                   {teams[index].scores && teams[index].scores.length > 0 && (
                     <div className="team-score-row">
-                        {teams[index].scores.map((score, scoreIndex) => (
-                          <p key={scoreIndex} className={`team-score ${losingTeam === index ? "team-loser" : losingTeam === -1 ? "team-draw" : ""}`}>{score}</p>
-                        ))}
-                      </div>
+                      {teams[index].scores.map((score, scoreIndex) => (
+                        <p key={scoreIndex} className={`team-score ${losingTeam === index ? "team-loser" : losingTeam === -1 ? "team-draw" : ""}`}>{score}</p>
+                      ))}
+                    </div>
                   )}
                 </div>
               ) : (
@@ -129,12 +129,12 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
             </button>
           )}
         </div>
-                  {/* Play Button */}
-                  {video && (
-            <button className="play-button-mobile" onClick={() => window.open(video, "_blank")}>
-              <FaPlay className="play-icon" />
-            </button>
-          )}
+        {/* Play Button */}
+        {video && (
+          <button className="play-button-mobile" onClick={() => window.open(video, "_blank")}>
+            <FaPlay className="play-icon" />
+          </button>
+        )}
       </div>
     </div>
   );

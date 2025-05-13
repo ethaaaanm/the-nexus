@@ -49,6 +49,15 @@
     clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
 }
 
+.about-banner-text-section {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 20%;
+    padding: 60px;
+    gap: 40px;
+}
+
 .about-banner-title {
     font-family: "Manuka";
     font-size: 128px;
@@ -57,10 +66,10 @@
     line-height: 128px;
     text-transform: uppercase;
     text-align: start;
-    position: absolute;
-    padding: 40px 160px;
-    top: -5%;
+    position: relative;
     color: #F2F2F2;
+    margin: 0;
+    padding: 0;
 }
 
 .about-banner-subtitle {
@@ -72,11 +81,11 @@
     text-align: start;
     text-transform: none;
     letter-spacing: normal;
-    position: absolute;
-    padding: 40px 160px;
-    width: 60%;
-    bottom: 15%;
+    position: relative;
     color: #F2F2F2;
+    width: 70%;
+    margin: 0;
+    padding: 0;
 }
 
 .about-league-format {
@@ -440,18 +449,20 @@
 }
 
 
-/* Tablet View (up to 1024px) */
-@media screen and (max-width: 1024px) {
+/* Tablet View (up to 1200px) */
+@media screen and (max-width: 1200px) {
+    .about-banner-text-section {
+        top: 10%;
+    }
+
     .about-banner-title {
         font-size: 100px;
         line-height: normal;
         width: 100%;
-        top: -5%;
     }
 
     .about-banner-subtitle {
         width: 80%;
-        bottom: 8%;
     }
 
     .about-dropdown-wrapper {
@@ -473,7 +484,7 @@
 
 
 /* Phone View (up to 768px) */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900) {
     .about-page {
         padding: 0px;
     }
@@ -487,28 +498,21 @@
     }
 
     .about-banner_mobile {
-        display: flex;
         width: 100%;
     }
 
+    .about-banner-text-section {
+        top: 10%;
+    }
+
     .about-banner-title {
-        font-weight: 700;
-        color: #F2F2F2;
-        font-size: 132px;
-        line-height: 120px;
-        padding: 20px;
-        padding-top: 40px;
-        top: 0;
-        width: 70%;
+        font-size: 80px;
+        line-height: normal;
+        width: 100%;
     }
 
     .about-banner-subtitle {
-        width: 90%;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 18px;
-        padding: 20px;
-        bottom: 20%;
+        width: 80%;
     }
 
     .about-league-format {
@@ -532,7 +536,7 @@
         font-family: "Proxima Nova";
         font-size: 20px;
         font-weight: 600;
-        line-height: 24px; 
+        line-height: 24px;
         letter-spacing: 4px;
         text-transform: uppercase;
     }
@@ -642,7 +646,7 @@
         font-size: 16px;
         font-style: normal;
         font-weight: 600;
-        line-height: 16px; /* 100% */
+        line-height: 16px;
         letter-spacing: 3.2px;
         text-transform: uppercase;
     }
@@ -706,6 +710,3 @@
         bottom: 3%;
     }
 }
-
-
-

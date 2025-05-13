@@ -8,7 +8,6 @@ import { FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { IoMail } from "react-icons/io5";
 
-
 import "./about.css"
 
 const About = () => {
@@ -21,11 +20,13 @@ const About = () => {
             <div className="about-banner-wrap">
                 <img src={DesktopBanner} alt="Family Banner" className="about-banner"/>
                 <img src={MobileBanner} alt="Family Banner" className="about-banner_mobile"/>
-                <h1 className="about-banner-title">CREATING A CHRIST-CENTERED<br/> COMMUNITY THROUGH SPORT.</h1>
-                <h5 className="about-banner-subtitle">“Nexus” refers to a central point or link that connects different elements or groups. 
-                    It's often used to describe a hub or focal point where ideas, people, or things come together. 
-                    In the context of the league name, "Nexus" symbolizes a place where players unite and intersect, 
-                    emphasizing the connection and unity within the league. </h5>
+                <div className="about-banner-text-section">
+                    <h1 className="about-banner-title">CREATING A CHRIST-CENTERED<br/> COMMUNITY THROUGH SPORT.</h1>
+                    <h5 className="about-banner-subtitle">“Nexus” refers to a central point or link that connects different elements or groups. 
+                        It's often used to describe a hub or focal point where ideas, people, or things come together. 
+                        In the context of the league name, "Nexus" symbolizes a place where players unite and intersect, 
+                        emphasizing the connection and unity within the league. </h5>
+                </div>
             </div>
 
             <div className="about-wrapper">

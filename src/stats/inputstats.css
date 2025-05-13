@@ -1008,7 +1008,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .input-stats-container {
         padding: 20px 0px;
     }
@@ -1130,8 +1130,16 @@
     }
 
     .input-sport-current-stat {
-        font-size: 16px;
+        font-size: 14px;
     }
+
+    .input-sport-edit-indicator.logged-in {
+        font-size: 14px;
+    }
+
+   .input-sport-edit-indicator.logged-out {
+        font-size: 14px;
+   }
 
     .input-sport-stat-display {
         font-size: 32px;
