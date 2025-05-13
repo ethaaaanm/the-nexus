@@ -68,8 +68,8 @@
     text-align: start;
     position: relative;
     color: #F2F2F2;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 .about-banner-subtitle {
@@ -82,10 +82,10 @@
     text-transform: none;
     letter-spacing: normal;
     position: relative;
-    color: #F2F2F2;
+    padding: 0px;
+    margin: 0px;
     width: 70%;
-    margin: 0;
-    padding: 0;
+    color: #F2F2F2;
 }
 
 .about-league-format {
@@ -452,7 +452,7 @@
 /* Tablet View (up to 1200px) */
 @media screen and (max-width: 1200px) {
     .about-banner-text-section {
-        top: 10%;
+        top: 15%;
     }
 
     .about-banner-title {
@@ -463,6 +463,7 @@
 
     .about-banner-subtitle {
         width: 80%;
+        bottom: 8%;
     }
 
     .about-dropdown-wrapper {
@@ -484,7 +485,7 @@
 
 
 /* Phone View (up to 768px) */
-@media screen and (max-width: 900) {
+@media screen and (max-width: 900px) {
     .about-page {
         padding: 0px;
     }
@@ -498,20 +499,23 @@
     }
 
     .about-banner_mobile {
+        display: flex;
         width: 100%;
     }
 
     .about-banner-text-section {
-        top: 10%;
+        top: 15%;
+        gap: 80px;
     }
 
     .about-banner-title {
-        font-size: 80px;
+        font-size: 100px;
         line-height: normal;
         width: 100%;
     }
 
     .about-banner-subtitle {
+        font-size: 16px;
         width: 80%;
     }
 
@@ -611,24 +615,20 @@
 }
 
 @media screen and (max-width: 570px) {
+    .about-banner-text-section {
+        top: 10%;
+        gap: 40px;
+    }
+
     .about-banner-title {
-        font-weight: 700;
-        color: #F2F2F2;
-        font-size: 80px;
-        line-height: 70px;
-        padding: 20px;
-        padding-top: 40px;
-        top: 0;
-        width: 70%;
+        font-size: 64px;
+        line-height: normal;
+        width: 100%;
     }
 
     .about-banner-subtitle {
-        width: 90%;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 18px;
-        padding: 20px;
-        bottom: 10%;
+        font-size: 14px;
+        width: 80%;
     }
 
     .about-format-title {
@@ -688,25 +688,5 @@
 
     .contact-submit-button {
         margin: 20px 0px;
-    }
-}
-
-@media screen and (max-width: 380px) {
-    .about-banner-title {
-        font-weight: 700;
-        color: #F2F2F2;
-        font-size: 48px;
-        line-height: 50px;
-        padding: 20px;
-        top: 2%;
-        width: 80%;
-    }
-
-    .about-banner-subtitle {
-        width: 90%;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 16px;
-        bottom: 3%;
     }
 }

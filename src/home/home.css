@@ -388,6 +388,7 @@
   grid-row: 2/3;
   width: 100%;
   align-items: stretch;
+  font-family: "Proxima Nova";
 }
 
 .schedule-item {
@@ -727,10 +728,11 @@
   padding: 0px 0px;
 }
 
-.player-list {
+.player-list1 {
   display: flex;
   align-items: start;
   flex-direction: column;
+  font-family: "Proxima Nova";
 }
 
 .player-row {
