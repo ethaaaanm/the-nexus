@@ -491,7 +491,7 @@
     }
 
     .about-banner {
-        display: none;
+        display: flex;
     }
 
     .about-banner-wrap {
@@ -499,24 +499,26 @@
     }
 
     .about-banner_mobile {
-        display: flex;
+        display: none;
         width: 100%;
     }
 
     .about-banner-text-section {
-        top: 15%;
+        top: 10%;
+        padding: 20px 40px;
         gap: 80px;
     }
 
     .about-banner-title {
         font-size: 100px;
-        line-height: normal;
+        line-height: 100px;
         width: 100%;
     }
 
     .about-banner-subtitle {
         font-size: 16px;
         width: 80%;
+        line-height: 20px;
     }
 
     .about-league-format {
@@ -614,10 +616,22 @@
     }
 }
 
+@media screen and (max-width: 800px) {
+    .about-banner {
+        display: none;
+    }
+
+    .about-banner_mobile {
+        display: block;
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 570px) {
     .about-banner-text-section {
         top: 10%;
         gap: 40px;
+        padding: 20px 20px;
     }
 
     .about-banner-title {
@@ -628,7 +642,8 @@
 
     .about-banner-subtitle {
         font-size: 14px;
-        width: 80%;
+        line-height: normal;
+        width: 100%;
     }
 
     .about-format-title {
