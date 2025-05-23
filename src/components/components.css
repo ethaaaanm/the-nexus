@@ -91,6 +91,10 @@
     font-family: 'Proxima Nova';
     position: relative;
     padding: 64px 80px;
+    position: sticky;
+    bottom: 0;
+    left: 0; 
+    z-index: 10
 }
 
 .footer-title {

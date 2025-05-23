@@ -38,6 +38,7 @@ const InputStats = () => {
     const [selectedTeam, setSelectedTeam] = useState("ALL");
     const [stats, setStats] = useState({});
     const [newPlayer, setNewPlayer] = useState(null);
+    const [isNewPlayer, setIsNewPlayer] = useState(false);
     const [loading, setLoading] = useState(true);
     const [isEditingName, setIsEditingName] = useState(false);
     const [editedName, setEditedName] = useState("");
@@ -146,6 +147,7 @@ const InputStats = () => {
 
         setStats(updatedStats);
         setNewPlayer(null);
+        setIsNewPlayer(false);
     };
 
     const startNewPlayer = () => {
@@ -157,6 +159,7 @@ const InputStats = () => {
             Height: "",
         });
         setSelectedPlayer(null);
+        setIsNewPlayer(true);
     };
 
     const saveNewPlayer = async () => {
@@ -172,6 +175,9 @@ const InputStats = () => {
         setPlayers([...players, newPlayer]);
         setSelectedPlayer(newPlayer);
         setNewPlayer(null);
+        setIsNewPlayer(false);
+
+        window.location.reload();
     };
 
     const handleNameEdit = () => {
@@ -322,7 +328,7 @@ const InputStats = () => {
             onSave(inputValue);
         };
 
-        return isEditing && isLoggedIn ? (
+        return isEditing && (isLoggedIn || isNewPlayer)? (
             <div className="pill-button-edit">
                 <input
                     type="text"
@@ -335,7 +341,7 @@ const InputStats = () => {
                     <BiCheck className="save-icon" />
                 </button>
             </div>
-        ) : isLoggedIn ? (
+        ) : isLoggedIn || isNewPlayer ? (
             <button className="input-player-stat-button" onClick={() => setIsEditing(true)}>
                 <h4 className="input-player-stat-value">
                     {label}: {inputValue === "-" ? "-" : `${inputValue} ${label === "age" ? "yrs" : ""}`}

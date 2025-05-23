@@ -25,7 +25,7 @@
 .home-banner img {
   width: 100%;
   height: auto;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 .home-banner-img.mobile {
@@ -53,7 +53,7 @@
   left: 50%;
   bottom: 10%;
   transform: translateX(-50%);
-  display:inline-flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 90%;
@@ -83,9 +83,11 @@
   color: #F2F2F2;
   border: none;
 }
+
 .home-banner .home-register:hover {
   background-color: #0E0E0E;
 }
+
 .home-banner .home-register:active {
   background-color: #9ECB3B;
   color: #050505;
@@ -103,6 +105,7 @@
 .home-banner .home-learn-more:hover {
   background: rgba(28, 28, 28, 0.20);
 }
+
 .home-banner .home-learn-more:active {
   background-color: #9ECB3B;
   color: #050505;
@@ -111,6 +114,10 @@
 
 .home-banner .home-banner-button-link {
   text-decoration: none;
+}
+
+.home-banner-mobile {
+  display: none;
 }
 
 .home {
@@ -126,8 +133,8 @@
 
 .home-inner {
   display: grid;
-  grid-template-columns: 350px auto; 
-  grid-template-rows: auto; 
+  grid-template-columns: 350px auto;
+  grid-template-rows: auto;
   gap: 20px;
   width: 100%;
   color: #F2F2F2;
@@ -209,7 +216,7 @@
 
 .news-item:last-child p {
   margin-top: 0px;
-  margin-bottom: 20px ;
+  margin-bottom: 20px;
 }
 
 .news-item.content {
@@ -276,7 +283,7 @@
   display: flex;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .dropdown-button .month-title {
@@ -321,7 +328,7 @@
   padding-bottom: 4px;
   font-size: 20px;
   color: #9ECB3B;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
   display: flex;
   justify-content: flex-end;
   max-width: fit-content;
@@ -329,7 +336,7 @@
 
 .dropdown-button .dropdown-arrow.open {
   color: #161616;
-  transform: rotate(180deg); 
+  transform: rotate(180deg);
 }
 
 .downarrow-icon {
@@ -343,7 +350,7 @@
   position: absolute;
   top: calc(100% + 15px);
   left: 0;
-  width: 100%; 
+  width: 100%;
   background-color: #1C1C1C;
   color: #F2F2F2;
   list-style: none;
@@ -367,7 +374,7 @@
   background-color: transparent;
   cursor: pointer;
   transition: background-color 0.2s ease, padding-left 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
   text-transform: uppercase;
 }
 
@@ -473,7 +480,7 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  gap: 8px; 
+  gap: 8px;
   flex-grow: 2;
 }
 
@@ -483,7 +490,7 @@
   border-radius: 16px;
   flex-direction: row;
   align-items: center;
-  gap: 8px; 
+  gap: 8px;
   flex-grow: 1;
 }
 
@@ -536,7 +543,7 @@
 }
 
 .team-icon {
-  max-width: 35px; 
+  max-width: 35px;
   max-height: 35px;
   padding-right: 12px;
 }
@@ -554,7 +561,7 @@
   display: flex;
   align-items: center;
   vertical-align: center;
-  gap: 4px;  
+  gap: 4px;
 }
 
 .team-name {
@@ -564,7 +571,7 @@
   font-weight: 600;
   color: #F2F2F2;
   text-transform: capitalize;
-  margin: 0;  
+  margin: 0;
   line-height: 20px;
 }
 
@@ -580,7 +587,7 @@
   font-family: "Proxima Nova";
   font-size: 16px;
   color: #F2F2F2;
-  margin-top: 4px; 
+  margin-top: 4px;
   margin-bottom: 20px;
   font-weight: 400;
 }
@@ -604,7 +611,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  align-self: center; /* Will override on mobile */
+  align-self: center;
+  /* Will override on mobile */
 }
 
 .play-icon {
@@ -625,15 +633,15 @@
 
 /*** League Leaders Section ***/
 .league-section {
-  grid-column: 2 / 3; 
+  grid-column: 2 / 3;
   grid-row: 3;
   margin-top: 0;
 }
 
 .league-header {
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #0E0E0E;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -648,12 +656,12 @@
   line-height: 32px;
   letter-spacing: 6.4px;
   color: #F2F2F2;
-  margin: 0; 
+  margin: 0;
 }
 
 .league-header .view-all {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   padding: 24px 28px;
   width: fit-content;
@@ -686,7 +694,7 @@
 }
 
 .league-section .view-all-link {
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 .current-record {
@@ -701,14 +709,14 @@
 }
 
 .current-teams .losing-team {
-  background-color: #161616; 
+  background-color: #161616;
 }
 
 .leaderboard {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 20px; 
-  margin: 0 auto;  
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 0 auto;
 }
 
 .league-item {
@@ -737,7 +745,7 @@
 
 .player-row {
   display: flex;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   align-items: center;
   padding: 4px 18px;
   border-radius: 16px;
@@ -746,7 +754,7 @@
   box-sizing: border-box;
   border: 1px solid #333;
   gap: 16px;
-  margin: 4px 0px;  
+  margin: 4px 0px;
 }
 
 .player-row .rank {
@@ -771,8 +779,8 @@
 
 .player-info .top-row {
   display: flex;
-  flex-wrap: wrap; 
-  gap: 4px; 
+  flex-wrap: wrap;
+  gap: 4px;
   margin-top: 4px;
 }
 
@@ -812,7 +820,7 @@
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
-  line-height: 24px; 
+  line-height: 24px;
   letter-spacing: 4px;
   text-transform: uppercase;
   cursor: pointer;
@@ -829,12 +837,12 @@
   max-height: 20px;
 }
 
-.see-all-button:hover {  
+.see-all-button:hover {
   font-family: "Proxima Nova";
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
-  line-height: 24px; 
+  line-height: 24px;
   letter-spacing: 4px;
   text-transform: uppercase;
   cursor: pointer;
@@ -884,6 +892,7 @@
     left: 50%;
     gap: 24px;
   }
+
   .home-banner .home-register,
   .home-banner .home-learn-more {
     display: none;
@@ -910,18 +919,17 @@
     overflow-x: scroll;
     scrollbar-width: none;
   }
-  
+
   .play-button {
     min-height: 100%;
     height: 152px;
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .home {
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
-    margin-top: -30px;
     position: relative;
     z-index: 10;
     background-color: #050505;
@@ -959,21 +967,49 @@
     position: relative;
   }
 
-    .home-banner-img.desktop {
-      display: none;
-    }
-    .home-banner-img.mobile {
-      display: flex;
-    }
+  .home-banner-mobile {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    background-color: #0E0E0E;
+    padding: 16px;
+    margin: 16px;
+    gap: 16px;
+    border-radius: 16px;
+  }
 
-    .home-banner-button-row {
-      left: 35%;
-      gap: 24px;
-    } 
+  .home-banner-mobile-text {
+    font-family: "Proxima Nova";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px; 
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    margin: 0;
+  }
 
-    .home-banner-button-row {
-      display: none;
-    }
+  .home-banner-nexus-logo {
+    max-width: 270px;
+    height: auto;
+  }
+
+  .home-banner-img.desktop {
+    display: none;
+  }
+
+  .home-banner-img.mobile {
+    display: none;
+  }
+
+  .home-banner-button-row {
+    left: 35%;
+    gap: 24px;
+  }
+
+  .home-banner-button-row {
+    display: none;
+  }
 
   .schedule-dropdown {
     display: flex;
@@ -985,7 +1021,7 @@
   .schedule-dropdown h3 {
     align-self: flex-start;
   }
-  
+
   .schedule-section {
     display: flex;
     box-sizing: border-box;
@@ -1012,7 +1048,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 24px; 
+    line-height: 24px;
     letter-spacing: 4px;
     text-transform: uppercase;
   }
@@ -1023,7 +1059,7 @@
     font-size: 12px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; 
+    line-height: 16px;
     letter-spacing: 3.2px;
     text-transform: uppercase;
     margin: 0px;
@@ -1074,7 +1110,8 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 600;
-    line-height: 24px; /* 120% */
+    line-height: 24px;
+    /* 120% */
     letter-spacing: 4px;
     text-transform: uppercase;
   }
@@ -1084,14 +1121,13 @@
   }
 }
 
-/* Extra Small Screens (e.g., phones smaller than 480px) */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .schedule-dropdown h3 {
     font-family: "Proxima Nova";
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; /* 100% */
+    line-height: 16px;
     letter-spacing: 3.2px;
     text-transform: uppercase;
   }
@@ -1101,7 +1137,7 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; 
+    line-height: 16px;
     letter-spacing: 2.8px;
     text-transform: uppercase;
     padding: 12px;
@@ -1113,7 +1149,7 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; 
+    line-height: 16px;
     letter-spacing: 2.8px;
     text-transform: uppercase;
     padding: 12px;
@@ -1125,7 +1161,7 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; 
+    line-height: 16px;
     letter-spacing: 2.8px;
     text-transform: uppercase;
     padding: 12px;
@@ -1137,7 +1173,7 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
-    line-height: 16px; 
+    line-height: 16px;
     letter-spacing: 2.8px;
     text-transform: uppercase;
     padding: 12px;
@@ -1145,18 +1181,18 @@
 
 
   .schedule-section {
-    padding-left: 8px; 
+    padding-left: 8px;
     padding-right: 8px;
   }
 
   .schedule-item {
-    padding-left: 10px; 
+    padding-left: 10px;
     padding-right: 10px;
   }
 
   .row-bottom {
-    flex-direction: column; 
-    align-items: stretch; 
+    flex-direction: column;
+    align-items: stretch;
     gap: 16px;
   }
 
@@ -1215,12 +1251,12 @@
   }
 
   .teams-info {
-    width: 100%; 
+    width: 100%;
   }
 
   .play-button-mobile {
-    width: 100%; 
-    padding: 16px; 
+    width: 100%;
+    padding: 16px;
     font-size: 32px;
   }
 
@@ -1262,9 +1298,9 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 16px; 
+    line-height: 16px;
   }
-  
+
   .top-row .player-team {
     font-family: "Proxima Nova";
     font-size: 12px;
@@ -1286,7 +1322,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 24px; 
+    line-height: 24px;
     letter-spacing: 2.4px;
     text-transform: uppercase;
   }
@@ -1296,17 +1332,18 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 24px; 
+    line-height: 24px;
     letter-spacing: 2.4px;
     text-transform: uppercase;
     color: #C7E584;
   }
+
   .see-all-button:active {
     font-family: "Proxima Nova";
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
-    line-height: 24px; 
+    line-height: 24px;
     letter-spacing: 2.4px;
     text-transform: uppercase;
     color: #333333;

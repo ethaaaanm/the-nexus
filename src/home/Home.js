@@ -11,6 +11,7 @@ import { db } from "../firebaseConfig";
 
 import HomeBannerDesktop from "../res/images/home_banner_desktop.png";
 import HomeBannerMobile from "../res/images/home_banner_mobile.svg"
+import Wordmark from "../res/images/wordmark.svg"
 
 import "./home.css";
 
@@ -161,6 +162,12 @@ const Home = () => {
         <h5 className="home-banner-text">We strive to build a fun, welcoming, Christ-like community and create an excuse to hang out and play all summer long.</h5>
         <img className="home-banner-img desktop" src={HomeBannerDesktop} alt="Home Banner" />
         <img className="home-banner-img mobile" src={HomeBannerMobile} alt="Home Banner Mobile" />
+        <div className="home-banner-mobile">
+            <h5 className="home-banner-mobile-text">Welcome to</h5>
+            <div className="home-banner-nexus-logo">
+                <img src={Wordmark} alt="The Nexus Footer" />
+            </div>
+        </div>
         <div class="home-banner-button-row">
           <a href="https://forms.gle/z83x9zu8HueUa4Bs6" target="_blank" rel="noopener noreferrer" className="home-banner-button-link">
             <button className="home-register">REGISTER TODAY</button>

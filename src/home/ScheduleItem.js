@@ -92,11 +92,11 @@ const ScheduleItem = ({ sport, date, teams, video }) => {
               team ? (
                 <div className="team-bar">
                   <div className={`team-row ${losingTeam === index ? "team-loser" : losingTeam === -1 ? "team-draw" : ""}`} key={team.id}>
-                    <img
+                    {/* <img
                       src={teamIcons[team.name.toLowerCase()] || "default-icon.png"}
                       alt={`${team.name} logo`}
                       className="team-icon"
-                    />
+                    /> */}
                     <div className="team-details">
                       <div className="team-info-row">
                         <p className="team-name">{team.name}</p>

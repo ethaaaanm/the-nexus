@@ -61,11 +61,11 @@ const CurrentTeams = () => {
           key={team.id}
           className={`team-row ${team.id === losingTeamId ? "losing-team" : ""}`}
         >
-          <img
+          {/* <img
             src={teamIcons[team.name.toLowerCase()] || "default-icon.png"}
             alt={`${team.name} logo`}
             className="team-icon"
-          />
+          /> */}
           <div className="team-details">
             <div className="team-info-row">
               <p className="team-name">{team.name}</p>

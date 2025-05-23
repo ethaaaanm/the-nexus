@@ -54,22 +54,23 @@
     flex-direction: column;
     position: absolute;
     top: 20%;
-    padding: 60px;
+    padding: 60px 160px 0px 160px;
     gap: 40px;
 }
 
 .about-banner-title {
     font-family: "Manuka";
-    font-size: 128px;
+    font-size: 100px;
     font-style: normal;
     font-weight: 850;
-    line-height: 128px;
+    line-height: 100px;
     text-transform: uppercase;
     text-align: start;
     position: relative;
     color: #F2F2F2;
     margin: 0px;
     padding: 0px;
+    width: 100%;
 }
 
 .about-banner-subtitle {
@@ -84,7 +85,7 @@
     position: relative;
     padding: 0px;
     margin: 0px;
-    width: 70%;
+    width: 100%;
     color: #F2F2F2;
 }
 
