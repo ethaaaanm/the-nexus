@@ -727,13 +727,17 @@
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 12px 20px 20px 20px;
 }
 
 .league-item .row-top {
   display: flex;
   align-items: center;
   padding: 0px 0px;
+}
+
+.league-item .sport-title {
+  margin: 0px;
 }
 
 .player-list1 {
@@ -873,7 +877,7 @@
 
 
 /* Tablet View (up to 1200px) */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1350px) {
   .home-container {
     padding-left: 60px;
     padding-right: 60px;
@@ -1053,22 +1057,6 @@
     text-transform: uppercase;
   }
 
-  .schedule-date-mobile {
-    display: flex;
-    font-family: "Proxima Nova";
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 16px;
-    letter-spacing: 3.2px;
-    text-transform: uppercase;
-    margin: 0px;
-  }
-
-  .schedule-date {
-    display: none;
-  }
-
   .dropdown-container {
     min-width: 100%;
   }
@@ -1177,6 +1165,22 @@
     letter-spacing: 2.8px;
     text-transform: uppercase;
     padding: 12px;
+  }
+
+  .schedule-date-mobile {
+    display: flex;
+    font-family: "Proxima Nova";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    margin: 0px;
+  }
+
+  .schedule-date {
+    display: none;
   }
 
 

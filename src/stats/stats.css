@@ -1,7 +1,9 @@
   .stats-container {
       width: 100%;
+      min-height: 70vw;
       display: flex;
       justify-content: center;
+      align-items: start;
       background-color: #050505;
       padding-bottom: 60px;
       box-sizing: border-box;
@@ -238,6 +240,12 @@
     border-radius: 0 0 2px 2px;
     border-top: 8px solid #9ECB3B;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+    overflow-y: scroll;
+  }
+
+  .dropdown-menu {
+    overflow-y: scroll;
+    max-height: 500px;
   }
   
   .stats-dropdown-item {
@@ -579,6 +587,11 @@
     padding-bottom: 20px;
   }
 
+  .dropdown-menu {
+    overflow-y: scroll;
+    max-height: 400px;
+  }
+
   .stats-date-dropdown-mobile {
     width: 100%;
     padding-bottom: 8px;
@@ -655,6 +668,11 @@
 
   .stats-dropdown-arrow {
     margin: 2px;
+  }
+
+  .dropdown-menu {
+    overflow-y: scroll;
+    max-height: 300px;
   }
 
   .all-teams-name {
