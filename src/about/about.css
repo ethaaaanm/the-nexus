@@ -17,6 +17,7 @@
     color: #F2F2F2;
     margin: 0;
     padding: 0;
+    padding-top: 80px;
     width: 100%;
 }
 
@@ -709,5 +710,22 @@
 
     .contact-submit-button {
         margin: 20px 0px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .about-banner-text-section {
+        gap: 20px;
+    }
+    .about-banner-title {
+        font-size: 40px;
+        line-height: normal;
+        width: 100%;
+    }
+
+    .about-banner-subtitle {
+        font-size: 12px;
+        line-height: normal;
+        width: 100%;
     }
 }

@@ -14,7 +14,7 @@
     top: 0;
     z-index: 9999;
     border-bottom: 1px solid #333;
-    position: sticky;
+    position: fixed;
     /* Keep the navbar at the top during scroll */
 }
 
@@ -163,14 +163,14 @@
     opacity: 0.7;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .topnavbar {
         padding: 0px;
         min-width: 100%;
         width: stretch;
         display: block;
         height: min-content;
-        position: absolute;
+        position: fixed;
         background-color: transparent;
         border: transparent;
         box-shadow: none;

@@ -17,6 +17,7 @@
     justify-content: center;
     width: 100%;
     padding: 0px 80px;
+    padding-top: 80px;
     background-color: #050505;
     color: #F2F2F2;
     gap: 20px;
@@ -1017,6 +1018,7 @@
 
     .input-stats {
         padding: 10px 16px;
+        padding-top: 0px;
         display: flex;
         flex-direction: column;
     }
