@@ -144,7 +144,18 @@ const AdminPage = () => {
   const fetchSchedule = async () => {
     try {
       const scheduleSnapshot = await getDocs(collection(db, "schedule"));
-      setSchedule(scheduleSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      const fetchedSchedule = scheduleSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+      const parseScheduleDate = (item) => {
+        const [datePart] = item.date.split(" | "); 
+        const [month, day] = datePart.split("/").map(Number);
+        const year = Number(item.year || "2025");
+        return new Date(year, month - 1, day);
+      };
+
+      fetchedSchedule.sort((a, b) => parseScheduleDate(a) - parseScheduleDate(b));
+
+      setSchedule(fetchedSchedule);
     } catch (error) {
       console.error("Error fetching schedule:", error);
     }
@@ -565,6 +576,15 @@ const AdminPage = () => {
                         team2: { ...newSchedule.team2, scores },
                       });
                   }}
+                />
+
+                <label>Team 2 Record at Time: (0-1-0)</label>
+                <input
+                  type="text"
+                  value={editingSchedule.team2.recordAtTime}
+                  onChange={(e) =>
+                    setEditingSchedule((prev) => ({ ...prev, team2: { ...prev.team2, recordAtTime: e.target.value } }))
+                  }
                 />
               </>
             )}

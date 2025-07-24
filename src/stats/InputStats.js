@@ -24,7 +24,7 @@ const InputStats = () => {
 
     const statFields = {
         Basketball: ["Points (PTS)", "Rebounds (REB)", "Assists (AST)", "Blocks (BLK)", "Steals (STL)"],
-        Volleyball: ["Wins (W)", "Losses (L)", "Serves (SRV)"],
+        Volleyball: ["Serves (SRV)"],
         Softball: ["Hits (H)", "Runs (R)", "At Bats (AB)", "Runs Batted In (RBI)"],
         "Ultimate Frisbee": ["Points (PTS)", "Assists (AST)", "Blocks (BLK)"],
     };

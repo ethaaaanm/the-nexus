@@ -52,7 +52,7 @@ const Stats = () => {
     const getStatFields = (sport, isSeason) => {
         const baseStats = {
             Basketball: ["Points (PTS)", "Rebounds (REB)", "Assists (AST)", "Blocks (BLK)", "Steals (STL)"],
-            Volleyball: ["Wins (W)", "Losses (L)", "Serves (SRV)"],
+            Volleyball: ["Serves (SRV)"],
             Softball: ["Hits (H)", "Runs (R)", "At Bats (AB)", "Runs Batted In (RBI)"],
             "Ultimate Frisbee": ["Points (PTS)", "Assists (AST)", "Blocks (BLK)"]
         };
@@ -122,6 +122,7 @@ const Stats = () => {
 
     const handleTeamChange = (teamID) => {
         setSelectedTeam(teamID === "select" ? "ALL" : teamID);
+        updateDisplayedStats()
     };
 
     const handleGameChange = (game) => {
@@ -130,6 +131,8 @@ const Stats = () => {
         if (game.sport) {
             setSelectedSport(game.sport);
         }
+
+        updateDisplayedStats()
     };
 
     useEffect(() => {
@@ -142,43 +145,9 @@ const Stats = () => {
     }, [selectedYear, selectedSport]);
 
     useEffect(() => {
-        const filtered = players.filter(player => {
-            const matchesTeam = !selectedTeam || selectedTeam === "ALL" || player.teamID === selectedTeam;
-            const hasStats = selectedSchedule?.id === "season"
-                ? player.seasonAverages?.[selectedYear]?.[selectedSport]
-                : player.Stats?.[selectedSchedule.id];
+        updateDisplayedStats();
+    }, [players, selectedTeam, selectedSchedule, selectedSport, selectedYear]);
 
-            return matchesTeam && hasStats;
-        });
-
-        const updatedStats = filtered.map(player => {
-            const playerStats = selectedSchedule?.id === "season"
-                ? player.seasonAverages?.[selectedYear]?.[selectedSport] || {}
-                : player.Stats?.[selectedSchedule.id] || {};
-            return { ...player, stats: playerStats };
-        });
-
-        updatedStats.sort((a, b) => {
-            const getTotal = (player) => {
-                const stats = player.stats || {};
-
-                if (selectedSport === "Basketball") {
-                    return Number(stats["Points (PTS)" || 0]) + Number(stats["Rebounds (REB)" || 0]) + Number(stats["Assists (AST)" || 0]) + Number(stats["Blocks (BLK)" || 0]) + Number(stats["Steals (STL)" || 0])
-                } else if (selectedSport === "Ultimate Frisbee") {
-                    return Number(stats["Points (PTS)" || 0]) + Number(stats["Assists (AST)" || 0]) + Number(stats["Blocks (BLK)" || 0])
-                } else if (selectedSport === "Softball") {
-                    return (Number(stats["Hits (H)"]) || 0) + (Number(stats["Runs Batted In (RBI)"]) || 0);
-                } else if (selectedSport === "Volleyball") {
-                    return Number(stats["Serves (SRV)"]) || 0;
-                }
-                return 0;
-            };
-
-            return getTotal(b) - getTotal(a);
-        });
-
-        setDisplayedStats(updatedStats);
-    }, [selectedSchedule, players, selectedTeam, selectedYear, selectedSport]);
 
     const getLeagueLeaders = (players, sport) => {
         const leaders = {};
@@ -235,6 +204,55 @@ const Stats = () => {
         return stats || {};
     };
 
+    const updateDisplayedStats = () => {
+    const filtered = players.filter(player => {
+        const matchesTeam = !selectedTeam || selectedTeam === "ALL" || player.teamID === selectedTeam;
+        const hasStats = selectedSchedule?.id === "season"
+            ? player.seasonAverages?.[selectedYear]?.[selectedSport]
+            : player.Stats?.[selectedSchedule.id];
+
+        return matchesTeam && hasStats;
+    });
+
+    const updatedStats = filtered.map(player => {
+        const playerStats = selectedSchedule?.id === "season"
+            ? player.seasonAverages?.[selectedYear]?.[selectedSport] || {}
+            : player.Stats?.[selectedSchedule.id] || {};
+        return { ...player, stats: playerStats };
+    });
+
+    const getTotal = (player) => {
+        const stats = player.stats || {};
+        if (selectedSport === "Basketball") {
+            return (
+                Number(stats["Points (PTS)"] || 0) +
+                Number(stats["Rebounds (REB)"] || 0) +
+                Number(stats["Assists (AST)"] || 0) +
+                Number(stats["Blocks (BLK)"] || 0) +
+                Number(stats["Steals (STL)"] || 0)
+            );
+        } else if (selectedSport === "Ultimate Frisbee") {
+            return (
+                Number(stats["Points (PTS)"] || 0) +
+                Number(stats["Assists (AST)"] || 0) +
+                Number(stats["Blocks (BLK)"] || 0)
+            );
+        } else if (selectedSport === "Softball") {
+            return (
+                Number(stats["Hits (H)"] || 0) +
+                Number(stats["Runs Batted In (RBI)"] || 0)
+            );
+        } else if (selectedSport === "Volleyball") {
+            return Number(stats["Serves (SRV)"] || 0);
+        }
+        return 0;
+    };
+
+    updatedStats.sort((a, b) => getTotal(b) - getTotal(a));
+
+    setDisplayedStats(updatedStats);
+};
+
     useEffect(() => {
         if (location.state?.selectedSport) {
             setSelectedSport(location.state.selectedSport);
@@ -265,6 +283,7 @@ const Stats = () => {
                                         setSelectedSchedule(() => {
                                             const newSchedule = { id: "season", name: `${selectedYear} Season` };
                                             handleGameChange(newSchedule);
+                                            updateDisplayedStats()
                                             return newSchedule;
                                         });
                                     }}
