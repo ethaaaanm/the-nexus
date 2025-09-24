@@ -223,7 +223,7 @@ const Home = () => {
           {/* Bottom Right: League Leaders Section */}
           <div className="league-section">
             <div className="league-header">
-              <h3>League Leaders</h3>
+              <h3>League Leaders:</h3>
               <Link to="/stats" className="view-all-link">
                 <button className="view-all"> View All </button>
               </Link>
